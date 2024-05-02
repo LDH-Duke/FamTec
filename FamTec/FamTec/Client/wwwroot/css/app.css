@@ -1,4 +1,55 @@
-@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    color:black;
+
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+*::-webkit-scrollbar {
+    display: none; 
+}
+
+
+html,
+#app,
+body,
+.page {
+    height: 100%;
+}
+
+ol,ul,li{
+    list-style:none;
+}
+
+a {
+    text-decoration:none;
+}
+
+a:visited{
+    color:black;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+
+
+
+/*
+    Blazor Default CSS
+*/
+/*@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -99,3 +150,4 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+*/

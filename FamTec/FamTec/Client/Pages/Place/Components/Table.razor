@@ -1,0 +1,41 @@
+﻿
+<div class="table-container">
+   <div class="table-wrap">
+       <div class="table-header">
+
+       </div>
+       <div class="table-body">
+           <table class="table">
+                <thead class="thead">
+                    <tr class="thead-tr tr">
+                        @foreach(var property in Properties)
+                        {
+                            @if(property == "IsSelect")
+                            {
+
+                            }
+                            else
+                            {
+                                <th class="thead-th">@property</th>
+                            }
+                            
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+           </table>
+       </div>
+   </div>
+</div>
+
+@code {
+    [Parameter] public List<object>? DataList { get; set; }
+    [Parameter] public List<string>? Properties { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+}
