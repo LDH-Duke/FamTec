@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "EKzAyGedz1L3g3h8hluOs2XhchwZGI7O0Ckg626GRhghmFYkSqJCJMlzpKSx+AP2OLIkH1fWtvMWCu6Xcbyogw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Shared\\FamTec.Shared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\stec\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\stec\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512"
+  ],
+  "logs": []
+}
