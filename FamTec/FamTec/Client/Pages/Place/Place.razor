@@ -4,7 +4,7 @@
 @using FamTec.Client.Pages.Place.Components
 
 <div class="place-container">
-    <Table Properties="@properties" DataList="@placeList"/>
+    <Table Title="사업장 목록" Properties="@properties" DataList="@placeList"/>
 </div>
 
 @code {
@@ -73,5 +73,13 @@
 
         placeList = PlaceList.Cast<object>().ToList();
         properties = typeof(PlaceDTO).GetProperties().Select(p => p.Name).ToList();
+    }
+
+    /*
+     * Add to List<PlaceDTO>SelectList when Active Checkbox
+     */
+    public void OnSelected(object row)
+    {
+        Console.WriteLine(row);
     }
 }

@@ -2,7 +2,13 @@
 <div class="table-container">
    <div class="table-wrap">
        <div class="table-header">
-
+           <span class="table-header-title">
+                @Title
+           </span>
+           <div class="table-header-option">
+               <Input Placeholder="Research"/>
+               <Button Name="추가"/>
+           </div>
        </div>
        <div class="table-body">
            <table class="table">
@@ -10,20 +16,40 @@
                     <tr class="thead-tr tr">
                         @foreach(var property in Properties)
                         {
-                            @if(property == "IsSelect")
-                            {
-
-                            }
-                            else
+                            @if(property != "IsSelect")
                             {
                                 <th class="thead-th">@property</th>
+                            }else
+                            {
+                                <th class="thead-th">선택</th>
                             }
-                            
                         }
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody class="tbody">
+                    @foreach (var row in DataList)
+                    {
+                        <tr class="tbody-tr tr">
+                            @* <td class="tbody-td">
+                                <input type="checkbox" value=@row @onclick="()=> OnClicked(row)" />
+                            </td> *@
+                            @foreach(var property in Properties)
+                            {
+                                if(property != "IsSelect")
+                                {
+                                    <td class="tbody-td">
+                                        @row.GetType().GetProperty(property)?.GetValue(row)
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td class="tbody-td">
+                                        <input type="checkbox" value="@row"  />
+                                    </td>
+                                }
+                            }
+                        </tr>
+                    }
                 </tbody>
            </table>
        </div>
@@ -31,11 +57,18 @@
 </div>
 
 @code {
+    [Parameter] public string? Title { get; set; }
     [Parameter] public List<object>? DataList { get; set; }
     [Parameter] public List<string>? Properties { get; set; }
+
 
     protected override Task OnInitializedAsync()
     {
         return base.OnInitializedAsync();
+    }
+
+    private void OnClicked(object row)
+    {
+        Console.WriteLine(row);
     }
 }

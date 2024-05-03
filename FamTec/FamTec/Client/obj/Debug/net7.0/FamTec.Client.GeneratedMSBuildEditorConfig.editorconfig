@@ -54,6 +54,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Place/Components/Button.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhY2VcQ29tcG9uZW50c1xCdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4uel3ea6go
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Place/Components/Input.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhY2VcQ29tcG9uZW50c1xJbnB1dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-uz0arryk9b
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Place/Components/Table.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhY2VcQ29tcG9uZW50c1xUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-650edo8kke
