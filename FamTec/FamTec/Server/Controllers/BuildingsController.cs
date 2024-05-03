@@ -1,5 +1,7 @@
-﻿using FamTec.Server.Repository;
+﻿using AutoMapper;
+using FamTec.Server.Repository;
 using FamTec.Server.Repository.Interfaces;
+using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +22,23 @@ namespace FamTec.Server.Controllers
 
         [HttpGet]
         [Route("SelectBuilding/{code}")]
-        public async ValueTask<List<BuildingsTb>> GetBuildingAll(string code)
+        public async ValueTask<List<BuildingsDTO>> GetBuildingAll(string code)
         {
-            var result = await BuildingInfoRepository.GetByPlaceCDAsync(code);
-            return result;
+            List<BuildingsTb> result = await BuildingInfoRepository.GetByPlaceCDAsync(code);
+
+            // 또는 AutoMapper
+            List<BuildingsDTO> dto = result.Select(e => new BuildingsDTO()
+            {
+                IndexChk = false,
+                BuildingCd = e.BuildingCd,
+                Name = e.Name,
+                Address = e.Address,
+                FloorNum = e.FloorNum,
+                CompletionDate = e.CompletionDate,
+                CreateDt = e.CreateDt
+            }).ToList();
+
+            return dto;
         }
     }
 }

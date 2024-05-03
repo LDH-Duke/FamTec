@@ -105,3 +105,4 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.As
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Common.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Features.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\AutoMapper.dll

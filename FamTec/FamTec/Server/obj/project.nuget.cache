@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5o2RqeBiCsXYtItZ3kYANRh70hFJayHgkXNH+lwHQmA+oFEGNgUXzEQbTeI7wVnqqYtdhnwtmpFIfs+NjBXr9A==",
+  "dgSpecHash": "D5W8/1dnNDKbTuRNz1bPefMdOHpCV9hUIfgYJHebAy6DyaySsLUH12ed8JOr9BYgY7rICgVCBJAVJC74cNVMCg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\kyw\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
