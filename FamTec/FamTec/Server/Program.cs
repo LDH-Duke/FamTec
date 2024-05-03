@@ -1,10 +1,15 @@
 using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
+using FamTec.Server.Repository;
+using FamTec.Server.Repository.Interfaces;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.ObjectPool;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
+builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
+builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
 
 // Add services to the container.
 
