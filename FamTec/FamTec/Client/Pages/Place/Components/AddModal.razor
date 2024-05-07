@@ -1,4 +1,5 @@
-﻿
+﻿@using FamTec.Shared.Client.DTO
+
 
 <div class="modal-backgroud">
     <div class="modal-container">
@@ -7,47 +8,64 @@
                 @Title
             </div>
             <div class="modal-content">
-                <InputField 
-                    Label="코드"
-                    InputType="text"
-                    Placeholder="사업장 코드" 
-                    />
-                <InputField 
-                    Label="사업장명"
-                    InputType="text"
-                    Placeholder="사업장명" 
-                    />
+                <div class="modal-form">
+                    <InputField 
+                        Label="코드"
+                        InputType="text"
+                        Placeholder="사업장 코드" 
+                        />
+                    <InputField 
+                        Label="사업장명"        
+                        InputType="text"
+                        Placeholder="사업장명" 
+                        />
 
-                <InputField 
-                    Label="전화번호"
-                    InputType="text"
-                    Placeholder="전화번호" 
-                    />
-                <InputField 
-                    Label="주소"
-                    InputType="text"
-                    Placeholder="주소" 
-                    />
-                <InputField 
-                    Label="계약번호"
-                    InputType="text"
-                    Placeholder="계약번호" 
-                    />
-                <InputField 
-                    Label="계약일자"
-                    InputType="date"
-                    Placeholder="계약일자" 
-                    />
-                <InputField 
-                    Label="계약구분"
-                    InputType="text"
-                    Placeholder="계약구분" 
-                />
+                    <InputField 
+                        Label="전화번호"
+                        InputType="text"
+                        Placeholder="전화번호" 
+                        />
+                    <InputField 
+                        Label="주소"
+                        InputType="text"
+                        Placeholder="주소" 
+                        />
+                    <InputField 
+                        Label="계약번호"
+                        InputType="text"
+                        Placeholder="계약번호" 
+                        />
+                    <InputField 
+                        Label="계약일자"
+                        InputType="date"
+                        Placeholder="계약일자" 
+                        />
+                </div>
+                <div class="modal-manager">
+                    <div class="modal-m-header">
+                        <span class="modal-m-title">관리 매니저</span>
+                        <div>
+                            <Button Name="추가" />
+                            <Button Name="삭제" />
+                        </div>
+                    </div>
+                    <Table 
+                        DataList="@placeManagerList" 
+                        Properties="@properties"
+                        />
+                </div>
+                
+
             </div>
             <button class="modal-btn" @onclick="ModalClose">
                 확인
             </button>
         </div>
+        @if (isAddModal)
+        {
+            <SearchManagerModal />
+        }
+
     </div>
 </div>
 
@@ -56,10 +74,48 @@
     [Parameter] public string Content { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
+    List<PlaceManagerDTO> PlaceManagerList;
+    List<object> placeManagerList;
+    List<string> properties;
+    bool isAddModal = false;
+
     private Task ModalClose()
     {
         return OnClose.InvokeAsync(false);
     }
+
+    protected override async Task OnInitializedAsync()
+    {
+        PlaceManagerList = new List<PlaceManagerDTO>
+        {
+            new PlaceManagerDTO
+            {
+                ID = "test1",
+                NAME = "홍길동",
+                DEPARTMENT = "시스템개발파트"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test2",
+                NAME = "최유진",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            }
+        };
+
+        placeManagerList = PlaceManagerList.Cast<object>().ToList();
+        properties = typeof(PlaceManagerDTO).GetProperties().Select(p => p.Name).ToList();
+    }
+
+    private void OnAddModal()
+    {
+        isAddModal = true;
+    }
 }
 
-}
+

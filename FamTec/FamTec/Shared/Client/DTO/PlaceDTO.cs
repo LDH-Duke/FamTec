@@ -15,7 +15,5 @@ namespace FamTec.Shared.Client.DTO
         public string? 계약번호 { get; set; } = null;
         public DateTime 계약일자 { get; set; }
         public string? 계약상태 { get; set; }
-        
-
     }
 }
