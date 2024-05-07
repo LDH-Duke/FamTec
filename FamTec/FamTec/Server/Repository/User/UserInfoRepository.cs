@@ -1,9 +1,8 @@
 ﻿using FamTec.Server.Databases;
-using FamTec.Server.Repository.Interfaces;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace FamTec.Server.Repository
+namespace FamTec.Server.Repository.User
 {
     public class UserInfoRepository : IUserInfoRepository
     {
@@ -22,7 +21,8 @@ namespace FamTec.Server.Repository
                 context.UsersTbs.Add(model);
                 await context.SaveChangesAsync();
                 return model;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw;
             }
@@ -33,7 +33,8 @@ namespace FamTec.Server.Repository
             try
             {
                 return await context.UsersTbs.FirstOrDefaultAsync(m => m.UserId == userid);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw;
             }

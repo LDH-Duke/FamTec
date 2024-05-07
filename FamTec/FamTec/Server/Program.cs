@@ -1,7 +1,8 @@
 using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
-using FamTec.Server.Repository;
-using FamTec.Server.Repository.Interfaces;
+using FamTec.Server.Repository.Building;
+using FamTec.Server.Repository.Place;
+using FamTec.Server.Repository.User;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 

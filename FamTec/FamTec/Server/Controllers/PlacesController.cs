@@ -1,5 +1,4 @@
-﻿using FamTec.Server.Repository;
-using FamTec.Server.Repository.Interfaces;
+﻿using FamTec.Server.Repository.Place;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,6 +1,6 @@
 ﻿using FamTec.Shared.Model;
 
-namespace FamTec.Server.Repository.Interfaces
+namespace FamTec.Server.Repository.Place
 {
     public interface IPlaceInfoRepository
     {

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using FamTec.Server.Repository;
-using FamTec.Server.Repository.Interfaces;
+using FamTec.Server.Repository.Building;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +39,7 @@ namespace FamTec.Server.Controllers
 
             return dto;
         }
+
     }
 }
 

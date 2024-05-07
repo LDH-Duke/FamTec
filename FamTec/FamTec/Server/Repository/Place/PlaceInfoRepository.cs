@@ -1,10 +1,9 @@
 ﻿using FamTec.Server.Databases;
-using FamTec.Server.Repository.Interfaces;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
-namespace FamTec.Server.Repository
+namespace FamTec.Server.Repository.Place
 {
     public class PlaceInfoRepository : IPlaceInfoRepository
     {
@@ -28,7 +27,7 @@ namespace FamTec.Server.Repository
                 await context.SaveChangesAsync();
                 return model;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }

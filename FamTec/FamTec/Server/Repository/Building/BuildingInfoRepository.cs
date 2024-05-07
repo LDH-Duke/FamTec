@@ -1,9 +1,8 @@
 ﻿using FamTec.Server.Databases;
-using FamTec.Server.Repository.Interfaces;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace FamTec.Server.Repository
+namespace FamTec.Server.Repository.Building
 {
     public class BuildingInfoRepository : IBuildingInfoRepository
     {
@@ -27,7 +26,7 @@ namespace FamTec.Server.Repository
                 await context.SaveChangesAsync();
                 return model;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -40,8 +39,8 @@ namespace FamTec.Server.Repository
         /// <returns></returns>
         public async ValueTask<List<BuildingsTb>> GetByPlaceCDAsync(string placecd)
         {
-            List<BuildingsTb>? model = await context.BuildingsTbs.Where((m => m.PlacecodeCd == placecd)).ToListAsync();
-            if(model is not null)
+            List<BuildingsTb>? model = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
+            if (model is not null)
             {
                 return model;
             }
@@ -49,7 +48,7 @@ namespace FamTec.Server.Repository
             {
                 return null;
             }
-            
+
         }
     }
 }

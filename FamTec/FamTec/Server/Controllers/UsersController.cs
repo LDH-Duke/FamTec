@@ -1,4 +1,4 @@
-﻿using FamTec.Server.Repository.Interfaces;
+﻿using FamTec.Server.Repository.User;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,5 +23,6 @@ namespace FamTec.Server.Controllers
             UsersTb? model = await UserInfoRepository.GetByUserId(userid);
             return model;
         }
+
     }
 }
