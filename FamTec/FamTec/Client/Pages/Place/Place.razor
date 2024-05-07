@@ -4,13 +4,37 @@
 @using FamTec.Client.Pages.Place.Components
 
 <div class="place-container">
-    <Table Title="사업장 목록" Properties="@properties" DataList="@placeList"/>
+    <div class="place-table1-wrap">
+        <div class="table-header">
+            <span class="table-header-title">
+                사업장 목록
+            </span>
+            <div class="table-header-option">
+                <Input Placeholder="Research" />
+                <Button 
+                    Name="추가"
+                    OnClick="@onAddPlace" />
+            </div>
+        </div>
+        <Table Title="사업장 목록"
+               Properties="@properties"
+               DataList="@placeList"
+               Select="@OnSelected"
+               UnSelect="@UnSelected" />
+        @if (is_openModal)
+        {
+            <AddModal Title="사업장 등록" OnClose="@OnModalClose" />
+        }
+    </div>
+    
 </div>
 
 @code {
     List<PlaceDTO> PlaceList;
+    List<PlaceDTO> SelecList = new List<PlaceDTO>();
     List<string> properties;
     List<object> placeList;
+    bool is_openModal = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,10 +100,65 @@
     }
 
     /*
-     * Add to List<PlaceDTO>SelectList when Active Checkbox
-     */
+    * Add to List<PlaceDTO>SelectList when able Checkbox
+    */
     public void OnSelected(object row)
     {
+        /*
+        * To Do
+        * 동일 row 중복 처리
+        */
         Console.WriteLine(row);
+
+        if(row is PlaceDTO palceRow)
+        {
+            if (!SelecList.Contains(row))
+            {
+                Console.WriteLine("추가");
+                SelecList.Add(palceRow);
+            }
+
+        }
+
+
+
+        Console.WriteLine(SelecList);
+    }
+
+    /*
+    * Remove to List<PlaceDTO>SelectList when disable Checkbox
+    */
+    public void UnSelected(object row)
+    {
+        if(row is PlaceDTO palceRow)
+        {
+            Console.WriteLine("삭제 전");
+            foreach(PlaceDTO a in SelecList)
+            {
+
+                Console.WriteLine(a.사업장코드);
+            }
+            SelecList.Remove(palceRow);
+            Console.WriteLine("삭제 후");
+            foreach (PlaceDTO a in SelecList)
+            {
+
+                Console.WriteLine(a.사업장코드);
+            }
+        }
+    }
+
+    /*
+    * click add
+    */
+    private void onAddPlace()
+    {
+        is_openModal = true;
+    }
+
+    private void OnModalClose()
+    {
+        is_openModal = false;
+        StateHasChanged();
     }
 }

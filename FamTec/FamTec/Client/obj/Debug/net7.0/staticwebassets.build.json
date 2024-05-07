@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2qWEtyCy52kw5EGZ4YZfMoNEqgKAV8t6x8oAFotbQ4E=",
+  "Hash": "umYBAynrwV+ayXCvhc5Ul2No4OWHIj4sc7YtHoUMOwU=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -9610,6 +9610,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\ex.js",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/ex.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ex.js"
     }
   ]
 }
