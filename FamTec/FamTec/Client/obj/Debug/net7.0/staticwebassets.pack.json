@@ -81,6 +81,18 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\qrcode.js",
+      "PackagePath": "staticwebassets\\js\\qrcode.js"
+    },
+    {
+      "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\voc.js",
+      "PackagePath": "staticwebassets\\js\\voc.js"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.FamTec.Client.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

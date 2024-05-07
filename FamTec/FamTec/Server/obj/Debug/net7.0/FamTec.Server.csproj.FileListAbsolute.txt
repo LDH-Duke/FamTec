@@ -15,6 +15,7 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Serve
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.runtimeconfig.json
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.pdb
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Humanizer.dll
@@ -24,7 +25,14 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.As
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Web.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Components.WebAssembly.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Connections.Abstractions.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Client.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Common.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Common.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
@@ -34,6 +42,7 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.En
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Features.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Identity.Client.dll
@@ -97,12 +106,3 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refint\FamTe
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.genruntimeconfig.cache
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\ref\FamTec.Server.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Connections.Abstractions.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Client.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Http.Connections.Common.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Client.Core.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Common.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.SignalR.Protocols.Json.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.Extensions.Features.dll
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\AutoMapper.dll
