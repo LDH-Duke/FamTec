@@ -1,3 +1,336 @@
+/* /Pages/Place/Components/AddModal.razor.rz.scp.css */
+
+.modal-backgroud[b-nooberi9xj] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background: #a9a9a9b2
+}
+
+
+.modal-backgroud .modal-container[b-nooberi9xj] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    
+    background-color: white;
+
+    border-radius: 4px;
+    border: 4px solid #200d69;
+}
+
+.modal-backgroud .modal-wrap[b-nooberi9xj]{
+    display : flex;
+    flex-direction : column;
+    justify-content:center;
+    align-items:center;
+
+    gap : 1rem;
+
+    width:100%;
+    padding : 1.2rem;
+}
+
+.modal-backgroud .modal-title[b-nooberi9xj]{
+    font-size : 1.1rem;
+    font-weight : bold;
+    color : #200d69;
+
+}
+
+.modal-backgroud .modal-btn[b-nooberi9xj] {
+    width: 100%;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: #200d69;
+    color: #ffffff;
+}
+/* /Pages/Place/Components/Button.razor.rz.scp.css */
+
+.btn[b-4uel3ea6go] {
+    height: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #ffffff;
+    background-color: #200d69;
+}
+
+    .btn:hover[b-4uel3ea6go] {
+        background-color: #3e269a
+    }
+/* /Pages/Place/Components/Input.razor.rz.scp.css */
+
+.input-container[b-uz0arryk9b] {
+    outline: none;
+    width: auto;
+    border: 2px solid #200d69;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #200d69;
+    background-color:#ebe7fe
+}
+
+[b-uz0arryk9b]::placeholder {
+    color: #200d69;
+}
+/* /Pages/Place/Components/InputField.razor.rz.scp.css */
+.inputfield-container[b-ttnj8zi7mu] {
+    display: grid;
+    grid-template-columns: 10rem auto max-content;
+    grid-template-areas: "label input btn";
+    width: 100%;
+}
+
+.inputfield-container .inputfield-label[b-ttnj8zi7mu]{
+    
+    grid-area:label;
+    place-self: center;
+    padding: 0.5rem 0 ;
+     
+
+    width : 100%;
+    font-weight:bold;
+    font-size:0.8rem;
+}
+
+
+.inputfield-container .inputfield-input[b-ttnj8zi7mu]{
+    grid-area : input;
+    place-self: center;
+
+    width : 100%;
+    height: 50px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #c6c6c6;
+}
+
+.inputfield-container .inputfield-input[b-ttnj8zi7mu]{
+    border-bottom: 2px solid #200d69;
+}
+
+.inputfield-container .btn[b-ttnj8zi7mu]{
+    grid-area: btn ;
+
+    font-size: 0.7rem;
+    background-color: #200d69;
+    color: #ffffff;
+    
+    border: none;
+    border-radius: 4px;
+    padding: 0 0.5rem;;
+}
+
+.inputfield-container .btn:hover[b-ttnj8zi7mu]{
+    background-color: #3e269a;
+}
+
+/* /Pages/Place/Components/Table.razor.rz.scp.css */
+.table-container[b-650edo8kke] {
+    display: flex;
+
+    width:100%;
+    /*border:2px solid #200d69;
+    border-radius : 4px;*/
+}
+/*헤더 분리*/
+/*.table-container .table-wrap{
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+
+}
+
+
+.table-container .table-header{
+    display:flex;
+    justify-content:space-between;
+    align-content:center;
+
+    padding : 0.8rem;
+    border-bottom : 2px solid #200d69;
+
+}
+
+
+.table-container .table-header-title{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem;
+    font-weight:bold;
+    color:#200d69;
+}*/
+
+.table-container .table[b-650edo8kke]{
+    table-layout:fixed;
+    width:100%;
+    padding : 0.8rem;
+}
+
+
+.table-container .thead-tr[b-650edo8kke]{
+    background-color:#200d69;
+    
+}
+
+.table-container .thead-th[b-650edo8kke]{
+    color:#ffffff;
+    padding:0.8rem;
+    font-size:0.8rem;
+    font-weight:bold;
+}
+
+
+.table-container .tbody-tr:nth-last-of-type(n+2)[b-650edo8kke]{
+    border-bottom : 2px solid #200d694a;
+}
+
+.table-container .tbody-tr[b-650edo8kke]{
+    
+}
+
+.table-container .tbody-tr:hover td[b-650edo8kke]{
+    background-color:#f0edfe;
+    
+}
+
+.table-container .tbody-td[b-650edo8kke]{
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    word-break:break-all;
+
+    padding:0.8rem;
+
+    
+    text-align: center;
+    font-size:0.8rem;
+    font-weight:bold;
+    color : #200d69;
+}
+/* /Pages/Place/Components/Tableheaderbody.razor.rz.scp.css */
+.table-container[b-8a2rucpdog] {
+    display: flex;
+
+    width:100%;
+    border:2px solid #200d69;
+    border-radius : 4px;
+}
+
+.table-container .table-wrap[b-8a2rucpdog]{
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+
+}
+
+
+.table-container .table-header[b-8a2rucpdog]{
+    display:flex;
+    justify-content:space-between;
+    align-content:center;
+
+    padding : 0.8rem;
+    border-bottom : 2px solid #200d69;
+
+}
+
+
+.table-container .table-header-title[b-8a2rucpdog]{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.2rem;
+    font-weight:bold;
+    color:#200d69;
+}
+
+.table-container .table[b-8a2rucpdog]{
+    table-layout:fixed;
+    width:100%;
+    padding : 0.8rem;
+}
+
+
+.table-container .thead-tr[b-8a2rucpdog]{
+    background-color:#200d69;
+    
+}
+
+.table-container .thead-th[b-8a2rucpdog]{
+    color:#ffffff;
+    padding:0.8rem;
+    font-size:0.8rem;
+    font-weight:bold;
+}
+
+
+.table-container .tbody-tr:nth-last-of-type(n+2)[b-8a2rucpdog]{
+    border-bottom : 2px solid #200d694a;
+}
+
+.table-container .tbody-tr[b-8a2rucpdog]{
+    
+}
+
+.table-container .tbody-tr:hover td[b-8a2rucpdog]{
+    background-color:#f0edfe;
+    
+}
+
+.table-container .tbody-td[b-8a2rucpdog]{
+    text-overflow: ellipsis;
+    overflow:hidden;
+    white-space: nowrap;
+    word-break:break-all;
+
+    padding:0.8rem;
+
+    
+    text-align: center;
+    font-size:0.8rem;
+    font-weight:bold;
+    color : #200d69;
+}
+/* /Pages/Place/Place.razor.rz.scp.css */
+.place-container .place-table1-wrap[b-07vnvgmtv7] {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border:2px solid #200d69;
+    border-radius : 4px;
+}
+
+.place-container .table-header[b-07vnvgmtv7] {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 0.8rem;
+    border-bottom: 2px solid #200d69;
+}
+
+.place-container .table-header-title[b-07vnvgmtv7] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #200d69;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-7s48qd2tqg] {
     position: relative;
