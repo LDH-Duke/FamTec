@@ -2006,3 +2006,4 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Place\Place.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Place\Components\InputField.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Place\Components\SearchManagerModal.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Place\Components\List.razor.rz.scp.css

@@ -1,5 +1,4 @@
 ﻿.table-container {
-    display: flex;
 
     width:100%;
     /*border:2px solid #200d69;
@@ -36,15 +35,16 @@
 }*/
 
 .table-container .table{
-    table-layout:fixed;
+    table-layout:auto;
     width:100%;
     padding : 0.8rem;
 }
 
-
+.table-container .thead{
+    width:auto;
+}
 .table-container .thead-tr{
     background-color:#200d69;
-    
 }
 
 .table-container .thead-th{
@@ -55,10 +55,13 @@
 }
 
 
-.table-container .tbody-tr:nth-last-of-type(n+2){
-    border-bottom : 2px solid #200d694a;
+.table-container .tbody-tr{
+    border-bottom : 1px solid #200d694a;
 }
 
+/*.table-container .tbody-tr:nth-last-of-type(n+2){
+    border-bottom : 2px solid #200d694a;
+}*/
 .table-container .tbody-tr{
     
 }
@@ -70,7 +73,7 @@
 
 .table-container .tbody-td{
     text-overflow: ellipsis;
-    overflow:hidden;
+    /*overflow:hidden;*/
     white-space: nowrap;
     word-break:break-all;
 

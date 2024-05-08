@@ -1,4 +1,67 @@
 
+/*
+    애니메이션
+*/
+@keyframes YsmoothAppear{
+    from {
+        opacity: 0;
+        transform: translateY(-5%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes YsmoothDisappear {
+    from {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(5%);
+    }
+}
+
+@keyframes smoothAppear{
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(10%);
+    }
+
+    to {
+        opacity:1;
+        transform: translateX(0);
+    }    
+}
+
+.yappear{
+    animation : YsmoothAppear 1s;
+}
+
+.ydisapper{
+    animation : YsmoothDisappear 1s;
+}
+
+.appear {
+    animation: smoothAppear 1s;
+}
+.slider{
+    animation : slide 1s;
+}
+
 *{
     margin:0;
     padding:0;

@@ -1,5 +1,5 @@
 ﻿
-.modal-backgroud {
+.placemodal-backgroud {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,50 +9,50 @@
 }
 
 
-.modal-backgroud .modal-container {
+.placemodal-backgroud .placemodal-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: auto;
+    height:max-content;
     
-    background-color: white;
+    border-radius:4px;
+    gap:1rem;
+}
 
+.placemodal-backgroud .placemodal-wrap {
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: auto;
+    padding: 1.2rem;
     border-radius: 4px;
     border: 4px solid #200d69;
+
+    background-color: #ffffff;
 }
 
-.modal-backgroud .modal-wrap{
-    display : flex;
-    flex-direction : column;
-    justify-content:center;
-    align-items:center;
-
-    gap : 1rem;
-
-    width:100%;
-    padding : 1.2rem;
-}
-
-.modal-backgroud .modal-title{
-    font-size : 1.1rem;
-    font-weight : bold;
-    color : #200d69;
-
+.placemodal-backgroud .placemodal-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #200d69;
 }
 
 
-.modal-backgroud .modal-content{
-    display:flex;
-    flex-direction:column;
-    gap : 1rem;
+.placemodal-backgroud .placemodal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.modal-backgroud .modal-btn {
+.placemodal-backgroud .modal-btn {
     width: 100%;
     height: 35px;
     border: none;
     border-radius: 4px;
-
     font-size: 0.8rem;
     font-weight: bold;
     background-color: #200d69;
@@ -60,22 +60,22 @@
 }
 
 
-.modal-backgroud .modal-manager{
-    display:flex;
-    flex-direction:column;
-    border : 2px solid  #200d69;
-    border-radius:4px;
+.placemodal-backgroud .placemodal-manager {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #200d69;
+    border-radius: 4px;
 }
 
-.modal-backgroud .modal-m-header{
+.placemodal-backgroud .placemodal-m-header {
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    /*align-content: center;*/
     padding: 0.8rem;
     border-bottom: 2px solid #200d69;
 }
 
-.modal-backgroud .modal-m-title{
+.placemodal-backgroud .placemodal-m-title {
     display: flex;
     align-items: center;
     justify-content: center;
