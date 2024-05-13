@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace FamTec.Shared.Model;
+namespace FamTec.Server.Databases;
 
 public partial class FmsContext : DbContext
 {

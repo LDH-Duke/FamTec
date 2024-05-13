@@ -99,7 +99,7 @@ namespace FamTec.Server.Controllers
 
             string userid = "admin";
 
-            var model = await UserServices.AddUserService(temp,userid);
+            var model = await UserServices.AddUserService(temp,userid, null);
 
 
             return Ok();
