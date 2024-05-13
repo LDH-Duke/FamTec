@@ -64,5 +64,8 @@ public partial class PlacesTb
     public virtual ICollection<BuildingsTb> BuildingsTbs { get; set; } = new List<BuildingsTb>();
 
     [InverseProperty("PlacecodeCdNavigation")]
+    public virtual ICollection<UnitTb> UnitTbs { get; set; } = new List<UnitTb>();
+
+    [InverseProperty("PlacecodeCdNavigation")]
     public virtual ICollection<UsersTb> UsersTbs { get; set; } = new List<UsersTb>();
 }

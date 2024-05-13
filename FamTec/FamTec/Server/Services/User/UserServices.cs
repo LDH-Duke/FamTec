@@ -216,7 +216,7 @@ namespace FamTec.Server.Services.User
 
                                 }
                             }
-                        }
+                        };
                     }
 
 
@@ -235,6 +235,8 @@ namespace FamTec.Server.Services.User
         }
 
   
+
+
 
         /*
         public async ValueTask<UsersTb> AddUserService(UsersTb model)

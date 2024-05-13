@@ -8,7 +8,7 @@ namespace FamTec.Server.Services.User
     {
         public ValueTask<ResponseObject<UsersDTO>> GetUserService(string userid);
         public ValueTask<ResponseObject<UsersDTO>> GetAllUserListService();
-        public ValueTask<ResponseObject<UsersDTO>> AddUserService(UsersDTO model, string userid);
+        public ValueTask<ResponseObject<UsersDTO>> AddUserService(UsersDTO model, string userid, string placecd);
 
     }
 }
