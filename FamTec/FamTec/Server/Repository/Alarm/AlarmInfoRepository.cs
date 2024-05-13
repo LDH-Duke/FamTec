@@ -14,7 +14,7 @@ namespace FamTec.Server.Repository.Alarm
         }
 
         /// <summary>
-        /// 알람 투가
+        /// 알람 추가
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

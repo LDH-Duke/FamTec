@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FamTec.Server.Repository.Building;
+using FamTec.Server.Repository.Place;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
@@ -13,10 +14,12 @@ namespace FamTec.Server.Controllers
     public class BuildingsController : ControllerBase
     {
         private readonly IBuildingInfoRepository BuildingInfoRepository;
+        private readonly IPlaceInfoRepository PlaceInfoRepository;
 
-        public BuildingsController(IBuildingInfoRepository _buildinginforepository)
+        public BuildingsController(IBuildingInfoRepository _buildinginforepository, IPlaceInfoRepository _placeinfoRepository)
         {
             BuildingInfoRepository = _buildinginforepository;
+            PlaceInfoRepository = _placeinfoRepository;
         }
 
         [HttpGet]
@@ -38,6 +41,17 @@ namespace FamTec.Server.Controllers
             }).ToList();
 
             return dto;
+        }
+
+        [HttpGet]
+        [Route("SelectApi/{code}")]
+        public async ValueTask<bool> Get(string code)
+        {
+            var temp = await PlaceInfoRepository.GetUserPlaceCDListAsync(code);
+
+            Console.WriteLine(temp);
+
+            return true;
         }
 
     }

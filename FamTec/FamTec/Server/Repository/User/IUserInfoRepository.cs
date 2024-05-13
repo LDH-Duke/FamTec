@@ -12,11 +12,32 @@ namespace FamTec.Server.Repository.User
         ValueTask<UsersTb> AddAsync(UsersTb model);
 
         /// <summary>
-        /// 조회 - ID값
+        /// 전체조회
+        /// </summary>
+        /// <returns></returns>
+        ValueTask<List<UsersTb>> GetAllAsync();
+
+        /// <summary>
+        /// ID로 단일모델 조회
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<UsersTb> GetByUserId(string userid);
+        ValueTask<UsersTb> GetByUserIdAsync(string userid);
 
+        /// <summary>
+        /// 수정
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        ValueTask<bool> EditAsync(UsersTb model, string userid);
+
+        /// <summary>
+        /// 삭제
+        /// </summary>
+        /// <param name="tguserid"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        ValueTask<bool> DeleteUserIdAsync(string tguserid, string userid);
     }
 }

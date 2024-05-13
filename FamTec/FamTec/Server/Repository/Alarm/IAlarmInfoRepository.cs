@@ -24,12 +24,7 @@ namespace FamTec.Server.Repository.Alarm
         /// <returns></returns>
         ValueTask<AlarmsTb> GetByVocIDAsync(int vocid);
 
-        /// <summary>
-        /// VOC 아이디로 내용 조회 - 리스트반환
-        /// </summary>
-        /// <param name="vocid"></param>
-        /// <returns></returns>
-        ValueTask<List<AlarmsTb>> GetByVocIDListAsync(int vocid);
+
 
         /// <summary>
         /// 수정

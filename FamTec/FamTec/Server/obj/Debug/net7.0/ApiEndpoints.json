@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "Get",
+    "RelativePath": "api/Buildings/SelectApi/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
     "Method": "GetBuildingAll",
     "RelativePath": "api/Buildings/SelectBuilding/{code}",
     "HttpMethod": "GET",
@@ -27,8 +53,34 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "GetUserModel",
-    "RelativePath": "api/Users/SelectUserId/{userid}",
+    "Method": "PostUser",
+    "RelativePath": "api/Users/InsertUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "FamTec.Shared.DTO.UsersDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UsersController",
+    "Method": "GetAllUserList",
+    "RelativePath": "api/Users/SelectAllUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UsersController",
+    "Method": "GetUser",
+    "RelativePath": "api/Users/SelectUser/{userid}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -39,17 +91,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "FamTec.Shared.Model.UsersTb",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UsersController",
+    "Method": "Test",
+    "RelativePath": "api/Users/test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FamTec.Server.Controllers.WeatherForecastController",
