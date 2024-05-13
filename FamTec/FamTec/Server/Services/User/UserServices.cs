@@ -135,7 +135,12 @@ namespace FamTec.Server.Services.User
             }
             catch(Exception ex)
             {
-                throw;
+
+                ResponseObject<UsersDTO> obj = new()
+                {
+                    StatusCode = 500
+                };
+                return obj;   
             }
             
         }

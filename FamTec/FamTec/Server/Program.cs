@@ -3,6 +3,7 @@ using FamTec.Server.Hubs;
 using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Services.Place;
 using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
 builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
 
+builder.Services.AddTransient<IPlaceServices, PlaceServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 
 // Add services to the container.

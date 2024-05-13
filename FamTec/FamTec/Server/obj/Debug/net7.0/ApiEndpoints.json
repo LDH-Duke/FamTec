@@ -52,6 +52,58 @@
     ]
   },
   {
+    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "Method": "DeletePlace",
+    "RelativePath": "api/Places/DeletePlace",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "Method": "AddPlace",
+    "RelativePath": "api/Places/InsertPlace",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.PlacesDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "Method": "GetAllPlace",
+    "RelativePath": "api/Places/SelectAllPlace",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "Method": "UpdatePlace",
+    "RelativePath": "api/Places/UpdatePlace",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.PlacesDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.UsersController",
     "Method": "PostUser",
     "RelativePath": "api/Users/InsertUser",

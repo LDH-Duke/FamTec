@@ -1,4 +1,5 @@
-﻿using FamTec.Server.Databases;
+﻿using FamTec.Client.Pages.Place;
+using FamTec.Server.Databases;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,15 +24,11 @@ namespace FamTec.Server.Repository.Place
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<PlacesTb> AddAsync(PlacesTb model, string userid)
+        public async ValueTask<PlacesTb> AddAsync(PlacesTb model)
         {
             try
             {
-                model.CreateUser = userid;
-                model.CreateDt = DateTime.Now;
-                
                 context.PlacesTbs.Add(model);
-                
                 await context.SaveChangesAsync();
 
                 return model;
@@ -59,6 +56,34 @@ namespace FamTec.Server.Repository.Place
                 throw;
             }
         }
+
+        /// <summary>
+        /// 사업장코드로 사업장 조회
+        /// </summary>
+        /// <param name="placecd"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async ValueTask<PlacesTb> GetByPlaceInfo(string placecd)
+        {
+            try
+            {
+                PlacesTb? model = await context.PlacesTbs.FirstOrDefaultAsync(m => m.PlaceCd == placecd);
+                if (model == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return model;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+
+        }
+
 
         /// <summary>
         /// UserID로 사업장 조회 - 리스트반환 *[차후개발]
@@ -106,17 +131,12 @@ namespace FamTec.Server.Repository.Place
         /// <param name="placecd"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeletePlaceCDAsync(string placecd, string userid)
+        public async ValueTask<bool> DeletePlaceCDAsync(PlacesTb model)
         {
             try
             {
-                PlacesTb? model = await context.PlacesTbs.FirstOrDefaultAsync(m => m.PlaceCd == placecd);
                 if (model is not null)
                 {
-                    model.DelDt = DateTime.Now;
-                    model.DelYn = true;
-                    model.DelUser = userid;
-
                     context.PlacesTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
@@ -138,17 +158,13 @@ namespace FamTec.Server.Repository.Place
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAsync(PlacesTb model, string userid)
+        public async ValueTask<bool> EditAsync(PlacesTb model)
         {
             try
             {
                 if(model is not null)
                 {
-                    model.UpdateDt = DateTime.Now;
-                    model.UpdateUser = userid;
-
                     context.PlacesTbs.Update(model);
-
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -162,6 +178,8 @@ namespace FamTec.Server.Repository.Place
                 throw;
             }
         }
+
+    
 
 
     }

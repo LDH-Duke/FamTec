@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FamTec.Server.Databases;
 
@@ -193,7 +194,9 @@ public partial class FmsContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+            //entity.Property(u => u.Id).ValueGeneratedOnUpdate().Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+            //entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<RoomInventorysTb>(entity =>
@@ -214,6 +217,8 @@ public partial class FmsContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
+
+            
 
             entity.HasOne(d => d.Floor).WithMany(p => p.RoomsTbs).HasConstraintName("FK__ROOMS_TB__FLOOR___7834CCDD");
         });

@@ -9,9 +9,6 @@ namespace FamTec.Shared.Model;
 [Table("PLACES_TB")]
 public partial class PlacesTb
 {
-    [Column("ID")]
-    public int Id { get; set; }
-
     [Key]
     [Column("PLACE_CD")]
     [StringLength(25)]

@@ -9,13 +9,20 @@ namespace FamTec.Server.Repository.Place
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<PlacesTb> AddAsync(PlacesTb model, string userid);
+        ValueTask<PlacesTb> AddAsync(PlacesTb model); // 사용
 
         /// <summary>
         /// 전제조회
         /// </summary>
         /// <returns></returns>
-        ValueTask<List<PlacesTb>> GetAllAsync();
+        ValueTask<List<PlacesTb>> GetAllAsync(); // 사용
+
+        /// <summary>
+        /// 사업장코드로 사업장 정보 조회
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<PlacesTb> GetByPlaceInfo(string placecd);
 
         /// <summary>
         /// USERID로 사업장 조회 - 리스트 반환
@@ -30,15 +37,14 @@ namespace FamTec.Server.Repository.Place
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> EditAsync(PlacesTb model, string userid);
+        ValueTask<bool> EditAsync(PlacesTb model); // 사용
 
 
         /// <summary>
         /// 삭제
         /// </summary>
         /// <param name="placecd"></param>
-        /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> DeletePlaceCDAsync(string placecd, string userid);
+        ValueTask<bool> DeletePlaceCDAsync(PlacesTb model);
     }
 }
