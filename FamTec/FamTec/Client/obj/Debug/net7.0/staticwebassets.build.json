@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "umYBAynrwV+ayXCvhc5Ul2No4OWHIj4sc7YtHoUMOwU=",
+  "Hash": "l4bbJLDwSphji7egRnIuu1k6ZJBq34q6GQUxQvrKShs=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -9591,6 +9591,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icon-192.png"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\steclogo.png",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "img/steclogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\steclogo.png"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\index.html",

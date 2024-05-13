@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\steclogo.png",
+      "PackagePath": "staticwebassets\\img\\steclogo.png"
+    },
+    {
       "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

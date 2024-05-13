@@ -1,9 +1,13 @@
-﻿.place-container .place-table1-wrap {
+﻿.place-container{
+    background-color:#ffffff;
+}
+
+.place-container .place-table1-wrap {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border:2px solid #200d69;
-    border-radius : 4px;
+    border: 2px solid #200d69;
+    border-radius: 4px;
 }
 
 .place-container .table-header {

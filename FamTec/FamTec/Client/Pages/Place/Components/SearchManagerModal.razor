@@ -7,12 +7,14 @@
         <div class="addmanager-modal-title">
             매니저 조회
         </div>
-        <div class="addmanager-modal-content">
-            <Input Placeholder="Search"/>
-            <div class="addmanager-modal-table">
-                <Table DataList="@placeManagerList" Properties="@properties" />
-            </div>
+        <Input Placeholder="Search" />
+        <div class="addmanager-modal-item">
+            <List DataList="@placeManagerList" />
         </div>
+        @* <div class="addmanager-modal-content">
+            
+            
+        </div> *@
         <button class="addmanager-modal-btn" @onclick="ModalClose">
             확인
         </button>
@@ -58,7 +60,54 @@
                 NAME = "구동매",
                 DEPARTMENT = "대한민국"
             },
-          
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
         };
 
         placeManagerList = PlaceManagerList.Cast<object>().ToList();

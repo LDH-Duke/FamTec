@@ -86,9 +86,17 @@ build_metadata.AdditionalFiles.CssScope = b-8a2rucpdog
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhY2VcUGxhY2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-07vnvgmtv7
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/Drawer.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERyYXdlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-rriyx9tl3w
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-7s48qd2tqg
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/Nav.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-wg5fiaa4ah
 
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=

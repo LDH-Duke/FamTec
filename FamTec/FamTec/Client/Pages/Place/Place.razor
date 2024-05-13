@@ -1,4 +1,4 @@
-﻿@page "/place"
+﻿@page "/admin/place"
 
 @using FamTec.Shared.Client.DTO
 @using FamTec.Client.Pages.Place.Components
@@ -26,14 +26,24 @@
             <AddModal Title="사업장 등록" OnClose="@OnModalClose" />
         }
     </div>
-    
+ 
 </div>
 
 @code {
+    /*
+     * 테이블 데이터
+     */
     List<PlaceDTO> PlaceList;
     List<PlaceDTO> SelecList = new List<PlaceDTO>();
     List<string> properties;
     List<object> placeList;
+
+    List<PlaceManagerDTO> PlaceManagerList;
+    List<object> placeManagerList;
+    List<string> property;
+
+
+
     bool is_openModal = false;
 
     protected override async Task OnInitializedAsync()
@@ -97,6 +107,43 @@
 
         placeList = PlaceList.Cast<object>().ToList();
         properties = typeof(PlaceDTO).GetProperties().Select(p => p.Name).ToList();
+
+        PlaceManagerList = new List<PlaceManagerDTO>
+        {
+            new PlaceManagerDTO
+            {
+                ID = "test1",
+                NAME = "홍길동",
+                DEPARTMENT = "시스템개발파트"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test2",
+                NAME = "최유진",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new PlaceManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            }
+        };
+
+        placeManagerList = PlaceManagerList.Cast<object>().ToList();
+        property = typeof(PlaceManagerDTO).GetProperties().Select(p => p.Name).ToList();
     }
 
     /*

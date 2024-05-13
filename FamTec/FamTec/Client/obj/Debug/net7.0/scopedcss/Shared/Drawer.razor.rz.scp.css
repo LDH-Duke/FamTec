@@ -1,0 +1,77 @@
+.drawer-container[b-rriyx9tl3w] {
+    min-width: min-content;
+    width: 25%;
+    border-right: 1px solid #d3d3d3;
+}
+
+.drawer-container .drawer-wrap[b-rriyx9tl3w] {
+    display: flex;
+    flex-direction: column;
+    padding: 0.75rem;
+}
+
+
+.drawer-container .drawer-item[b-rriyx9tl3w] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+    /* .drawer-container .drawer-item:hover {
+    border-radius: 4px;
+    background-color: #200d69;
+    
+
+    & span{
+        color: #ffffff;
+    }
+
+    & ::deep .drawer-link{
+        color: white;
+    }
+    
+} */
+
+.drawer-container[b-rriyx9tl3w]  .drawer-link {
+    display: flex;
+    width: auto;
+    height: 100%;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 1rem;
+}
+
+.drawer-container[b-rriyx9tl3w]  .drawer-link > span {
+    width: max-content;
+}
+
+.drawer-container[b-rriyx9tl3w]  .drawer-link:hover {
+    border-radius: 4px;
+    background-color: #200d69;
+    color: white;
+    & span{
+            transition: all 0.3s;
+            color: #ffffff;
+        }
+
+    }
+
+.drawer-container .arrow[b-rriyx9tl3w] {
+    width: min-content;
+}
+
+.drawer-container .title[b-rriyx9tl3w] {
+    flex-grow: 1;
+}
+
+/*하위 메뉴*/
+
+.drawer-container .drawer-sub-wrap[b-rriyx9tl3w] {
+    display: none;
+}
+
+.drawer-container .active[b-rriyx9tl3w] {
+    display: block;
+    transition: all 2s;
+}
