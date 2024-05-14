@@ -50,6 +50,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/DepartmentList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXERlcGFydG1lbnRMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-7aoww3keui
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/ManagerList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXE1hbmFnZXJMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-2k2hzgyf46
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Manager.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxNYW5hZ2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-kxhhxaxxqe
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Place/Components/AddModal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGxhY2VcQ29tcG9uZW50c1xBZGRNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-nooberi9xj

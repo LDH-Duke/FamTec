@@ -1,3 +1,60 @@
+/* /Pages/Manager/Components/DepartmentList.razor.rz.scp.css */
+
+.depart-container[b-7aoww3keui]{
+
+    border : 2px solid #200d69;
+    border-radius:4px;
+    background-color:#ffffff;
+}
+
+.depart-container .depart-wrap[b-7aoww3keui]{
+    display : flex;
+    flex-direction : column;
+}
+/* /Pages/Manager/Components/ManagerList.razor.rz.scp.css */
+
+.managerlist-container[b-2k2hzgyf46]{
+    background-color:#ffffff;
+    border:2px solid #200d69;
+    border-radius:4px;
+}
+/* /Pages/Manager/Manager.razor.rz.scp.css */
+
+.grid-layout[b-kxhhxaxxqe] {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 1.2rem;
+}
+
+
+
+/*
+    부서
+*/
+.grid-layout .depart[b-kxhhxaxxqe]{
+    display:grid;
+    grid-column-start:1;
+    grid-column-end:4;
+
+    grid-row-start:3;
+    grid-row-end:11;
+}
+
+
+/*
+    매니저 리스트
+*/
+.grid-layout .managerlist[b-kxhhxaxxqe]{
+    display:grid;
+    grid-column-start:4;
+    grid-column-end:16;
+
+    grid-row-start:3;
+    grid-row-end:11;
+}
 /* /Pages/Place/Components/AddModal.razor.rz.scp.css */
 
 .placemodal-backgroud[b-nooberi9xj] {
@@ -26,8 +83,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    /*align-items: center;*/
+    gap: 1.2rem;
     width: auto;
     padding: 1.2rem;
     border-radius: 4px;
@@ -46,7 +103,7 @@
 .placemodal-backgroud .placemodal-content[b-nooberi9xj] {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 .placemodal-backgroud .modal-btn[b-nooberi9xj] {
@@ -66,6 +123,7 @@
     flex-direction: column;
     border: 2px solid #200d69;
     border-radius: 4px;
+    max-height:300px;
 }
 
 .placemodal-backgroud .placemodal-m-header[b-nooberi9xj] {
@@ -83,6 +141,11 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: #200d69;
+}
+
+.placemodal-backgroud .placemodal-m-list[b-nooberi9xj]{
+   overflow :auto;
+   padding : 0.5rem;
 }
 /* /Pages/Place/Components/Button.razor.rz.scp.css */
 
@@ -189,6 +252,7 @@
     border-radius: 4px;
     border: 2px solid #200d69;
     float:left;
+    background-color:#ffffff;
 }
 
 
@@ -233,7 +297,7 @@
     justify-content: center;
     align-items: center;
     width: 400px;
-    height: 700px;
+    /*height: 700px;*/
     background-color: white;
     border-radius: 4px;
     border: 4px solid #200d69;
@@ -246,7 +310,7 @@
     justify-content:space-between;
     /*align-items:center;*/
 
-    gap : 1rem;
+    gap : 1.2rem;
 
     width:100%;
     height:100%;
@@ -266,7 +330,8 @@
 
 .addmanager-modal-container .addmanager-modal-item[b-efhhydlwqt]{
     padding:0.5rem;
-    height:75%;
+    height:500px;
+    max-height:500px;
     border-radius:4px;
     border : 2px solid #200d69;
     overflow: auto;
@@ -293,8 +358,8 @@
 }
 /* /Pages/Place/Components/Table.razor.rz.scp.css */
 .table-container[b-650edo8kke] {
-
-    width:100%;
+    overflow: auto;
+    width: 100%;
     /*border:2px solid #200d69;
     border-radius : 4px;*/
 }
@@ -332,9 +397,14 @@
     table-layout:auto;
     width:100%;
     padding : 0.8rem;
+
+    
 }
 
 .table-container .thead[b-650edo8kke]{
+    position: sticky;
+    top:0;
+
     width:auto;
 }
 .table-container .thead-tr[b-650edo8kke]{
@@ -348,6 +418,10 @@
     font-weight:bold;
 }
 
+.table-container .tbody[b-650edo8kke]{
+    
+    
+}
 
 .table-container .tbody-tr[b-650edo8kke]{
     border-bottom : 1px solid #200d694a;
@@ -467,6 +541,7 @@
 /* /Pages/Place/Place.razor.rz.scp.css */
 .place-container[b-07vnvgmtv7]{
     background-color:#ffffff;
+ 
 }
 
 .place-container .place-table1-wrap[b-07vnvgmtv7] {
@@ -475,6 +550,10 @@
     width: 100%;
     border: 2px solid #200d69;
     border-radius: 4px;
+    height:800px;
+
+     box-shadow: 0 10px 15px rgba(0,0,0,0.16), 0 10px 15px rgba(0,0,0,0.23);
+    
 }
 
 .place-container .table-header[b-07vnvgmtv7] {
@@ -496,7 +575,7 @@
 /* /Shared/Drawer.razor.rz.scp.css */
 .drawer-container[b-rriyx9tl3w] {
     min-width: min-content;
-    width: 25%;
+    width: 20%;
     border-right: 1px solid #d3d3d3;
 }
 
@@ -587,8 +666,8 @@ main[b-7s48qd2tqg] {
 
 .content[b-7s48qd2tqg] {
     width: 100%;
-    padding: 0.75rem;
-    background-color:#ebebeb
+    padding: 1.2rem 2rem;
+    background-color:#ebebeb;
 }
 
 /*.sidebar {

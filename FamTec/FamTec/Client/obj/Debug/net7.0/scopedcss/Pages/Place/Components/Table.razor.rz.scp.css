@@ -1,6 +1,6 @@
 .table-container[b-650edo8kke] {
-
-    width:100%;
+    overflow: auto;
+    width: 100%;
     /*border:2px solid #200d69;
     border-radius : 4px;*/
 }
@@ -38,9 +38,14 @@
     table-layout:auto;
     width:100%;
     padding : 0.8rem;
+
+    
 }
 
 .table-container .thead[b-650edo8kke]{
+    position: sticky;
+    top:0;
+
     width:auto;
 }
 .table-container .thead-tr[b-650edo8kke]{
@@ -54,6 +59,10 @@
     font-weight:bold;
 }
 
+.table-container .tbody[b-650edo8kke]{
+    
+    
+}
 
 .table-container .tbody-tr[b-650edo8kke]{
     border-bottom : 1px solid #200d694a;

@@ -1,0 +1,12 @@
+﻿
+.depart-container{
+
+    border : 2px solid #200d69;
+    border-radius:4px;
+    background-color:#ffffff;
+}
+
+.depart-container .depart-wrap{
+    display : flex;
+    flex-direction : column;
+}

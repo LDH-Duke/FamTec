@@ -1,0 +1,12 @@
+
+.depart-container[b-7aoww3keui]{
+
+    border : 2px solid #200d69;
+    border-radius:4px;
+    background-color:#ffffff;
+}
+
+.depart-container .depart-wrap[b-7aoww3keui]{
+    display : flex;
+    flex-direction : column;
+}

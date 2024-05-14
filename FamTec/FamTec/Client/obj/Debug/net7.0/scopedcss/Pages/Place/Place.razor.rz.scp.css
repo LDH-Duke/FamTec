@@ -1,5 +1,6 @@
 .place-container[b-07vnvgmtv7]{
     background-color:#ffffff;
+ 
 }
 
 .place-container .place-table1-wrap[b-07vnvgmtv7] {
@@ -8,6 +9,10 @@
     width: 100%;
     border: 2px solid #200d69;
     border-radius: 4px;
+    height:800px;
+
+     box-shadow: 0 10px 15px rgba(0,0,0,0.16), 0 10px 15px rgba(0,0,0,0.23);
+    
 }
 
 .place-container .table-header[b-07vnvgmtv7] {
