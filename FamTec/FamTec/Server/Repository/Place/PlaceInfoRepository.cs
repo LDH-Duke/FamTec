@@ -44,7 +44,7 @@ namespace FamTec.Server.Repository.Place
         /// 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<PlacesTb>> GetAllAsync()
+        public async ValueTask<List<PlacesTb>> GetAllList()
         {
             try
             {
@@ -91,7 +91,7 @@ namespace FamTec.Server.Repository.Place
         /// <param name="placecd"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeletePlaceCDAsync(PlacesTb model)
+        public async ValueTask<bool> DeletePlaceInfoAsync(PlacesTb model)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace FamTec.Server.Repository.Place
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAsync(PlacesTb model)
+        public async ValueTask<bool> EditPlaceInfoAsync(PlacesTb model)
         {
             try
             {

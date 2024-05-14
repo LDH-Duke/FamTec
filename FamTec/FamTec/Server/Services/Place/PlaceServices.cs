@@ -30,7 +30,7 @@ namespace FamTec.Server.Services.Place
         /// <returns></returns>
         public async ValueTask<ResponseModel<PlacesDTO>> GetAllPlaceList()
         {
-            List<PlacesTb>? result = await PlaceInfoRepository.GetAllAsync();
+            List<PlacesTb>? result = await PlaceInfoRepository.GetAllList();
 
             if(result is [_, ..])
             {
@@ -130,7 +130,7 @@ namespace FamTec.Server.Services.Place
                     model.UpdateUser = "김용우";
 
 
-                    bool result = await PlaceInfoRepository.EditAsync(model);
+                    bool result = await PlaceInfoRepository.EditPlaceInfoAsync(model);
 
                     if(result) // 수정성공
                     {
@@ -177,7 +177,7 @@ namespace FamTec.Server.Services.Place
                     model.DelUser = "김용우";
                     model.DelYn = true;
 
-                    bool result = await PlaceInfoRepository.DeletePlaceCDAsync(model);
+                    bool result = await PlaceInfoRepository.DeletePlaceInfoAsync(model);
 
                     if(result) // 삭제성공
                     {

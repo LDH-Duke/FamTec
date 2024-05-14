@@ -37,7 +37,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// 관리자 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<AdminsTb>> GetAllAsync()
+        public async ValueTask<List<AdminsTb>> GetAllList()
         {
             try
             {
@@ -55,7 +55,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public async ValueTask<AdminsTb> GetByAdminInfo(string adminid)
+        public async ValueTask<AdminsTb> GetAdminInfo(string adminid)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAsync(AdminsTb model)
+        public async ValueTask<bool> EditAdminInfo(AdminsTb model)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteAdminIdAsync(AdminsTb model)
+        public async ValueTask<bool> DeleteAdminInfo(AdminsTb model)
         {
             try
             {

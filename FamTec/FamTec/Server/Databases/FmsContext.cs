@@ -61,7 +61,7 @@ public partial class FmsContext : DbContext
     public virtual DbSet<VocTb> VocTbs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;");
+        => optionsBuilder.UseSqlServer("Server=127.0.0.1,1433;Database=FMS;User Id=rladyddn258;Password=rladyddn!!95;TrustServerCertificate=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

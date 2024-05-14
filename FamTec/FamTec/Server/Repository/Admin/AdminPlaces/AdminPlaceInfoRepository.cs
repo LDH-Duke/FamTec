@@ -38,7 +38,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetPlaceAllAsync(string placecd)
+        public async ValueTask<List<AdminPlacesTb>> GetAllPlaceList(string placecd)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetUserAllAsync(string userid)
+        public async ValueTask<List<AdminPlacesTb>> GetAllUserList(string userid)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteAdminPlacesAsync(AdminPlacesTb model)
+        public async ValueTask<bool> DeleteAdminPlacesInfo(AdminPlacesTb model)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAdminPlacesAsync(AdminPlacesTb model)
+        public async ValueTask<bool> EditAdminPlacesInfo(AdminPlacesTb model)
         {
             try
             {

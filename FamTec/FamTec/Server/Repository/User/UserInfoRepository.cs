@@ -38,7 +38,7 @@ namespace FamTec.Server.Repository.User
         /// 사용자 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<UsersTb>> GetAllAsync()
+        public async ValueTask<List<UsersTb>> GetAllList()
         {
             try
             {
@@ -58,7 +58,7 @@ namespace FamTec.Server.Repository.User
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<UsersTb> GetByUserInfo(string userid)
+        public async ValueTask<UsersTb> GetUserInfo(string userid)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAsync(UsersTb model)
+        public async ValueTask<bool> EditUserInfo(UsersTb model)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="tguserid"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteUserIdAsync(UsersTb model)
+        public async ValueTask<bool> DeleteUserInfo(UsersTb model)
         {
             try
             {
