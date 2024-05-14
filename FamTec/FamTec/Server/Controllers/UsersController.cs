@@ -29,7 +29,7 @@ namespace FamTec.Server.Controllers
         {
             try
             {
-                ResponseObject<UsersDTO>? model = await UserServices.GetUserService(userid);
+                ResponseModel<UsersDTO>? model = await UserServices.GetUserService(userid);
                 if(model is not null)
                 {
                     model.Message = "정상처리";
@@ -53,7 +53,7 @@ namespace FamTec.Server.Controllers
         {
             try
             {
-                ResponseObject<UsersDTO>? model = await UserServices.GetAllUserListService();
+                ResponseModel<UsersDTO>? model = await UserServices.GetAllUserListService();
                 switch(model.StatusCode)
                 {
                     case 200:
@@ -78,7 +78,7 @@ namespace FamTec.Server.Controllers
         [Route("AddUser")]
         public async ValueTask<IActionResult> AddUser([FromBody]UsersDTO dto)
         {
-            ResponseObject<UsersDTO>? model = await UserServices.AddUserService(dto);
+            ResponseModel<UsersDTO>? model = await UserServices.AddUserService(dto);
             return Ok(model);
         }
 
@@ -89,7 +89,7 @@ namespace FamTec.Server.Controllers
         {
            
 
-            ResponseObject<UsersDTO>? model = await UserServices.UpdateUserService(dto);
+            ResponseModel<UsersDTO>? model = await UserServices.UpdateUserService(dto);
             return Ok(model);
         }
 
@@ -97,7 +97,7 @@ namespace FamTec.Server.Controllers
         [Route("DeleteUser")]
         public async ValueTask<IActionResult> DeleteUser([FromBody]UsersDTO dto)
         {
-            ResponseObject<UsersDTO>? model = await UserServices.DeleteUserService(dto);
+            ResponseModel<UsersDTO>? model = await UserServices.DeleteUserService(dto);
             return Ok(model);
         }
         

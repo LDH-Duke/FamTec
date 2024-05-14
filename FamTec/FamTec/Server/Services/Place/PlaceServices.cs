@@ -19,13 +19,13 @@ namespace FamTec.Server.Services.Place
         /// 사업장 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<PlacesDTO>> GetAllUserListService()
+        public async ValueTask<ResponseModel<PlacesDTO>> GetAllUserListService()
         {
             List<PlacesTb>? result = await PlaceInfoRepository.GetAllAsync();
 
             if(result is [_, ..])
             {
-                ResponseObject<PlacesDTO> obj = new()
+                ResponseModel<PlacesDTO> obj = new()
                 {
                     Message = "성공",
                     Data = result.Select(e => new PlacesDTO()
@@ -43,7 +43,7 @@ namespace FamTec.Server.Services.Place
             }
             else
             {
-                ResponseObject<PlacesDTO> obj = new()
+                ResponseModel<PlacesDTO> obj = new()
                 {
                     Message = "데이터가 존재하지 않습니다.",
                     Data = null,
@@ -59,7 +59,7 @@ namespace FamTec.Server.Services.Place
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<PlacesDTO>> AddPlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> AddPlaceService(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 모델이 NULL이 아니어야함.
             {
@@ -81,7 +81,7 @@ namespace FamTec.Server.Services.Place
                     if(result == null)
                     {
                         // ADD에 실패하였을때.
-                        ResponseObject<PlacesDTO> model = new()
+                        ResponseModel<PlacesDTO> model = new()
                         {
                             Message = "데이터 추가에 실패하였습니다.",
                             Data = null,
@@ -91,7 +91,7 @@ namespace FamTec.Server.Services.Place
                     }
                     else
                     {
-                        ResponseObject<PlacesDTO> model = new()
+                        ResponseModel<PlacesDTO> model = new()
                         {
                             Message = "데이터 추가에 성공하였습니다.",
                             Data = new List<PlacesDTO>()
@@ -114,7 +114,7 @@ namespace FamTec.Server.Services.Place
                 else
                 {
                     // 이미 해당 코드로 사업장이 있다.
-                    ResponseObject<PlacesDTO> model = new()
+                    ResponseModel<PlacesDTO> model = new()
                     {
                         Message = "이미 해당코드로 사업장이 존재합니다.",
                         Data = null,
@@ -126,7 +126,7 @@ namespace FamTec.Server.Services.Place
             else
             {
                 // 이미 해당 코드로 사업장이 있다.
-                ResponseObject<PlacesDTO> model = new()
+                ResponseModel<PlacesDTO> model = new()
                 {
                     Message = "데이터가 비어있습니다.",
                     Data = null,
@@ -142,7 +142,7 @@ namespace FamTec.Server.Services.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<PlacesDTO>> UpdatePlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> UpdatePlaceService(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -151,7 +151,7 @@ namespace FamTec.Server.Services.Place
                 if(model == null) // 없음
                 {
                     // 없어서 수정못함. return 해야함.
-                    ResponseObject<PlacesDTO> obj = new()
+                    ResponseModel<PlacesDTO> obj = new()
                     {
                         Message = "데이터가 존재하지 않습니다.",
                         Data = null,
@@ -177,7 +177,7 @@ namespace FamTec.Server.Services.Place
 
                     if(result) // 수정성공
                     {
-                        ResponseObject<PlacesDTO> obj = new()
+                        ResponseModel<PlacesDTO> obj = new()
                         {
                             Message = "데이터 수정 성공.",
                             Data = new List<PlacesDTO>() 
@@ -196,7 +196,7 @@ namespace FamTec.Server.Services.Place
                     }
                     else // 실패
                     {
-                        ResponseObject<PlacesDTO> obj = new()
+                        ResponseModel<PlacesDTO> obj = new()
                         {
                             Message = "데이터 수정 실패.",
                             Data = null,
@@ -209,7 +209,7 @@ namespace FamTec.Server.Services.Place
             }
             else
             {
-                ResponseObject<PlacesDTO> obj = new()
+                ResponseModel<PlacesDTO> obj = new()
                 {
                     Message = "데이터가 비어있습니다.",
                     Data = null,
@@ -224,7 +224,7 @@ namespace FamTec.Server.Services.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<PlacesDTO>> DeletePlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> DeletePlaceService(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -233,7 +233,7 @@ namespace FamTec.Server.Services.Place
                 if(model == null) // 없음
                 {
                     // 없어서 수정못함
-                    ResponseObject<PlacesDTO> obj = new()
+                    ResponseModel<PlacesDTO> obj = new()
                     {
                         Message = "데이터가 존재하지 않습니다.",
                         Data = null,
@@ -251,7 +251,7 @@ namespace FamTec.Server.Services.Place
 
                     if(result) // 삭제성공
                     {
-                        ResponseObject<PlacesDTO> obj = new()
+                        ResponseModel<PlacesDTO> obj = new()
                         {
                             Message = "데이터 삭제 성공.",
                             Data = new List<PlacesDTO>()
@@ -270,7 +270,7 @@ namespace FamTec.Server.Services.Place
                     }
                     else // 실패
                     {
-                        ResponseObject<PlacesDTO> obj = new()
+                        ResponseModel<PlacesDTO> obj = new()
                         {
                             Message = "데이터 삭제 실패.",
                             Data = null,
@@ -282,7 +282,7 @@ namespace FamTec.Server.Services.Place
             }
             else
             {
-                ResponseObject<PlacesDTO> obj = new()
+                ResponseModel<PlacesDTO> obj = new()
                 {
                     Message = "데이터가 비어있습니다.",
                     Data = null,

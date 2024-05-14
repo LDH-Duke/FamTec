@@ -14,12 +14,11 @@ namespace FamTec.Server.Controllers
     public class BuildingsController : ControllerBase
     {
         private readonly IBuildingInfoRepository BuildingInfoRepository;
-        private readonly IPlaceInfoRepository PlaceInfoRepository;
+        
 
-        public BuildingsController(IBuildingInfoRepository _buildinginforepository, IPlaceInfoRepository _placeinfoRepository)
+        public BuildingsController(IBuildingInfoRepository _buildinginforepository)
         {
             BuildingInfoRepository = _buildinginforepository;
-            PlaceInfoRepository = _placeinfoRepository;
         }
 
         [HttpGet]
@@ -47,9 +46,6 @@ namespace FamTec.Server.Controllers
         [Route("SelectApi/{code}")]
         public async ValueTask<bool> Get(string code)
         {
-            var temp = await PlaceInfoRepository.GetUserPlaceCDListAsync(code);
-
-            Console.WriteLine(temp);
 
             return true;
         }

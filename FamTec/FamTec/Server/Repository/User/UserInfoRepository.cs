@@ -14,7 +14,7 @@ namespace FamTec.Server.Repository.User
         }
 
         /// <summary>
-        /// 추가
+        /// 사용자 추가
         /// </summary>
         /// <param name="model"></param>
         /// <param name="userid"></param>
@@ -35,7 +35,7 @@ namespace FamTec.Server.Repository.User
         }
 
         /// <summary>
-        /// 전체조회
+        /// 사용자 전체조회
         /// </summary>
         /// <returns></returns>
         public async ValueTask<List<UsersTb>> GetAllAsync()
@@ -54,7 +54,7 @@ namespace FamTec.Server.Repository.User
    
 
         /// <summary>
-        /// ID 검색 - 단일모델 반환
+        /// 사용자 ID 검색 - 사용자 단일모델 반환
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
@@ -81,7 +81,7 @@ namespace FamTec.Server.Repository.User
 
       
         /// <summary>
-        /// 수정
+        /// 사용자 정보 수정
         /// </summary>
         /// <param name="model"></param>
         /// <param name="userid"></param>
@@ -109,7 +109,7 @@ namespace FamTec.Server.Repository.User
 
 
         /// <summary>
-        /// 삭제
+        /// 사용자 정보 삭제
         /// </summary>
         /// <param name="tguserid"></param>
         /// <param name="userid"></param>

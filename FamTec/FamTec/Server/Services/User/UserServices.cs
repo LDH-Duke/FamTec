@@ -15,20 +15,25 @@ namespace FamTec.Server.Services.User
     public class UserServices : IUserServices
     {
         private readonly IUserInfoRepository UserInfoRepository;
-        
+
+        ResponseOBJ<UsersDTO> Response;
+        Func<string, UsersDTO, int, ResponseModel<UsersDTO>> FuncResponseOBJ;
+        Func<string, List<UsersDTO>, int, ResponseModel<UsersDTO>> FuncResponseList;
 
         public UserServices(IUserInfoRepository _userinforepository)
         {
             this.UserInfoRepository = _userinforepository;
-        
+            Response = new ResponseOBJ<UsersDTO>();
+            FuncResponseOBJ = Response.RESPMessage;
+            FuncResponseList = Response.RESPMessageList;
         }
      
 
         /// <summary>
-        /// USERID 전체 조회
+        /// USER 전체 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<UsersDTO>> GetAllUserListService()
+        public async ValueTask<ResponseModel<UsersDTO>> GetAllUserListService()
         {
             try
             {
@@ -36,54 +41,38 @@ namespace FamTec.Server.Services.User
 
                 if (result is [_, ..])
                 {
-                    ResponseObject<UsersDTO> obj = new()
+                    return FuncResponseList("전체데이터 조회 성공", result.Select(e => new UsersDTO()
                     {
-                        Message = "성공",
-                        Data = result.Select(e => new UsersDTO()
-                        {
-                            USERID = e.UserId,
-                            PASSWORD = e.Password,
-                            NAME = e.Name,
-                            EMAIL = e.Email,
-                            PHONE = e.Phone,
-                            PERM_BUILDING = e.PermBuilding,
-                            PERM_EQUIPMENT = e.PermBuilding,
-                            PERM_MATERIAL = e.PermMaterial,
-                            PERM_ENERGY = e.PermEnergy,
-                            PERM_OFFICE = e.PermOffice,
-                            PERM_COMP = e.PermComp,
-                            PERM_CONST = e.PermConst,
-                            PERM_CLAIM = e.PermClaim,
-                            PERM_SYS = e.PermSys,
-                            PERM_EMPLOYEE = e.PermEmployee,
-                            PERM_LAW_CK = e.PermLawCk,
-                            PERM_LAW_EDU = e.PermLawEdu,
-                            ADMIN_YN = e.AdminYn,
-                            ALARM_YN = e.AlarmYn,
-                            STATUS = e.Status
-                        }).ToList(),
-
-                        StatusCode = 200
-                    };
-                    return obj;
+                        USERID = e.UserId,
+                        PASSWORD = e.Password,
+                        NAME = e.Name,
+                        EMAIL = e.Email,
+                        PHONE = e.Phone,
+                        PERM_BUILDING = e.PermBuilding,
+                        PERM_EQUIPMENT = e.PermBuilding,
+                        PERM_MATERIAL = e.PermMaterial,
+                        PERM_ENERGY = e.PermEnergy,
+                        PERM_OFFICE = e.PermOffice,
+                        PERM_COMP = e.PermComp,
+                        PERM_CONST = e.PermConst,
+                        PERM_CLAIM = e.PermClaim,
+                        PERM_SYS = e.PermSys,
+                        PERM_EMPLOYEE = e.PermEmployee,
+                        PERM_LAW_CK = e.PermLawCk,
+                        PERM_LAW_EDU = e.PermLawEdu,
+                        ADMIN_YN = e.AdminYn,
+                        ALARM_YN = e.AlarmYn,
+                        STATUS = e.Status
+                    }).ToList(), 200);
                 }
                 else
                 {
-                    ResponseObject<UsersDTO> obj = new()
-                    {
-                        StatusCode = 200
-                    };
-                    return obj;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
                 }
             }
             catch (Exception ex)
             {
-
-                ResponseObject<UsersDTO> obj = new()
-                {
-                    StatusCode = 500
-                };
-                return obj;
+                return FuncResponseOBJ(ex.Message, null, 500);
             }
 
         }
@@ -95,7 +84,7 @@ namespace FamTec.Server.Services.User
         /// <param name="userid"></param>
         /// <returns></returns>
         // userid는 차후 토큰이 될것임.
-        public async ValueTask<ResponseObject<UsersDTO>> GetUserService(string userid)
+        public async ValueTask<ResponseModel<UsersDTO>> GetUserService(string userid)
         {
             if (userid is not null)
             {
@@ -103,59 +92,39 @@ namespace FamTec.Server.Services.User
 
                 if (result is not null)
                 {
-                    ResponseObject<UsersDTO> model = new()
-                    {
-                        Message = "데이터 검색 성공",
-                        Data = new List<UsersDTO>()
-                        {
-                            new UsersDTO()
-                            {
-                                USERID = result.UserId,
-                                PASSWORD = result.Password,
-                                NAME = result.Name,
-                                EMAIL = result.Email,
-                                PHONE = result.Phone,
-                                PERM_BUILDING = result.PermBuilding,
-                                PERM_EQUIPMENT = result.PermBuilding,
-                                PERM_MATERIAL = result.PermMaterial,
-                                PERM_ENERGY = result.PermEnergy,
-                                PERM_OFFICE = result.PermOffice,
-                                PERM_COMP = result.PermComp,
-                                PERM_CONST = result.PermConst,
-                                PERM_CLAIM = result.PermClaim,
-                                PERM_SYS = result.PermSys,
-                                PERM_EMPLOYEE = result.PermEmployee,
-                                PERM_LAW_CK = result.PermLawCk,
-                                PERM_LAW_EDU = result.PermLawEdu,
-                                ADMIN_YN = result.AdminYn,
-                                ALARM_YN = result.AlarmYn,
-                                STATUS = result.Status
-                            }
-                        },
-                        StatusCode = 200
-                    };
-                    return model;
+                    return FuncResponseOBJ(
+                     "데이터 검색 성공.", new UsersDTO()
+                     {
+                         USERID = result.UserId,
+                         PASSWORD = result.Password,
+                         NAME = result.Name,
+                         EMAIL = result.Email,
+                         PHONE = result.Phone,
+                         PERM_BUILDING = result.PermBuilding,
+                         PERM_EQUIPMENT = result.PermBuilding,
+                         PERM_MATERIAL = result.PermMaterial,
+                         PERM_ENERGY = result.PermEnergy,
+                         PERM_OFFICE = result.PermOffice,
+                         PERM_COMP = result.PermComp,
+                         PERM_CONST = result.PermConst,
+                         PERM_CLAIM = result.PermClaim,
+                         PERM_SYS = result.PermSys,
+                         PERM_EMPLOYEE = result.PermEmployee,
+                         PERM_LAW_CK = result.PermLawCk,
+                         PERM_LAW_EDU = result.PermLawEdu,
+                         ADMIN_YN = result.AdminYn,
+                         ALARM_YN = result.AlarmYn,
+                         STATUS = result.Status
+                     }, 200);
                 }
                 else
                 {
-                    ResponseObject<UsersDTO> model = new()
-                    {
-                        Message = "데이터가 존재하지 않습니다.",
-                        Data = null,
-                        StatusCode = 200
-                    };
-                    return model;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
                 }
             }
             else
             {
-                ResponseObject<UsersDTO> model = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return model;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 200);
             }
         }
 
@@ -164,13 +133,13 @@ namespace FamTec.Server.Services.User
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<UsersDTO>> AddUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> AddUserService(UsersDTO dto)
         {
-            if(dto is not null)
+            if (dto is not null)
             {
-                UsersTb? placechk = await UserInfoRepository.GetByUserInfo(dto.USERID);
+                UsersTb? model = await UserInfoRepository.GetByUserInfo(dto.USERID);
 
-                if(placechk == null) // 없음
+                if (model == null) // 없음
                 {
                     UsersTb usertb = new UsersTb()
                     {
@@ -201,76 +170,50 @@ namespace FamTec.Server.Services.User
                     };
 
                     var result = await UserInfoRepository.AddAsync(usertb);
-                    
-                    if(result == null)
+
+                    if (result == null)
                     {
                         // ADD에 실패하였을때
-                        ResponseObject<UsersDTO> model = new()
-                        {
-                            Message = "데이터 추가에 실패하였습니다.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return model;
+                        return FuncResponseOBJ("데이터 추가에 실패하였습니다.", null, 404);
                     }
                     else
                     {
-                        ResponseObject<UsersDTO> model = new()
+                        return FuncResponseOBJ("사용자 추가에 성공하였습니다.", new UsersDTO()
                         {
-                            Message = "데이터 추가에 성공하였습니다.",
-                            Data = new List<UsersDTO>()
-                            {
-                                new UsersDTO()
-                                {
-                                    USERID = result.UserId,
-                                    PASSWORD = result.Password,
-                                    NAME = result.Name,
-                                    EMAIL = result.Email,
-                                    PHONE = result.Phone,
-                                    PERM_BUILDING = result.PermBuilding,
-                                    PERM_EQUIPMENT = result.PermEquipment,
-                                    PERM_MATERIAL = result.PermMaterial,
-                                    PERM_ENERGY = result.PermEnergy,
-                                    PERM_OFFICE = result.PermOffice,
-                                    PERM_COMP = result.PermComp,
-                                    PERM_CONST = result.PermConst,
-                                    PERM_CLAIM = result.PermClaim,
-                                    PERM_SYS = result.PermSys,
-                                    PERM_EMPLOYEE = result.PermEmployee,
-                                    PERM_LAW_CK = result.PermLawCk,
-                                    PERM_LAW_EDU = result.PermLawEdu,
-                                    ADMIN_YN = result.AdminYn,
-                                    ALARM_YN = result.AlarmYn,
-                                    STATUS = result.Status,
-                                    PLACECODE = result.PlacecodeCd
-                                }
-                            },
-                            StatusCode = 200
-                        };
-                        return model;
-                    }
+                            USERID = result.UserId,
+                            PASSWORD = result.Password,
+                            NAME = result.Name,
+                            EMAIL = result.Email,
+                            PHONE = result.Phone,
+                            PERM_BUILDING = result.PermBuilding,
+                            PERM_EQUIPMENT = result.PermEquipment,
+                            PERM_MATERIAL = result.PermMaterial,
+                            PERM_ENERGY = result.PermEnergy,
+                            PERM_OFFICE = result.PermOffice,
+                            PERM_COMP = result.PermComp,
+                            PERM_CONST = result.PermConst,
+                            PERM_CLAIM = result.PermClaim,
+                            PERM_SYS = result.PermSys,
+                            PERM_EMPLOYEE = result.PermEmployee,
+                            PERM_LAW_CK = result.PermLawCk,
+                            PERM_LAW_EDU = result.PermLawEdu,
+                            ADMIN_YN = result.AdminYn,
+                            ALARM_YN = result.AlarmYn,
+                            STATUS = result.Status,
+                            PLACECODE = result.PlacecodeCd
+                        }, 200);
+                    };
+
                 }
                 else
                 {
-                    ResponseObject<UsersDTO> model = new()
-                    {
-                        Message = "이미 해당코드로 사업장이 존재합니다.",
-                        Data = null,
-                        StatusCode = 200
-                    };
-                    return model;
+                    return FuncResponseOBJ("이미 해당 아이디의 사용자가 존재합니다.", null, 200); ;
                 }
             }
             else
             {
                 // 이미 해당 아이디의 사용자가 있음
-                ResponseObject<UsersDTO> model = new()
-                {
-                    Message = "이미 해당 아이디의 사용자가 존재합니다.",
-                    Data = null,
-                    StatusCode = 200
-                };
-                return model;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 
@@ -279,22 +222,16 @@ namespace FamTec.Server.Services.User
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<UsersDTO>> UpdateUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> UpdateUserService(UsersDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
                 UsersTb? model = await UserInfoRepository.GetByUserInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
 
                 if(model == null) // 없음
-                {
+                { 
                     // 없어서 수정 못함. return 해야함.
-                    ResponseObject<UsersDTO> obj = new()
-                    {
-                        Message = "데이터가 존재하지 않습니다.",
-                        Data = null,
-                        StatusCode = 404
-                    };
-                    return obj;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 404);
                 }
                 else
                 {
@@ -344,61 +281,40 @@ namespace FamTec.Server.Services.User
 
                     if(result) // 수정성공
                     {
-                        ResponseObject<UsersDTO> obj = new()
+                        return FuncResponseOBJ("데이터 수정 성공.", new UsersDTO()
                         {
-                            Message = "데이터 수정 성공.",
-                            Data = new List<UsersDTO>()
-                            {
-                                new UsersDTO()
-                                {
-                                    USERID = model.UserId,
-                                    PASSWORD = model.Password,
-                                    NAME = model.Name,
-                                    EMAIL = model.Email,
-                                    PHONE = model.Phone,
-                                    PERM_BUILDING = model.PermBuilding,
-                                    PERM_EQUIPMENT = model.PermEquipment,
-                                    PERM_MATERIAL = model.PermMaterial,
-                                    PERM_ENERGY = model.PermEnergy,
-                                    PERM_OFFICE = model.PermOffice,
-                                    PERM_COMP = model.PermComp,
-                                    PERM_CONST = model.PermConst,
-                                    PERM_CLAIM = model.PermClaim,
-                                    PERM_SYS = model.PermSys,
-                                    PERM_EMPLOYEE = model.PermEmployee,
-                                    PERM_LAW_CK = model.PermLawCk,
-                                    PERM_LAW_EDU = model.PermLawEdu,
-                                    ADMIN_YN = model.AdminYn,
-                                    ALARM_YN = model.AlarmYn,
-                                    STATUS = model.Status,
-                                    PLACECODE = model.PlacecodeCd
-                                }
-                            },
-                            StatusCode = 200
-                        };
-                        return obj;
+                            USERID = model.UserId,
+                            PASSWORD = model.Password,
+                            NAME = model.Name,
+                            EMAIL = model.Email,
+                            PHONE = model.Phone,
+                            PERM_BUILDING = model.PermBuilding,
+                            PERM_EQUIPMENT = model.PermEquipment,
+                            PERM_MATERIAL = model.PermMaterial,
+                            PERM_ENERGY = model.PermEnergy,
+                            PERM_OFFICE = model.PermOffice,
+                            PERM_COMP = model.PermComp,
+                            PERM_CONST = model.PermConst,
+                            PERM_CLAIM = model.PermClaim,
+                            PERM_SYS = model.PermSys,
+                            PERM_EMPLOYEE = model.PermEmployee,
+                            PERM_LAW_CK = model.PermLawCk,
+                            PERM_LAW_EDU = model.PermLawEdu,
+                            ADMIN_YN = model.AdminYn,
+                            ALARM_YN = model.AlarmYn,
+                            STATUS = model.Status,
+                            PLACECODE = model.PlacecodeCd
+                        }, 200);
                     }
                     else
                     {
-                        ResponseObject<UsersDTO> obj = new()
-                        {
-                            Message = "데이터 수정 실패.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return obj;
+                        return FuncResponseOBJ("데이터 수정 실패.", null, 404);
                     }
                 }
             }
             else
             {
-                ResponseObject<UsersDTO> obj = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return obj;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 
@@ -407,7 +323,7 @@ namespace FamTec.Server.Services.User
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseObject<UsersDTO>> DeleteUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> DeleteUserService(UsersDTO dto)
         {
             if (dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -416,13 +332,7 @@ namespace FamTec.Server.Services.User
                 if (model == null) // 없음
                 {
                     // 없어서 수정 못함. return 해야함.
-                    ResponseObject<UsersDTO> obj = new()
-                    {
-                        Message = "데이터가 존재하지 않습니다.",
-                        Data = null,
-                        StatusCode = 404
-                    };
-                    return obj;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 404);
                 }
                 else
                 {
@@ -430,65 +340,44 @@ namespace FamTec.Server.Services.User
                     model.DelUser = "토큰USER";
                     model.DelYn = true;
 
-                    bool result = await UserInfoRepository.EditAsync(model);
+                    bool result = await UserInfoRepository.DeleteUserIdAsync(model);
 
-                    if (result) // 수정성공
+                    if (result) // 삭제성공
                     {
-                        ResponseObject<UsersDTO> obj = new()
+                        return FuncResponseOBJ("데이터 삭제 성공.", new UsersDTO()
                         {
-                            Message = "데이터 삭제 성공.",
-                            Data = new List<UsersDTO>()
-                            {
-                                new UsersDTO()
-                                {
-                                    USERID = model.UserId,
-                                    PASSWORD = model.Password,
-                                    NAME = model.Name,
-                                    EMAIL = model.Email,
-                                    PHONE = model.Phone,
-                                    PERM_BUILDING = model.PermBuilding,
-                                    PERM_EQUIPMENT = model.PermEquipment,
-                                    PERM_MATERIAL = model.PermMaterial,
-                                    PERM_ENERGY = model.PermEnergy,
-                                    PERM_OFFICE = model.PermOffice,
-                                    PERM_COMP = model.PermComp,
-                                    PERM_CONST = model.PermConst,
-                                    PERM_CLAIM = model.PermClaim,
-                                    PERM_SYS = model.PermSys,
-                                    PERM_EMPLOYEE = model.PermEmployee,
-                                    PERM_LAW_CK = model.PermLawCk,
-                                    PERM_LAW_EDU = model.PermLawEdu,
-                                    ADMIN_YN = model.AdminYn,
-                                    ALARM_YN = model.AlarmYn,
-                                    STATUS = model.Status,
-                                    PLACECODE = model.PlacecodeCd
-                                }
-                            },
-                            StatusCode = 200
-                        };
-                        return obj;
+                            USERID = model.UserId,
+                            PASSWORD = model.Password,
+                            NAME = model.Name,
+                            EMAIL = model.Email,
+                            PHONE = model.Phone,
+                            PERM_BUILDING = model.PermBuilding,
+                            PERM_EQUIPMENT = model.PermEquipment,
+                            PERM_MATERIAL = model.PermMaterial,
+                            PERM_ENERGY = model.PermEnergy,
+                            PERM_OFFICE = model.PermOffice,
+                            PERM_COMP = model.PermComp,
+                            PERM_CONST = model.PermConst,
+                            PERM_CLAIM = model.PermClaim,
+                            PERM_SYS = model.PermSys,
+                            PERM_EMPLOYEE = model.PermEmployee,
+                            PERM_LAW_CK = model.PermLawCk,
+                            PERM_LAW_EDU = model.PermLawEdu,
+                            ADMIN_YN = model.AdminYn,
+                            ALARM_YN = model.AlarmYn,
+                            STATUS = model.Status,
+                            PLACECODE = model.PlacecodeCd
+                        }, 200);
                     }
                     else
                     {
-                        ResponseObject<UsersDTO> obj = new()
-                        {
-                            Message = "데이터 삭제 실패.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return obj;
+                        return FuncResponseOBJ("데이터 삭제 실패.", null, 404);
                     }
                 }
             }
             else
             {
-                ResponseObject<UsersDTO> obj = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return obj;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 

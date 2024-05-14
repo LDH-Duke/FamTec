@@ -25,18 +25,16 @@ namespace FamTec.Server.Repository.User
         ValueTask<UsersTb> GetByUserInfo(string userid);
 
         /// <summary>
-        /// 수정
+        /// 사용자 수정
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="userid"></param>
         /// <returns></returns>
         ValueTask<bool> EditAsync(UsersTb model);
 
         /// <summary>
-        /// 삭제
+        /// 사용자 삭제
         /// </summary>
-        /// <param name="tguserid"></param>
-        /// <param name="userid"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
         ValueTask<bool> DeleteUserIdAsync(UsersTb model);
     }
