@@ -65,5 +65,8 @@ public partial class MeterReadersTb
     public virtual BuildingsTb? BuildingCdNavigation { get; set; }
 
     [InverseProperty("MeterReader")]
+    public virtual ICollection<EnergyMonthUsageTb> EnergyMonthUsageTbs { get; set; } = new List<EnergyMonthUsageTb>();
+
+    [InverseProperty("MeterReader")]
     public virtual ICollection<UnitPriceTb> UnitPriceTbs { get; set; } = new List<UnitPriceTb>();
 }

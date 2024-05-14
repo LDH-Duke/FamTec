@@ -9,9 +9,6 @@ namespace FamTec.Shared.Model;
 [Table("PLACES_TB")]
 public partial class PlacesTb
 {
-    [Column("ID")]
-    public int Id { get; set; }
-
     [Key]
     [Column("PLACE_CD")]
     [StringLength(25)]
@@ -61,7 +58,13 @@ public partial class PlacesTb
     public bool? DelYn { get; set; }
 
     [InverseProperty("PlacecodeCdNavigation")]
+    public virtual ICollection<AdminPlacesTb> AdminPlacesTbs { get; set; } = new List<AdminPlacesTb>();
+
+    [InverseProperty("PlacecodeCdNavigation")]
     public virtual ICollection<BuildingsTb> BuildingsTbs { get; set; } = new List<BuildingsTb>();
+
+    [InverseProperty("PlacecodeCdNavigation")]
+    public virtual ICollection<UnitTb> UnitTbs { get; set; } = new List<UnitTb>();
 
     [InverseProperty("PlacecodeCdNavigation")]
     public virtual ICollection<UsersTb> UsersTbs { get; set; } = new List<UsersTb>();

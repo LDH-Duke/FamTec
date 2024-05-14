@@ -416,41 +416,6 @@ CREATE TABLE UNIT_PRICE_TB
 	[ENVERY_USAGE_ID] INT FOREIGN KEY REFERENCES ENERGY_USAGES_TB([ID])
 )
 
-DROP TABLE ALARMINFO;
-DROP TABLE ALARMTALKLOG
-DROP TABLE BUILDINGINFO
-DROP TABLE ENERGYINFO
-DROP TABLE ENERGYMONTHINFO
-DROP TABLE FACILITYINFO
-DROP TABLE FLOORINFO
-DROP TABLE MATERIALINFO
-DROP TABLE PLACEINFO
-DROP TABLE ROOM_INVENTORY
-DROP TABLE ROOMINFO
-DROP TABLE SOCKETROOMINFO
-DROP TABLE SUBITEM
-DROP TABLE TOTAL_INVENTORY
-DROP TABLE USERINFO
-DROP TABLE VOCINFO
-DROP TABLE VOCINFO_COMMENT
-
-
-
-
-SCAFFOLD-DBCONTEXT  "DATA SOURCE=123.2.156.122,1002;DATABASE=FMS;USER ID=STEC;PASSWORD=STECDEV1234!;TRUSTSERVERCERTIFICATE=TRUE;" MICROSOFT.ENTITYFRAMEWORKCORE.SQLSERVER
-SCAFFOLD-DBCONTEXT  "DATA SOURCE=123.2.156.122,1002;DATABASE=FMS;USER ID=STEC;PASSWORD=STECDEV1234!;TRUSTSERVERCERTIFICATE=TRUE;" MICROSOFT.ENTITYFRAMEWORKCORE.SQLSERVER -O UPDATE
-
-
-
-
-Scaffold-DbContext "Server=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -outputDir Model -DataAnnotations
-https://www.entityframeworktutorial.net/efcore/pmc-commands-for-ef-core-migration.aspx
-
-
-Scaffold-DbContext  "Data Source=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer
-Scaffold-DbContext  "Data Source=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o update
-
-// 추가대기 항목 =================================================================================================================================================================================
 /* 단위 테이블 */
 CREATE TABLE UNIT_TB
 (
@@ -494,3 +459,71 @@ CREATE TABLE ENERGY_MONTH_USAGE_TB
 
 	[METER_READER_ID] INT FOREIGN KEY REFERENCES METER_READERS_TB([ID])
 )
+
+/* 관리자 테이블 */
+CREATE TABLE ADMINS_TB
+(
+	[USER_ID] VARCHAR(15) PRIMARY KEY NOT NULL, /* 사용자ID */
+	[PASSWORD] VARCHAR(30) NOT NULL, /* 비밀번호 */
+	[NAME] VARCHAR(15) NOT NULL, /* 사용자이름 */
+	[EMAIL] VARCHAR(30), /* 이메일 */
+
+	[CREATE_DT] DATETIME DEFAULT(getdate()), /* 생성시간 */
+	[CREATE_USER] VARCHAR(15), /* 만든 사람 */
+	[UPDATE_DT] DATETIME, /* 수정시간 */
+	[UPDATE_USER] VARCHAR(15), /* 수정한 사람 */
+	[DEL_DT] DATETIME, /* 삭제시간 */
+	[DEL_USER] VARCHAR(15), /* 삭제한 사람 */
+	[DEL_YN] BIT DEFAULT(0), /* 0: 삭제안함 1: 삭제 */
+
+)
+
+CREATE TABLE ADMIN_PLACES_TB
+(
+	[ID] INT IDENTITY(1,1) PRIMARY KEY NOT NULL, /* 자동 증가값 */
+	[CREATE_DT] DATETIME DEFAULT(getdate()), /* 생성시간 */
+	[UPDATE_DT] DATETIME, /* 수정시간 */
+	[DEL_DT] DATETIME, /* 삭제시간 */
+	[DEL_YN] BIT DEFAULT(0), /* 0: 삭제안함 1: 삭제 */
+	[USERS_USERID] VARCHAR(15) FOREIGN KEY REFERENCES USERS_TB ([USER_ID]),
+	[PLACECODE_CD] VARCHAR(25) FOREIGN KEY REFERENCES PLACES_TB([PLACE_CD])
+)
+
+
+DROP TABLE ALARMINFO;
+DROP TABLE ALARMTALKLOG
+DROP TABLE BUILDINGINFO
+DROP TABLE ENERGYINFO
+DROP TABLE ENERGYMONTHINFO
+DROP TABLE FACILITYINFO
+DROP TABLE FLOORINFO
+DROP TABLE MATERIALINFO
+DROP TABLE PLACEINFO
+DROP TABLE ROOM_INVENTORY
+DROP TABLE ROOMINFO
+DROP TABLE SOCKETROOMINFO
+DROP TABLE SUBITEM
+DROP TABLE TOTAL_INVENTORY
+DROP TABLE USERINFO
+DROP TABLE VOCINFO
+DROP TABLE VOCINFO_COMMENT
+
+
+
+
+SCAFFOLD-DBCONTEXT  "DATA SOURCE=123.2.156.122,1002;DATABASE=FMS;USER ID=STEC;PASSWORD=STECDEV1234!;TRUSTSERVERCERTIFICATE=TRUE;" MICROSOFT.ENTITYFRAMEWORKCORE.SQLSERVER
+SCAFFOLD-DBCONTEXT  "DATA SOURCE=123.2.156.122,1002;DATABASE=FMS;USER ID=STEC;PASSWORD=STECDEV1234!;TRUSTSERVERCERTIFICATE=TRUE;" MICROSOFT.ENTITYFRAMEWORKCORE.SQLSERVER -O UPDATE
+
+
+
+
+Scaffold-DbContext "Server=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -outputDir Model -DataAnnotations
+https://www.entityframeworktutorial.net/efcore/pmc-commands-for-ef-core-migration.aspx
+
+
+Scaffold-DbContext  "Data Source=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer
+Scaffold-DbContext  "Data Source=123.2.156.122,1002;Database=FMS;User Id=stec;Password=stecdev1234!;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer -o update
+
+
+** 참고자료
+https://stackoverflow.com/questions/39176018/cannot-update-identity-column-in-entity-framework-core

@@ -1,0 +1,33 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FamTec.Shared.DTO
+{
+    /// <summary>
+    /// 사업장 DTO
+    /// </summary>
+    public class PlacesDTO
+    {
+        /// <summary>
+        /// 사업장 코드
+        /// </summary>
+        [MaxLength(25)]
+        public string PlaceCd { get; set; } = null!;
+
+        /// <summary>
+        /// 사업장 명
+        /// </summary>
+        public string Name { get; set; } = null!;
+
+        /// <summary>
+        /// 계약번호
+        /// </summary>
+        [MaxLength(45)]
+        public string CONTRACT_NUM { get; set; } = null!;
+
+        /// <summary>
+        /// 비고
+        /// </summary>
+        [MaxLength(20)]
+        public string NOTE { get; set; }
+    }
+}
