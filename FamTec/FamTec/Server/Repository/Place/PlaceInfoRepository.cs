@@ -86,46 +86,6 @@ namespace FamTec.Server.Repository.Place
 
 
         /// <summary>
-        /// UserID로 사업장 조회 - 리스트반환 *[차후개발]
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<List<PlacesTb>> GetUserPlaceCDListAsync(string userid)
-        {
-            try
-            {
-                var query = from user in context.UsersTbs
-                            where user.UserId == userid
-                            join place in context.PlacesTbs
-                            on user.PlacecodeCd equals place.PlaceCd
-                            select new PlacesTb()
-                            { 
-                                // 차후 추가
-                                Name = place.Name
-                            };
-
-                List<PlacesTb> temp = query.ToList();
-
-                foreach(var item in query)
-                {
-                    Console.WriteLine(item.Name);
-
-                }
-
-                Console.WriteLine();
-                
-
-                // 외래키 잡은것들 테스트
-                return null;
-            }
-            catch(Exception ex)
-            {
-                throw;
-            }
-        }
-
-
-        /// <summary>
         /// 삭제
         /// </summary>
         /// <param name="placecd"></param>
@@ -142,7 +102,7 @@ namespace FamTec.Server.Repository.Place
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    return false;
                 }
             }
             catch(Exception ex)
@@ -169,7 +129,7 @@ namespace FamTec.Server.Repository.Place
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    return false;
                 }
             }
             catch(Exception ex)

@@ -25,13 +25,6 @@ namespace FamTec.Server.Repository.Place
         ValueTask<PlacesTb> GetByPlaceInfo(string placecd);
 
         /// <summary>
-        /// USERID로 사업장 조회 - 리스트 반환
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        ValueTask<List<PlacesTb>> GetUserPlaceCDListAsync(string userid);
-
-        /// <summary>
         /// 수정
         /// </summary>
         /// <param name="model"></param>

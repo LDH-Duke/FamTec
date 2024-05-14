@@ -22,7 +22,7 @@ namespace FamTec.Server.Repository.User
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<UsersTb> GetByUserIdAsync(string userid);
+        ValueTask<UsersTb> GetByUserInfo(string userid);
 
         /// <summary>
         /// 수정
@@ -30,7 +30,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> EditAsync(UsersTb model, string userid);
+        ValueTask<bool> EditAsync(UsersTb model);
 
         /// <summary>
         /// 삭제
@@ -38,6 +38,6 @@ namespace FamTec.Server.Repository.User
         /// <param name="tguserid"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> DeleteUserIdAsync(string tguserid, string userid);
+        ValueTask<bool> DeleteUserIdAsync(UsersTb model);
     }
 }

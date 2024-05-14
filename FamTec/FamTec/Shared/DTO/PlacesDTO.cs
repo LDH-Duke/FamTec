@@ -18,19 +18,16 @@ namespace FamTec.Shared.DTO
         /// 사업장 코드
         /// </summary>
         [MaxLength(25)]
-        [NotNull]
         public string PlaceCd { get; set; } = null!;
 
         /// <summary>
         /// 사업장 명
         /// </summary>
-        [NotNull]
         public string Name { get; set; } = null!;
 
         /// <summary>
         /// 계약번호
         /// </summary>
-        [NotNull]
         [MaxLength(45)]
         public string CONTRACT_NUM { get; set; } = null!;
 

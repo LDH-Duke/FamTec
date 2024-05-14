@@ -24,7 +24,6 @@ namespace FamTec.Server.Repository.User
             try
             {
                 context.UsersTbs.Add(model);
-                
                 await context.SaveChangesAsync();
                 return model;
             }
@@ -59,18 +58,18 @@ namespace FamTec.Server.Repository.User
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<UsersTb> GetByUserIdAsync(string userid)
+        public async ValueTask<UsersTb> GetByUserInfo(string userid)
         {
             try
             {
                 UsersTb? model = await context.UsersTbs.FirstOrDefaultAsync(m => m.UserId == userid);
-                if(model is not null)
+                if(model == null)
                 {
-                    return model;
+                    return null;
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    return model;
                 }
             }
             catch(Exception ex)
@@ -79,6 +78,35 @@ namespace FamTec.Server.Repository.User
                 throw;
             }
         }
+
+      
+        /// <summary>
+        /// 수정
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public async ValueTask<bool> EditAsync(UsersTb model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.UsersTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
 
         /// <summary>
         /// 삭제
@@ -86,62 +114,25 @@ namespace FamTec.Server.Repository.User
         /// <param name="tguserid"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteUserIdAsync(string tguserid, string userid)
+        public async ValueTask<bool> DeleteUserIdAsync(UsersTb model)
         {
             try
             {
-                UsersTb? model = await context.UsersTbs.FirstOrDefaultAsync(m => m.UserId == tguserid);
-                if(model is not null)
+                if (model is not null)
                 {
-                    model.DelDt = DateTime.Now;
-                    model.DelYn = true;
-                    model.DelUser = userid;
-
                     context.UsersTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    return false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex);
                 throw;
             }
         }
-
-        /// <summary>
-        /// 수정
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<bool> EditAsync(UsersTb model, string userid)
-        {
-            try
-            {
-                if(model is not null)
-                {
-                    model.UpdateDt = DateTime.Now;
-                    model.UpdateUser = userid;
-
-                    context.UsersTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    throw new ArgumentNullException();
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw;
-            }
-        }
-
-
     }
 }

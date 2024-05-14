@@ -9,9 +9,6 @@ namespace FamTec.Shared.Model;
 [Table("USERS_TB")]
 public partial class UsersTb
 {
-    [Column("ID")]
-    public int Id { get; set; }
-
     [Key]
     [Column("USER_ID")]
     [StringLength(15)]

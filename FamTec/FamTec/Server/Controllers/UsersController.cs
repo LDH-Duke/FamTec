@@ -4,6 +4,7 @@ using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.JSInterop.Infrastructure;
 using System.Diagnostics.Eventing.Reader;
 using System.Net;
 
@@ -19,10 +20,11 @@ namespace FamTec.Server.Controllers
         {
             this.UserServices = _userservices;
         }
-
+        
+        //https://localhost:8888/api/Users/SelectUser/test
 
         [HttpGet]
-        [Route("SelectUser/{userid}")]
+        [Route("SelectUser/{userid?}")]
         public async ValueTask<IActionResult> GetUser(string userid)
         {
             try
@@ -72,55 +74,33 @@ namespace FamTec.Server.Controllers
         }
 
 
-        [HttpGet]
-        [Route("test")]
-        public async ValueTask<IActionResult> Test()
+        [HttpPost]
+        [Route("AddUser")]
+        public async ValueTask<IActionResult> AddUser([FromBody]UsersDTO dto)
         {
-            UsersDTO temp = new UsersDTO();
-            temp.USERID = "eeee";
-            temp.PASSWORD = "123123";
-            temp.NAME = "테스트";
-            temp.PERM_BUILDING = 2;
-            temp.PERM_EQUIPMENT = 2;
-            temp.PERM_MATERIAL = 2;
-            temp.PERM_ENERGY = 2;
-            temp.PERM_OFFICE = 2;
-            temp.PERM_COMP = 2;
-            temp.PERM_CONST = 2;
-            temp.PERM_CLAIM = 2;
-            temp.PERM_SYS = 2;
-            temp.PERM_EMPLOYEE = 2;
-            temp.PERM_LAW_CK = 2;
-            temp.PERM_LAW_EDU = 2;
-            temp.ADMIN_YN = false;
-            temp.ALARM_YN = false;
-            temp.STATUS = true;
-
-
-            string userid = "admin";
-
-            var model = await UserServices.AddUserService(temp,userid, null);
-
-
-            return Ok();
+            ResponseObject<UsersDTO>? model = await UserServices.AddUserService(dto);
+            return Ok(model);
         }
-
 
 
         [HttpPost]
-        [Route("InsertUser")]
-        public async ValueTask<IActionResult> PostUser([FromBody]UsersDTO model)
+        [Route("UpdateUser")]
+        public async ValueTask<IActionResult> UpdateUser([FromBody]UsersDTO dto)
         {
-            string userid = "System";
+           
 
-
-            if (model == null)
-                return BadRequest();
-            
-
-            
-            return Ok();
+            ResponseObject<UsersDTO>? model = await UserServices.UpdateUserService(dto);
+            return Ok(model);
         }
+
+        [HttpPost]
+        [Route("DeleteUser")]
+        public async ValueTask<IActionResult> DeleteUser([FromBody]UsersDTO dto)
+        {
+            ResponseObject<UsersDTO>? model = await UserServices.DeleteUserService(dto);
+            return Ok(model);
+        }
+        
 
     }
 }

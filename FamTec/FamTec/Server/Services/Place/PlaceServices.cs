@@ -142,7 +142,6 @@ namespace FamTec.Server.Services.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public async ValueTask<ResponseObject<PlacesDTO>> UpdatePlaceService(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
@@ -163,9 +162,13 @@ namespace FamTec.Server.Services.Place
                 }
                 else
                 {
-                    model.Name = dto.Name;
-                    model.ContractNum = dto.CONTRACT_NUM;
-                    model.Note = dto.NOTE;
+                    if(dto.Name != null)
+                        model.Name = dto.Name;
+                    if(dto.CONTRACT_NUM != null)
+                        model.ContractNum = dto.CONTRACT_NUM;
+                    if(dto.NOTE != null)
+                        model.Note = dto.NOTE;
+
                     model.UpdateDt = DateTime.Now;
                     model.UpdateUser = "김용우";
 

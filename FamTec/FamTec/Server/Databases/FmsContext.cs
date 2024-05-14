@@ -282,7 +282,6 @@ public partial class FmsContext : DbContext
             entity.Property(e => e.AlarmYn).HasDefaultValueSql("((0))");
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
             entity.Property(e => e.Status).HasDefaultValueSql("((1))");
 
             entity.HasOne(d => d.PlacecodeCdNavigation).WithMany(p => p.UsersTbs).HasConstraintName("FK__USERS_TB__PLACEC__69E6AD86");

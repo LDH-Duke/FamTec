@@ -55,10 +55,16 @@
     "ContainingType": "FamTec.Server.Controllers.PlacesController",
     "Method": "DeletePlace",
     "RelativePath": "api/Places/DeletePlace",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.PlacesDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -105,14 +111,30 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "PostUser",
-    "RelativePath": "api/Users/InsertUser",
+    "Method": "AddUser",
+    "RelativePath": "api/Users/AddUser",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.UsersDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UsersController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Users/DeleteUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
         "Type": "FamTec.Shared.DTO.UsersDTO",
         "IsRequired": true
       }
@@ -140,19 +162,25 @@
       {
         "Name": "userid",
         "Type": "System.String",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "Test",
-    "RelativePath": "api/Users/test",
-    "HttpMethod": "GET",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Users/UpdateUser",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.UsersDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -10,78 +10,121 @@ using System.Threading.Tasks;
 
 namespace FamTec.Shared.DTO
 {
+    /// <summary>
+    /// USER DTO
+    /// </summary>
     public class UsersDTO
     {
-        // 사용자 아이디
+        /// <summary>
+        /// 사용자 아이디
+        /// </summary>
         [MaxLength(15)]
         [NotNull]
         [Required(ErrorMessage = "아이디를 입력해주세요.")]
         public string? USERID { get; set; }
 
-        // 비밀번호
+        /// <summary>
+        /// 비밀번호
+        /// </summary>
         [MaxLength(30)]
-        [NotNull]
-        [Required(ErrorMessage = "비밀번호는 공백을 사용하실 수 없습니다.")]
         public string? PASSWORD { get; set; }
 
-        // 사용자 이름
+        /// <summary>
+        /// 사용자이름
+        /// </summary>
         [MaxLength(15)]
-        [NotNull]
-        [Required(ErrorMessage = "사용자이름을 입력해주세요.")]
         public string? NAME { get; set; }
 
-        // 이메일
+        /// <summary>
+        /// 이메일
+        /// </summary>
         [MaxLength(30)]
         public string? EMAIL { get; set; }
 
-        // 전화번호
+        /// <summary>
+        /// 전화번호
+        /// </summary>
         [MaxLength(20)]
         public string? PHONE { get; set; }
 
-        // 건물정보 관리 권한
-        public int PERM_BUILDING { get; set; } = 0;
+        /// <summary>
+        /// 건물정보 관리 권한
+        /// </summary>
+        public int? PERM_BUILDING { get; set; }
 
-        // 장비관리 권한
-        public int PERM_EQUIPMENT { get; set; } = 0;
+        /// <summary>
+        /// 장비관리 권한
+        /// </summary>
+        public int? PERM_EQUIPMENT { get; set; }
 
-        // 자재관리 권한
-        public int PERM_MATERIAL { get; set; } = 0;
+        /// <summary>
+        /// 자재관리 권한
+        /// </summary>
+        public int? PERM_MATERIAL { get; set; }
 
-        // 에너지관리 권한
-        public int PERM_ENERGY { get; set; } = 0;
+        /// <summary>
+        /// 에너지관리 권한
+        /// </summary>
+        public int? PERM_ENERGY { get; set; }
 
-        // 행정관리 권한
-        public int PERM_OFFICE { get; set; } = 0;
+        /// <summary>
+        /// 행정관리 권한
+        /// </summary>
+        public int? PERM_OFFICE { get; set; }
 
-        // 업체관리 권한
-        public int PERM_COMP { get; set; } = 0;
+        /// <summary>
+        /// 업체관리 권한
+        /// </summary>
+        public int? PERM_COMP { get; set; }
 
-        // 공사관리 권한
-        public int PERM_CONST { get; set; } = 0;
+        /// <summary>
+        /// 공사관리 권한
+        /// </summary>
+        public int? PERM_CONST { get; set; }
 
-        // 민원관리 권한
-        public int PERM_CLAIM { get; set; } = 0;
+        /// <summary>
+        /// 민원관리 권한
+        /// </summary>
+        public int? PERM_CLAIM { get; set; }
 
-        // 시스템연동 권한
-        public int PERM_SYS { get; set; } = 0;
+        /// <summary>
+        /// 시스템연동 권한
+        /// </summary>
+        public int? PERM_SYS { get; set; }
 
-        // 입퇴직 관리 권한
-        public int PERM_EMPLOYEE { get; set; } = 0;
+        /// <summary>
+        /// 입퇴직 관리 권한
+        /// </summary>
+        public int? PERM_EMPLOYEE { get; set; }
 
-        // 법정점검 권한
-        public int PERM_LAW_CK { get; set; } = 0;
+        /// <summary>
+        /// 법정점검 권한
+        /// </summary>
+        public int? PERM_LAW_CK { get; set; }
 
-        // 법정교육 권한
-        public int PERM_LAW_EDU { get; set; } = 0;
+        /// <summary>
+        /// 법정교육 권한
+        /// </summary>
+        public int? PERM_LAW_EDU { get; set; }
 
-        // 관리자 여부
+        /// <summary>
+        /// 관리자 여부
+        /// </summary>
         public bool? ADMIN_YN { get; set; } = false;
 
-        // 알람수신 여부
+        /// <summary>
+        /// 알람수신 여부
+        /// </summary>
         public bool? ALARM_YN { get; set; } = false;
 
-        // 입-재직여부
+        /// <summary>
+        /// 입-재직여부
+        /// </summary>
         public bool? STATUS { get; set; } = true;
 
+        /// <summary>
+        /// 선택된 사업장정보
+        /// </summary>
+        public string? PLACECODE { get; set; }
     }
 }
