@@ -37,7 +37,7 @@ namespace FamTec.Server.Services.User
         {
             try
             {
-                List<UsersTb>? result = await UserInfoRepository.GetAllAsync();
+                List<UsersTb>? result = await UserInfoRepository.GetAllList();
 
                 if (result is [_, ..])
                 {
@@ -88,7 +88,7 @@ namespace FamTec.Server.Services.User
         {
             if (userid is not null)
             {
-                UsersTb? result = await UserInfoRepository.GetByUserInfo(userid);
+                UsersTb? result = await UserInfoRepository.GetUserInfo(userid);
 
                 if (result is not null)
                 {
@@ -137,7 +137,7 @@ namespace FamTec.Server.Services.User
         {
             if (dto is not null)
             {
-                UsersTb? model = await UserInfoRepository.GetByUserInfo(dto.USERID);
+                UsersTb? model = await UserInfoRepository.GetUserInfo(dto.USERID);
 
                 if (model == null) // 없음
                 {
@@ -226,7 +226,7 @@ namespace FamTec.Server.Services.User
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
-                UsersTb? model = await UserInfoRepository.GetByUserInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
+                UsersTb? model = await UserInfoRepository.GetUserInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
 
                 if(model == null) // 없음
                 { 
@@ -277,7 +277,7 @@ namespace FamTec.Server.Services.User
                     model.UpdateDt = DateTime.Now;
                     model.UpdateUser = "토큰USER";
 
-                    bool result = await UserInfoRepository.EditAsync(model);
+                    bool result = await UserInfoRepository.EditUserInfo(model);
 
                     if(result) // 수정성공
                     {
@@ -327,7 +327,7 @@ namespace FamTec.Server.Services.User
         {
             if (dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
-                UsersTb? model = await UserInfoRepository.GetByUserInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
+                UsersTb? model = await UserInfoRepository.GetUserInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
 
                 if (model == null) // 없음
                 {
@@ -340,7 +340,7 @@ namespace FamTec.Server.Services.User
                     model.DelUser = "토큰USER";
                     model.DelYn = true;
 
-                    bool result = await UserInfoRepository.DeleteUserIdAsync(model);
+                    bool result = await UserInfoRepository.DeleteUserInfo(model);
 
                     if (result) // 삭제성공
                     {

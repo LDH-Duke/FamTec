@@ -20,9 +20,8 @@ namespace FamTec.Server.Controllers
         {
             this.UserServices = _userservices;
         }
-        
-        //https://localhost:8888/api/Users/SelectUser/test
 
+        //https://localhost:8888/api/Users/SelectUser/test
         [HttpGet]
         [Route("SelectUser/{userid?}")]
         public async ValueTask<IActionResult> GetUser(string userid)
@@ -54,18 +53,7 @@ namespace FamTec.Server.Controllers
             try
             {
                 ResponseModel<UsersDTO>? model = await UserServices.GetAllUserList();
-                switch(model.StatusCode)
-                {
-                    case 200:
-                        model.Message = "정상처리";
-                        return Ok(model);
-                        
-                    case 500:
-                        return BadRequest();
-                    
-                    default:
-                        return StatusCode(501, model);
-                }
+                return Ok(model);
             }
             catch(Exception ex)
             {
@@ -100,7 +88,6 @@ namespace FamTec.Server.Controllers
             ResponseModel<UsersDTO>? model = await UserServices.DeleteUserInfo(dto);
             return Ok(model);
         }
-        
 
     }
 }

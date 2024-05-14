@@ -36,7 +36,7 @@ namespace FamTec.Server.Services.Admin.User
         /// <returns></returns>
         public async ValueTask<ResponseModel<AdminsDTO>> GetAllAdminList()
         {
-            List<AdminsTb>? result = await AdminUserInfoRepository.GetAllAsync();
+            List<AdminsTb>? result = await AdminUserInfoRepository.GetAllList();
 
             if(result is [_, ..])
             {
@@ -64,7 +64,7 @@ namespace FamTec.Server.Services.Admin.User
         {
             if(adminid is not null)
             {
-                AdminsTb? result = await AdminUserInfoRepository.GetByAdminInfo(adminid);
+                AdminsTb? result = await AdminUserInfoRepository.GetAdminInfo(adminid);
 
                 if(result is not null)
                 {
@@ -99,7 +99,7 @@ namespace FamTec.Server.Services.Admin.User
         {
             if(dto is not null)
             {
-                AdminsTb? model = await AdminUserInfoRepository.GetByAdminInfo(dto.USERID);
+                AdminsTb? model = await AdminUserInfoRepository.GetAdminInfo(dto.USERID);
 
                 if(model == null) // 없음
                 {
@@ -152,7 +152,7 @@ namespace FamTec.Server.Services.Admin.User
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
-                AdminsTb? model = await AdminUserInfoRepository.GetByAdminInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
+                AdminsTb? model = await AdminUserInfoRepository.GetAdminInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
 
                 if(model == null) // 없음
                 {
@@ -172,7 +172,7 @@ namespace FamTec.Server.Services.Admin.User
                     model.UpdateDt = DateTime.Now;
                     model.UpdateUser = "토큰USER";
 
-                    bool result = await AdminUserInfoRepository.EditAsync(model);
+                    bool result = await AdminUserInfoRepository.EditAdminInfo(model);
 
                     if(result) // 수정성공
                     {
@@ -205,7 +205,7 @@ namespace FamTec.Server.Services.Admin.User
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
-                AdminsTb? model = await AdminUserInfoRepository.GetByAdminInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
+                AdminsTb? model = await AdminUserInfoRepository.GetAdminInfo(dto.USERID); // 해당 USERID로 사용자가 있는지 조회
 
                 if(model == null) // 없음
                 {
@@ -217,7 +217,7 @@ namespace FamTec.Server.Services.Admin.User
                     model.DelUser = "토큰USER";
                     model.DelYn = true;
 
-                    bool result = await AdminUserInfoRepository.DeleteAdminIdAsync(model);
+                    bool result = await AdminUserInfoRepository.DeleteAdminInfo(model);
 
                     if(result) // 삭제성공
                     {

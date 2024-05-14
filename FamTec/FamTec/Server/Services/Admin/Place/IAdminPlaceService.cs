@@ -15,6 +15,13 @@ namespace FamTec.Server.Services.Admin.Place
         public ValueTask<ResponseModel<AdminPlacesDTO>> GetAllWorks();
 
         /// <summary>
+        /// 관리자 사업장 추가
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseModel<AdminPlacesDTO>> AddAdminWorksInfo(AdminPlacesDTO dto);
+
+        /// <summary>
         /// 관리자 USERID에 해당하는 전체 관리자 사업장 모델리스트 출력
         /// </summary>
         /// <param name="userid"></param>
@@ -33,7 +40,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminPlacesDTO>> UpdateAdminWorks(AdminPlacesDTO dto);
+        public ValueTask<ResponseModel<AdminPlacesDTO>> UpdateAdminWorks(AdminPlacesDTO beforedto, AdminPlacesDTO afterdto);
 
         /// <summary>
         /// 관리자 사업장 DTO에 해당하는 데이터베이스 삭제

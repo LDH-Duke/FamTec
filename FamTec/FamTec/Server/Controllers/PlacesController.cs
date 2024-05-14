@@ -19,13 +19,13 @@ namespace FamTec.Server.Controllers
 
             this.PlaceServices = _placeservices;
         }
-
+       
         [HttpPost]
         [Route("InsertPlace")]
         public async ValueTask<IActionResult> AddPlace([FromBody]PlacesDTO dto)
         {
             ResponseModel<PlacesDTO>? model = await PlaceServices.AddPlaceInfo(dto);
-            return Ok(dto);
+            return Ok(model);
         }
 
 
@@ -54,7 +54,6 @@ namespace FamTec.Server.Controllers
             ResponseModel<PlacesDTO>? model = await PlaceServices.DeletePlaceInfo(dto);
             return Ok(model);
         }
-
 
     }
 }

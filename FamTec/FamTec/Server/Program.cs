@@ -1,9 +1,11 @@
 using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
+using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Services.Admin.Place;
 using FamTec.Server.Services.Admin.User;
 using FamTec.Server.Services.Place;
 using FamTec.Server.Services.User;
@@ -16,10 +18,13 @@ builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
 builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
 builder.Services.AddTransient<IAdminUserInfoRepository, AdminUserInfoRepository>();
+builder.Services.AddTransient<IAdminPlacesInfoRepository, AdminPlaceInfoRepository>();
 
 builder.Services.AddTransient<IPlaceServices, PlaceServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
 builder.Services.AddTransient<IAdminUserService, AdminUserService>();
+builder.Services.AddTransient<IAdminPlaceService, AdminPlaceService>();
+
 
 // Add services to the container.
 

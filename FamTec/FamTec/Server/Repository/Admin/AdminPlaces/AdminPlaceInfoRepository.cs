@@ -88,6 +88,51 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         }
 
         /// <summary>
+        /// 테이블 정보에 해당하는 단일 사업장모델 반환
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<AdminPlacesTb> GetPlaceInfo(string userid, string placecd)
+        {
+            AdminPlacesTb? tb = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd);
+
+            try
+            {
+                if (tb is not null)
+                {
+                    return tb;
+                }
+                else
+                {
+                    return null;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// 전체 사업장 조회
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<List<AdminPlacesTb>> GetAllList()
+        {
+            try
+            {
+                return await context.AdminPlacesTbs.ToListAsync();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
+
+
+
+        /// <summary>
         /// 해당하는 관리자 사업장 삭제
         /// </summary>
         /// <param name="model"></param>
@@ -137,6 +182,6 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
         }
 
- 
+      
     }
 }

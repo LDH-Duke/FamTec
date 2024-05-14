@@ -1,5 +1,151 @@
 [
   {
+    "ContainingType": "FamTec.Server.Controllers.AdminUsersController",
+    "Method": "AddAdmin",
+    "RelativePath": "api/AdminUsers/AddAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.AdminsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUsersController",
+    "Method": "DeleteAdmin",
+    "RelativePath": "api/AdminUsers/DeleteAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.AdminsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUsersController",
+    "Method": "GetAdmin",
+    "RelativePath": "api/AdminUsers/SelectAdmin/{adminid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "adminid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUsersController",
+    "Method": "GetAllAdminList",
+    "RelativePath": "api/AdminUsers/SelectAllAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUsersController",
+    "Method": "UpdateAdmin",
+    "RelativePath": "api/AdminUsers/UpdateAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.AdminsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "AddAdminWorks",
+    "RelativePath": "api/AdminWorks/AddAdminWorks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "DeleteAdminWorks",
+    "RelativePath": "api/AdminWorks/DeleteAdminWorks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "GetAllWorks",
+    "RelativePath": "api/AdminWorks/GetAllWorks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "GetPlaceCDWorks",
+    "RelativePath": "api/AdminWorks/GetPlaceCDWorks/{placecd}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placecd",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "GetUserIDWorks",
+    "RelativePath": "api/AdminWorks/GetUserIDWorks/{userid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
+    "Method": "UpdateAdminWorks",
+    "RelativePath": "api/AdminWorks/UpdateAdminWorks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.BuildingsController",
     "Method": "Get",
     "RelativePath": "api/Buildings/SelectApi/{code}",
