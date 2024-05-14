@@ -1,8 +1,10 @@
 using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
+using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Services.Admin.User;
 using FamTec.Server.Services.Place;
 using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -13,9 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
 builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
+builder.Services.AddTransient<IAdminUserInfoRepository, AdminUserInfoRepository>();
 
 builder.Services.AddTransient<IPlaceServices, PlaceServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
+builder.Services.AddTransient<IAdminUserService, AdminUserService>();
 
 // Add services to the container.
 
@@ -27,22 +31,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<FmsContext>(options =>
     options.UseSqlServer(builder.Configuration
     .GetConnectionString("DefaultConnection")));
-#endregion
-
-#region SIGNAL R 등록
-/*
-builder.Services.AddSignalR(opts =>
-{
-    opts.EnableDetailedErrors = true;
-    opts.KeepAliveInterval = TimeSpan.FromMinutes(1);
-});
-
-builder.Services.AddResponseCompression(opts =>
-{
-    opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
-        new[] { "application/octet-stream" });
-});
-*/
 #endregion
 
 #region SIGNAL R CORS 등록

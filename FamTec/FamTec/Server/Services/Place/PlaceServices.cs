@@ -10,9 +10,18 @@ namespace FamTec.Server.Services.Place
     {
         private readonly IPlaceInfoRepository PlaceInfoRepository;
 
+        ResponseOBJ<PlacesDTO> Response;
+        Func<string, PlacesDTO, int, ResponseModel<PlacesDTO>> FuncResponseOBJ;
+        Func<string, List<PlacesDTO>, int, ResponseModel<PlacesDTO>> FuncResponseList;
+
+
         public PlaceServices(IPlaceInfoRepository _placeinforepository)
         {
             this.PlaceInfoRepository = _placeinforepository;
+
+            Response = new ResponseOBJ<PlacesDTO>();
+            FuncResponseOBJ = Response.RESPMessage;
+            FuncResponseList = Response.RESPMessageList;
         }
 
         /// <summary>
@@ -25,31 +34,17 @@ namespace FamTec.Server.Services.Place
 
             if(result is [_, ..])
             {
-                ResponseModel<PlacesDTO> obj = new()
+                return FuncResponseList("전체데이터 조회 성공", result.Select(e => new PlacesDTO()
                 {
-                    Message = "성공",
-                    Data = result.Select(e => new PlacesDTO()
-                    {
-                        PlaceCd = e.PlaceCd,
-                        Name = e.Name,
-                        CONTRACT_NUM = e.ContractNum,
-                        NOTE = e.Note
-                    }).ToList(),
-
-                    StatusCode = 200
-                };
-
-                return obj;
+                    PlaceCd = e.PlaceCd,
+                    Name = e.Name,
+                    CONTRACT_NUM = e.ContractNum,
+                    NOTE = e.Note
+                }).ToList(), 200);
             }
             else
             {
-                ResponseModel<PlacesDTO> obj = new()
-                {
-                    Message = "데이터가 존재하지 않습니다.",
-                    Data = null,
-                    StatusCode = 200
-                };
-                return obj;
+                return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
             }
 
         }
@@ -80,61 +75,30 @@ namespace FamTec.Server.Services.Place
 
                     if(result == null)
                     {
-                        // ADD에 실패하였을때.
-                        ResponseModel<PlacesDTO> model = new()
-                        {
-                            Message = "데이터 추가에 실패하였습니다.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return model;
+                        return FuncResponseOBJ("데이터 추가에 실패하였습니다.", null, 404);
                     }
                     else
                     {
-                        ResponseModel<PlacesDTO> model = new()
+                        return FuncResponseOBJ("데이터 추가에 성공하였습니다.", new PlacesDTO()
                         {
-                            Message = "데이터 추가에 성공하였습니다.",
-                            Data = new List<PlacesDTO>()
-                            {
-                                new PlacesDTO()
-                                {
-                                    PlaceCd = result.PlaceCd,
-                                    Name = result.Name,
-                                    CONTRACT_NUM = result.ContractNum,
-                                    NOTE = result.Note
-                                }
-                            },
-                            StatusCode = 200
-                        };
-
-                        return model;
+                            PlaceCd = result.PlaceCd,
+                            Name = result.Name,
+                            CONTRACT_NUM = result.ContractNum,
+                            NOTE = result.Note
+                        }, 200);
                     }
-
                 }
                 else
                 {
                     // 이미 해당 코드로 사업장이 있다.
-                    ResponseModel<PlacesDTO> model = new()
-                    {
-                        Message = "이미 해당코드로 사업장이 존재합니다.",
-                        Data = null,
-                        StatusCode = 200
-                    };
-                    return model;
+                    return FuncResponseOBJ("이미 해당코드의 사업장이 존재합니다.", null, 200);
                 }
             }
             else
             {
-                // 이미 해당 코드로 사업장이 있다.
-                ResponseModel<PlacesDTO> model = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return model;
+                // 넘어온 데이터가 잘못됐다.
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
-
         }
 
         /// <summary>
@@ -151,14 +115,7 @@ namespace FamTec.Server.Services.Place
                 if(model == null) // 없음
                 {
                     // 없어서 수정못함. return 해야함.
-                    ResponseModel<PlacesDTO> obj = new()
-                    {
-                        Message = "데이터가 존재하지 않습니다.",
-                        Data = null,
-                        StatusCode = 404
-                    };
-                    
-                    return obj;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 404);
                 }
                 else
                 {
@@ -177,45 +134,24 @@ namespace FamTec.Server.Services.Place
 
                     if(result) // 수정성공
                     {
-                        ResponseModel<PlacesDTO> obj = new()
+                        return FuncResponseOBJ("데이터 수정 성공.", new PlacesDTO()
                         {
-                            Message = "데이터 수정 성공.",
-                            Data = new List<PlacesDTO>() 
-                            {
-                                new PlacesDTO()
-                                {
-                                    PlaceCd = model.PlaceCd,
-                                    Name = model.Name,
-                                    CONTRACT_NUM = model.ContractNum,
-                                    NOTE = model.Note
-                                }
-                            },
-                            StatusCode = 200
-                        };
-                        return obj;
+                            PlaceCd = model.PlaceCd,
+                            Name = model.Name,
+                            CONTRACT_NUM = model.ContractNum,
+                            NOTE = model.Note
+                        }, 200);
                     }
                     else // 실패
                     {
-                        ResponseModel<PlacesDTO> obj = new()
-                        {
-                            Message = "데이터 수정 실패.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return obj;
+                        return FuncResponseOBJ("데이터 수정 실패", null, 404);
                     }
 
                 }
             }
             else
             {
-                ResponseModel<PlacesDTO> obj = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return obj;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 
@@ -233,13 +169,7 @@ namespace FamTec.Server.Services.Place
                 if(model == null) // 없음
                 {
                     // 없어서 수정못함
-                    ResponseModel<PlacesDTO> obj = new()
-                    {
-                        Message = "데이터가 존재하지 않습니다.",
-                        Data = null,
-                        StatusCode = 404
-                    };
-                    return obj;
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 404);
                 }
                 else // 있음
                 {
@@ -251,44 +181,23 @@ namespace FamTec.Server.Services.Place
 
                     if(result) // 삭제성공
                     {
-                        ResponseModel<PlacesDTO> obj = new()
+                        return FuncResponseOBJ("데이터 삭제 성공.", new PlacesDTO()
                         {
-                            Message = "데이터 삭제 성공.",
-                            Data = new List<PlacesDTO>()
-                            {
-                                new PlacesDTO()
-                                {
-                                    PlaceCd = model.PlaceCd,
-                                    Name = model.Name,
-                                    CONTRACT_NUM = model.ContractNum,
-                                    NOTE = model.Note
-                                }
-                            },
-                            StatusCode = 200
-                        };
-                        return obj;
+                            PlaceCd = model.PlaceCd,
+                            Name = model.Name,
+                            CONTRACT_NUM = model.ContractNum,
+                            NOTE = model.Note
+                        }, 200);
                     }
                     else // 실패
                     {
-                        ResponseModel<PlacesDTO> obj = new()
-                        {
-                            Message = "데이터 삭제 실패.",
-                            Data = null,
-                            StatusCode = 404
-                        };
-                        return obj;
+                        return FuncResponseOBJ("데이터 삭제 실패", null, 404);
                     }
                 }
             }
             else
             {
-                ResponseModel<PlacesDTO> obj = new()
-                {
-                    Message = "데이터가 비어있습니다.",
-                    Data = null,
-                    StatusCode = 404
-                };
-                return obj;
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 
