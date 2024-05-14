@@ -7,38 +7,38 @@ namespace FamTec.Server.Services.User
     public interface IUserServices
     {
         /// <summary>
-        /// 사용자 전체조회
+        /// 사용자 전체리스트 조회
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UsersDTO>> GetAllUserListService();
+        public ValueTask<ResponseModel<UsersDTO>> GetAllUserList();
 
         /// <summary>
-        /// 해당 USER 정보 조회
+        /// 매개변수로 넘어온 USERID에 해당하는 사용자 정보 출력
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UsersDTO>> GetUserService(string userid);
+        public ValueTask<ResponseModel<UsersDTO>> GetUserInfo(string userid);
 
         /// <summary>
-        /// 사용자 추가
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 저장
         /// </summary>
         /// <param name="userdto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UsersDTO>> AddUserService(UsersDTO dto);
+        public ValueTask<ResponseModel<UsersDTO>> AddUserInfo(UsersDTO dto);
 
         /// <summary>
-        /// 사용자 수정
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UsersDTO>> UpdateUserService(UsersDTO dto);
+        public ValueTask<ResponseModel<UsersDTO>> UpdateUserInfo(UsersDTO dto);
 
         /// <summary>
-        /// 사용자 삭제
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UsersDTO>> DeleteUserService(UsersDTO dto);
+        public ValueTask<ResponseModel<UsersDTO>> DeleteUserInfo(UsersDTO dto);
     }
 }
 

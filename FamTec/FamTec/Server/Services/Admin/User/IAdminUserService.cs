@@ -5,38 +5,38 @@ namespace FamTec.Server.Services.Admin.User
     public interface IAdminUserService
     {
         /// <summary>
-        /// 관리자 전체 조회
+        /// 관리자 전체리스트 조회
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminsDTO>> GetAllUserListService();
+        public ValueTask<ResponseModel<AdminsDTO>> GetAllAdminList();
         
         /// <summary>
-        /// 해당 관리자 USER 정보 조회
+        /// 매개변수로 넘어온 USERID에 해당하는 관리자 정보 출력
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminsDTO>> GetAdminUserService(string adminid);
+        public ValueTask<ResponseModel<AdminsDTO>> GetAdminInfo(string adminid);
 
         /// <summary>
-        /// 관리자 추가
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스에 저장
+        /// </summary>
+        /// <param name="dto">관리자DTO</param>
+        /// <returns></returns>
+        public ValueTask<ResponseModel<AdminsDTO>> AddAdminInfo(AdminsDTO dto);
+
+        /// <summary>
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminsDTO>> AddAdminUserSerivce(AdminsDTO dto);
+        public ValueTask<ResponseModel<AdminsDTO>> UpdateAdminInfo(AdminsDTO dto);
 
         /// <summary>
-        /// 관리자 수정
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminsDTO>> UpdateAdminUserService(AdminsDTO dto);
-
-        /// <summary>
-        /// 관리자 삭제
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <returns></returns>
-        public ValueTask<ResponseModel<AdminsDTO>> DeleteAdminUserService(AdminsDTO dto);
+        public ValueTask<ResponseModel<AdminsDTO>> DeleteAdminInfo(AdminsDTO dto);
 
 
     }

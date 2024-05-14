@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FamTec.Server.Databases;
 
@@ -68,13 +67,14 @@ public partial class FmsContext : DbContext
     {
         modelBuilder.Entity<AdminPlacesTb>(entity =>
         {
+            entity.HasKey(e => e.Id).HasName("PK__ADMIN_PL__3214EC2750812F2B");
+
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
 
-            entity.HasOne(d => d.PlacecodeCdNavigation).WithMany().HasConstraintName("FK__ADMIN_PLA__PLACE__5C57A83E");
+            entity.HasOne(d => d.PlacecodeCdNavigation).WithMany(p => p.AdminPlacesTbs).HasConstraintName("FK__ADMIN_PLA__PLACE__62108194");
 
-            entity.HasOne(d => d.UsersUser).WithMany().HasConstraintName("FK__ADMIN_PLA__USERS__5B638405");
+            entity.HasOne(d => d.UsersUser).WithMany(p => p.AdminPlacesTbs).HasConstraintName("FK__ADMIN_PLA__USERS__611C5D5B");
         });
 
         modelBuilder.Entity<AdminsTb>(entity =>
@@ -194,9 +194,6 @@ public partial class FmsContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
-
-            //entity.Property(u => u.Id).ValueGeneratedOnUpdate().Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
-            //entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
         modelBuilder.Entity<RoomInventorysTb>(entity =>
@@ -217,8 +214,6 @@ public partial class FmsContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("(getdate())");
             entity.Property(e => e.DelYn).HasDefaultValueSql("((0))");
-
-            
 
             entity.HasOne(d => d.Floor).WithMany(p => p.RoomsTbs).HasConstraintName("FK__ROOMS_TB__FLOOR___7834CCDD");
         });

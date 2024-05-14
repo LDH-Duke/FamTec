@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FamTec.Shared.Model;
 
-[Keyless]
 [Table("ADMIN_PLACES_TB")]
 public partial class AdminPlacesTb
 {
+    [Key]
     [Column("ID")]
     public int Id { get; set; }
 
@@ -36,8 +36,10 @@ public partial class AdminPlacesTb
     public string? PlacecodeCd { get; set; }
 
     [ForeignKey("PlacecodeCd")]
+    [InverseProperty("AdminPlacesTbs")]
     public virtual PlacesTb? PlacecodeCdNavigation { get; set; }
 
     [ForeignKey("UsersUserid")]
+    [InverseProperty("AdminPlacesTbs")]
     public virtual UsersTb? UsersUser { get; set; }
 }

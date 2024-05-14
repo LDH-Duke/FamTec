@@ -5,31 +5,31 @@ namespace FamTec.Server.Services.Place
     public interface IPlaceServices
     {
         /// <summary>
-        /// 사업장 전체조회
+        /// 사업장 전체리스트 조회
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseModel<PlacesDTO>> GetAllUserListService();
+        public ValueTask<ResponseModel<PlacesDTO>> GetAllPlaceList();
 
         /// <summary>
-        /// 사업장 추가
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 저장
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<PlacesDTO>> AddPlaceService(PlacesDTO dto);
+        public ValueTask<ResponseModel<PlacesDTO>> AddPlaceInfo(PlacesDTO dto);
 
         /// <summary>
-        /// 사업장 수정
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<PlacesDTO>> UpdatePlaceService(PlacesDTO dto);
+        public ValueTask<ResponseModel<PlacesDTO>> UpdatePlaceInfo(PlacesDTO dto);
 
         /// <summary>
-        /// 사업장 삭제
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<PlacesDTO>> DeletePlaceService(PlacesDTO dto);
+        public ValueTask<ResponseModel<PlacesDTO>> DeletePlaceInfo(PlacesDTO dto);
 
     }
 }

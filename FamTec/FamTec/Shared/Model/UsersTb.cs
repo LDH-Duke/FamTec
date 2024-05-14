@@ -113,6 +113,9 @@ public partial class UsersTb
     public string? PlacecodeCd { get; set; }
 
     [InverseProperty("UsersUser")]
+    public virtual ICollection<AdminPlacesTb> AdminPlacesTbs { get; set; } = new List<AdminPlacesTb>();
+
+    [InverseProperty("UsersUser")]
     public virtual ICollection<AlarmsTb> AlarmsTbs { get; set; } = new List<AlarmsTb>();
 
     [ForeignKey("PlacecodeCd")]

@@ -29,7 +29,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
@@ -46,7 +46,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
@@ -72,7 +72,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
@@ -98,7 +98,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
@@ -125,7 +125,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 

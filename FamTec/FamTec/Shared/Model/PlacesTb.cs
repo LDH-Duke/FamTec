@@ -58,6 +58,9 @@ public partial class PlacesTb
     public bool? DelYn { get; set; }
 
     [InverseProperty("PlacecodeCdNavigation")]
+    public virtual ICollection<AdminPlacesTb> AdminPlacesTbs { get; set; } = new List<AdminPlacesTb>();
+
+    [InverseProperty("PlacecodeCdNavigation")]
     public virtual ICollection<BuildingsTb> BuildingsTbs { get; set; } = new List<BuildingsTb>();
 
     [InverseProperty("PlacecodeCdNavigation")]

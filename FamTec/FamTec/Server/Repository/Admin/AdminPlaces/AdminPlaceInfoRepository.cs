@@ -14,7 +14,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         }
 
         /// <summary>
-        /// 추가
+        /// 관리자 사업장 추가
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -33,57 +33,107 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
         }
 
+        /// <summary>
+        /// 관리자 PLACECODE에 해당하는 전체 사업장 출력
+        /// </summary>
+        /// <param name="placecd"></param>
+        /// <returns></returns>
         public async ValueTask<List<AdminPlacesTb>> GetPlaceAllAsync(string placecd)
         {
-            List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
-            
-            if (model is [_, ..])
+            try
             {
-                return model;
+                List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
+
+                if (model is [_, ..])
+                {
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                throw new ArgumentNullException();
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
+        /// <summary>
+        /// 관리자 USERID에 해당하는 전체 사업장 출력
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
         public async ValueTask<List<AdminPlacesTb>> GetUserAllAsync(string userid)
         {
-            List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid).ToListAsync();
+            try
+            {
+                List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid).ToListAsync();
 
-            if(model is [_, ..])
-            {
-                return model;
+                if (model is [_, ..])
+                {
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                throw new ArgumentNullException();
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
+        /// <summary>
+        /// 해당하는 관리자 사업장 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async ValueTask<bool> DeleteAdminPlacesAsync(AdminPlacesTb model)
         {
-            if(model is not null)
+            try
             {
-                context.AdminPlacesTbs.Update(model);
-                return await context.SaveChangesAsync() > 0 ? true : false;
-            }
-            else
+                if (model is not null)
+                {
+                    context.AdminPlacesTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception ex)
             {
-                throw new ArgumentNullException();
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
+        /// <summary>
+        /// 해당하는 관리자 사업장 수정
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async ValueTask<bool> EditAdminPlacesAsync(AdminPlacesTb model)
         {
-            if (model is not null)
+            try
             {
-                context.AdminPlacesTbs.Update(model);
-                return await context.SaveChangesAsync() > 0 ? true : false;
-            }
-            else
+                if (model is not null)
+                {
+                    context.AdminPlacesTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return false;
+                }
+            }catch(Exception ex)
             {
-                throw new ArgumentNullException();
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 

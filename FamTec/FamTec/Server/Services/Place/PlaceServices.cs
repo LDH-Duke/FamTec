@@ -25,10 +25,10 @@ namespace FamTec.Server.Services.Place
         }
 
         /// <summary>
-        /// 사업장 전체조회
+        /// 사업장 전체리스트 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> GetAllUserListService()
+        public async ValueTask<ResponseModel<PlacesDTO>> GetAllPlaceList()
         {
             List<PlacesTb>? result = await PlaceInfoRepository.GetAllAsync();
 
@@ -50,11 +50,11 @@ namespace FamTec.Server.Services.Place
         }
 
         /// <summary>
-        /// 사업장 추가
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 저장
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> AddPlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> AddPlaceInfo(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 모델이 NULL이 아니어야함.
             {
@@ -102,11 +102,11 @@ namespace FamTec.Server.Services.Place
         }
 
         /// <summary>
-        /// 사업장 수정
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> UpdatePlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> UpdatePlaceInfo(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -156,11 +156,11 @@ namespace FamTec.Server.Services.Place
         }
 
         /// <summary>
-        /// 사업장 삭제
+        /// 매개변수로 넘어온 사업장DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> DeletePlaceService(PlacesDTO dto)
+        public async ValueTask<ResponseModel<PlacesDTO>> DeletePlaceInfo(PlacesDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {

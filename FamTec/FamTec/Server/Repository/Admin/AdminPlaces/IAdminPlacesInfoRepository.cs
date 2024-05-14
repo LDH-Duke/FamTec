@@ -5,12 +5,39 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
 {
     public interface IAdminPlacesInfoRepository
     {
-        ValueTask<AdminPlacesTb> AddAsync(AdminPlacesTb model); // 추가
+        /// <summary>
+        /// 관리자 사업장 추가
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<AdminPlacesTb> AddAsync(AdminPlacesTb model);
 
-        ValueTask<List<AdminPlacesTb>> GetUserAllAsync(string userid); // USERID로 전체조회
-        ValueTask<List<AdminPlacesTb>> GetPlaceAllAsync(string placecd); // PLACECD로 전체조회
-        ValueTask<bool> DeleteAdminPlacesAsync(AdminPlacesTb model); // 삭제
+        /// <summary>
+        /// 관리자 USERID에 해당하는 전체 사업장 출력
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        ValueTask<List<AdminPlacesTb>> GetUserAllAsync(string userid);
+        
+        /// <summary>
+        /// 관리자 PLACECODE에 해당하는 전체 사업장 출력
+        /// </summary>
+        /// <param name="placecd"></param>
+        /// <returns></returns>
+        ValueTask<List<AdminPlacesTb>> GetPlaceAllAsync(string placecd);
+        
+        /// <summary>
+        /// 해당하는 관리자 사업장 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<bool> DeleteAdminPlacesAsync(AdminPlacesTb model);
 
+        /// <summary>
+        /// 해당하는 관리자 사업장 수정
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         ValueTask<bool> EditAdminPlacesAsync(AdminPlacesTb model); // 수정
 
     }

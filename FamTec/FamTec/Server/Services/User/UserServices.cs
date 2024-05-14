@@ -33,7 +33,7 @@ namespace FamTec.Server.Services.User
         /// USER 전체 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UsersDTO>> GetAllUserListService()
+        public async ValueTask<ResponseModel<UsersDTO>> GetAllUserList()
         {
             try
             {
@@ -79,12 +79,12 @@ namespace FamTec.Server.Services.User
 
 
         /// <summary>
-        /// USERID로 조회 
+        /// 매개변수로 넘어온 USERID에 해당하는 사용자 정보 출력 
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
         // userid는 차후 토큰이 될것임.
-        public async ValueTask<ResponseModel<UsersDTO>> GetUserService(string userid)
+        public async ValueTask<ResponseModel<UsersDTO>> GetUserInfo(string userid)
         {
             if (userid is not null)
             {
@@ -129,11 +129,11 @@ namespace FamTec.Server.Services.User
         }
 
         /// <summary>
-        /// 사용자 추가
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 저장
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UsersDTO>> AddUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> AddUserInfo(UsersDTO dto)
         {
             if (dto is not null)
             {
@@ -218,11 +218,11 @@ namespace FamTec.Server.Services.User
         }
 
         /// <summary>
-        /// 사용자 수정
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UsersDTO>> UpdateUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> UpdateUserInfo(UsersDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -319,11 +319,11 @@ namespace FamTec.Server.Services.User
         }
 
         /// <summary>
-        /// 삭제
+        /// 매개변수로 넘어온 사용자DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UsersDTO>> DeleteUserService(UsersDTO dto)
+        public async ValueTask<ResponseModel<UsersDTO>> DeleteUserInfo(UsersDTO dto)
         {
             if (dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {

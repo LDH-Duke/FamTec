@@ -24,7 +24,7 @@ namespace FamTec.Server.Controllers
         [Route("InsertPlace")]
         public async ValueTask<IActionResult> AddPlace([FromBody]PlacesDTO dto)
         {
-            ResponseModel<PlacesDTO>? model = await PlaceServices.AddPlaceService(dto);
+            ResponseModel<PlacesDTO>? model = await PlaceServices.AddPlaceInfo(dto);
             return Ok(dto);
         }
 
@@ -33,7 +33,7 @@ namespace FamTec.Server.Controllers
         [Route("SelectAllPlace")]
         public async ValueTask<IActionResult> GetAllPlace()
         {
-            ResponseModel<PlacesDTO>? model = await PlaceServices.GetAllUserListService();
+            ResponseModel<PlacesDTO>? model = await PlaceServices.GetAllPlaceList();
             return Ok(model);
         }
 
@@ -42,7 +42,7 @@ namespace FamTec.Server.Controllers
         [Route("UpdatePlace")]
         public async ValueTask<IActionResult> UpdatePlace([FromBody]PlacesDTO dto)
         {
-            ResponseModel<PlacesDTO>? model = await PlaceServices.UpdatePlaceService(dto);
+            ResponseModel<PlacesDTO>? model = await PlaceServices.UpdatePlaceInfo(dto);
             return Ok(model);
         }
 
@@ -51,7 +51,7 @@ namespace FamTec.Server.Controllers
         [Route("DeletePlace")]
         public async ValueTask<IActionResult> DeletePlace([FromBody]PlacesDTO dto)
         {
-            ResponseModel<PlacesDTO>? model = await PlaceServices.DeletePlaceService(dto);
+            ResponseModel<PlacesDTO>? model = await PlaceServices.DeletePlaceInfo(dto);
             return Ok(model);
         }
 

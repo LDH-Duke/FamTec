@@ -26,9 +26,5 @@
     <ProjectReference Include="..\Shared\FamTec.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Admin\Place\" />
-  </ItemGroup>
-
 
 </Project>

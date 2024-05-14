@@ -31,10 +31,10 @@ namespace FamTec.Server.Services.Admin.User
         }
 
         /// <summary>
-        /// ADMIN 전체조회
+        /// 관리자 전체 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AdminsDTO>> GetAllUserListService()
+        public async ValueTask<ResponseModel<AdminsDTO>> GetAllAdminList()
         {
             List<AdminsTb>? result = await AdminUserInfoRepository.GetAllAsync();
 
@@ -55,7 +55,12 @@ namespace FamTec.Server.Services.Admin.User
             }
         }
 
-        public async ValueTask<ResponseModel<AdminsDTO>> GetAdminUserService(string adminid)
+        /// <summary>
+        /// 매개변수로 넘어온 USERID에 해당하는 관리저 정보 출력
+        /// </summary>
+        /// <param name="adminid"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseModel<AdminsDTO>> GetAdminInfo(string adminid)
         {
             if(adminid is not null)
             {
@@ -86,11 +91,11 @@ namespace FamTec.Server.Services.Admin.User
 
   
         /// <summary>
-        /// 관리자 추가
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스 저장
         /// </summary>
-        /// <param name="dto"></param>
+        /// <param name="dto">관리자DTO</param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AdminsDTO>> AddAdminUserSerivce(AdminsDTO dto)
+        public async ValueTask<ResponseModel<AdminsDTO>> AddAdminInfo(AdminsDTO dto)
         {
             if(dto is not null)
             {
@@ -137,12 +142,13 @@ namespace FamTec.Server.Services.Admin.User
             }
         }
 
+        
         /// <summary>
-        /// 관리자 수정
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스에 수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AdminsDTO>> UpdateAdminUserService(AdminsDTO dto)
+        public async ValueTask<ResponseModel<AdminsDTO>> UpdateAdminInfo(AdminsDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
@@ -191,11 +197,11 @@ namespace FamTec.Server.Services.Admin.User
         }
 
         /// <summary>
-        /// 관리자 삭제
+        /// 매개변수로 넘어온 관리자DTO 데이터베이스에 삭제
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AdminsDTO>> DeleteAdminUserService(AdminsDTO dto)
+        public async ValueTask<ResponseModel<AdminsDTO>> DeleteAdminInfo(AdminsDTO dto)
         {
             if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
             {
