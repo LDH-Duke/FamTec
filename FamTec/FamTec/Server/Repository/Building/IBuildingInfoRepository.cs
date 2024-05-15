@@ -5,24 +5,29 @@ namespace FamTec.Server.Repository.Building
     public interface IBuildingInfoRepository
     {
         /// <summary>
-        /// 입력
+        /// 건물추가
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<BuildingsTb> AddAsync(BuildingsTb model, string userid);
+        ValueTask<BuildingsTb> AddAsync(BuildingsTb model);
 
         /// <summary>
-        /// 전체조회
+        /// 건물 전체조회
         /// </summary>
         /// <returns></returns>
-        ValueTask<List<BuildingsTb>> GetAllAsync();
+        ValueTask<List<BuildingsTb>> GetAllList();
 
         /// <summary>
-        /// 사업장코드로 조회
+        /// 해당사업장 코드에 해당하는 모든 건물 출력
         /// </summary>
-        /// <param name="placecd"></param>
         /// <returns></returns>
-        ValueTask<List<BuildingsTb>> GetByPlaceCDAsync(string placecd);
+        ValueTask<List<BuildingsTb>> GetBuildingList(string placecode);
+
+        /// <summary>
+        /// 해당 건물코드에 해당하는 건물 출력
+        /// </summary>
+        /// <returns></returns>
+        ValueTask<BuildingsTb> GetBuildingInfo(string buildingcode);
 
         /// <summary>
         /// 수정
@@ -30,7 +35,7 @@ namespace FamTec.Server.Repository.Building
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> EditAsync(BuildingsTb model, string userid);
+        ValueTask<bool> EditBuildingInfo(BuildingsTb model);
 
         /// <summary>
         /// 삭제
@@ -38,6 +43,6 @@ namespace FamTec.Server.Repository.Building
         /// <param name="buildingcd"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<bool> DeleteBuildingCDAsync(string buildingcd, string userid);
+        ValueTask<bool> DeleteBuildingInfo(BuildingsTb model);
     }
 }

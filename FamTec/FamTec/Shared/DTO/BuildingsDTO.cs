@@ -1,20 +1,242 @@
-﻿namespace FamTec.Shared.DTO
+﻿using FamTec.Shared.Model;
+using System.ComponentModel.DataAnnotations;
+
+namespace FamTec.Shared.DTO
 {
+    /// <summary>
+    /// 건물 DTO
+    /// </summary>
     public class BuildingsDTO
     {
-        public bool IndexChk { get; set; } = false;
+        /// <summary>
+        /// 건물코드
+        /// </summary>
+        [MaxLength(25)]
+        public string? BuildingCode { get; set; }
 
-        public string BuildingCd { get; set; }
+        /// <summary>
+        /// 건물이름
+        /// </summary>
+        public string? Name { get; set; }
 
-        public string Name { get; set; }
+        /// <summary>
+        /// 주소
+        /// </summary>
+        public string? Address { get; set; }
 
-        public string Address { get; set; }
+        /// <summary>
+        /// 전화번호
+        /// </summary>
+        [MaxLength(20)]
+        public string? Tel { get; set; }
 
+        /// <summary>
+        /// 건물용도
+        /// </summary>
+        [MaxLength(20)]
+        public string? Usage { get; set; }
+
+        /// <summary>
+        /// 시공업체
+        /// </summary>
+        [MaxLength(20)]
+        public string? ConstComp { get; set; }
+
+        /// <summary>
+        /// 준공년월
+        /// </summary>
+        public DateTime? CompletionData { get; set; }
+
+        /// <summary>
+        /// 건물구조
+        /// </summary>
+        [MaxLength(30)]
+        public string? BuildingStruct { get; set; }
+
+        /// <summary>
+        /// 지붕구조
+        /// </summary>
+        [MaxLength(30)]
+        public string? RoofStruct { get; set; }
+
+        /// <summary>
+        /// 연면적
+        /// </summary>
+        public double? GrossFloorArea { get; set; }
+
+        /// <summary>
+        /// 대지면적
+        /// </summary>
+        public double? LandArea { get; set; }
+
+        /// <summary>
+        /// 건축면적
+        /// </summary>
+        public double? BuildingArea { get; set; }
+
+        /// <summary>
+        /// 건물층수
+        /// </summary>
         public int? FloorNum { get; set; }
+        /// <summary>
+        /// 지상 층수
+        /// </summary>
+        public int? GroundFloorNum { get; set; }
 
-        public DateTime? CompletionDate { get; set; }
-             
-        public DateTime? CreateDt { get; set; }
+        /// <summary>
+        /// 지하 층수
+        /// </summary>
+        public int? BasementFloorNum { get; set; }
+
+        /// <summary>
+        /// 건물 높이
+        /// </summary>
+        public double? BuildingHeight { get; set; }
+
+        /// <summary>
+        /// 건물 지상높이
+        /// </summary>
+        public double? GroundHeight { get; set; }
+
+        /// <summary>
+        /// 건물 지하깊이
+        /// </summary>
+        public double? BasementHeight { get; set; }
+        
+        /// <summary>
+        /// 주차대수
+        /// </summary>
+        public int? PackingNum { get; set; }
+
+        /// <summary>
+        /// 옥내 대수
+        /// </summary>
+        public int? InnerPackingNum { get; set; }
+
+        /// <summary>
+        /// 옥외 대수
+        /// </summary>
+        public int? OuterPackingNum { get; set; }
+
+        /// <summary>
+        /// 전기용량
+        /// </summary>
+        public double? ElecCapacity { get; set; }
+
+        /// <summary>
+        /// 수전용량
+        /// </summary>
+        public double? FaucetCapacity { get; set; }
+
+        /// <summary>
+        /// 발전용량
+        /// </summary>
+        public double? GenerationCapacity { get; set; }
+
+        /// <summary>
+        /// 급수용량
+        /// </summary>
+        public double? WaterCapacity { get; set; }
+        
+        /// <summary>
+        /// 고가 수조
+        /// </summary>
+        public double? ElevWaterTank { get; set; }
+
+        /// <summary>
+        /// 저수조
+        /// </summary>
+        public double? WaterTank { get; set; }
+
+        /// <summary>
+        /// 가스용량
+        /// </summary>
+        public double? GasCapacity { get; set; }
+
+        /// <summary>
+        /// 보일러
+        /// </summary>
+        public double? Boiler { get; set; }
+
+        /// <summary>
+        /// 냉온수기
+        /// </summary>
+        public double? WaterDispenser { get; set; }
+
+        /// <summary>
+        /// 승강대수
+        /// </summary>
+        public int? LiftNum { get; set; }
+
+        /// <summary>
+        /// 인승용
+        /// </summary>
+        public int? PeopleLiftNum { get; set; }
+
+        /// <summary>
+        /// 화물용
+        /// </summary>
+        public int? CargoLiftNum { get; set; }
+
+        /// <summary>
+        /// 냉 난방 용량
+        /// </summary>
+        public double? CoolHeatCapacity { get; set; }
+
+        /// <summary>
+        /// 난방용량
+        /// </summary>
+        public double? HeatCapacity { get; set; }
+
+        /// <summary>
+        /// 냉방용량
+        /// </summary>
+        public double? CoolCapacity { get; set; }
+        
+        /// <summary>
+        /// 조경면적
+        /// </summary>
+        public double? LandScapeArea { get; set; }
+
+        /// <summary>
+        /// 지상면적
+        /// </summary>
+        public double? GroundArea { get; set; }
+
+        /// <summary>
+        /// 옥상면적
+        /// </summary>
+        public double? RooftopArea { get; set; }
+        
+        /// <summary>
+        /// 화장실 개수
+        /// </summary>
+        public int? ToiletNum { get; set; }
+
+        /// <summary>
+        /// 남자화장실 개수
+        /// </summary>
+        public int? MenToiletNum { get; set; }
+
+        /// <summary>
+        /// 여자화장실 개수
+        /// </summary>
+        public int? WomenToiletNum { get; set; }
+
+        /// <summary>
+        /// 소방등급
+        /// </summary>
+        public string? FireRating { get; set; }
+
+        /// <summary>
+        /// 정화조 용량
+        /// </summary>
+        public double? SepticTankCapacity { get; set; }
+        
+        /// <summary>
+        /// 건물코드 - 외래키 참조
+        /// </summary>
+        public string? PlaceCD { get; set; }
 
     }
 }

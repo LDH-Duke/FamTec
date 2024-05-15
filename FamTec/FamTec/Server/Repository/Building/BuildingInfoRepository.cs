@@ -1,6 +1,8 @@
 ﻿using FamTec.Server.Databases;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using Microsoft.IdentityModel.Abstractions;
 
 namespace FamTec.Server.Repository.Building
 {
@@ -14,34 +16,39 @@ namespace FamTec.Server.Repository.Building
         }
 
         /// <summary>
-        /// 추가
+        /// 건물 추가
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<BuildingsTb> AddAsync(BuildingsTb model, string userid)
+        /// <exception cref="ArgumentException"></exception>
+        public async ValueTask<BuildingsTb> AddAsync(BuildingsTb model)
         {
             try
             {
-                model.CreateUser = userid;
-                model.CreateDt = DateTime.Now;
-                
-                context.BuildingsTbs.Add(model);
-
-                await context.SaveChangesAsync();
-                return model;
+                if (model is not null)
+                {
+                    context.BuildingsTbs.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
         /// <summary>
-        /// 전체조회
+        /// 건물 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<BuildingsTb>> GetAllAsync()
+        /// <exception cref="NotImplementedException"></exception>
+        public async ValueTask<List<BuildingsTb>> GetAllList()
         {
             try
             {
@@ -50,64 +57,74 @@ namespace FamTec.Server.Repository.Building
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
         /// <summary>
-        /// 사업장코드로 조회
+        /// 해당사업장 코드에 해당하는 모든 건물 출력
         /// </summary>
-        /// <param name="placecd"></param>
+        /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<List<BuildingsTb>> GetByPlaceCDAsync(string placecd)
+        /// <exception cref="NotImplementedException"></exception>
+        public async ValueTask<List<BuildingsTb>> GetBuildingList(string placecode)
         {
             try
             {
-                List<BuildingsTb>? model = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
-                if (model is [_, ..])
+                if (!String.IsNullOrWhiteSpace(placecode))
                 {
-                    return model;
+                    List<BuildingsTb>? result = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecode).ToListAsync();
+                    if (result is [_, ..])
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
-                    throw new ArgumentNullException();
-                }
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// 빌딩 코드로 빌딩정보 단일 삭제
-        /// </summary>
-        /// <param name="buildingcd"></param>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<bool> DeleteBuildingCDAsync(string buildingcd, string userid)
-        {
-            try
-            {
-                BuildingsTb? model = await context.BuildingsTbs.FirstOrDefaultAsync(m => m.BuildingCd == buildingcd);
-                if (model is not null)
-                {
-                    model.DelDt = DateTime.Now;
-                    model.DelYn = true;
-                    model.DelUser = userid;
-
-                    context.BuildingsTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    throw new ArgumentNullException();
+                    return null;
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 건물코드에 해당하는 건물 출력
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<BuildingsTb> GetBuildingInfo(string buildingcode)
+        {
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(buildingcode))
+                {
+                    BuildingsTb? result = await context.BuildingsTbs.FirstOrDefaultAsync(m => m.BuildingCd == buildingcode);
+                    if (result is not null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
@@ -115,33 +132,53 @@ namespace FamTec.Server.Repository.Building
         /// 수정
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAsync(BuildingsTb model, string userid)
+        public async ValueTask<bool> EditBuildingInfo(BuildingsTb model)
         {
             try
             {
                 if(model is not null)
                 {
-                    model.UpdateDt = DateTime.Now;
-                    model.UpdateUser = userid;
-
                     context.BuildingsTbs.Update(model);
-
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
                 {
-                    throw new ArgumentNullException();
+                    return false;
                 }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                throw new ArgumentException();
             }
         }
 
 
+        /// <summary>
+        /// 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<bool> DeleteBuildingInfo(BuildingsTb model)
+        {
+            try
+            {
+                if (model is not null)
+                {
+                    context.BuildingsTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
     }
 }

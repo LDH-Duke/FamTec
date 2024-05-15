@@ -22,14 +22,38 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         {
             try
             {
-                context.AdminPlacesTbs.Add(model);
-                await context.SaveChangesAsync();
-                return model;
+                if (model is not null)
+                {
+                    context.AdminPlacesTbs.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// 전체 사업장 조회
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<List<AdminPlacesTb>> GetAllList()
+        {
+            try
+            {
+                return await context.AdminPlacesTbs.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
@@ -42,11 +66,18 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         {
             try
             {
-                List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
-
-                if (model is [_, ..])
+                if(!String.IsNullOrWhiteSpace(placecd))
                 {
-                    return model;
+                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
+
+                    if (model is [_, ..])
+                    {
+                        return model;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
@@ -69,11 +100,18 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         {
             try
             {
-                List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid).ToListAsync();
-
-                if (model is [_, ..])
+                if(!String.IsNullOrWhiteSpace(userid))
                 {
-                    return model;
+                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid).ToListAsync();
+
+                    if (model is [_, ..])
+                    {
+                        return model;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
@@ -94,34 +132,25 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <returns></returns>
         public async ValueTask<AdminPlacesTb> GetPlaceInfo(string userid, string placecd)
         {
-            AdminPlacesTb? tb = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd);
-
             try
             {
-                if (tb is not null)
+                if(!String.IsNullOrWhiteSpace(userid) && !String.IsNullOrWhiteSpace(placecd))
                 {
-                    return tb;
+                    AdminPlacesTb? tb = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd);
+
+                    if (tb is not null)
+                    {
+                        return tb;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
                     return null;
                 }
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 전체 사업장 조회
-        /// </summary>
-        /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetAllList()
-        {
-            try
-            {
-                return await context.AdminPlacesTbs.ToListAsync();
             }
             catch(Exception ex)
             {
@@ -129,8 +158,6 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                 throw new ArgumentException();
             }
         }
-
-
 
         /// <summary>
         /// 해당하는 관리자 사업장 삭제
