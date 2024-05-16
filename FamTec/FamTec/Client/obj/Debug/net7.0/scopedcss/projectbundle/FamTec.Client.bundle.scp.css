@@ -16,6 +16,7 @@
     }
 /* /Pages/Manager/Components/Common/ModalBack.razor.rz.scp.css */
 .modal-background[b-npzoffmhhd] {
+    z-index : 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,6 +89,7 @@
 }
 /* /Pages/Manager/Components/Department/ModalDepartment.razor.rz.scp.css */
 .modaldepart-container[b-6q9e1gt8vg] {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,7 +266,6 @@
     width:100%;
     padding : 0.8rem;
 
-    
 }
 
 .table-container .thead[b-5ldung25r0]{
