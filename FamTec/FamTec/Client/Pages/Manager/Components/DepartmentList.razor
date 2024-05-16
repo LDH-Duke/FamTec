@@ -1,14 +1,58 @@
-﻿
+﻿@using FamTec.Client.Pages.Manager.Components.Common
+@using FamTec.Client.Pages.Manager.Components.Department
+
 
 <div class="depart-container">
     <div class="depart-wrap">
         <div class="depart-title">
-            부서관리
+            <span>
+                부서관리
+            </span>
         </div>
-
+        <ul class="depart-list">
+            @foreach(var item in DataList)
+            {
+                <li class="depart-item">
+                    <NavLink>
+                        <span>
+                            @item.GetType().GetProperty("Name").GetValue(item)
+                        </span>
+                    </NavLink>
+                </li>
+            }
+        </ul>
+        <div class="depart-btns">
+            <Button Name="편집" OnClick="@OnEdit" />
+        </div>
+        @if (is_openModal == true)
+        {
+            <ModalBack>
+                <ModalDepartment OnClose="@OnModalClose" />
+            </ModalBack>
+        }
     </div>
 </div>
 
 @code {
+    [Parameter] public List<object> DataList { get; set; }
 
+    private bool is_openModal = false;
+
+    /*
+    * click add
+    */
+    private void OnEdit()
+    {
+        Console.WriteLine("모달");
+        is_openModal = true;
+    }
+
+
+
+    private void OnModalClose()
+    {
+        is_openModal = false;
+        StateHasChanged();
+    }
 }
+

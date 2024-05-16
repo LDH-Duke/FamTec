@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Admin\" />
+    <Folder Include="Pages\Manager\Components\ManagerList\" />
     <Folder Include="Pages\Normal\" />
   </ItemGroup>
 

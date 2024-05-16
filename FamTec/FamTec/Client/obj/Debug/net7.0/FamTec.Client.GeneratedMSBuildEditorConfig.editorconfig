@@ -50,13 +50,33 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/Button.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXEJ1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-w6fy0rhyst
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/Common/ModalBack.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXENvbW1vblxNb2RhbEJhY2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-npzoffmhhd
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/DepartmentList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXERlcGFydG1lbnRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-7aoww3keui
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/Department/ModalDepartment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXERlcGFydG1lbnRcTW9kYWxEZXBhcnRtZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-6q9e1gt8vg
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-4vs0aet7r2
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/ManagerList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXE1hbmFnZXJMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-2k2hzgyf46
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Components/Table.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxDb21wb25lbnRzXFRhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-5ldung25r0
 
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Manager.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxNYW5hZ2VyLnJhem9y

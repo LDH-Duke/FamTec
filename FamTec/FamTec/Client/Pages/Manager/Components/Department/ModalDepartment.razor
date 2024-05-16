@@ -1,0 +1,29 @@
+﻿
+
+<div class="departmodal-container">
+    <div class="departmodal-wrap">
+        <div class="departmodal-title">
+            <span>
+                부서 편집
+            </span>
+        </div>
+        <div class="departmodal-body">
+            <div class="departmodal-list">
+                <List />
+            </div>
+            <Button Name="삭제"/>
+        </div>
+        <div class="departmodal-add">
+            <span>부서 추가</span>
+            <div>
+                <input type="text" />
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+}

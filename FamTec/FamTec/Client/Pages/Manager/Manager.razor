@@ -1,17 +1,131 @@
 ﻿@page "/admin/manager"
 @using FamTec.Client.Pages.Manager.Components
-
+@using FamTec.Shared.Client.DTO;
 
 
 <div class="grid-layout">
     <div class="depart">
-        <DepartmentList />
+        <DepartmentList DataList="@DepartmentList" />
     </div>
     <div class="managerlist">
-        <ManagerList />
+        <ManagerList DataList="managerList" />
     </div>
 </div>
 
 @code {
+    List<Department> departmentList;
+    List<object> DepartmentList;
 
+    List<ManagerDTO> managerList;
+    List<object> ManagerList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        departmentList = new List<Department>
+        {
+            new Department
+            {
+                Id = 1,
+                Name = "전략영업"
+            },
+            new Department
+            {
+                Id = 2,
+                Name = "시스템개발"
+            },
+            new Department
+            {
+                Id = 3,
+                Name = "특화영업"
+            },
+        };
+
+        DepartmentList = departmentList.Cast<object>().ToList();
+
+
+        managerList = new List<ManagerDTO>
+        {
+            new ManagerDTO
+            {
+                ID = "test1",
+                NAME = "홍길동",
+                DEPARTMENT = "시스템개발파트"
+            },
+            new ManagerDTO
+            {
+                ID = "test2",
+                NAME = "최유진",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test2",
+                NAME = "최유진",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test2",
+                NAME = "최유진",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            },
+            new ManagerDTO
+            {
+                ID = "test3",
+                NAME = "구동매",
+                DEPARTMENT = "대한민국"
+            }
+        };
+
+        ManagerList = managerList.Cast<object>().ToList();
+
+    }
 }
