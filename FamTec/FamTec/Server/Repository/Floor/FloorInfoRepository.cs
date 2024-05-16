@@ -19,7 +19,7 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<FloorsTb> AddAsync(FloorsTb model)
+        public async ValueTask<FloorsTb?> AddAsync(FloorsTb? model)
         {
             try
             {
@@ -45,11 +45,15 @@ namespace FamTec.Server.Repository.Floor
         /// 층 정보 전체 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<FloorsTb>> GetAllList()
+        public async ValueTask<List<FloorsTb>?> GetAllList()
         {
             try
             {
-                return await context.FloorsTbs.ToListAsync();
+                List<FloorsTb>? model = await context.FloorsTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -63,22 +67,18 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<FloorsTb>> GetFloorList(string buildingcd)
+        public async ValueTask<List<FloorsTb>?> GetFloorList(string? buildingcd)
         {
             try
             {
                 if (!String.IsNullOrWhiteSpace(buildingcd))
                 {
-                    List<FloorsTb>? model = await context.FloorsTbs.Where(m => m.BuildingCd == buildingcd).ToListAsync();
+                    List<FloorsTb>? model = await context.FloorsTbs.Where(m => m.BuildingCd == buildingcd && m.DelYn != true).ToListAsync();
 
                     if (model is [_, ..])
-                    {
                         return model;
-                    }
                     else
-                    {
                         return null;
-                    }
                 }
                 else
                 {
@@ -97,7 +97,7 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteFloorInfo(FloorsTb model)
+        public async ValueTask<bool?> DeleteFloorInfo(FloorsTb? model)
         {
             try
             {
@@ -108,7 +108,7 @@ namespace FamTec.Server.Repository.Floor
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
 
             }
@@ -124,7 +124,7 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditFloorInfo(FloorsTb model)
+        public async ValueTask<bool?> EditFloorInfo(FloorsTb? model)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace FamTec.Server.Repository.Floor
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
 
             }

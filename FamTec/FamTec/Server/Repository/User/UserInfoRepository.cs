@@ -19,7 +19,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<UsersTb> AddAsync(UsersTb model)
+        public async ValueTask<UsersTb?> AddAsync(UsersTb? model)
         {
             try
             {
@@ -38,11 +38,15 @@ namespace FamTec.Server.Repository.User
         /// 사용자 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<UsersTb>> GetAllList()
+        public async ValueTask<List<UsersTb>?> GetAllList()
         {
             try
             {
-                return await context.UsersTbs.ToListAsync();
+                List<UsersTb>? model = await context.UsersTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -51,26 +55,20 @@ namespace FamTec.Server.Repository.User
             }
         }
 
-   
-
         /// <summary>
         /// 사용자 ID 검색 - 사용자 단일모델 반환
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<UsersTb> GetUserInfo(string userid)
+        public async ValueTask<UsersTb?> GetUserInfo(string? userid)
         {
             try
             {
-                UsersTb? model = await context.UsersTbs.FirstOrDefaultAsync(m => m.UserId == userid);
-                if(model == null)
-                {
-                    return null;
-                }
-                else
-                {
+                UsersTb? model = await context.UsersTbs.FirstOrDefaultAsync(m => m.UserId == userid && m.DelYn != true);
+                if (model is not null)
                     return model;
-                }
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -86,7 +84,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditUserInfo(UsersTb model)
+        public async ValueTask<bool?> EditUserInfo(UsersTb? model)
         {
             try
             {
@@ -97,7 +95,7 @@ namespace FamTec.Server.Repository.User
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)
@@ -114,7 +112,7 @@ namespace FamTec.Server.Repository.User
         /// <param name="tguserid"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteUserInfo(UsersTb model)
+        public async ValueTask<bool?> DeleteUserInfo(UsersTb? model)
         {
             try
             {
@@ -125,7 +123,7 @@ namespace FamTec.Server.Repository.User
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)

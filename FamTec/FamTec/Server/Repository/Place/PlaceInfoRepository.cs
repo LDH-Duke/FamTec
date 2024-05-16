@@ -24,14 +24,20 @@ namespace FamTec.Server.Repository.Place
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<PlacesTb> AddAsync(PlacesTb model)
+        public async ValueTask<PlacesTb?> AddAsync(PlacesTb? model)
         {
             try
             {
-                context.PlacesTbs.Add(model);
-                await context.SaveChangesAsync();
-
-                return model;
+                if (model is not null)
+                {
+                    context.PlacesTbs.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch (Exception ex)
             {
@@ -44,11 +50,16 @@ namespace FamTec.Server.Repository.Place
         /// 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<PlacesTb>> GetAllList()
+        public async ValueTask<List<PlacesTb>?> GetAllList()
         {
             try
             {
-                return await context.PlacesTbs.ToListAsync();
+                List<PlacesTb>? model = await context.PlacesTbs.Where(m => m.DelYn != true).ToListAsync();
+
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch (Exception ex)
             {
@@ -63,20 +74,17 @@ namespace FamTec.Server.Repository.Place
         /// <param name="placecd"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async ValueTask<PlacesTb> GetByPlaceInfo(string placecd)
+        public async ValueTask<PlacesTb?> GetByPlaceInfo(string? placecd)
         {
             try
             {
-                PlacesTb? model = await context.PlacesTbs.FirstOrDefaultAsync(m => m.PlaceCd == placecd);
-                if (model == null)
-                {
-                    return null;
-                }
-                else
-                {
+                PlacesTb? model = await context.PlacesTbs.FirstOrDefaultAsync(m => m.PlaceCd == placecd && m.DelYn != true);
+                if (model is not null)
                     return model;
-                }
-            }catch(Exception ex)
+                else
+                    return null;
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine(ex);
                 throw new ArgumentException();
@@ -91,7 +99,7 @@ namespace FamTec.Server.Repository.Place
         /// <param name="placecd"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeletePlaceInfoAsync(PlacesTb model)
+        public async ValueTask<bool?> DeletePlaceInfoAsync(PlacesTb? model)
         {
             try
             {
@@ -102,7 +110,7 @@ namespace FamTec.Server.Repository.Place
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)
@@ -118,7 +126,7 @@ namespace FamTec.Server.Repository.Place
         /// <param name="model"></param>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditPlaceInfoAsync(PlacesTb model)
+        public async ValueTask<bool?> EditPlaceInfoAsync(PlacesTb? model)
         {
             try
             {
@@ -129,7 +137,7 @@ namespace FamTec.Server.Repository.Place
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)

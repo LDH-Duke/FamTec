@@ -18,13 +18,20 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminsTb> AddAsync(AdminsTb model)
+        public async ValueTask<AdminsTb?> AddAsync(AdminsTb? model)
         {
             try
             {
-                context.AdminsTbs.Add(model);
-                await context.SaveChangesAsync();
-                return model;
+                if(model is not null)
+                {
+                    context.AdminsTbs.Add(model);
+                    await context.SaveChangesAsync();
+                    return model;
+                }
+                else
+                {
+                    return null;
+                }
             }
             catch(Exception ex)
             {
@@ -37,11 +44,15 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// 관리자 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<AdminsTb>> GetAllList()
+        public async ValueTask<List<AdminsTb>?> GetAllList()
         {
             try
             {
-                return await context.AdminsTbs.ToListAsync();
+                List<AdminsTb>? model = await context.AdminsTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -55,18 +66,21 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public async ValueTask<AdminsTb> GetAdminInfo(string adminid)
+        public async ValueTask<AdminsTb?> GetAdminInfo(string? adminid)
         {
             try
             {
-                AdminsTb? model = await context.AdminsTbs.FirstOrDefaultAsync(m => m.UserId == adminid);
-                if(model == null)
+                if(!String.IsNullOrWhiteSpace(adminid))
                 {
-                    return null;
+                    AdminsTb? model = await context.AdminsTbs.FirstOrDefaultAsync(m => m.UserId == adminid && m.DelYn != true);
+                    if (model == null)
+                        return null;
+                    else
+                        return model;
                 }
                 else
                 {
-                    return model;
+                    return null;
                 }
             }
             catch(Exception ex)
@@ -81,7 +95,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAdminInfo(AdminsTb model)
+        public async ValueTask<bool?> EditAdminInfo(AdminsTb? model)
         {
             try
             {
@@ -92,7 +106,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)
@@ -108,7 +122,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteAdminInfo(AdminsTb model)
+        public async ValueTask<bool?> DeleteAdminInfo(AdminsTb? model)
         {
             try
             {
@@ -119,7 +133,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)

@@ -9,34 +9,34 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<UnitTb> AddAsync(UnitTb model);
+        ValueTask<UnitTb?> AddAsync(UnitTb? model);
 
         /// <summary>
         /// 단위 전체 출력
         /// </summary>
         /// <returns></returns>
-        ValueTask<List<UnitTb>> GetAllList();
+        ValueTask<List<UnitTb>?> GetAllList();
 
         /// <summary>
         /// 해당 사업장코드에 해당하는 모든 단위 출력
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        ValueTask<List<UnitTb>> GetUnitList(string placecd);
+        ValueTask<List<UnitTb>?> GetUnitList(string? placecd);
 
         /// <summary>
         /// 수정
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<bool> EditUnitInfo(UnitTb model);
+        ValueTask<bool?> EditUnitInfo(UnitTb? model);
 
         /// <summary>
         /// 삭제
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<bool> DeleteUnitInfo(UnitTb model);
+        ValueTask<bool?> DeleteUnitInfo(UnitTb? model);
 
     }
 }

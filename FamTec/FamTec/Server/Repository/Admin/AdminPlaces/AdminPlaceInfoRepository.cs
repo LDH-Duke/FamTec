@@ -18,7 +18,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlacesTb> AddAsync(AdminPlacesTb model)
+        public async ValueTask<AdminPlacesTb?> AddAsync(AdminPlacesTb? model)
         {
             try
             {
@@ -44,11 +44,15 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// 전체 사업장 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetAllList()
+        public async ValueTask<List<AdminPlacesTb>?> GetAllList()
         {
             try
             {
-                return await context.AdminPlacesTbs.ToListAsync();
+                List<AdminPlacesTb> model = await context.AdminPlacesTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model == null)
+                    return null;
+                else
+                    return model;
             }
             catch (Exception ex)
             {
@@ -62,13 +66,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetAllPlaceList(string placecd)
+        public async ValueTask<List<AdminPlacesTb>?> GetAllPlaceList(string? placecd)
         {
             try
             {
                 if(!String.IsNullOrWhiteSpace(placecd))
                 {
-                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
+                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd && m.DelYn != true).ToListAsync();
 
                     if (model is [_, ..])
                     {
@@ -96,13 +100,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>> GetAllUserList(string userid)
+        public async ValueTask<List<AdminPlacesTb>?> GetAllUserList(string? userid)
         {
             try
             {
                 if(!String.IsNullOrWhiteSpace(userid))
                 {
-                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid).ToListAsync();
+                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid && m.DelYn != true).ToListAsync();
 
                     if (model is [_, ..])
                     {
@@ -130,22 +134,18 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlacesTb> GetPlaceInfo(string userid, string placecd)
+        public async ValueTask<AdminPlacesTb?> GetPlaceInfo(string? userid, string? placecd)
         {
             try
             {
                 if(!String.IsNullOrWhiteSpace(userid) && !String.IsNullOrWhiteSpace(placecd))
                 {
-                    AdminPlacesTb? tb = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd);
+                    AdminPlacesTb? model = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd && m.DelYn != true);
 
-                    if (tb is not null)
-                    {
-                        return tb;
-                    }
-                    else
-                    {
+                    if (model == null)
                         return null;
-                    }
+                    else
+                        return model;
                 }
                 else
                 {
@@ -164,7 +164,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteAdminPlacesInfo(AdminPlacesTb model)
+        public async ValueTask<bool?> DeleteAdminPlacesInfo(AdminPlacesTb? model)
         {
             try
             {
@@ -175,7 +175,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }catch(Exception ex)
             {
@@ -189,7 +189,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditAdminPlacesInfo(AdminPlacesTb model)
+        public async ValueTask<bool?> EditAdminPlacesInfo(AdminPlacesTb? model)
         {
             try
             {
@@ -200,9 +200,10 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine(ex);
                 throw new ArgumentException();

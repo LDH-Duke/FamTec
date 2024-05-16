@@ -21,7 +21,7 @@ namespace FamTec.Server.Repository.Building
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<BuildingsTb> AddAsync(BuildingsTb model)
+        public async ValueTask<BuildingsTb?> AddAsync(BuildingsTb? model)
         {
             try
             {
@@ -48,11 +48,15 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async ValueTask<List<BuildingsTb>> GetAllList()
+        public async ValueTask<List<BuildingsTb>?> GetAllList()
         {
             try
             {
-                return await context.BuildingsTbs.ToListAsync();
+                List<BuildingsTb>? model = await context.BuildingsTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -67,21 +71,17 @@ namespace FamTec.Server.Repository.Building
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async ValueTask<List<BuildingsTb>> GetBuildingList(string placecode)
+        public async ValueTask<List<BuildingsTb>?> GetBuildingList(string? placecode)
         {
             try
             {
                 if (!String.IsNullOrWhiteSpace(placecode))
                 {
-                    List<BuildingsTb>? result = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecode).ToListAsync();
+                    List<BuildingsTb>? result = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecode && m.DelYn != true).ToListAsync();
                     if (result is [_, ..])
-                    {
                         return result;
-                    }
                     else
-                    {
                         return null;
-                    }
                 }
                 else
                 {
@@ -100,21 +100,17 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<BuildingsTb> GetBuildingInfo(string buildingcode)
+        public async ValueTask<BuildingsTb?> GetBuildingInfo(string? buildingcode)
         {
             try
             {
                 if (!String.IsNullOrWhiteSpace(buildingcode))
                 {
-                    BuildingsTb? result = await context.BuildingsTbs.FirstOrDefaultAsync(m => m.BuildingCd == buildingcode);
+                    BuildingsTb? result = await context.BuildingsTbs.FirstOrDefaultAsync(m => m.BuildingCd == buildingcode && m.DelYn != true);
                     if (result is not null)
-                    {
                         return result;
-                    }
                     else
-                    {
                         return null;
-                    }
                 }
                 else
                 {
@@ -133,7 +129,7 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditBuildingInfo(BuildingsTb model)
+        public async ValueTask<bool?> EditBuildingInfo(BuildingsTb? model)
         {
             try
             {
@@ -144,7 +140,7 @@ namespace FamTec.Server.Repository.Building
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)
@@ -160,7 +156,7 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteBuildingInfo(BuildingsTb model)
+        public async ValueTask<bool?> DeleteBuildingInfo(BuildingsTb? model)
         {
             try
             {
@@ -171,7 +167,7 @@ namespace FamTec.Server.Repository.Building
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)

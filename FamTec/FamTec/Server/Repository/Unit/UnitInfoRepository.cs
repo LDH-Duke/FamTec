@@ -18,7 +18,7 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<UnitTb> AddAsync(UnitTb model)
+        public async ValueTask<UnitTb?> AddAsync(UnitTb? model)
         {
             try
             {
@@ -44,11 +44,15 @@ namespace FamTec.Server.Repository.Unit
         /// 단위 전체 출력
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<UnitTb>> GetAllList()
+        public async ValueTask<List<UnitTb>?> GetAllList()
         {
             try
             {
-                return await context.UnitTbs.ToListAsync();
+                List<UnitTb>? model = await context.UnitTbs.Where(m => m.DelYn != true).ToListAsync();
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
             }
             catch(Exception ex)
             {
@@ -62,21 +66,17 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<UnitTb>> GetUnitList(string placecd)
+        public async ValueTask<List<UnitTb>?> GetUnitList(string? placecd)
         {
             try
             {
                 if (!String.IsNullOrWhiteSpace(placecd))
                 {
-                    List<UnitTb>? model = await context.UnitTbs.Where(m => m.PlacecodeCd == placecd).ToListAsync();
+                    List<UnitTb>? model = await context.UnitTbs.Where(m => m.PlacecodeCd == placecd && m.DelYn != true).ToListAsync();
                     if(model is [_, ..])
-                    {
                         return model;
-                    }
                     else
-                    {
                         return null;
-                    }
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> EditUnitInfo(UnitTb model)
+        public async ValueTask<bool?> EditUnitInfo(UnitTb? model)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace FamTec.Server.Repository.Unit
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch(Exception ex)
@@ -121,7 +121,7 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool> DeleteUnitInfo(UnitTb model)
+        public async ValueTask<bool?> DeleteUnitInfo(UnitTb? model)
         {
             try
             {
@@ -132,7 +132,7 @@ namespace FamTec.Server.Repository.Unit
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch (Exception ex)
