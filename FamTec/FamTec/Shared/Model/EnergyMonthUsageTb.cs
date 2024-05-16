@@ -79,6 +79,9 @@ public partial class EnergyMonthUsageTb
     [Column("METER_READER_ID")]
     public int? MeterReaderId { get; set; }
 
+    [Column("YEAR")]
+    public int Year { get; set; }
+
     [ForeignKey("MeterReaderId")]
     [InverseProperty("EnergyMonthUsageTbs")]
     public virtual MeterReadersTb? MeterReader { get; set; }

@@ -130,9 +130,9 @@ namespace FamTec.Server.Services.Place
                     model.UpdateUser = "김용우";
 
 
-                    bool result = await PlaceInfoRepository.EditPlaceInfoAsync(model);
+                    bool? result = await PlaceInfoRepository.EditPlaceInfoAsync(model);
 
-                    if(result) // 수정성공
+                    if(result == true)
                     {
                         return FuncResponseOBJ("데이터 수정 성공.", new PlacesDTO()
                         {
@@ -141,12 +141,16 @@ namespace FamTec.Server.Services.Place
                             CONTRACT_NUM = model.ContractNum,
                             NOTE = model.Note
                         }, 200);
+
                     }
-                    else // 실패
+                    else if(result == false)
                     {
                         return FuncResponseOBJ("데이터 수정 실패", null, 404);
                     }
-
+                    else
+                    {
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
+                    }
                 }
             }
             else
@@ -177,9 +181,9 @@ namespace FamTec.Server.Services.Place
                     model.DelUser = "김용우";
                     model.DelYn = true;
 
-                    bool result = await PlaceInfoRepository.DeletePlaceInfoAsync(model);
+                    bool? result = await PlaceInfoRepository.DeletePlaceInfoAsync(model);
 
-                    if(result) // 삭제성공
+                    if(result == true)
                     {
                         return FuncResponseOBJ("데이터 삭제 성공.", new PlacesDTO()
                         {
@@ -189,9 +193,14 @@ namespace FamTec.Server.Services.Place
                             NOTE = model.Note
                         }, 200);
                     }
-                    else // 실패
+                    else if(result == false)
                     {
                         return FuncResponseOBJ("데이터 삭제 실패", null, 404);
+
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
                     }
                 }
             }

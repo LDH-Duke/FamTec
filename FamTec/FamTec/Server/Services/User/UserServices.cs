@@ -277,9 +277,9 @@ namespace FamTec.Server.Services.User
                     model.UpdateDt = DateTime.Now;
                     model.UpdateUser = "토큰USER";
 
-                    bool result = await UserInfoRepository.EditUserInfo(model);
+                    bool? result = await UserInfoRepository.EditUserInfo(model);
 
-                    if(result) // 수정성공
+                    if(result == true)
                     {
                         return FuncResponseOBJ("데이터 수정 성공.", new UsersDTO()
                         {
@@ -306,9 +306,13 @@ namespace FamTec.Server.Services.User
                             PLACECODE = model.PlacecodeCd
                         }, 200);
                     }
-                    else
+                    else if(result == false)
                     {
                         return FuncResponseOBJ("데이터 수정 실패.", null, 404);
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
                     }
                 }
             }
@@ -340,9 +344,9 @@ namespace FamTec.Server.Services.User
                     model.DelUser = "토큰USER";
                     model.DelYn = true;
 
-                    bool result = await UserInfoRepository.DeleteUserInfo(model);
+                    bool? result = await UserInfoRepository.DeleteUserInfo(model);
 
-                    if (result) // 삭제성공
+                    if(result == true)
                     {
                         return FuncResponseOBJ("데이터 삭제 성공.", new UsersDTO()
                         {
@@ -369,9 +373,14 @@ namespace FamTec.Server.Services.User
                             PLACECODE = model.PlacecodeCd
                         }, 200);
                     }
-                    else
+                    else if(result == false)
                     {
                         return FuncResponseOBJ("데이터 삭제 실패.", null, 404);
+
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
                     }
                 }
             }

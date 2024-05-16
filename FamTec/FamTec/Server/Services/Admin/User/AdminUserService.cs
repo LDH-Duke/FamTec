@@ -172,9 +172,9 @@ namespace FamTec.Server.Services.Admin.User
                     model.UpdateDt = DateTime.Now;
                     model.UpdateUser = "토큰USER";
 
-                    bool result = await AdminUserInfoRepository.EditAdminInfo(model);
+                    bool? result = await AdminUserInfoRepository.EditAdminInfo(model);
 
-                    if(result) // 수정성공
+                    if(result == true)
                     {
                         return FuncResponseOBJ("데이터 수정 성공", new AdminsDTO()
                         {
@@ -184,9 +184,13 @@ namespace FamTec.Server.Services.Admin.User
                             EMAIL = model.Email
                         }, 200);
                     }
-                    else
+                    else if(result == false)
                     {
                         return FuncResponseOBJ("데이터 수정 실패", null, 404);
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
                     }
                 }
             }
@@ -217,22 +221,27 @@ namespace FamTec.Server.Services.Admin.User
                     model.DelUser = "토큰USER";
                     model.DelYn = true;
 
-                    bool result = await AdminUserInfoRepository.DeleteAdminInfo(model);
+                    bool? result = await AdminUserInfoRepository.DeleteAdminInfo(model);
 
-                    if(result) // 삭제성공
+                    if(result == true)
                     {
-                        return FuncResponseOBJ("데이터 삭제 성공",new AdminsDTO()
-                                {
-                                    USERID = model.UserId,
-                                    PASSWORD = model.Password,
-                                    NAME = model.Name,
-                                    EMAIL = model.Email
-                                }
-                        ,200);
+                        return FuncResponseOBJ("데이터 삭제 성공", new AdminsDTO()
+                        {
+                            USERID = model.UserId,
+                            PASSWORD = model.Password,
+                            NAME = model.Name,
+                            EMAIL = model.Email
+                        }
+                       , 200);
+                    }
+                    else if(result == false)
+                    {
+                        return FuncResponseOBJ("데이터 삭제 실패", null, 404);
+
                     }
                     else
                     {
-                        return FuncResponseOBJ("데이터 삭제 실패", null, 404);
+                        return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
                     }
                 }
             }
