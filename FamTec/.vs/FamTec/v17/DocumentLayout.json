@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\managerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\managerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|c:\\users\\stec\\desktop\\duke\\dev\\famtec\\famtec\\famtec\\client\\pages\\manager\\components\\departmentlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\departmentlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\manager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\manager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|c:\\users\\stec\\desktop\\duke\\dev\\famtec\\famtec\\famtec\\client\\pages\\place\\components\\addmodal.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\place\\components\\addmodal.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\departmentlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\departmentlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|c:\\users\\stec\\desktop\\duke\\dev\\famtec\\famtec\\famtec\\client\\pages\\manager\\components\\managerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\managerlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\manager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\manager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\common\\modalback.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -25,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\common\\modalback.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\common\\modalback.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|c:\\users\\stec\\desktop\\duke\\dev\\famtec\\famtec\\famtec\\client\\pages\\place\\components\\addmodal.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\place\\components\\addmodal.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\place\\place.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -45,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\table.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\table.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|solutionrelative:famtec\\client\\pages\\manager\\components\\department\\modaldepartment.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{61A16A86-E9D3-43F0-9C42-ED222A9EDABC}|FamTec\\Client\\FamTec.Client.csproj|C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\famtec\\client\\pages\\manager\\components\\table.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -115,12 +115,12 @@
           ]
         },
         {
-          "DockedHeight": 228,
-          "SelectedChildIndex": 14,
+          "DockedHeight": 267,
+          "SelectedChildIndex": 15,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ModalBack.razor.css",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor.css",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor.css",
@@ -128,12 +128,11 @@
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-16T07:46:43.405Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-16T07:46:43.405Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ModalBack.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor",
@@ -141,8 +140,7 @@
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Components\\Common\\ModalBack.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-16T07:46:11.062Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-16T07:46:11.062Z"
             },
             {
               "$type": "Document",
@@ -230,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Shared\\MainLayout.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Shared\\MainLayout.razor",
@@ -254,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Place.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Place\\Place.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Place\\Place.razor",
@@ -266,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Manager.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Manager.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Manager.razor",
@@ -274,25 +272,24 @@
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Manager.razor",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-14T02:20:31.973Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T02:20:31.973Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "DepartmentList.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\DepartmentList.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\DepartmentList.razor",
               "ToolTip": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\DepartmentList.razor",
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Components\\DepartmentList.razor",
-              "ViewState": "AQIAACIAAAAAAAAAAAAYwDEAAAAAAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAQwCAAAAALAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-14T05:13:28.548Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ManagerList.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\ManagerList.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\ManagerList.razor",
@@ -305,13 +302,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ModalDepartment.razor",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor",
               "ToolTip": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor",
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAOAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-16T07:08:11.996Z",
               "EditorCaption": ""
@@ -319,8 +316,8 @@
           ]
         },
         {
-          "DockedHeight": 399,
-          "SelectedChildIndex": 7,
+          "DockedHeight": 360,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -337,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Table.razor.css",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Table.razor.css",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\Table.razor.css",
@@ -349,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MainLayout.razor.css",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Shared\\MainLayout.razor.css",
               "RelativeDocumentMoniker": "FamTec\\Client\\Shared\\MainLayout.razor.css",
@@ -397,25 +394,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
               "Title": "ModalDepartment.razor.css",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor.css",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor.css",
               "ToolTip": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor.css",
               "RelativeToolTip": "FamTec\\Client\\Pages\\Manager\\Components\\Department\\ModalDepartment.razor.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-16T07:08:35.67Z"
+              "WhenOpened": "2024-05-16T07:08:35.67Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
               "Title": "AddModal.razor.css",
               "DocumentMoniker": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Place\\Components\\AddModal.razor.css",
               "RelativeDocumentMoniker": "FamTec\\Client\\Pages\\Place\\Components\\AddModal.razor.css",
               "ToolTip": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\Pages\\Place\\Components\\AddModal.razor.css",
               "RelativeToolTip": "FamTec\\Client\\Pages\\Place\\Components\\AddModal.razor.css",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAUwAYAAAANAAAA",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAUwCYAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-05-16T07:46:55.156Z",
               "EditorCaption": ""

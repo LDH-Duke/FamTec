@@ -26,8 +26,10 @@
         </div>
         @if (is_openModal == true)
         {
-            <ModalBack>
-                <ModalDepartment OnClose="@OnModalClose" />
+            <ModalBack >
+                <ChildModal>
+                    <ModalDepartment OnClose="@OnModalClose" />
+                </ChildModal>
             </ModalBack>
         }
     </div>
