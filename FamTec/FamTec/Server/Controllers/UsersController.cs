@@ -29,16 +29,7 @@ namespace FamTec.Server.Controllers
             try
             {
                 ResponseModel<UsersDTO>? model = await UserServices.GetUserInfo(userid);
-                if(model is not null)
-                {
-                    model.Message = "정상처리";
-                    return Ok(model);
-                }
-                else
-                {
-                    return Ok(model);
-                }
-                
+                return Ok(model);
             }
             catch(Exception ex)
             {

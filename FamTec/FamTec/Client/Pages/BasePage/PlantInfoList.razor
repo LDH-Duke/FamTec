@@ -5,6 +5,7 @@
 @inject IJSRuntime JS
 @inject HttpClient Http
 
+@*
 <style>
     table{
         border-collapse: collapse;
@@ -88,6 +89,9 @@
 <div style="display:none;">
     <div id="qrcodes" style="width:100px; height:100px; margin:auto; margin-top:15px;" />
 </div>
+*@
+
+@*
 @code {
     private BuildingsDTO[]? building;
     string placecd = "P001";
@@ -131,3 +135,4 @@
         JS.InvokeVoidAsync("qrcreate", url, model.Name);
     }
 }
+    *@

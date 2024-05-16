@@ -77,20 +77,32 @@
     "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
     "Method": "AddAdminWorks",
     "RelativePath": "api/AdminWorks/AddAdminWorks",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.AdminPlacesDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
     "Method": "DeleteAdminWorks",
     "RelativePath": "api/AdminWorks/DeleteAdminWorks",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.AdminPlacesDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -139,6 +151,102 @@
     "ContainingType": "FamTec.Server.Controllers.AdminWorksController",
     "Method": "UpdateAdminWorks",
     "RelativePath": "api/AdminWorks/UpdateAdminWorks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "parameter",
+        "Type": "System.ValueTuple\u00602[[FamTec.Shared.DTO.AdminPlacesDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[FamTec.Shared.DTO.AdminPlacesDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "AddBdInfo",
+    "RelativePath": "api/Buildings/AddBuilding",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.BuildingsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "DeleteBdInfo",
+    "RelativePath": "api/Buildings/DeleteBuilding",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.BuildingsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "GetBdInfo",
+    "RelativePath": "api/Buildings/GetBdCode/{bdcode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "bdcode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "GetBdPlace",
+    "RelativePath": "api/Buildings/GetBdPlace/{placecode}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placecode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "AddBuilding",
+    "RelativePath": "api/Buildings/InsertBuilding",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.BuildingsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
+    "Method": "GetAllBuildingList",
+    "RelativePath": "api/Buildings/SelectAllBuilding",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -147,55 +255,19 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "Get",
-    "RelativePath": "api/Buildings/SelectApi/{code}",
-    "HttpMethod": "GET",
+    "Method": "UpdateBdInfo",
+    "RelativePath": "api/Buildings/UpdateBuilding",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "code",
-        "Type": "System.String",
+        "Name": "dto",
+        "Type": "FamTec.Shared.DTO.BuildingsDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Boolean",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "GetBuildingAll",
-    "RelativePath": "api/Buildings/SelectBuilding/{code}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "code",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[FamTec.Shared.DTO.BuildingsDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FamTec.Server.Controllers.PlacesController",

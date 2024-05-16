@@ -101,4 +101,36 @@ app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
+/*
+app.Use(async (context, next) =>
+{
+    if (context.Request.Method == HttpMethods.Get && context.Request.Query["mdw"] == "test")
+    {
+        context.Response.ContentType = "text/plain";
+        await context.Response.WriteAsync("Middleware running.\n");
+    }
+
+    await next();
+});
+*/
+//app.MapGet("/", () => "Hello World!");
+
+//app.MapGet("/hi", () => "Hello!");
+/*
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("Use Middleware1 Incoming Request \n");
+
+    await next();
+    Console.WriteLine("Use Middleware1 Outgoing Response \n");
+});
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("Use Middleware2 Incoming Request \n");
+    await next();
+    Console.WriteLine("Use Middleware2 Outgoing Response \n");
+});
+app.Run();
+*/
 app.Run();

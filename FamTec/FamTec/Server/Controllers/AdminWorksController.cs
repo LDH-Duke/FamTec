@@ -50,13 +50,17 @@ namespace FamTec.Server.Controllers
         }
 
 
+        
         [HttpPost]
         [Route("UpdateAdminWorks")]
-        public async ValueTask<IActionResult> UpdateAdminWorks([FromBody] AdminPlacesDTO beforedto, AdminPlacesDTO afterdto)
+        public async ValueTask<IActionResult> UpdateAdminWorks([FromBody] (AdminPlacesDTO beforedto, AdminPlacesDTO afterdto) parameter)
         {
-            ResponseModel<AdminPlacesDTO> model = await AdminPlaceService.UpdateAdminWorks(beforedto, afterdto);
+            
+            ResponseModel<AdminPlacesDTO> model = await AdminPlaceService.UpdateAdminWorks(parameter.beforedto, parameter.afterdto);
             return Ok(model);
+            
         }
+        
 
         [HttpPost]
         [Route("DeleteAdminWorks")]

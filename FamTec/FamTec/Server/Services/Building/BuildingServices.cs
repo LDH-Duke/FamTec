@@ -2,6 +2,7 @@
 using FamTec.Server.Repository.Building;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using Microsoft.AspNetCore.Routing.Constraints;
 using Microsoft.JSInterop.Infrastructure;
 using System.Net;
 
@@ -24,6 +25,7 @@ namespace FamTec.Server.Services.Building
             FuncResponseOBJ = Response.RESPMessage;
             FuncResponseList = Response.RESPMessageList;
         }
+
 
         /// <summary>
         /// 건물 전체조회
@@ -306,53 +308,57 @@ namespace FamTec.Server.Services.Building
                     }
                     else
                     {
+                        BuildingsTb temp = new BuildingsTb();
+                        temp.BasementFloorNum = 1;
+
+                    
                         return FuncResponseOBJ("건물 추가에 성공하였습니다.", new BuildingsDTO()
                         {
-                            BuildingCode = model.BuildingCd, // 건물코드
-                            Name = model.Name, // 건물이름
-                            Address = model.Address, // 주소
-                            Tel = model.Tel, // 전화번호
-                            Usage = model.Usage, // 건물용도
-                            ConstComp = model.ConstComp, // 시공업체
-                            CompletionData = model.CompletionDate, // 준공년월
-                            BuildingStruct = model.BuildingStruct, // 건물구조
-                            RoofStruct = model.RoofStruct, // 지붕구조
-                            GrossFloorArea = model.GrossFloorArea, // 연면적
-                            LandArea = model.LandArea, // 대지면적
-                            BuildingArea = model.BuildingArea, // 건축면적
-                            FloorNum = model.FloorNum, // 건물층수
-                            GroundFloorNum = model.GroundFloorNum, // 지상층수
-                            BasementFloorNum = model.BasementFloorNum, // 지하층수
-                            BuildingHeight = model.BuildingHeight, // 건물높이
-                            GroundHeight = model.GroundHeight, // 건물 지상높이
-                            BasementHeight = model.BasementHeight, // 건물 지상깊이
-                            PackingNum = model.PackingNum, // 주차대수
-                            InnerPackingNum = model.InnerPackingNum, // 옥내대수
-                            OuterPackingNum = model.OuterPackingNum, // 옥외대수
-                            ElecCapacity = model.ElecCapacity, // 전기용량
-                            FaucetCapacity = model.FaucetCapacity, // 수전용량
-                            GenerationCapacity = model.GenerationCapacity, // 발전용량
-                            WaterCapacity = model.WaterCapacity, // 급수용량
-                            ElevWaterTank = model.ElevWaterTank, // 고가수조
-                            WaterTank = model.WaterTank, // 저수조
-                            GasCapacity = model.GasCapacity, // 가스용량
-                            Boiler = model.Boiler, // 보일러
-                            WaterDispenser = model.WaterDispenser, // 냉온수기
-                            LiftNum = model.LiftNum, // 승강대수
-                            PeopleLiftNum = model.PeopleLiftNum, // 인승용
-                            CargoLiftNum = model.CargoLiftNum, // 화물용
-                            CoolHeatCapacity = model.CoolHeatCapacity, // 냉난방용량
-                            HeatCapacity = model.HeatCapacity, // 난방용량
-                            CoolCapacity = model.CoolCapacity, // 냉방용량
-                            LandScapeArea = model.LandscapeArea, // 조경면적
-                            GroundArea = model.GroundArea, // 지상면적
-                            RooftopArea = model.RooftopArea, // 옥상면적
-                            ToiletNum = model.ToiletNum, // 화장실 개수
-                            MenToiletNum = model.MenToiletNum, // 남자화장실 개수
-                            WomenToiletNum = model.WomenToiletNum, // 여자화장실 개수
-                            FireRating = model.FireRating, // 소방등급
-                            SepticTankCapacity = model.SepticTankCapacity, // 정화조 용량
-                            PlaceCD = model.BuildingCd, // 사업장코드
+                            BuildingCode = buildingtb.BuildingCd, // 건물코드
+                            Name = buildingtb.Name, // 건물이름
+                            Address = buildingtb.Address, // 주소
+                            Tel = buildingtb.Tel, // 전화번호
+                            Usage = buildingtb.Usage, // 건물용도
+                            ConstComp = buildingtb.ConstComp, // 시공업체
+                            CompletionData = buildingtb.CompletionDate, // 준공년월
+                            BuildingStruct = buildingtb.BuildingStruct, // 건물구조
+                            RoofStruct = buildingtb.RoofStruct, // 지붕구조
+                            GrossFloorArea = buildingtb.GrossFloorArea, // 연면적
+                            LandArea = buildingtb.LandArea, // 대지면적
+                            BuildingArea = buildingtb.BuildingArea, // 건축면적
+                            FloorNum = buildingtb.FloorNum, // 건물층수
+                            GroundFloorNum = buildingtb.GroundFloorNum, // 지상층수
+                            BasementFloorNum = buildingtb.BasementFloorNum, // 지하층수
+                            BuildingHeight = buildingtb.BuildingHeight, // 건물높이
+                            GroundHeight = buildingtb.GroundHeight, // 건물 지상높이
+                            BasementHeight = buildingtb.BasementHeight, // 건물 지상깊이
+                            PackingNum = buildingtb.PackingNum, // 주차대수
+                            InnerPackingNum = buildingtb.InnerPackingNum, // 옥내대수
+                            OuterPackingNum = buildingtb.OuterPackingNum, // 옥외대수
+                            ElecCapacity = buildingtb.ElecCapacity, // 전기용량
+                            FaucetCapacity = buildingtb.FaucetCapacity, // 수전용량
+                            GenerationCapacity = buildingtb.GenerationCapacity, // 발전용량
+                            WaterCapacity = buildingtb.WaterCapacity, // 급수용량
+                            ElevWaterTank = buildingtb.ElevWaterTank, // 고가수조
+                            WaterTank = buildingtb.WaterTank, // 저수조
+                            GasCapacity = buildingtb.GasCapacity, // 가스용량
+                            Boiler = buildingtb.Boiler, // 보일러
+                            WaterDispenser = buildingtb.WaterDispenser, // 냉온수기
+                            LiftNum = buildingtb.LiftNum, // 승강대수
+                            PeopleLiftNum = buildingtb.PeopleLiftNum, // 인승용
+                            CargoLiftNum = buildingtb.CargoLiftNum, // 화물용
+                            CoolHeatCapacity = buildingtb.CoolHeatCapacity, // 냉난방용량
+                            HeatCapacity = buildingtb.HeatCapacity, // 난방용량
+                            CoolCapacity = buildingtb.CoolCapacity, // 냉방용량
+                            LandScapeArea = buildingtb.LandscapeArea, // 조경면적
+                            GroundArea = buildingtb.GroundArea, // 지상면적
+                            RooftopArea = buildingtb.RooftopArea, // 옥상면적
+                            ToiletNum = buildingtb.ToiletNum, // 화장실 개수
+                            MenToiletNum = buildingtb.MenToiletNum, // 남자화장실 개수
+                            WomenToiletNum = buildingtb.WomenToiletNum, // 여자화장실 개수
+                            FireRating = buildingtb.FireRating, // 소방등급
+                            SepticTankCapacity = buildingtb.SepticTankCapacity, // 정화조 용량
+                            PlaceCD = buildingtb.BuildingCd, // 사업장코드
                         }, 200);
                     }
                 }
@@ -368,7 +374,6 @@ namespace FamTec.Server.Services.Building
         }
       
 
-       
         /// <summary>
         /// 매개변수로 넘어온 건물DTO 데이터베이스에 수정
         /// </summary>
@@ -432,10 +437,157 @@ namespace FamTec.Server.Services.Building
                         model.BuildingHeight = dto.BuildingHeight;
 
                     if (dto.GroundHeight != null) // 건물 지상높이
-                        model.GroundHeight = dto.GroundHeight; 
+                        model.GroundHeight = dto.GroundHeight;
 
+                    if (dto.BasementHeight != null) // 건물 지하깊이
+                        model.BasementHeight = dto.BasementHeight;
+
+                    if (dto.PackingNum != null) // 주차대수
+                        model.PackingNum = dto.PackingNum;
+
+                    if (dto.InnerPackingNum != null) // 옥내 대수
+                        model.InnerPackingNum = dto.InnerPackingNum;
+
+                    if (dto.OuterPackingNum != null) // 옥외 대수
+                        model.OuterPackingNum = dto.OuterPackingNum;
+
+                    if (dto.ElecCapacity != null) // 전기용량
+                        model.ElecCapacity = dto.ElecCapacity;
+
+                    if (dto.FaucetCapacity != null) // 수전용량
+                        model.FaucetCapacity = dto.FaucetCapacity;
+
+                    if (dto.GenerationCapacity != null) // 발전용량
+                        model.GenerationCapacity = dto.GenerationCapacity;
+
+                    if (dto.WaterCapacity != null) // 급수용량
+                        model.WaterCapacity = dto.WaterCapacity;
+
+                    if (dto.ElevWaterTank != null) // 고가수조
+                        model.ElevWaterTank = dto.ElevWaterTank;
+
+                    if (dto.WaterTank != null) // 저수조
+                        model.WaterTank = dto.WaterTank;
+
+                    if (dto.GasCapacity != null) // 가스용량
+                        model.GasCapacity = dto.GasCapacity;
+
+                    if (dto.Boiler != null) // 보일러
+                        model.Boiler = dto.Boiler;
+
+                    if (dto.WaterDispenser != null) // 냉온수기
+                        model.WaterDispenser = dto.WaterDispenser;
+
+                    if (dto.LiftNum != null) // 승강대수
+                        model.LiftNum = dto.LiftNum;
+
+                    if (dto.PeopleLiftNum != null) // 인승용
+                        model.PeopleLiftNum = dto.PeopleLiftNum;
+
+                    if (dto.CargoLiftNum != null) // 화물용
+                        model.CargoLiftNum = dto.CargoLiftNum;
+
+                    if (dto.CoolHeatCapacity != null) // 냉 난방 용량
+                        model.CoolHeatCapacity = dto.CoolHeatCapacity;
+
+                    if (dto.HeatCapacity != null) // 난방용량
+                        model.HeatCapacity = dto.HeatCapacity;
+
+                    if (dto.CoolCapacity != null) // 냉방용량
+                        model.CoolCapacity = dto.CoolCapacity;
+
+                    if (dto.LandScapeArea != null) // 조경면적
+                        model.LandscapeArea = dto.LandScapeArea;
+
+                    if (dto.GroundArea != null) // 지상면적
+                        model.GroundArea = dto.GroundArea;
+
+                    if (dto.RooftopArea != null) // 옥상면적
+                        model.RooftopArea = dto.RooftopArea;
+
+                    if (dto.ToiletNum != null) // 화장실 개수
+                        model.ToiletNum = dto.ToiletNum;
+
+                    if (dto.MenToiletNum != null) // 남자화장실 개수
+                        model.MenToiletNum = dto.MenToiletNum;
+
+                    if (dto.WomenToiletNum != null) // 여자화장실 개수
+                        model.WomenToiletNum = dto.WomenToiletNum;
+
+                    if (!String.IsNullOrWhiteSpace(dto.FireRating)) // 소방등급
+                        model.FireRating = dto.FireRating;
+
+                    if (dto.SepticTankCapacity != null) // 정화조 용량
+                        model.SepticTankCapacity = dto.SepticTankCapacity;
+
+                    if (!String.IsNullOrWhiteSpace(dto.PlaceCD)) // 사업장 코드 - 외래키
+                        model.PlacecodeCd = dto.PlaceCD;
+
+                    model.UpdateDt = DateTime.Now;
+                    model.UpdateUser = "유저TOKEN";
+
+                    bool result = await BuildingInfoRepository.EditBuildingInfo(model);
+
+                    if(result) // 수정성공
+                    {
+                        return FuncResponseOBJ("데이터 수정 성공.", new BuildingsDTO()
+                        {
+                            BuildingCode = model.BuildingCd, // 건물코드
+                            Name = model.Name, // 건물이름
+                            Address = model.Address, // 주소
+                            Tel = model.Tel, // 전화번호
+                            Usage = model.Usage, // 건물용도
+                            ConstComp = model.ConstComp, // 시공업체
+                            CompletionData = model.CompletionDate, // 준공년월
+                            BuildingStruct = model.BuildingStruct, // 건물구조
+                            RoofStruct = model.RoofStruct, // 지붕구조
+                            GrossFloorArea = model.GrossFloorArea, // 연면적
+                            LandArea = model.LandArea, // 대지면적
+                            BuildingArea = model.BuildingArea, // 건축면적
+                            FloorNum = model.FloorNum, // 건물층수
+                            GroundFloorNum = model.GroundFloorNum, // 지상층수
+                            BasementFloorNum = model.BasementFloorNum, // 지하층수
+                            BuildingHeight = model.BuildingHeight, // 건물높이
+                            GroundHeight = model.GroundHeight, // 건물 지상높이
+                            BasementHeight = model.BasementHeight, // 건물 지상깊이
+                            PackingNum = model.PackingNum, // 주차대수
+                            InnerPackingNum = model.InnerPackingNum, // 옥내대수
+                            OuterPackingNum = model.OuterPackingNum, // 옥외대수
+                            ElecCapacity = model.ElecCapacity, // 전기용량
+                            FaucetCapacity = model.FaucetCapacity, // 수전용량
+                            GenerationCapacity = model.GenerationCapacity, // 발전용량
+                            WaterCapacity = model.WaterCapacity, // 급수용량
+                            ElevWaterTank = model.ElevWaterTank, // 고가수조
+                            WaterTank = model.WaterTank, // 저수조
+                            GasCapacity = model.GasCapacity, // 가스용량
+                            Boiler = model.Boiler, // 보일러
+                            WaterDispenser = model.WaterDispenser, // 냉온수기
+                            LiftNum = model.LiftNum, // 승강대수
+                            PeopleLiftNum = model.PeopleLiftNum, // 인승용
+                            CargoLiftNum = model.CargoLiftNum, // 화물용
+                            CoolHeatCapacity = model.CoolHeatCapacity, // 냉난방용량
+                            HeatCapacity = model.HeatCapacity, // 난방용량
+                            CoolCapacity = model.CoolCapacity, // 냉방용량
+                            LandScapeArea = model.LandscapeArea, // 조경면적
+                            GroundArea = model.GroundArea, // 지상면적
+                            RooftopArea = model.RooftopArea, // 옥상면적
+                            ToiletNum = model.ToiletNum, // 화장실 개수
+                            MenToiletNum = model.MenToiletNum, // 남자화장실 개수
+                            WomenToiletNum = model.WomenToiletNum, // 여자화장실 개수
+                            FireRating = model.FireRating, // 소방등급
+                            SepticTankCapacity = model.SepticTankCapacity, // 정화조 용량
+                            PlaceCD = model.BuildingCd, // 사업장코드
+                        }, 200);
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터 수정 실패.", null, 404);
+                    }
                 }
-
+            }
+            else
+            {
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
             }
         }
 
@@ -444,9 +596,47 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<BuildingsDTO>> DeleteBuildingInfo(BuildingsDTO dto)
+        public async ValueTask<ResponseModel<BuildingsDTO>> DeleteBuildingInfo(BuildingsDTO dto)
         {
-            throw new NotImplementedException();
+            if(dto is not null) // 넘어온 DTO가 NULL이 아니어야 함.
+            {
+                BuildingsTb? model = await BuildingInfoRepository.GetBuildingInfo(dto.BuildingCode);
+
+                if(model == null) // 없음
+                {
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 404);
+                }
+                else
+                {
+                    model.DelDt = DateTime.Now;
+                    model.DelUser = "토큰USER";
+                    model.DelYn = true;
+
+                    bool result = await BuildingInfoRepository.DeleteBuildingInfo(model);
+
+                    if(result) // 삭제성공
+                    {
+                        return FuncResponseOBJ("데이터 삭제 성공", new BuildingsDTO()
+                        {
+                            BuildingCode = model.BuildingCd,
+                            Name = model.Name
+                        }, 200);
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("데이터 삭제 실패", null, 404);
+                    }
+                }
+
+            }
+            else
+            {
+                return FuncResponseOBJ("데이터가 비어있습니다.", null, 404);
+            }
         }
+
+        
+      
+
     }
 }
