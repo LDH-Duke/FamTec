@@ -97,13 +97,13 @@ namespace FamTec.Server.Repository.VocComment
         /// <param name="userid"></param>
         /// <returns></returns>
      
-        public async ValueTask<List<VocCommentsTb>?> GetVocUserIDList(string? userid)
+        public async ValueTask<List<VocCommentsTb>?> GetVocUserIDList(int? userid)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(userid))
+                if(userid is not null)
                 {
-                    List<VocCommentsTb>? model = await context.VocCommentsTbs.Where(m => m.UsersUserid == userid && m.DelYn != true).ToListAsync();
+                    List<VocCommentsTb>? model = await context.VocCommentsTbs.Where(m => m.UsersId == userid && m.DelYn != true).ToListAsync();
                     if (model is [_, ..])
                         return model;
                     else

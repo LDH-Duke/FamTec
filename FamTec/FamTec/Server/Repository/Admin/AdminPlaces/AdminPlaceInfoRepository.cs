@@ -100,13 +100,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>?> GetAllUserList(string? userid)
+        public async ValueTask<List<AdminPlacesTb>?> GetAllUserList(int? userid)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(userid))
+                if(userid is not null)
                 {
-                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UsersUserid == userid && m.DelYn != true).ToListAsync();
+                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UserId == userid && m.DelYn != true).ToListAsync();
 
                     if (model is [_, ..])
                     {
@@ -134,13 +134,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlacesTb?> GetPlaceInfo(string? userid, string? placecd)
+        public async ValueTask<AdminPlacesTb?> GetPlaceInfo(int? userid, string? placecd)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(userid) && !String.IsNullOrWhiteSpace(placecd))
+                if(userid is not null && !String.IsNullOrWhiteSpace(placecd))
                 {
-                    AdminPlacesTb? model = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UsersUserid == userid && m.PlacecodeCd == placecd && m.DelYn != true);
+                    AdminPlacesTb? model = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UserId == userid && m.PlacecodeCd == placecd && m.DelYn != true);
 
                     if (model == null)
                         return null;

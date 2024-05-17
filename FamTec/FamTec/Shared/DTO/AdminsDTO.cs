@@ -8,6 +8,8 @@ namespace FamTec.Shared.DTO
     /// </summary>
     public class AdminsDTO
     {
+        public int? ID { get; set; }
+
         /// <summary>
         /// 관리자 아이디
         /// </summary>

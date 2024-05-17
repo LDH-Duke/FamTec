@@ -51,14 +51,12 @@ public partial class VocCommentsTb
     [Column("VOC_ID")]
     public int? VocId { get; set; }
 
-    [Column("USERS_USERID")]
-    [StringLength(15)]
-    [Unicode(false)]
-    public string? UsersUserid { get; set; }
+    [Column("USERS_ID")]
+    public int? UsersId { get; set; }
 
-    [ForeignKey("UsersUserid")]
+    [ForeignKey("UsersId")]
     [InverseProperty("VocCommentsTbs")]
-    public virtual UsersTb? UsersUser { get; set; }
+    public virtual UsersTb? Users { get; set; }
 
     [ForeignKey("VocId")]
     [InverseProperty("VocCommentsTbs")]

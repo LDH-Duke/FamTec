@@ -22,7 +22,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<AdminsTb?> GetAdminInfo(string? adminid);
+        ValueTask<AdminsTb?> GetAdminInfo(int? adminid);
 
         /// <summary>
         /// 관리자 수정

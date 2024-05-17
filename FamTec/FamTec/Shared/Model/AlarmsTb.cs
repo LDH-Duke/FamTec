@@ -51,10 +51,8 @@ public partial class AlarmsTb
     [Column("VOC_ID")]
     public int? VocId { get; set; }
 
-    [Column("USERS_USERID")]
-    [StringLength(15)]
-    [Unicode(false)]
-    public string? UsersUserid { get; set; }
+    [Column("USERS_ID")]
+    public int? UsersId { get; set; }
 
     [Column("SOCKET_ROOMS_ID")]
     public int? SocketRoomsId { get; set; }
@@ -63,9 +61,9 @@ public partial class AlarmsTb
     [InverseProperty("AlarmsTbs")]
     public virtual SocketRoomsTb? SocketRooms { get; set; }
 
-    [ForeignKey("UsersUserid")]
+    [ForeignKey("UsersId")]
     [InverseProperty("AlarmsTbs")]
-    public virtual UsersTb? UsersUser { get; set; }
+    public virtual UsersTb? Users { get; set; }
 
     [ForeignKey("VocId")]
     [InverseProperty("AlarmsTbs")]

@@ -80,7 +80,7 @@ public partial class EnergyMonthUsageTb
     public int? MeterReaderId { get; set; }
 
     [Column("YEAR")]
-    public int Year { get; set; }
+    public int? Year { get; set; }
 
     [ForeignKey("MeterReaderId")]
     [InverseProperty("EnergyMonthUsageTbs")]

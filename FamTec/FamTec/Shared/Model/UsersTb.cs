@@ -10,6 +10,9 @@ namespace FamTec.Shared.Model;
 public partial class UsersTb
 {
     [Key]
+    [Column("ID")]
+    public int Id { get; set; }
+
     [Column("USER_ID")]
     [StringLength(15)]
     [Unicode(false)]
@@ -112,16 +115,16 @@ public partial class UsersTb
     [Unicode(false)]
     public string? PlacecodeCd { get; set; }
 
-    [InverseProperty("UsersUser")]
+    [InverseProperty("User")]
     public virtual ICollection<AdminPlacesTb> AdminPlacesTbs { get; set; } = new List<AdminPlacesTb>();
 
-    [InverseProperty("UsersUser")]
+    [InverseProperty("Users")]
     public virtual ICollection<AlarmsTb> AlarmsTbs { get; set; } = new List<AlarmsTb>();
 
     [ForeignKey("PlacecodeCd")]
     [InverseProperty("UsersTbs")]
     public virtual PlacesTb? PlacecodeCdNavigation { get; set; }
 
-    [InverseProperty("UsersUser")]
+    [InverseProperty("Users")]
     public virtual ICollection<VocCommentsTb> VocCommentsTbs { get; set; } = new List<VocCommentsTb>();
 }

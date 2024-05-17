@@ -11,9 +11,7 @@ public partial class AdminsTb
 {
     [Key]
     [Column("USER_ID")]
-    [StringLength(15)]
-    [Unicode(false)]
-    public string UserId { get; set; } = null!;
+    public int UserId { get; set; }
 
     [Column("PASSWORD")]
     [StringLength(30)]

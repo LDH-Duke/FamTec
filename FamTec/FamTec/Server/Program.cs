@@ -6,8 +6,6 @@ using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Floor;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
-using FamTec.Server.Services.Admin.Place;
-using FamTec.Server.Services.Admin.User;
 using FamTec.Server.Services.Building;
 using FamTec.Server.Services.Place;
 using FamTec.Server.Services.User;
@@ -25,8 +23,6 @@ builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 
 builder.Services.AddTransient<IPlaceServices, PlaceServices>();
 builder.Services.AddTransient<IUserServices, UserServices>();
-builder.Services.AddTransient<IAdminUserService, AdminUserService>();
-builder.Services.AddTransient<IAdminPlaceService, AdminPlaceService>();
 builder.Services.AddTransient<IBuildingServices, BuildingServices>();
 
 // Add services to the container.

@@ -84,7 +84,7 @@ namespace FamTec.Server.Services.User
         /// <param name="userid"></param>
         /// <returns></returns>
         // userid는 차후 토큰이 될것임.
-        public async ValueTask<ResponseModel<UsersDTO>> GetUserInfo(string userid)
+        public async ValueTask<ResponseModel<UsersDTO>> GetUserInfo(string? userid)
         {
             if (userid is not null)
             {

@@ -66,11 +66,11 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public async ValueTask<AdminsTb?> GetAdminInfo(string? adminid)
+        public async ValueTask<AdminsTb?> GetAdminInfo(int? adminid)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(adminid))
+                if(adminid is not null)
                 {
                     AdminsTb? model = await context.AdminsTbs.FirstOrDefaultAsync(m => m.UserId == adminid && m.DelYn != true);
                     if (model == null)

@@ -23,7 +23,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<List<AdminPlacesTb>?> GetAllUserList(string? userid);
+        ValueTask<List<AdminPlacesTb>?> GetAllUserList(int? userid);
         
         /// <summary>
         /// 관리자 PLACECODE에 해당하는 전체 사업장 출력
@@ -37,7 +37,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<AdminPlacesTb?> GetPlaceInfo(string? userid, string? placecd);
+        ValueTask<AdminPlacesTb?> GetPlaceInfo(int? userid, string? placecd);
 
         /// <summary>
         /// 해당하는 관리자 사업장 삭제

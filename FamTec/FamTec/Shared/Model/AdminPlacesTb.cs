@@ -25,10 +25,8 @@ public partial class AdminPlacesTb
     [Column("DEL_YN")]
     public bool? DelYn { get; set; }
 
-    [Column("USERS_USERID")]
-    [StringLength(15)]
-    [Unicode(false)]
-    public string? UsersUserid { get; set; }
+    [Column("USER_ID")]
+    public int? UserId { get; set; }
 
     [Column("PLACECODE_CD")]
     [StringLength(25)]
@@ -39,7 +37,7 @@ public partial class AdminPlacesTb
     [InverseProperty("AdminPlacesTbs")]
     public virtual PlacesTb? PlacecodeCdNavigation { get; set; }
 
-    [ForeignKey("UsersUserid")]
+    [ForeignKey("UserId")]
     [InverseProperty("AdminPlacesTbs")]
-    public virtual UsersTb? UsersUser { get; set; }
+    public virtual UsersTb? User { get; set; }
 }

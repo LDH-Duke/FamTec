@@ -29,7 +29,7 @@ namespace FamTec.Server.Repository.VocComment
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<List<VocCommentsTb>?> GetVocUserIDList(string? userid);
+        ValueTask<List<VocCommentsTb>?> GetVocUserIDList(int? userid);
 
         /// <summary>
         /// VOC COMMENT ID로 조회
