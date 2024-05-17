@@ -5,7 +5,7 @@
 
 <div class="grid-layout">
     <div class="depart">
-        <DepartmentList DataList="@DepartmentList" />
+        <Department DataList="@DepartmentList" />
     </div>
     <div class="managerlist">
         <ManagerList DataList="managerList" />
@@ -13,7 +13,7 @@
 </div>
 
 @code {
-    List<Department> departmentList;
+    List<DepartmentDTO> departmentList;
     List<object> DepartmentList;
 
     List<ManagerDTO> managerList;
@@ -21,19 +21,19 @@
 
     protected override async Task OnInitializedAsync()
     {
-        departmentList = new List<Department>
+        departmentList = new List<DepartmentDTO>
         {
-            new Department
+            new DepartmentDTO
             {
                 Id = 1,
                 Name = "전략영업"
             },
-            new Department
+            new DepartmentDTO
             {
                 Id = 2,
                 Name = "시스템개발"
             },
-            new Department
+            new DepartmentDTO
             {
                 Id = 3,
                 Name = "특화영업"

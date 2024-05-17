@@ -2010,10 +2010,12 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\Nav.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\Drawer.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Manager.razor.rz.scp.css
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\DepartmentList.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\ManagerList.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Button.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\List.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Table.razor.rz.scp.css
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Department\ModalDepartment.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Common\ModalBack.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Department.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\DepartmentF\ModalDepartment.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\DepartmentF\DepartmentList.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Components\Common\Input.razor.rz.scp.css

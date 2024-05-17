@@ -1,0 +1,31 @@
+﻿.depart-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+   
+}
+
+.depart-list .depart-item {
+    display: flex;
+    justify-content:space-between;
+    width:100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.depart-list .depart-item:hover {
+    transition: all ease-in-out 0.2s;
+    background-color: #200d69;
+}
+
+.depart-list .depart-item:hover ::deep span {
+    transition: all ease-in-out 0.2s;
+    color: #ffffff;
+}
+
+.depart-list .depart-item > span {
+    color: #4f4f4f;
+}

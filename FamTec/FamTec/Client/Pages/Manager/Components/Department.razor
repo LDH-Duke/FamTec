@@ -1,5 +1,6 @@
 ﻿@using FamTec.Client.Pages.Manager.Components.Common
-@using FamTec.Client.Pages.Manager.Components.Department
+@using FamTec.Client.Pages.Manager.Components.DepartmentF
+
 
 
 <div class="depart-container">
@@ -9,7 +10,7 @@
                 부서관리
             </span>
         </div>
-        <ul class="depart-list">
+        @* <ul class="depart-list">
             @foreach(var item in DataList)
             {
                 <li class="depart-item">
@@ -20,16 +21,17 @@
                     </NavLink>
                 </li>
             }
-        </ul>
+        </ul> *@
+        <DepartmentList DataList="DataList"/>
         <div class="depart-btns">
             <Button Name="편집" OnClick="@OnEdit" />
         </div>
         @if (is_openModal == true)
         {
             <ModalBack >
-                <ChildModal>
+                <ChildComponent>
                     <ModalDepartment OnClose="@OnModalClose" />
-                </ChildModal>
+                </ChildComponent>
             </ModalBack>
         }
     </div>

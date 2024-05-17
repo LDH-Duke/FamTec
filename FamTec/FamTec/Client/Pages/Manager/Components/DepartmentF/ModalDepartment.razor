@@ -1,0 +1,108 @@
+﻿@using FamTec.Client.Pages.Manager.Components.Common
+@using FamTec.Shared.Client.DTO
+
+<div class="modaldepart-container">
+    <div class="modaldepart-wrap">
+        <div class="modaldepart-title">
+            <span>
+                부서 편집
+            </span>
+        </div>
+        <div class="modaldepart-body">
+            <div class="modaldepart-list">
+                <DepartmentList DataList="DepartmentList" Edit=true />
+            </div>
+            <div class="modaldepart-btns">
+                <Button Name="수정" />
+                <Button Name="삭제"/>
+            </div>
+        </div>
+        <div class="modaldepart-add">
+            <span>부서 추가</span>
+            <div class="modaldepart-input">
+                <Input type="text" placeholder="부서명"/>
+                <Input Placeholder="부서명" />
+                <Button Name="추가"/>
+            </div>
+        </div>
+        <Button Name="확인" OnClick="@ModalClose" />
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+    List<DepartmentDTO> departmentList;
+    List<object> DepartmentList;
+
+    protected override Task OnInitializedAsync()
+    {
+        /*
+         * 1. 모달 오픈 시 db 부서내용 요청
+         */
+        departmentList = new List<DepartmentDTO>
+        {
+            new DepartmentDTO
+            {
+                Id = 1,
+                Name = "전략영업"
+            },
+            new DepartmentDTO
+            {
+                Id = 2,
+                Name = "시스템개발"
+            },
+            new DepartmentDTO
+            {
+                Id = 3,
+                Name = "특화영업"
+            },
+            new DepartmentDTO
+            {
+                Id = 4,
+                Name = "시스템개발"
+            },
+            new DepartmentDTO
+            {
+                Id = 5,
+                Name = "특화영업"
+            },
+            new DepartmentDTO
+            {
+                Id = 6,
+                Name = "시스템개발"
+            },
+            new DepartmentDTO
+            {
+                Id = 7,
+                Name = "특화영업"
+            },
+            new DepartmentDTO
+            {
+                Id = 8,
+                Name = "특화영업"
+            },
+            new DepartmentDTO
+            {
+                Id = 9,
+                Name = "시스템개발"
+            },
+            new DepartmentDTO
+            {
+                Id = 10,
+                Name = "특화영업"
+            }
+        };
+
+        DepartmentList = departmentList.Cast<object>().ToList();
+
+        return base.OnInitializedAsync();
+    }
+
+
+    private Task ModalClose()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+}

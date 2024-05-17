@@ -1,0 +1,22 @@
+﻿
+<ul class="depart-list">
+    @foreach (var item in DataList)
+    {
+        <li class="depart-item">
+            <NavLink>
+                <span>
+                    @item.GetType().GetProperty("Name").GetValue(item)
+                </span>
+               
+            </NavLink>
+            @if (Edit)
+            {
+                <input class="depart-select" type="checkbox" />
+            }
+        </li>
+    }
+</ul>
+@code {
+    [Parameter] public List<object> DataList { get; set; }
+    [Parameter] public bool Edit { get; set; }
+}

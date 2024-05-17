@@ -1,5 +1,8 @@
 ﻿@using FamTec.Shared.Client.DTO
 
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Navigation
+
 <div class="managerlist-container">
     <div class="managerlist-wrap">
         <div class="managerlist-header">
@@ -7,7 +10,7 @@
                 매니저 목록
             </span>
             <div class="managerlist-btns">
-                <Button Name="등록"/>
+                <Button Name="등록" OnClick="@OnSignUp" />
                 <Button Name="삭제" />
             </div>
             
@@ -20,4 +23,11 @@
 
 @code {
     [Parameter] public List<ManagerDTO> DataList { get; set; }
+
+
+    private void OnSignUp()
+    {
+        Navigation.NavigateTo("/admin/manager/signup");
+    }
+
 }
