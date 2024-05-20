@@ -1,5 +1,4 @@
-﻿using FamTec.Shared.Model;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FamTec.Shared.DTO
 {
@@ -62,17 +61,17 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 연면적
         /// </summary>
-        public double? GrossFloorArea { get; set; }
+        public float? GrossFloorArea { get; set; }
 
         /// <summary>
         /// 대지면적
         /// </summary>
-        public double? LandArea { get; set; }
+        public float? LandArea { get; set; }
 
         /// <summary>
         /// 건축면적
         /// </summary>
-        public double? BuildingArea { get; set; }
+        public float? BuildingArea { get; set; }
 
         /// <summary>
         /// 건물층수
@@ -91,17 +90,17 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 건물 높이
         /// </summary>
-        public double? BuildingHeight { get; set; }
+        public float? BuildingHeight { get; set; }
 
         /// <summary>
         /// 건물 지상높이
         /// </summary>
-        public double? GroundHeight { get; set; }
+        public float? GroundHeight { get; set; }
 
         /// <summary>
         /// 건물 지하깊이
         /// </summary>
-        public double? BasementHeight { get; set; }
+        public float? BasementHeight { get; set; }
         
         /// <summary>
         /// 주차대수
@@ -121,47 +120,47 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 전기용량
         /// </summary>
-        public double? ElecCapacity { get; set; }
+        public float? ElecCapacity { get; set; }
 
         /// <summary>
         /// 수전용량
         /// </summary>
-        public double? FaucetCapacity { get; set; }
+        public float? FaucetCapacity { get; set; }
 
         /// <summary>
         /// 발전용량
         /// </summary>
-        public double? GenerationCapacity { get; set; }
+        public float? GenerationCapacity { get; set; }
 
         /// <summary>
         /// 급수용량
         /// </summary>
-        public double? WaterCapacity { get; set; }
+        public float? WaterCapacity { get; set; }
         
         /// <summary>
         /// 고가 수조
         /// </summary>
-        public double? ElevWaterTank { get; set; }
+        public float? ElevWaterTank { get; set; }
 
         /// <summary>
         /// 저수조
         /// </summary>
-        public double? WaterTank { get; set; }
+        public float? WaterTank { get; set; }
 
         /// <summary>
         /// 가스용량
         /// </summary>
-        public double? GasCapacity { get; set; }
+        public float? GasCapacity { get; set; }
 
         /// <summary>
         /// 보일러
         /// </summary>
-        public double? Boiler { get; set; }
+        public float? Boiler { get; set; }
 
         /// <summary>
         /// 냉온수기
         /// </summary>
-        public double? WaterDispenser { get; set; }
+        public float? WaterDispenser { get; set; }
 
         /// <summary>
         /// 승강대수
@@ -181,32 +180,32 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 냉 난방 용량
         /// </summary>
-        public double? CoolHeatCapacity { get; set; }
+        public float? CoolHeatCapacity { get; set; }
 
         /// <summary>
         /// 난방용량
         /// </summary>
-        public double? HeatCapacity { get; set; }
+        public float? HeatCapacity { get; set; }
 
         /// <summary>
         /// 냉방용량
         /// </summary>
-        public double? CoolCapacity { get; set; }
+        public float? CoolCapacity { get; set; }
         
         /// <summary>
         /// 조경면적
         /// </summary>
-        public double? LandScapeArea { get; set; }
+        public float? LandScapeArea { get; set; }
 
         /// <summary>
         /// 지상면적
         /// </summary>
-        public double? GroundArea { get; set; }
+        public float? GroundArea { get; set; }
 
         /// <summary>
         /// 옥상면적
         /// </summary>
-        public double? RooftopArea { get; set; }
+        public float? RooftopArea { get; set; }
         
         /// <summary>
         /// 화장실 개수
@@ -231,12 +230,12 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 정화조 용량
         /// </summary>
-        public double? SepticTankCapacity { get; set; }
+        public float? SepticTankCapacity { get; set; }
         
         /// <summary>
         /// 건물코드 - 외래키 참조
         /// </summary>
-        public string? PlaceCD { get; set; }
+        public int? PlaceIdx { get; set; }
 
     }
 }

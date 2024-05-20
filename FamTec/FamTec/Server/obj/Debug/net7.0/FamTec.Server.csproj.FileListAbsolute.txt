@@ -15,7 +15,6 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Serve
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.runtimeconfig.json
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\FamTec.Server.pdb
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Humanizer.dll
@@ -106,3 +105,5 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refint\FamTe
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.genruntimeconfig.cache
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\ref\FamTec.Server.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll

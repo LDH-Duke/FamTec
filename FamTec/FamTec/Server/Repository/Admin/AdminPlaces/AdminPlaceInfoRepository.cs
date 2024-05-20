@@ -6,9 +6,9 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
 {
     public class AdminPlaceInfoRepository : IAdminPlacesInfoRepository
     {
-        private readonly FmsContext context;
+        private readonly WorksContext context;
 
-        public AdminPlaceInfoRepository(FmsContext _context)
+        public AdminPlaceInfoRepository(WorksContext _context)
         {
             this.context = _context;
         }
@@ -18,13 +18,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlacesTb?> AddAsync(AdminPlacesTb? model)
+        public async ValueTask<AdminPlaceTb?> AddAsync(AdminPlaceTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.AdminPlacesTbs.Add(model);
+                    context.AdminPlaceTbs.Add(model);
                     await context.SaveChangesAsync();
                     return model;
                 }
@@ -44,11 +44,11 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// 전체 사업장 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>?> GetAllList()
+        public async ValueTask<List<AdminPlaceTb>?> GetAllList()
         {
             try
             {
-                List<AdminPlacesTb> model = await context.AdminPlacesTbs.Where(m => m.DelYn != true).ToListAsync();
+                List<AdminPlaceTb> model = await context.AdminPlaceTbs.Where(m => m.DelYn != 1).ToListAsync();
                 if (model == null)
                     return null;
                 else
@@ -66,13 +66,16 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>?> GetAllPlaceList(string? placecd)
+        public async ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? placeid)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(placecd))
+                if(placeid is not null)
                 {
-                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.PlacecodeCd == placecd && m.DelYn != true).ToListAsync();
+                    List<AdminPlaceTb>? model = await context.AdminPlaceTbs
+                        .Where(m => 
+                        m.PlaceId.Equals(placeid) && 
+                        m.DelYn != 1).ToListAsync();
 
                     if (model is [_, ..])
                     {
@@ -100,13 +103,15 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlacesTb>?> GetAllUserList(int? userid)
+        public async ValueTask<List<AdminPlaceTb>?> GetAllUserList(int? admintbid)
         {
             try
             {
-                if(userid is not null)
+                if(admintbid is not null)
                 {
-                    List<AdminPlacesTb>? model = await context.AdminPlacesTbs.Where(m => m.UserId == userid && m.DelYn != true).ToListAsync();
+                    List<AdminPlaceTb>? model = await context.AdminPlaceTbs
+                        .Where(m => m.AdminTbId.Equals(admintbid) && 
+                        m.DelYn != 1).ToListAsync();
 
                     if (model is [_, ..])
                     {
@@ -134,13 +139,17 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlacesTb?> GetPlaceInfo(int? userid, string? placecd)
+        public async ValueTask<AdminPlaceTb?> GetPlaceInfo(int? admintbid, int? placeid)
         {
             try
             {
-                if(userid is not null && !String.IsNullOrWhiteSpace(placecd))
+                if(admintbid is not null && placeid is not null)
                 {
-                    AdminPlacesTb? model = await context.AdminPlacesTbs.FirstOrDefaultAsync(m => m.UserId == userid && m.PlacecodeCd == placecd && m.DelYn != true);
+                    AdminPlaceTb? model = await context.AdminPlaceTbs
+                        .FirstOrDefaultAsync(m => 
+                        m.AdminTbId.Equals(admintbid) && 
+                        m.PlaceId.Equals(placeid) && 
+                        m.DelYn != 1);
 
                     if (model == null)
                         return null;
@@ -164,13 +173,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteAdminPlacesInfo(AdminPlacesTb? model)
+        public async ValueTask<bool?> DeleteAdminPlacesInfo(AdminPlaceTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.AdminPlacesTbs.Update(model);
+                    context.AdminPlaceTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -189,13 +198,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> EditAdminPlacesInfo(AdminPlacesTb? model)
+        public async ValueTask<bool?> EditAdminPlacesInfo(AdminPlaceTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.AdminPlacesTbs.Update(model);
+                    context.AdminPlaceTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -210,6 +219,6 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
         }
 
-      
+    
     }
 }

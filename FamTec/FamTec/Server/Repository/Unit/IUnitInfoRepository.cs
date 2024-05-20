@@ -22,7 +22,14 @@ namespace FamTec.Server.Repository.Unit
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        ValueTask<List<UnitTb>?> GetUnitList(string? placecd);
+        ValueTask<List<UnitTb>?> GetUnitList(int? placetbid);
+
+        /// <summary>
+        /// 단위 인덱스에 해당하는 모델 조회
+        /// </summary>
+        /// <param name="unitidx"></param>
+        /// <returns></returns>
+        ValueTask<UnitTb?> GetUnitInfo(int? unitidx, int? placetbid);
 
         /// <summary>
         /// 수정

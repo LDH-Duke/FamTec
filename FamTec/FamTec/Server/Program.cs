@@ -6,9 +6,7 @@ using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Floor;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
-using FamTec.Server.Services.Building;
 using FamTec.Server.Services.Place;
-using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,20 +19,20 @@ builder.Services.AddTransient<IAdminUserInfoRepository, AdminUserInfoRepository>
 builder.Services.AddTransient<IAdminPlacesInfoRepository, AdminPlaceInfoRepository>();
 builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 
-builder.Services.AddTransient<IPlaceServices, PlaceServices>();
-builder.Services.AddTransient<IUserServices, UserServices>();
-builder.Services.AddTransient<IBuildingServices, BuildingServices>();
+
 
 // Add services to the container.
+builder.Services.AddTransient<IPlaceService, PlaceService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 
 #region DB연결 정보
-builder.Services.AddDbContext<FmsContext>(options =>
-    options.UseSqlServer(builder.Configuration
-    .GetConnectionString("DefaultConnection")));
+var connstr = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddDbContext<WorksContext>(options =>
+    options.UseMySql(connstr, ServerVersion.AutoDetect(connstr)));
 #endregion
 
 #region SIGNAL R CORS 등록

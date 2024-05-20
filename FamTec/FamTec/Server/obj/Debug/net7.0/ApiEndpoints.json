@@ -1,130 +1,8 @@
 [
   {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "AddBdInfo",
-    "RelativePath": "api/Buildings/AddBuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.BuildingsDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "DeleteBdInfo",
-    "RelativePath": "api/Buildings/DeleteBuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.BuildingsDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "GetBdInfo",
-    "RelativePath": "api/Buildings/GetBdCode/{bdcode}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "bdcode",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "GetBdPlace",
-    "RelativePath": "api/Buildings/GetBdPlace/{placecode}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "placecode",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "AddBuilding",
-    "RelativePath": "api/Buildings/InsertBuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.BuildingsDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "GetAllBuildingList",
-    "RelativePath": "api/Buildings/SelectAllBuilding",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.BuildingsController",
-    "Method": "UpdateBdInfo",
-    "RelativePath": "api/Buildings/UpdateBuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.BuildingsDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.PlacesController",
-    "Method": "DeletePlace",
-    "RelativePath": "api/Places/DeletePlace",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.PlacesDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "ContainingType": "FamTec.Server.Controllers.PlaceController",
     "Method": "AddPlace",
-    "RelativePath": "api/Places/InsertPlace",
+    "RelativePath": "api/Place/AddPlace",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -138,9 +16,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.PlacesController",
+    "ContainingType": "FamTec.Server.Controllers.PlaceController",
     "Method": "GetAllPlace",
-    "RelativePath": "api/Places/SelectAllPlace",
+    "RelativePath": "api/Place/GetAllPlace",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -148,113 +26,35 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.PlacesController",
-    "Method": "UpdatePlace",
-    "RelativePath": "api/Places/UpdatePlace",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.PlacesDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "AddUser",
-    "RelativePath": "api/Users/AddUser",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.UsersDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "DeleteUser",
-    "RelativePath": "api/Users/DeleteUser",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.UsersDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "GetAllUserList",
-    "RelativePath": "api/Users/SelectAllUser",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "GetUser",
-    "RelativePath": "api/Users/SelectUser/{userid}",
+    "ContainingType": "FamTec.Server.Controllers.PlaceController",
+    "Method": "GetPlaceId",
+    "RelativePath": "api/Place/GetPlace/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userid",
-        "Type": "System.String",
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.UsersController",
-    "Method": "UpdateUser",
-    "RelativePath": "api/Users/UpdateUser",
-    "HttpMethod": "POST",
+    "ContainingType": "FamTec.Server.Controllers.PlaceController",
+    "Method": "GetPlaceCode",
+    "RelativePath": "api/Place/GetPlaceCD/{code}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dto",
-        "Type": "FamTec.Shared.DTO.UsersDTO",
-        "IsRequired": true
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[FamTec.Shared.WeatherForecast, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   }
 ]

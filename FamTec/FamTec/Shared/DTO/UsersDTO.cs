@@ -11,9 +11,7 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 사용자 아이디
         /// </summary>
-        [MaxLength(15)]
-        [NotNull]
-        [Required(ErrorMessage = "아이디를 입력해주세요.")]
+        
         public string? USERID { get; set; }
 
         /// <summary>

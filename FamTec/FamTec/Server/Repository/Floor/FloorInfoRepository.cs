@@ -7,9 +7,9 @@ namespace FamTec.Server.Repository.Floor
 {
     public class FloorInfoRepository : IFloorInfoRepository
     {
-        private readonly FmsContext context;
+        private readonly WorksContext context;
 
-        public FloorInfoRepository(FmsContext _context)
+        public FloorInfoRepository(WorksContext _context)
         {
             this.context = _context;
         }
@@ -19,13 +19,13 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<FloorsTb?> AddAsync(FloorsTb? model)
+        public async ValueTask<FloorTb?> AddAsync(FloorTb? model)
         {
             try
             {
                 if(model is not null)
                 {
-                    context.FloorsTbs.Add(model);
+                    context.FloorTbs.Add(model);
                     await context.SaveChangesAsync();
                     return model;
                 }
@@ -45,11 +45,13 @@ namespace FamTec.Server.Repository.Floor
         /// 층 정보 전체 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<List<FloorsTb>?> GetAllList()
+        public async ValueTask<List<FloorTb>?> GetAllList()
         {
             try
             {
-                List<FloorsTb>? model = await context.FloorsTbs.Where(m => m.DelYn != true).ToListAsync();
+                List<FloorTb>? model = await context.FloorTbs
+                    .Where(m => m.DelYn != 1).ToListAsync();
+
                 if (model is [_, ..])
                     return model;
                 else
@@ -67,13 +69,15 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        public async ValueTask<List<FloorsTb>?> GetFloorList(string? buildingcd)
+        public async ValueTask<List<FloorTb>?> GetFloorList(int? buildingtbid)
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(buildingcd))
+                if (buildingtbid is not null)
                 {
-                    List<FloorsTb>? model = await context.FloorsTbs.Where(m => m.BuildingCd == buildingcd && m.DelYn != true).ToListAsync();
+                    List<FloorTb>? model = await context.FloorTbs
+                        .Where(m => m.BuildingTbId.Equals(buildingtbid) && 
+                        m.DelYn != 1).ToListAsync();
 
                     if (model is [_, ..])
                         return model;
@@ -93,17 +97,50 @@ namespace FamTec.Server.Repository.Floor
         }
 
         /// <summary>
+        /// 층 인덱스에 해당하는 층모델 정보 조회
+        /// </summary>
+        /// <param name="flooridx"></param>
+        /// <returns></returns>
+        public async ValueTask<FloorTb?> GetFloorIndexInfo(int? id)
+        {
+            try
+            {
+                if(id is not null)
+                {
+                    FloorTb? model = await context.FloorTbs
+                        .FirstOrDefaultAsync(m => m.Id.Equals(id) &&
+                        m.DelYn != 1);
+                    
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
+
+
+        /// <summary>
         /// 층 정보 수정
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteFloorInfo(FloorsTb? model)
+        public async ValueTask<bool?> DeleteFloorInfo(FloorTb? model)
         {
             try
             {
                 if(model is not null)
                 {
-                    context.FloorsTbs.Update(model);
+                    context.FloorTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -124,13 +161,13 @@ namespace FamTec.Server.Repository.Floor
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> EditFloorInfo(FloorsTb? model)
+        public async ValueTask<bool?> EditFloorInfo(FloorTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.FloorsTbs.Update(model);
+                    context.FloorTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -146,6 +183,6 @@ namespace FamTec.Server.Repository.Floor
             }
         }
 
-
+  
     }
 }

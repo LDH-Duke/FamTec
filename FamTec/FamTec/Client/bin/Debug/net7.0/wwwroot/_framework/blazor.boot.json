@@ -1,7 +1,7 @@
 {
   "entryAssembly": "FamTec.Client",
   "resources": {
-    "hash": "sha256-aG2euUJj7H+Upqa/JXhzHc9h+OvMTyJ0ivRCEFHDs7E=",
+    "hash": "sha256-HRICXrE4bYB5Et/EBxiMDo9uY6LJUnIOKmqpHV3rfH4=",
     "runtime": {
       "dotnet.7.0.16.74r60x5dgn.js": "sha256-4BiArKugJJtpQrznGF5zWfmJ2TB98+p6rKsyoqhtMk4=",
       "dotnet.timezones.blat": "sha256-rwyJqJu36keQwNmm/O1XV7tnkkVldIOK8GIjn4gTUt4=",
@@ -65,6 +65,8 @@
       "Microsoft.SqlServer.Server.dll": "sha256-qdyhtCvIdflmt4ssCIDmK4OPDtZWcWbX8fB65LduxL8=",
       "Microsoft.Win32.SystemEvents.dll": "sha256-yklb9shrfwktYkkoEBmFqUFTLRSdzYrP6hcPilO+iFA=",
       "Mono.TextTemplating.dll": "sha256-57img5VLX+wAnl9OVpb+sxtMXVadVaRjPPWtsObQbOw=",
+      "MySqlConnector.dll": "sha256-SvUnC2U+xrLDeKZ+ZR1DOaZcC0qNNzA4ncgVlM6LtOI=",
+      "Pomelo.EntityFrameworkCore.MySql.dll": "sha256-syJhjtABMnhsBya48+Hse+WM7BMonlaQBL303Bl5sYQ=",
       "System.CodeDom.dll": "sha256-Wux4xpM0/BzRySb0qchXJg3S4D/xc56W3vHWgpa4a4s=",
       "System.Configuration.ConfigurationManager.dll": "sha256-0nS91x919QBfyuwCiSH3HYnLbWIgItdNLgeJejodFBo=",
       "System.Drawing.Common.dll": "sha256-mNB+ax59NkGoYIo2Cz3Cc/6KD3iSa24eX2eaegdNSR8=",
@@ -243,12 +245,12 @@
       "mscorlib.dll": "sha256-7yxnoj0sx/xIMKjSCkfYzaeQKDj1UsUSr/JXW7fRggs=",
       "netstandard.dll": "sha256-c9xgB5oQro5/rBTTHeD+4cqLi9QOB+6fhaP3jmkeGo4=",
       "System.Private.CoreLib.dll": "sha256-FGXoQzMt7mcWfUZbWXoXgg8tPIt7PF+QZoXXBQWegAQ=",
-      "FamTec.Shared.dll": "sha256-IE8Xi0jLFQFu1Z8ZqDKBPAIWuW81ME9MAbgKZ370SUE=",
-      "FamTec.Client.dll": "sha256-YciI0J5wLtMe7dAQrXXEmGg3Fh6gD44/fjqQHndR3vw="
+      "FamTec.Shared.dll": "sha256-/wlUAPhI7Mm99trMA5qLE6IuP/iGYdfE8AR4otLda4Y=",
+      "FamTec.Client.dll": "sha256-dYTI/5Vm08IEIqBvGiqMdjljOGKEgZA/7PiqTEqFBcM="
     },
     "pdb": {
-      "FamTec.Shared.pdb": "sha256-EQBk6Mck4YT3HPa56vzLYyyxHDhRHF6BSx9LCn1fmbE=",
-      "FamTec.Client.pdb": "sha256-YUrvKj8xnzm1lh0YseE9xJ9GUkCYe87tZGfezXGnQxk="
+      "FamTec.Shared.pdb": "sha256-PWlTHrlngoApvABFIz1LnDSWLdKNk7xmiZyt9oYG7XM=",
+      "FamTec.Client.pdb": "sha256-zUybxjv1rVP778+KZmD4uaHmrF6yptIM7IQct1BbxRI="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

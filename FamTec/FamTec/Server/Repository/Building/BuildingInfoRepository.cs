@@ -3,14 +3,15 @@ using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.IdentityModel.Abstractions;
+using System.Reflection;
 
 namespace FamTec.Server.Repository.Building
 {
     public class BuildingInfoRepository : IBuildingInfoRepository
     {
-        private readonly FmsContext context;
+        private readonly WorksContext context;
 
-        public BuildingInfoRepository(FmsContext _context)
+        public BuildingInfoRepository(WorksContext _context)
         {
             this.context = _context;
         }
@@ -21,13 +22,13 @@ namespace FamTec.Server.Repository.Building
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<BuildingsTb?> AddAsync(BuildingsTb? model)
+        public async ValueTask<BuildingTb?> AddAsync(BuildingTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.BuildingsTbs.Add(model);
+                    context.BuildingTbs.Add(model);
                     await context.SaveChangesAsync();
                     return model;
                 }
@@ -48,11 +49,13 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async ValueTask<List<BuildingsTb>?> GetAllList()
+        public async ValueTask<List<BuildingTb>?> GetAllList()
         {
             try
             {
-                List<BuildingsTb>? model = await context.BuildingsTbs.Where(m => m.DelYn != true).ToListAsync();
+                List<BuildingTb>? model = await context.BuildingTbs
+                    .Where(m => m.DelYn != 1).ToListAsync();
+
                 if (model is [_, ..])
                     return model;
                 else
@@ -71,15 +74,20 @@ namespace FamTec.Server.Repository.Building
         /// <param name="model"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public async ValueTask<List<BuildingsTb>?> GetBuildingList(string? placecode)
+        public async ValueTask<List<BuildingTb>?> GetBuildingList(int? placeidx)
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(placecode))
+                if (placeidx is not null)
                 {
-                    List<BuildingsTb>? result = await context.BuildingsTbs.Where(m => m.PlacecodeCd == placecode && m.DelYn != true).ToListAsync();
+                    List<BuildingTb>? result = await context.BuildingTbs
+                        .Where(m => 
+                        m.PlaceTbId == placeidx &&
+                        m.DelYn != 1).ToListAsync();
+                    
                     if (result is [_, ..])
                         return result;
+
                     else
                         return null;
                 }
@@ -96,19 +104,25 @@ namespace FamTec.Server.Repository.Building
         }
 
         /// <summary>
-        /// 해당 건물코드에 해당하는 건물 출력
+        /// 해당사업장의 건물코드에 해당하는 건물 출력
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<BuildingsTb?> GetBuildingInfo(string? buildingcode)
+        public async ValueTask<BuildingTb?> GetBuildingInfo(string? buildingcode, int? placeid)
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(buildingcode))
+                if (!String.IsNullOrWhiteSpace(buildingcode) && placeid is not null)
                 {
-                    BuildingsTb? result = await context.BuildingsTbs.FirstOrDefaultAsync(m => m.BuildingCd == buildingcode && m.DelYn != true);
-                    if (result is not null)
-                        return result;
+                    BuildingTb? model = await context.BuildingTbs
+                        .FirstOrDefaultAsync(m =>
+                        m.BuildingCd.Equals(buildingcode) &&
+                        m.PlaceTbId.Equals(placeid) &&
+                        m.DelYn != 1);
+
+                    if (model is not null)
+                        return model;
+                    
                     else
                         return null;
                 }
@@ -129,13 +143,13 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> EditBuildingInfo(BuildingsTb? model)
+        public async ValueTask<bool?> EditBuildingInfo(BuildingTb? model)
         {
             try
             {
                 if(model is not null)
                 {
-                    context.BuildingsTbs.Update(model);
+                    context.BuildingTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -156,13 +170,13 @@ namespace FamTec.Server.Repository.Building
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteBuildingInfo(BuildingsTb? model)
+        public async ValueTask<bool?> DeleteBuildingInfo(BuildingTb? model)
         {
             try
             {
                 if (model is not null)
                 {
-                    context.BuildingsTbs.Update(model);
+                    context.BuildingTbs.Update(model);
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
@@ -176,5 +190,8 @@ namespace FamTec.Server.Repository.Building
                 throw new ArgumentException();
             }
         }
+
+
+
     }
 }

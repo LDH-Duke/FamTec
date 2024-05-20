@@ -1007,3 +1007,11 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamTec.Clien
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\refint\FamTec.Client.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamTec.Client.pdb
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\ref\FamTec.Client.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\MySqlConnector.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Pomelo.EntityFrameworkCore.MySql.dll.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\MySqlConnector.dll.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\MySqlConnector.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\v03dt4dwrc.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\q2tdzzyqw7.gz

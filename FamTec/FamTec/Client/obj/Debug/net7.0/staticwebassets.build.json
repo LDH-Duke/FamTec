@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oALjf1n0HaX+shy2pNRWU91fOBOOUEod9YtcQjPaTy0=",
+  "Hash": "/Vezd+9rZKj+79L1hN5uCXETKYqIKHtPR9AG/o1JCLc=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -1385,6 +1385,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.16\\runtimes\\browser-wasm\\lib\\net7.0\\mscorlib.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MySqlConnector.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MySqlConnector.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\mysqlconnector\\2.2.5\\lib\\net7.0\\MySqlConnector.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\netstandard.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -1402,6 +1421,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.16\\runtimes\\browser-wasm\\lib\\net7.0\\netstandard.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Pomelo.EntityFrameworkCore.MySql.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Pomelo.EntityFrameworkCore.MySql.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\7.0.0\\lib\\net7.0\\Pomelo.EntityFrameworkCore.MySql.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.AppContext.dll",
@@ -7978,6 +8016,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.WebClient.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\q2tdzzyqw7.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Pomelo.EntityFrameworkCore.MySql.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Pomelo.EntityFrameworkCore.MySql.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Pomelo.EntityFrameworkCore.MySql.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qek0pjj8gh.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -8698,6 +8755,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.SignalR.Protocols.Json.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\v03dt4dwrc.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/MySqlConnector.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MySqlConnector.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\MySqlConnector.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\v1qk21dk78.gz",
