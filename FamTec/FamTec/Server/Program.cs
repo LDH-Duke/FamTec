@@ -1,4 +1,3 @@
-using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +12,9 @@ builder.Services.AddRazorPages();
 
 
 #region DB연결 정보
-builder.Services.AddDbContext<FmsContext>(options =>
-    options.UseSqlServer(builder.Configuration
-    .GetConnectionString("DefaultConnection")));
+//builder.Services.AddDbContext<FmsContext>(options =>
+//    options.UseSqlServer(builder.Configuration
+//    .GetConnectionString("DefaultConnection")));
 #endregion
 
 #region SIGNAL R 등록
