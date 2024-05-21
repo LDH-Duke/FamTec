@@ -69,19 +69,28 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// <param name="adminuseridx"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<List<AdminTb>?> GetAdminUserList(int? usertbid)
+        public async ValueTask<AdminTb?> GetAdminUserList(int? usertbid)
         {
             try
             {
-                List<AdminTb>? model = await context.AdminTbs
-                    .Where(m => m.UserTbId.Equals(usertbid) &&
-                    m.DelYn != 1).ToListAsync();
-
-                if (model is [_, ..])
-                    return model;
+                if (usertbid is not null)
+                {
+                    AdminTb? model = await context.AdminTbs.FirstOrDefaultAsync(m => m.UserTbId.Equals(usertbid) && m.DelYn != 1);
+                    if (model is not null)
+                    {
+                        return model;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
                 else
+                {
                     return null;
-            }catch(Exception ex)
+                }
+            }
+            catch(Exception ex)
             {
                 Console.WriteLine(ex);
                 throw new ArgumentException();

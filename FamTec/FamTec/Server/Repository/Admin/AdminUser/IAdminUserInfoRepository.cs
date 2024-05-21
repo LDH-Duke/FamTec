@@ -30,7 +30,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<List<AdminTb>?> GetAdminUserList(int? usertbid);
+        ValueTask<AdminTb?> GetAdminUserList(int? usertbid);
 
         /// <summary>
         /// 매개변수의 부서ID에 해당하는 관리자모델 리스트 조회

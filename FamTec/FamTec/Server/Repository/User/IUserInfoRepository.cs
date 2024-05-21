@@ -32,6 +32,21 @@ namespace FamTec.Server.Repository.User
         ValueTask<UserTb?> GetUserInfo(string? userid, int? placetbid);
 
         /// <summary>
+        /// USERID + PASSWORD에 해당하는 모델반환
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        ValueTask<UserTb?> GetUserInfo(string? userid, string? password);
+
+        /// <summary>
+        /// 사용자이름으로 단일모델 조회
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        ValueTask<UserTb?> GetUserInfo(int? idx);
+
+        /// <summary>
         /// 사용자 수정
         /// </summary>
         /// <param name="model"></param>

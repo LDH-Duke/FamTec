@@ -1,3 +1,4 @@
+using FamTec.Server;
 using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
 using FamTec.Server.Repository.Admin.AdminPlaces;
@@ -6,7 +7,9 @@ using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Floor;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Services.Login;
 using FamTec.Server.Services.Place;
+using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +26,8 @@ builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 
 // Add services to the container.
 builder.Services.AddTransient<IPlaceService, PlaceService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -127,4 +132,8 @@ app.Use(async (context, next) =>
 });
 app.Run();
 */
+
+WorksSetting settings = new();
+await settings.DefaultSetting();
+
 app.Run();

@@ -19,7 +19,7 @@ public partial class StoreTb
     [Column("CATEGORY")]
     [StringLength(255)]
     public string? Category { get; set; }
-
+    
     [Column("NUM", TypeName = "int(11)")]
     public int? Num { get; set; }
 

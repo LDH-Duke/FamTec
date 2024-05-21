@@ -9,6 +9,11 @@ namespace FamTec.Shared.DTO
     public class UsersDTO
     {
         /// <summary>
+        /// 사용자 PK 인덱스
+        /// </summary>
+        public int? ID { get; set; }
+
+        /// <summary>
         /// 사용자 아이디
         /// </summary>
         
@@ -71,51 +76,51 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 공사관리 권한
         /// </summary>
-        public int? PERM_CONST { get; set; }
+        public int? PERM_CONST { get; set; } = 0;
 
         /// <summary>
         /// 민원관리 권한
         /// </summary>
-        public int? PERM_CLAIM { get; set; }
+        public int? PERM_CLAIM { get; set; } = 0;
 
         /// <summary>
         /// 시스템연동 권한
         /// </summary>
-        public int? PERM_SYS { get; set; }
+        public int? PERM_SYS { get; set; } = 0;
 
         /// <summary>
         /// 입퇴직 관리 권한
         /// </summary>
-        public int? PERM_EMPLOYEE { get; set; }
+        public int? PERM_EMPLOYEE { get; set; } = 0;
 
         /// <summary>
         /// 법정점검 권한
         /// </summary>
-        public int? PERM_LAW_CK { get; set; }
+        public int? PERM_LAW_CK { get; set; } = 0;
 
         /// <summary>
         /// 법정교육 권한
         /// </summary>
-        public int? PERM_LAW_EDU { get; set; }
+        public int? PERM_LAW_EDU { get; set; } = 0;
 
         /// <summary>
         /// 관리자 여부
         /// </summary>
-        public bool? ADMIN_YN { get; set; } = false;
+        public int? ADMIN_YN { get; set; } = 0;
 
         /// <summary>
         /// 알람수신 여부
         /// </summary>
-        public bool? ALARM_YN { get; set; } = false;
+        public sbyte? ALARM_YN { get; set; } = 0;
 
         /// <summary>
         /// 입-재직여부
         /// </summary>
-        public bool? STATUS { get; set; } = true;
+        public sbyte? STATUS { get; set; } = 1;
 
         /// <summary>
         /// 선택된 사업장정보
         /// </summary>
-        public string? PLACECODE { get; set; }
+        public int? PLACEID { get; set; }
     }
 }
