@@ -26,6 +26,10 @@ public partial class UserTb
     [StringLength(255)]
     public string? Name { get; set; }
 
+    [Column("JOB")]
+    [StringLength(255)]
+    public string? Job { get; set; }
+
     [Column("EMAIL")]
     [StringLength(255)]
     public string? Email { get; set; }
@@ -34,11 +38,29 @@ public partial class UserTb
     [StringLength(255)]
     public string? Phone { get; set; }
 
-    [Column("PERM_BUILDING", TypeName = "int(11)")]
-    public int? PermBuilding { get; set; }
+    [Column("PERM_BASIC", TypeName = "int(11)")]
+    public int? PermBasic { get; set; }
 
-    [Column("PERM_EQUIPMENT", TypeName = "int(11)")]
-    public int? PermEquipment { get; set; }
+    [Column("PERM_MACHINE", TypeName = "int(11)")]
+    public int? PermMachine { get; set; }
+
+    [Column("PERM_LIFT", TypeName = "int(11)")]
+    public int? PermLift { get; set; }
+
+    [Column("PERM_FIRE", TypeName = "int(11)")]
+    public int? PermFire { get; set; }
+
+    [Column("PERM_CONSTRUCT", TypeName = "int(11)")]
+    public int? PermConstruct { get; set; }
+
+    [Column("PERM_NETWORK", TypeName = "int(11)")]
+    public int? PermNetwork { get; set; }
+
+    [Column("PERM_BEAUTY", TypeName = "int(11)")]
+    public int? PermBeauty { get; set; }
+
+    [Column("PERM_SECURITY", TypeName = "int(11)")]
+    public int? PermSecurity { get; set; }
 
     [Column("PERM_MATERIAL", TypeName = "int(11)")]
     public int? PermMaterial { get; set; }
@@ -46,32 +68,14 @@ public partial class UserTb
     [Column("PERM_ENERGY", TypeName = "int(11)")]
     public int? PermEnergy { get; set; }
 
-    [Column("PERM_OFFICE", TypeName = "int(11)")]
-    public int? PermOffice { get; set; }
+    [Column("PERM_USER", TypeName = "int(11)")]
+    public int? PermUser { get; set; }
 
-    [Column("PERM_COMP", TypeName = "int(11)")]
-    public int? PermComp { get; set; }
+    [Column("PERM_VOC", TypeName = "int(11)")]
+    public int? PermVoc { get; set; }
 
-    [Column("PERM_CONST", TypeName = "int(11)")]
-    public int? PermConst { get; set; }
-
-    [Column("PERM_CLAIM", TypeName = "int(11)")]
-    public int? PermClaim { get; set; }
-
-    [Column("PERM_SYS", TypeName = "int(11)")]
-    public int? PermSys { get; set; }
-
-    [Column("PERM_EMPLOYEE", TypeName = "int(11)")]
-    public int? PermEmployee { get; set; }
-
-    [Column("PERM_LAW_CK", TypeName = "int(11)")]
-    public int? PermLawCk { get; set; }
-
-    [Column("PERM_LAW_EDU", TypeName = "int(11)")]
-    public int? PermLawEdu { get; set; }
-
-    [Column("ADMIN_YN", TypeName = "int(11)")]
-    public int? AdminYn { get; set; }
+    [Column("ADMIN_YN", TypeName = "tinyint(4)")]
+    public sbyte? AdminYn { get; set; }
 
     [Column("ALRAM_YN", TypeName = "tinyint(4)")]
     public sbyte? AlramYn { get; set; }

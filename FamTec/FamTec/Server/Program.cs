@@ -1,5 +1,6 @@
 using FamTec.Server.Hubs;
 using FamTec.Shared.Model;
+using FamTec.Shared.Models;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ObjectPool;

@@ -14,6 +14,7 @@ namespace FamTec.Shared.Client.DTO
         public string? Address { get; set; }
         public string? ContractNum { get; set; }
         public string? ContractDt { get; set; }
+        
 
     }
 }

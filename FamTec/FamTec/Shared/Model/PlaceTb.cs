@@ -29,8 +29,41 @@ public partial class PlaceTb
     [StringLength(255)]
     public string? Note { get; set; }
 
+    [Column("ADDRESS")]
+    [StringLength(255)]
+    public string? Address { get; set; }
+
     [Column("CONTRACT_DT", TypeName = "datetime")]
     public DateTime? ContractDt { get; set; }
+
+    [Column("PERM_MACHINE", TypeName = "tinyint(4)")]
+    public sbyte? PermMachine { get; set; }
+
+    [Column("PERM_LIFT", TypeName = "tinyint(4)")]
+    public sbyte? PermLift { get; set; }
+
+    [Column("PERM_FIRE", TypeName = "tinyint(4)")]
+    public sbyte? PermFire { get; set; }
+
+    [Column("PERM_CONSTRUCT", TypeName = "tinyint(4)")]
+    public sbyte? PermConstruct { get; set; }
+
+    [Column("PERM_NETWROK", TypeName = "tinyint(4)")]
+    public sbyte? PermNetwrok { get; set; }
+
+    [Column("PERM_BEAUTY", TypeName = "tinyint(4)")]
+    public sbyte? PermBeauty { get; set; }
+
+    [Column("PERM_SECURITY", TypeName = "tinyint(4)")]
+    public sbyte? PermSecurity { get; set; }
+
+    [Column("PERM_MATERIAL", TypeName = "tinyint(4)")]
+    public sbyte? PermMaterial { get; set; }
+
+    [Column("PERM_ENERGY", TypeName = "tinyint(4)")]
+    public sbyte? PermEnergy { get; set; }
+    //[Column("PERM_VOC", TypeName = "tinyint(4)")]
+    //public sbyte? PermVoc { get; set; }
 
     [Column("CANCEL_DT", TypeName = "datetime")]
     public DateTime? CancelDt { get; set; }
@@ -48,9 +81,9 @@ public partial class PlaceTb
     [Column("UPDATE_DT", TypeName = "datetime")]
     public DateTime? UpdateDt { get; set; }
 
-    [Column("UPDATE_USEE")]
+    [Column("UPDATE_USER")]
     [StringLength(255)]
-    public string? UpdateUsee { get; set; }
+    public string? UpdateUser { get; set; }
 
     [Column("DEL_YN", TypeName = "tinyint(4)")]
     public sbyte? DelYn { get; set; }
@@ -59,7 +92,7 @@ public partial class PlaceTb
     public DateTime? DelDt { get; set; }
 
     [Column("DEL_USER")]
-    [StringLength(45)]
+    [StringLength(255)]
     public string? DelUser { get; set; }
 
     [InverseProperty("Place")]

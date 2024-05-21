@@ -1,0 +1,17 @@
+﻿<label class="toggle-container">
+    @if (Disable)
+    {
+        <input class="toggle-input" type="checkbox" role="switch" disabled/>
+    }else{
+        <input class="toggle-input" type="checkbox" role="switch"/>
+    }
+
+    <span class="toggle-title">@Title</span>
+</label>
+
+
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public bool Disable { get; set; } = false; //비활성화 여부
+}

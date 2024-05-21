@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace FamTec.Shared.Model;
+namespace FamTec.Shared.Models;
 
 public partial class WorksContext : DbContext
 {
@@ -171,6 +172,15 @@ public partial class WorksContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBeauty).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermConstruct).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermEnergy).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermFire).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermNetwrok).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
         });
@@ -222,18 +232,18 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.AlramYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermBuilding).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermClaim).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermComp).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermConst).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermEmployee).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBasic).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBeauty).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermConstruct).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermEnergy).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermEquipment).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermLawCk).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermLawEdu).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermFire).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermOffice).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermSys).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermNetwork).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermUser).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermVoc).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
 
