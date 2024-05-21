@@ -1027,3 +1027,7 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamT
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\refint\FamTec.Client.dll
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamTec.Client.pdb
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\ref\FamTec.Client.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll.gz
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\lga9u5wzm7.gz

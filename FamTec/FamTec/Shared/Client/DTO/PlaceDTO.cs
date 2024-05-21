@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +10,19 @@ namespace FamTec.Shared.Client.DTO
 {
     public class PlaceDTO
     {
+        [Display(Name = "선택")]
         public bool IsSelect { get; set; } = false;
-        public string? 사업장코드 {  get; set; }
-        public string? 사업장명 { get; set; } = null;
-        public string? 비고 { get; set; } = null;
-        public string? 계약번호 { get; set; } = null;
-        public DateTime 계약일자 { get; set; }
-        public string? 계약상태 { get; set; }
+        [Display(Name ="사업장 코드")]
+        public string? PlaceCd {  get; set; }
+        [Display(Name = "사업장명")]
+        public string? Name { get; set; } = null;
+        [Display(Name = "비고")]
+        public string? Note { get; set; } = null;
+        [Display(Name = "계약번호")]
+        public string? ContractNum { get; set; } = null;
+        [Display(Name = "계약일자")]
+        public DateTime? ContractDt { get; set; }
+        [Display(Name = "계약상태")]
+        public sbyte? Status { get; set; }
     }
 }

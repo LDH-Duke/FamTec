@@ -13,6 +13,7 @@
 </div>
 
 @code {
+    public HttpClient httpClient = new HttpClient();
     List<DepartmentDTO> departmentList;
     List<object> DepartmentList;
 
@@ -21,6 +22,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        
+
         departmentList = new List<DepartmentDTO>
         {
             new DepartmentDTO

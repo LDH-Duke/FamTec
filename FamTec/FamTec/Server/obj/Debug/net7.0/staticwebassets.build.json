@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hJHIMSrbsZpUL5v2SH7P0jBVWWS7OIXqvs9Dg6x6iLk=",
+  "Hash": "rkbmkZmTqAHuS3/a7qVfbSolFAIPrfpmTDKIGrmHwWM=",
   "Source": "FamTec.Server",
   "BasePath": "_content/FamTec.Server",
   "Mode": "Default",
@@ -1433,6 +1433,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.16\\runtimes\\browser-wasm\\lib\\net7.0\\netstandard.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Newtonsoft.Json.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\newtonsoft.json\\13.0.3\\lib\\net6.0\\Newtonsoft.Json.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Pomelo.EntityFrameworkCore.MySql.dll",
@@ -7665,6 +7684,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\icudt_CJK.dat"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\lga9u5wzm7.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Newtonsoft.Json.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Newtonsoft.Json.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Newtonsoft.Json.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\lklzh7qok4.gz",

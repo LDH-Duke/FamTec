@@ -1,32 +1,29 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@using FamTec.Shared.Client.DTO
+@inject IJSRuntime JSRuntime
 
 <div class="table-container">
     <div class="table-body">
         <table class="table">
             <thead class="thead">
                 <tr class="thead-tr tr">
-                    @foreach(var property in Properties)
-                    {
-                        @if(property != "IsSelect")
-                        {
-                            <th class="thead-th">@property</th>
-                        }else
-                        {
-                            <th class="thead-th">선택</th>
-                        }
+                    @foreach(string property in Properties)
+                    {   
+                        <th class="thead-th">@property</th>
                     }
+                    
                 </tr>
             </thead>
             <tbody class="tbody">
                 @foreach (var row in DataList)
                 {
                     <tr class="tbody-tr tr">
-                        @foreach(var property in Properties)
+                        @foreach(var property in typeof(PlaceDTO).GetProperties())
                         {
-                            if(property != "IsSelect")
+                            
+                            if(property.Name != "IsSelect")
                             {
                                 <td class="tbody-td">
-                                    @row.GetType().GetProperty(property)?.GetValue(row)
+                                    @row.GetType().GetProperty(property.Name)?.GetValue(row)
                                 </td>
                             }
                             else
@@ -45,7 +42,7 @@
 
 @code {
     [Parameter] public string? Title { get; set; }
-    [Parameter] public List<object>? DataList { get; set; }
+    [Parameter] public List<PlaceDTO>? DataList { get; set; }
     [Parameter] public List<string>? Properties { get; set; }
     [Parameter] public EventCallback<object> Select { get; set; }
     [Parameter] public EventCallback<object> UnSelect { get; set; }

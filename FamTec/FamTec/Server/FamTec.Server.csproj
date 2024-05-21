@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -7,14 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Repository\**" />
-    <Compile Remove="Services\**" />
-    <Content Remove="Repository\**" />
-    <Content Remove="Services\**" />
-    <EmbeddedResource Remove="Repository\**" />
-    <EmbeddedResource Remove="Services\**" />
-    <None Remove="Repository\**" />
-    <None Remove="Services\**" />
+    <Compile Remove="NewFolder1\**" />
+    <Content Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <None Remove="NewFolder1\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +31,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Client\FamTec.Client.csproj" />
     <ProjectReference Include="..\Shared\FamTec.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\Manager\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 
