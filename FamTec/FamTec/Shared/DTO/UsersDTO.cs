@@ -44,79 +44,84 @@ namespace FamTec.Shared.DTO
         public string? PHONE { get; set; }
 
         /// <summary>
-        /// 건물정보 관리 권한
+        /// 기본정보등록 권한
         /// </summary>
-        public int? PERM_BUILDING { get; set; }
+        public int? PERM_BASIC { get; set; }
 
         /// <summary>
-        /// 장비관리 권한
+        /// 설비 권한
         /// </summary>
-        public int? PERM_EQUIPMENT { get; set; }
+        public int? PERM_MACHINE { get; set; }
 
         /// <summary>
-        /// 자재관리 권한
+        /// 승강 권한
+        /// </summary>
+        public int? PERM_LIFT { get; set; }
+
+        /// <summary>
+        /// 소방 권한
+        /// </summary>
+        public int? PERM_FIRE { get; set; }
+        
+        /// <summary>
+        /// 건축 권한
+        /// </summary>
+        public int? PERM_CONSTRUCT { get; set; }
+        
+        /// <summary>
+        /// 통신 권한
+        /// </summary>
+        public int? PERM_NETWORK { get; set; }
+        
+        /// <summary>
+        /// 미화 권한
+        /// </summary>
+        public int? PERM_BEAUTY { get; set; }
+
+        /// <summary>
+        /// 보안 권한
+        /// </summary>
+        public int? PERM_SECURITY { get; set; }
+
+        /// <summary>
+        /// 자재 권한
         /// </summary>
         public int? PERM_MATERIAL { get; set; }
 
         /// <summary>
-        /// 에너지관리 권한
+        /// 에너지 권한
         /// </summary>
         public int? PERM_ENERGY { get; set; }
 
         /// <summary>
-        /// 행정관리 권한
+        /// 사용자 설정 권한
         /// </summary>
-        public int? PERM_OFFICE { get; set; }
+        public int? PERM_USER { get; set; }
 
         /// <summary>
-        /// 업체관리 권한
+        /// VOC 권한
         /// </summary>
-        public int? PERM_COMP { get; set; }
+        public int? PERM_VOC { get; set; }
 
         /// <summary>
-        /// 공사관리 권한
+        /// 관리자유무
         /// </summary>
-        public int? PERM_CONST { get; set; } = 0;
+        public sbyte? ADMIN_YN { get; set; }
+        
+        /// <summary>
+        /// 알람유무
+        /// </summary>
+        public sbyte? ALRAM_YN { get; set; }
 
         /// <summary>
-        /// 민원관리 권한
+        /// 재직여부
         /// </summary>
-        public int? PERM_CLAIM { get; set; } = 0;
-
+        public sbyte? STATUS { get; set; }
+        
         /// <summary>
-        /// 시스템연동 권한
+        /// 직책
         /// </summary>
-        public int? PERM_SYS { get; set; } = 0;
-
-        /// <summary>
-        /// 입퇴직 관리 권한
-        /// </summary>
-        public int? PERM_EMPLOYEE { get; set; } = 0;
-
-        /// <summary>
-        /// 법정점검 권한
-        /// </summary>
-        public int? PERM_LAW_CK { get; set; } = 0;
-
-        /// <summary>
-        /// 법정교육 권한
-        /// </summary>
-        public int? PERM_LAW_EDU { get; set; } = 0;
-
-        /// <summary>
-        /// 관리자 여부
-        /// </summary>
-        public int? ADMIN_YN { get; set; } = 0;
-
-        /// <summary>
-        /// 알람수신 여부
-        /// </summary>
-        public sbyte? ALARM_YN { get; set; } = 0;
-
-        /// <summary>
-        /// 입-재직여부
-        /// </summary>
-        public sbyte? STATUS { get; set; } = 1;
+        public string? JOB { get; set; }
 
         /// <summary>
         /// 선택된 사업장정보

@@ -46,6 +46,6 @@ public partial class UnitTb
     public int? PlaceTbId { get; set; }
 
     [ForeignKey("PlaceTbId")]
-    [InverseProperty("Units")]
+    [InverseProperty("UnitTbs")]
     public virtual PlaceTb? PlaceTb { get; set; }
 }

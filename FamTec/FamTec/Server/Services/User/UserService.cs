@@ -39,26 +39,28 @@ namespace FamTec.Server.Services.User
                 {
                     return FuncResponseList("전체데이터 조회 성공", model.Select(e => new UsersDTO
                     {
+                        ID = e.Id,
                         USERID = e.UserId,
                         NAME = e.Name,
                         EMAIL = e.Email,
                         PHONE = e.Phone,
-                        STATUS = e.Status,
-                        PLACEID = e.PlaceTbId,
-                        ADMIN_YN = e.AdminYn,
-                        ALARM_YN = e.AlramYn,
-                        PERM_BUILDING = e.PermBuilding,
-                        PERM_EQUIPMENT = e.PermEquipment,
+                        PERM_BASIC = e.PermBasic,
+                        PERM_MACHINE = e.PermMachine,
+                        PERM_LIFT = e.PermLift,
+                        PERM_FIRE = e.PermFire,
+                        PERM_CONSTRUCT = e.PermConstruct,
+                        PERM_NETWORK = e.PermNetwork,
+                        PERM_BEAUTY = e.PermBeauty,
+                        PERM_SECURITY = e.PermSecurity,
                         PERM_MATERIAL = e.PermMaterial,
                         PERM_ENERGY = e.PermEnergy,
-                        PERM_OFFICE = e.PermOffice,
-                        PERM_COMP = e.PermComp,
-                        PERM_CONST = e.PermConst,
-                        PERM_CLAIM = e.PermClaim,
-                        PERM_SYS = e.PermSys,
-                        PERM_EMPLOYEE = e.PermEmployee,
-                        PERM_LAW_CK = e.PermLawCk,
-                        PERM_LAW_EDU = e.PermLawEdu
+                        PERM_USER = e.PermUser,
+                        PERM_VOC = e.PermVoc,
+                        ADMIN_YN = e.AdminYn,
+                        ALRAM_YN = e.AlramYn,
+                        STATUS = e.Status,
+                        JOB = e.Job,
+                        PLACEID = e.PlaceTbId,
                     }).ToList(), 200);
                 }
                 else
@@ -95,22 +97,23 @@ namespace FamTec.Server.Services.User
                             NAME = e.Name,
                             EMAIL = e.Email,
                             PHONE = e.Phone,
-                            STATUS = e.Status,
-                            PLACEID = e.PlaceTbId,
-                            ADMIN_YN = e.AdminYn,
-                            ALARM_YN = e.AlramYn,
-                            PERM_BUILDING = e.PermBuilding,
-                            PERM_EQUIPMENT = e.PermEquipment,
+                            PERM_BASIC = e.PermBasic,
+                            PERM_MACHINE = e.PermMachine,
+                            PERM_LIFT = e.PermLift,
+                            PERM_FIRE = e.PermFire,
+                            PERM_CONSTRUCT = e.PermConstruct,
+                            PERM_NETWORK = e.PermNetwork,
+                            PERM_BEAUTY = e.PermBeauty,
+                            PERM_SECURITY = e.PermSecurity,
                             PERM_MATERIAL = e.PermMaterial,
                             PERM_ENERGY = e.PermEnergy,
-                            PERM_OFFICE = e.PermOffice,
-                            PERM_COMP = e.PermComp,
-                            PERM_CONST = e.PermConst,
-                            PERM_CLAIM = e.PermClaim,
-                            PERM_SYS = e.PermSys,
-                            PERM_EMPLOYEE = e.PermEmployee,
-                            PERM_LAW_CK = e.PermLawCk,
-                            PERM_LAW_EDU = e.PermLawEdu
+                            PERM_USER = e.PermUser,
+                            PERM_VOC = e.PermVoc,
+                            ADMIN_YN = e.AdminYn,
+                            ALRAM_YN = e.AlramYn,
+                            STATUS = e.Status,
+                            JOB = e.Job,
+                            PLACEID = e.PlaceTbId,
                         }).ToList(), 200);
                     }
                     else
@@ -148,27 +151,27 @@ namespace FamTec.Server.Services.User
                     {
                         return FuncResponseOBJ("전체데이터 조회 선공", new UsersDTO
                         {
-                            USERID = model.UserId,
-                            NAME = model.Name,
-                            EMAIL = model.Email,
-                            PHONE = model.Phone,
-                            STATUS = model.Status, // 재직여부
-                            PLACEID = model.PlaceTbId, // 사업장정보
+                            ID = model.Id, // 인덱스
+                            USERID = model.UserId, // 사용자 아이디
+                            NAME = model.Name, // 사용자이름
+                            EMAIL = model.Email, // 이메일
+                            PHONE = model.Phone, // 전화번호
+                            PERM_BASIC = model.PermBasic, // 기본정보등록 권한
+                            PERM_MACHINE = model.PermMachine, // 설비 권한
+                            PERM_LIFT = model.PermLift, // 승강권한
+                            PERM_FIRE = model.PermFire, // 소방 권한
+                            PERM_CONSTRUCT = model.PermConstruct, // 건축 권한
+                            PERM_NETWORK = model.PermNetwork, // 통신 권한
+                            PERM_BEAUTY= model.PermBeauty, // 미화권한
+                            PERM_SECURITY = model.PermSecurity, // 보안권한
+                            PERM_MATERIAL = model.PermMaterial, // 자재권한
+                            PERM_ENERGY = model.PermEnergy, // 에너지 권한
+                            PERM_USER = model.PermUser, // 사용자 설정 권한
+                            PERM_VOC = model.PermVoc, // VOC 권한
                             ADMIN_YN = model.AdminYn, // 관리자여부
-                            ALARM_YN = model.AlramYn, // 알람받기여부
-                            PERM_BUILDING = model.PermBuilding,
-                            PERM_EQUIPMENT = model.PermEquipment,
-                            PERM_MATERIAL = model.PermMaterial,
-                            PERM_ENERGY = model.PermEnergy,
-                            PERM_OFFICE = model.PermOffice,
-                            PERM_COMP = model.PermComp,
-                            PERM_CONST = model.PermConst,
-                            PERM_CLAIM = model.PermClaim,
-                            PERM_SYS = model.PermSys,
-                            PERM_EMPLOYEE = model.PermEmployee,
-                            PERM_LAW_CK = model.PermLawCk,
-                            PERM_LAW_EDU = model.PermLawEdu,
-                            
+                            STATUS = model.Status, // 재직여부
+                            JOB = model.Job, // 직책
+                            PLACEID = model.PlaceTbId, // 사업장정보
                         }, 200);
                     }
                     else
@@ -205,28 +208,27 @@ namespace FamTec.Server.Services.User
                     {
                         return FuncResponseOBJ("전체데이터 조회 선공", new UsersDTO
                         {
-                            ID = model.Id,
-                            USERID = model.UserId,
-                            NAME = model.Name,
-                            EMAIL = model.Email,
-                            PHONE = model.Phone,
-                            STATUS = model.Status, // 재직여부
-                            PLACEID = model.PlaceTbId, // 사업장정보
+                            ID = model.Id, // 인덱스
+                            USERID = model.UserId, // 사용자 아이디
+                            NAME = model.Name, // 사용자이름
+                            EMAIL = model.Email, // 이메일
+                            PHONE = model.Phone, // 전화번호
+                            PERM_BASIC = model.PermBasic, // 기본정보등록 권한
+                            PERM_MACHINE = model.PermMachine, // 설비 권한
+                            PERM_LIFT = model.PermLift, // 승강권한
+                            PERM_FIRE = model.PermFire, // 소방 권한
+                            PERM_CONSTRUCT = model.PermConstruct, // 건축 권한
+                            PERM_NETWORK = model.PermNetwork, // 통신 권한
+                            PERM_BEAUTY = model.PermBeauty, // 미화권한
+                            PERM_SECURITY = model.PermSecurity, // 보안권한
+                            PERM_MATERIAL = model.PermMaterial, // 자재권한
+                            PERM_ENERGY = model.PermEnergy, // 에너지 권한
+                            PERM_USER = model.PermUser, // 사용자 설정 권한
+                            PERM_VOC = model.PermVoc, // VOC 권한
                             ADMIN_YN = model.AdminYn, // 관리자여부
-                            ALARM_YN = model.AlramYn, // 알람받기여부
-                            PERM_BUILDING = model.PermBuilding,
-                            PERM_EQUIPMENT = model.PermEquipment,
-                            PERM_MATERIAL = model.PermMaterial,
-                            PERM_ENERGY = model.PermEnergy,
-                            PERM_OFFICE = model.PermOffice,
-                            PERM_COMP = model.PermComp,
-                            PERM_CONST = model.PermConst,
-                            PERM_CLAIM = model.PermClaim,
-                            PERM_SYS = model.PermSys,
-                            PERM_EMPLOYEE = model.PermEmployee,
-                            PERM_LAW_CK = model.PermLawCk,
-                            PERM_LAW_EDU = model.PermLawEdu,
-
+                            STATUS = model.Status, // 재직여부
+                            JOB = model.Job, // 직책
+                            PLACEID = model.PlaceTbId, // 사업장정보
                         }, 200);
                     }
                     else
@@ -259,32 +261,32 @@ namespace FamTec.Server.Services.User
                 {
                     UserTb model = new UserTb
                     {
-                        Password = dto.PASSWORD,
-                        Name = dto.NAME,
-                        Email = dto.EMAIL,
-                        Phone = dto.PHONE,
-                        PermBuilding = dto.PERM_BUILDING,
-                        PermEquipment = dto.PERM_EQUIPMENT,
-                        PermMaterial = dto.PERM_MATERIAL,
-                        PermEnergy = dto.PERM_ENERGY,
-                        PermOffice = dto.PERM_OFFICE,
-                        PermComp = dto.PERM_COMP,
-                        PermConst = dto.PERM_CONST,
-                        PermClaim = dto.PERM_CLAIM,
-                        PermSys = dto.PERM_SYS,
-                        PermEmployee = dto.PERM_EMPLOYEE,
-                        PermLawCk = dto.PERM_LAW_CK,
-                        PermLawEdu = dto.PERM_LAW_EDU,
-
-                        AdminYn = dto.ADMIN_YN,
-                        AlramYn = dto.ALARM_YN,
-
-                        Status = dto.STATUS,
+                        Password = dto.PASSWORD, // 비밀번호
+                        Name = dto.NAME, // 이름
+                        Email = dto.EMAIL, // 이메일
+                        Phone = dto.PHONE, // 전화번호
+                        PermBasic = dto.PERM_BASIC, // 기본정보등록 권한
+                        PermMachine = dto.PERM_MACHINE, // 설비권한
+                        PermLift = dto.PERM_LIFT, // 승강 권한
+                        PermFire = dto.PERM_FIRE, // 소방 권한
+                        PermConstruct = dto.PERM_CONSTRUCT, // 건축 권한
+                        PermNetwork = dto.PERM_NETWORK, // 통신 권한
+                        PermBeauty = dto.PERM_BEAUTY, // 미화 권한
+                        PermSecurity = dto.PERM_SECURITY, // 보안권한
+                        PermMaterial = dto.PERM_MATERIAL, // 자재권한
+                        PermEnergy = dto.PERM_ENERGY, // 에너지권한
+                        PermUser = dto.PERM_USER, // 사용자 설정 권한
+                        PermVoc = dto.PERM_VOC, // VOC 권한
+                        AdminYn = dto.ADMIN_YN, // 관리자 유무
+                        AlramYn = dto.ALRAM_YN, // 알람유무
+                        Status = 1, // 재직
+                        Job = dto.JOB, // 직책
 
                         CreateDt = DateTime.Now,
                         CreateUser = "토큰",
                         UpdateDt = DateTime.Now,
                         UpdateUser = "토큰",
+
                         PlaceTbId = dto.PLACEID, /* combobox 선택 */
                     };
 
@@ -294,25 +296,27 @@ namespace FamTec.Server.Services.User
                     {
                         return FuncResponseOBJ("데이터가 정상 처리되었습니다.", new UsersDTO()
                         {
-                            NAME = result.Name,
-                            EMAIL = result.Email,
-                            PHONE = result.Phone,
-                            STATUS = result.Status,
+                            NAME = result.Name, // 이름
+                            EMAIL = result.Email, // 이메일
+                            PHONE = result.Phone, // 전화번호
+                            PERM_BASIC = result.PermBasic, // 기본정보등록 권한
+                            PERM_MACHINE = result.PermMachine, // 설비권한
+                            PERM_LIFT = result.PermLift, // 승강권한
+                            PERM_FIRE = result.PermFire, // 소방권한
+                            PERM_CONSTRUCT = result.PermConstruct, // 건축권한
+                            PERM_NETWORK = result.PermNetwork, // 통신권한
+                            PERM_BEAUTY = result.PermBeauty, // 미화권한
+                            PERM_SECURITY = result.PermSecurity, // 보안권한
+                            PERM_MATERIAL = result.PermMaterial, // 자재권한
+                            PERM_ENERGY = result.PermEnergy, // 에너지 권한
+                            PERM_USER = result.PermUser, // 사용자 설정 권한
+                            PERM_VOC = result.PermVoc, // VOC 권한
+                            ADMIN_YN = result.AdminYn, // 관리자유무
+                            ALRAM_YN = result.AlramYn, // 알람유무
+                            JOB = result.Job, // 직책
+                            STATUS = result.Status, 
                             PLACEID = result.PlaceTbId,
-                            ADMIN_YN = result.AdminYn,
-                            ALARM_YN = result.AlramYn,
-                            PERM_BUILDING = result.PermBuilding,
-                            PERM_EQUIPMENT = result.PermEquipment,
-                            PERM_MATERIAL = result.PermMaterial,
-                            PERM_ENERGY = result.PermEnergy,
-                            PERM_OFFICE = result.PermOffice,
-                            PERM_COMP = result.PermComp,
-                            PERM_CONST = result.PermConst,
-                            PERM_CLAIM = result.PermClaim,
-                            PERM_SYS = result.PermSys,
-                            PERM_EMPLOYEE = result.PermEmployee,
-                            PERM_LAW_CK = result.PermLawCk,
-                            PERM_LAW_EDU = result.PermLawEdu
+                            
                         }, 200);
                     }
                     else
@@ -347,26 +351,26 @@ namespace FamTec.Server.Services.User
 
                     if(model is not null)
                     {
-                        model.UserId = dto.USERID;
-                        model.Password = dto.PASSWORD;
-                        model.Name = dto.NAME;
-                        model.Email = dto.EMAIL;
-                        model.Phone = dto.PHONE;
-                        model.Status = dto.STATUS;
+                        model.UserId = dto.USERID; // 사용자 아이디
+                        model.Password = dto.PASSWORD; // 사용자 비밀번호
+                        model.Name = dto.NAME; // 사용자 이름
+                        model.Email = dto.EMAIL; // 이메일
+                        model.Phone = dto.PHONE; // 전화번호
+                        model.PermBasic = dto.PERM_BASIC; // 기본정보등록 권한
+                        model.PermMachine = dto.PERM_MACHINE; // 설비권한
+                        model.PermLift = dto.PERM_LIFT; // 승강권한
+                        model.PermFire = dto.PERM_FIRE; // 소방권한
+                        model.PermConstruct = dto.PERM_CONSTRUCT; // 건축권한
+                        model.PermNetwork = dto.PERM_NETWORK; // 통신권한
+                        model.PermBeauty = dto.PERM_BEAUTY; // 미화권한
+                        model.PermSecurity = dto.PERM_SECURITY; // 보안 권한
+                        model.PermMaterial = dto.PERM_MATERIAL; // 자재권한
+                        model.PermEnergy = dto.PERM_ENERGY; // 에너지권한
+                        model.PermUser = dto.PERM_USER; // 사용자 설정 권한
+                        model.PermVoc = dto.PERM_VOC; // VOC 권한
 
-                        model.PermBuilding = dto.PERM_BUILDING;
-                        model.PermEquipment = dto.PERM_EQUIPMENT;
-                        model.PermMaterial = dto.PERM_MATERIAL;
-                        model.PermEnergy = dto.PERM_ENERGY;
-                        model.PermOffice = dto.PERM_OFFICE;
-                        model.PermComp = dto.PERM_COMP;
-                        model.PermConst = dto.PERM_CONST;
-                        model.PermClaim = dto.PERM_CLAIM;
-                        model.PermSys = dto.PERM_SYS;
-                        model.PermEmployee = dto.PERM_EMPLOYEE;
-                        model.PermLawCk = dto.PERM_LAW_CK;
-                        model.PermLawEdu = dto.PERM_LAW_EDU;
-
+                        model.AlramYn = dto.ALRAM_YN; // 알람유무
+                        model.Status = dto.STATUS; // 재직유무
 
                         model.UpdateDt = DateTime.Now;
                         model.UpdateUser = "토큰USER";
@@ -377,25 +381,27 @@ namespace FamTec.Server.Services.User
                         {
                             return FuncResponseOBJ("데이터 수정 성공", new UsersDTO()
                             {
-                                USERID = model.UserId,
-                                PASSWORD = model.Password,
-                                NAME = model.Name,
-                                EMAIL = model.Email,
-                                PHONE = model.Phone,
-                                STATUS = model.Status, // 재직여부
+                                USERID = model.UserId, // 사용자 ID
+                                PASSWORD = model.Password, // 비밀번호
+                                NAME = model.Name, // 사용자이름
+                                EMAIL = model.Email, // 이메일
+                                PHONE = model.Phone, // 전화번호
 
-                                PERM_BUILDING = model.PermBuilding,
-                                PERM_EQUIPMENT = model.PermEquipment,
-                                PERM_MATERIAL = model.PermMaterial,
-                                PERM_ENERGY = model.PermEnergy,
-                                PERM_OFFICE = model.PermOffice,
-                                PERM_COMP = model.PermComp,
-                                PERM_CONST = model.PermConst,
-                                PERM_CLAIM = model.PermClaim,
-                                PERM_SYS = model.PermSys,
-                                PERM_EMPLOYEE = model.PermEmployee,
-                                PERM_LAW_CK = model.PermLawCk,
-                                PERM_LAW_EDU = model.PermLawEdu,
+                                PERM_BASIC = model.PermBasic, // 기본정보등록 권한
+                                PERM_MACHINE = model.PermMachine, // 설비권한
+                                PERM_LIFT = model.PermLift, // 승강권한
+                                PERM_FIRE = model.PermFire, // 소방권한
+                                PERM_CONSTRUCT = model.PermConstruct, // 건축권한
+                                PERM_NETWORK = model.PermNetwork, // 통신권한
+                                PERM_BEAUTY = model.PermBeauty, // 미화권한
+                                PERM_SECURITY = model.PermSecurity, // 보안권한
+                                PERM_MATERIAL = model.PermMaterial, // 자재권한
+                                PERM_ENERGY = model.PermEnergy, // 에너지권한
+                                PERM_USER = model.PermUser, // 사용자 설정 권한
+                                PERM_VOC = model.PermVoc, // VOC 권한
+                                ALRAM_YN = model.AlramYn, // 알람유무
+                                STATUS = model.Status, // 재직유무
+                                JOB = model.Job
 
                             }, 200);
                         }
@@ -441,6 +447,7 @@ namespace FamTec.Server.Services.User
 
                     if(model is not null)
                     {
+                        model.DelYn = 1;
                         model.UpdateDt = DateTime.Now;
                         model.UpdateUser = "토큰USER";
 
@@ -451,25 +458,9 @@ namespace FamTec.Server.Services.User
                             return FuncResponseOBJ("데이터 삭제 성공", new UsersDTO()
                             {
                                 USERID = model.UserId,
-                                PASSWORD = model.Password,
                                 NAME = model.Name,
                                 EMAIL = model.Email,
                                 PHONE = model.Phone,
-                                STATUS = model.Status, // 재직여부
-
-                                PERM_BUILDING = model.PermBuilding,
-                                PERM_EQUIPMENT = model.PermEquipment,
-                                PERM_MATERIAL = model.PermMaterial,
-                                PERM_ENERGY = model.PermEnergy,
-                                PERM_OFFICE = model.PermOffice,
-                                PERM_COMP = model.PermComp,
-                                PERM_CONST = model.PermConst,
-                                PERM_CLAIM = model.PermClaim,
-                                PERM_SYS = model.PermSys,
-                                PERM_EMPLOYEE = model.PermEmployee,
-                                PERM_LAW_CK = model.PermLawCk,
-                                PERM_LAW_EDU = model.PermLawEdu,
-
                             }, 200);
                         }
                         else

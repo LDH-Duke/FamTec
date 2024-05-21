@@ -19,20 +19,18 @@ public partial class StoreTb
     [Column("CATEGORY")]
     [StringLength(255)]
     public string? Category { get; set; }
-    
+
     [Column("NUM", TypeName = "int(11)")]
     public int? Num { get; set; }
 
     /// <summary>
-    /// 단가
-    /// 
+    /// 단가\n
     /// </summary>
     [Column("UNIT_PRICE")]
     public float? UnitPrice { get; set; }
 
     /// <summary>
-    /// 금액
-    /// 
+    /// 금액\n
     /// </summary>
     [Column("PRICE")]
     public float? Price { get; set; }

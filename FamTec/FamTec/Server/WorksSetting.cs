@@ -39,6 +39,7 @@ namespace FamTec.Server
             {
                 context.DepartmentTbs.Add(department);
                 await context.SaveChangesAsync();
+                selectDepartment = await context.DepartmentTbs.FirstOrDefaultAsync(m => m.Name!.Equals("에스텍시스템") && m.DelYn != 1);
             }
             else
             {
@@ -67,26 +68,29 @@ namespace FamTec.Server
             user.Name = "시스템개발파트";
             user.Email = "stecdev@s-tec.co.kr";
             user.Phone = "010-0000-0000";
-            user.PermBuilding = 2; // 수정권한
-            user.PermEquipment = 2; // 수정권한
-            user.PermMaterial = 2; // 수정권한
-            user.PermEnergy = 2; // 수정권한
-            user.PermOffice = 2;
-            user.PermComp = 2;
-            user.PermConst = 2;
-            user.PermClaim = 2;
-            user.PermSys = 2;
-            user.PermEmployee = 2;
-            user.PermLawCk = 2;
-            user.PermLawEdu = 2;
+            user.PermBasic = 2; // 기본정보등록 권한 (수정권한)
+            user.PermMachine = 2; // 설비권한 (수정권한)
+            user.PermLift = 2; // 승강권한 (수정권한)
+            user.PermFire = 2; // 소방권한
+            user.PermConstruct = 2; // 건축권한
+            user.PermNetwork = 2; // 통신권한
+            user.PermBeauty = 2; // 미화권한
+            user.PermSecurity = 2; // 보안권한
+            user.PermMaterial = 2; // 자재권한
+            user.PermEnergy = 2; // 에너지권한
+            user.PermUser = 2; // 사용자 설정 권한
+            user.PermVoc = 2; // VOC권한
+
             user.AdminYn = 1;
             user.AlramYn = 1;
             user.Status = 1; // 0 : 퇴직 / 1 : 재직
+
             user.CreateDt = DateTime.Now;
             user.CreateUser = LevelCode.시스템관리자.ToString();
             user.UpdateDt = DateTime.Now;
             user.UpdateUser = LevelCode.시스템관리자.ToString();
             user.DelYn = 0;
+            user.Job = LevelCode.시스템관리자.ToString();
             
 
             
@@ -101,102 +105,103 @@ namespace FamTec.Server
             }
             else
             {
-                if (user.UserId != selectUser.UserId)
+                if (user.UserId != selectUser.UserId) // 사용자ID
                 {
                     selectUser.UserId = user.UserId;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if (user.Name != selectUser.Name)
+                if (user.Name != selectUser.Name) // 이름
                 {
                     selectUser.Name = user.Name;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.Email != selectUser.Email)
+                if(user.Email != selectUser.Email) // 이메일
                 {
                     selectUser.Email = user.Email;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.Phone != selectUser.Phone)
+                if(user.Phone != selectUser.Phone) // 전화번호
                 {
                     selectUser.Phone = user.Phone;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermBuilding != selectUser.PermBuilding)
+                if(user.PermBasic != selectUser.PermBasic) // 기본정보등록 권한
                 {
-                    selectUser.PermBuilding = user.PermBuilding;
+                    selectUser.PermBasic = user.PermBasic;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermEquipment != selectUser.PermEquipment)
+                if(user.PermMachine != selectUser.PermMachine) // 설비 권한
                 {
-                    selectUser.PermEquipment = user.PermEquipment;
+                    selectUser.PermMachine = user.PermMachine;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermMaterial != selectUser.PermMaterial)
+                if(user.PermLift != selectUser.PermLift) // 승강 권한
+                {
+                    selectUser.PermLift = user.PermLift;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermFire != selectUser.PermFire) // 소방권한
+                {
+                    selectUser.PermFire = user.PermFire;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermConstruct != selectUser.PermConstruct) // 건축권한
+                {
+                    selectUser.PermConstruct = user.PermConstruct;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermNetwork != selectUser.PermNetwork) // 통신권한
+                {
+                    selectUser.PermNetwork = user.PermNetwork;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermBeauty != selectUser.PermBeauty) // 미화권한
+                {
+                    selectUser.PermBeauty = user.PermBeauty;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermSecurity != selectUser.PermSecurity) // 보안권한
+                {
+                    selectUser.PermSecurity = user.PermSecurity;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.PermMaterial != selectUser.PermMaterial) // 자재권한
                 {
                     selectUser.PermMaterial = user.PermMaterial;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermEnergy != selectUser.PermEnergy)
+                if(user.PermEnergy != selectUser.PermEnergy) // 에너지권한
                 {
                     selectUser.PermEnergy = user.PermEnergy;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermOffice != selectUser.PermOffice)
+                if(user.PermUser != selectUser.PermUser) // 사용자 설정 권한
                 {
-                    selectUser.PermOffice = user.PermOffice;
+                    selectUser.PermUser = user.PermUser;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermComp != selectUser.PermComp)
+                if(user.PermVoc != selectUser.PermVoc) // VOC 권한
                 {
-                    selectUser.PermComp = user.PermComp;
+                    selectUser.PermVoc = user.PermVoc;
                     selectUser.UpdateDt = DateTime.Now;
                     selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
-                if(user.PermConst != selectUser.PermConst)
-                {
-                    selectUser.PermConst = user.PermConst;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
-                if(user.PermClaim != selectUser.PermClaim)
-                {
-                    selectUser.PermClaim = user.PermClaim;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
-                if(user.PermSys != selectUser.PermSys)
-                {
-                    selectUser.PermSys = user.PermSys;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
-                if(user.PermEmployee != selectUser.PermEmployee)
-                {
-                    selectUser.PermEmployee = user.PermEmployee;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
-                if(user.PermLawCk != selectUser.PermLawCk)
-                {
-                    selectUser.PermLawCk = user.PermLawCk;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
-                if(user.PermLawEdu != selectUser.PermLawEdu)
-                {
-                    selectUser.PermLawEdu = user.PermLawEdu;
-                    selectUser.UpdateDt = DateTime.Now;
-                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
-                }
+
                 if(user.AdminYn != selectUser.AdminYn)
                 {
                     selectUser.AdminYn = user.AdminYn;
@@ -212,7 +217,14 @@ namespace FamTec.Server
                 if(user.DelYn != selectUser.DelYn)
                 {
                     selectUser.DelYn = user.DelYn;
-
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
+                }
+                if(user.Job != selectUser.Job)
+                {
+                    selectUser.Job = user.Job;
+                    selectUser.UpdateDt = DateTime.Now;
+                    selectUser.UpdateUser = LevelCode.시스템관리자.ToString();
                 }
 
                 context.UserTbs.Update(selectUser);
@@ -228,6 +240,7 @@ namespace FamTec.Server
             admin.UpdateDt = DateTime.Now;
             admin.UpdateUser = LevelCode.시스템관리자.ToString();
             admin.UserTbId = selectUser!.Id;
+
             admin.DepartmentTbId = selectDepartment!.Id;
 
             AdminTb? selectAdmin = await context.AdminTbs.FirstOrDefaultAsync(m => m.UserTbId.Equals(selectUser.Id));

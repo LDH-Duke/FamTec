@@ -171,6 +171,15 @@ public partial class WorksContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBeauty).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermConstruct).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermEnergy).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermFire).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermNetwrok).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
         });
@@ -192,8 +201,8 @@ public partial class WorksContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
-            entity.Property(e => e.Price).HasComment("금액\n");
-            entity.Property(e => e.UnitPrice).HasComment("단가\n");
+            entity.Property(e => e.Price).HasComment("금액\\n");
+            entity.Property(e => e.UnitPrice).HasComment("단가\\n");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
 
             entity.HasOne(d => d.BuildingTb).WithMany(p => p.StoreTbs).HasConstraintName("fk_STORE_TB_BUILDING_TB1");
@@ -211,7 +220,7 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
 
-            entity.HasOne(d => d.PlaceTb).WithMany(p => p.Units).HasConstraintName("fk_UNIT_PLACE_TB1");
+            entity.HasOne(d => d.PlaceTb).WithMany(p => p.UnitTbs).HasConstraintName("fk_UNIT_PLACE_TB1");
         });
 
         modelBuilder.Entity<UserTb>(entity =>
@@ -222,18 +231,18 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.AlramYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermBuilding).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermClaim).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermComp).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermConst).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermEmployee).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBasic).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBeauty).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermConstruct).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermEnergy).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermEquipment).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermLawCk).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermLawEdu).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermFire).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermOffice).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermSys).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermNetwork).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermUser).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermVoc).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
 
