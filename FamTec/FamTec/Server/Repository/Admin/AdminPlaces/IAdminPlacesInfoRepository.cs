@@ -19,18 +19,11 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         ValueTask<List<AdminPlaceTb>?> GetAllList();
 
         /// <summary>
-        /// 관리자 USERID에 해당하는 전체 사업장 출력
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        ValueTask<List<AdminPlaceTb>?> GetAllUserList(int? admintbid);
-        
-        /// <summary>
         /// 관리자 PLACECODE에 해당하는 전체 사업장 출력
         /// </summary>
         /// <param name="placecd"></param>
         /// <returns></returns>
-        ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? placeid);
+        ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? admintbid);
 
         /// <summary>
         /// 테이블 정보에 해당하는 단일 사업장모델 반환
@@ -53,5 +46,11 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <returns></returns>
         ValueTask<bool?> EditAdminPlacesInfo(AdminPlaceTb? model); // 수정
 
+        /// <summary>
+        /// 할당된 MyWorks조회
+        /// </summary>
+        /// <param name="admintbid"></param>
+        /// <returns></returns>
+        ValueTask<List<PlaceTb>?> GetMyWorks(List<AdminPlaceTb>? admintbid);
     }
 }

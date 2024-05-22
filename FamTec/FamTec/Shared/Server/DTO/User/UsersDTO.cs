@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace FamTec.Shared.DTO
+namespace FamTec.Shared.Server.DTO.User
 {
     /// <summary>
     /// USER DTO

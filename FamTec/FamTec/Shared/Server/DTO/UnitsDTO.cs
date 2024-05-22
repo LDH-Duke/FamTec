@@ -5,20 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FamTec.Shared.DTO
+namespace FamTec.Shared.Server.DTO
 {
-    public class AdminPlacesDTO
+    public class UnitsDTO
     {
         /// <summary>
-        /// 관리자 ID
+        /// 인덱스
         /// </summary>
-        [MaxLength(15)]
-        public string UserID { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
-        /// 사업장 CODE
+        /// 단위명
+        /// </summary>
+        [MaxLength(15)]
+        public string Unit { get; set; }
+
+        /// <summary>
+        /// 사업장코드
         /// </summary>
         [MaxLength(25)]
         public string PlaceCode { get; set; }
+
+
     }
 }

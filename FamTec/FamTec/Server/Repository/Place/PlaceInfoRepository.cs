@@ -24,7 +24,8 @@ namespace FamTec.Server.Repository.Place
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<PlaceTb?> AddAsync(PlaceTb? model)
+        /// <exception cref="ArgumentException"></exception>
+        public async ValueTask<PlaceTb?> AddPlaceInfo(PlaceTb? model)
         {
             try
             {
@@ -45,6 +46,8 @@ namespace FamTec.Server.Repository.Place
                 throw new ArgumentException();
             }
         }
+
+       
 
         /// <summary>
         /// 전체조회
@@ -188,6 +191,6 @@ namespace FamTec.Server.Repository.Place
             }
         }
 
-   
+     
     }
 }

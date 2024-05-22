@@ -14,6 +14,40 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         }
 
         /// <summary>
+        /// 부서명에 해당하는 부서 조회
+        /// </summary>
+        /// <param name="departmentname"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public async ValueTask<DepartmentTb?> GetDepartmentInfo(string? Name)
+        {
+            try
+            {
+                if (!String.IsNullOrWhiteSpace(Name))
+                {
+                    DepartmentTb? model = await context.DepartmentTbs
+                        .FirstOrDefaultAsync(m => m.Name.Equals(Name)
+                        && m.DelYn != 1);
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
+
+
+        /// <summary>
         /// 부서추가
         /// </summary>
         /// <param name="model"></param>
@@ -96,39 +130,7 @@ namespace FamTec.Server.Repository.Admin.Departmnet
             }
         }
 
-        /// <summary>
-        /// 부서명에 해당하는 부서 조회
-        /// </summary>
-        /// <param name="departmentname"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<DepartmentTb?> GetDepartmentInfo(string? Name)
-        {
-            try
-            {
-                if (!String.IsNullOrWhiteSpace(Name))
-                {
-                    DepartmentTb? model = await context.DepartmentTbs
-                        .FirstOrDefaultAsync(m => m.Name.Equals(Name) 
-                        && m.DelYn != 1);
-
-                    if (model is not null)
-                        return model;
-                    else
-                        return null;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
+       
         /// <summary>
         /// 부서정보 수정
         /// </summary>

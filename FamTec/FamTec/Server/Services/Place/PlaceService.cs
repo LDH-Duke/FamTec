@@ -2,6 +2,7 @@
 using FamTec.Shared.Client.DTO;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Place;
 using System.Xml.Serialization;
 
 namespace FamTec.Server.Services.Place
@@ -24,6 +25,9 @@ namespace FamTec.Server.Services.Place
             FuncResponseList = Response.RESPMessageList;
         }
 
+       
+
+
         /// <summary>
         /// 사업장정보 전체조회
         /// </summary>
@@ -41,7 +45,7 @@ namespace FamTec.Server.Services.Place
                         PlaceCd = e.PlaceCd,
                         Name = e.Name,
                         CONTRACT_NUM = e.ContractNum,
-                        NOTE = e.Note
+                        Note = e.Note
                     }).ToList(), 200);
                 }
                 else
@@ -76,7 +80,7 @@ namespace FamTec.Server.Services.Place
                             PlaceCd = model.PlaceCd,
                             Name = model.Name,
                             CONTRACT_NUM = model.ContractNum,
-                            NOTE = model.Note
+                            Note = model.Note
                         }, 200);
                     }
                     else
@@ -118,7 +122,7 @@ namespace FamTec.Server.Services.Place
                             PlaceCd = model.PlaceCd,
                             Name = model.Name,
                             CONTRACT_NUM = model.ContractNum,
-                            NOTE = model.Note
+                            Note = model.Note
                         }, 200);
                     }
                     else
@@ -137,64 +141,7 @@ namespace FamTec.Server.Services.Place
             }
         }
 
-        /// <summary>
-        /// 사업장 정보 추가
-        /// </summary>
-        /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> AddPlaceService(PlacesDTO? dto)
-        {
-            try
-            {
-
-                if (dto is not null && !String.IsNullOrWhiteSpace(dto.PlaceCd))
-                {
-                    PlaceTb? model = await PlaceInfoRepository.GetByPlaceInfo(dto.PlaceCd);
-
-                    if (model is not null)
-                    {
-                        return FuncResponseOBJ("해당코드의 사업장이 이미 존재합니다.", null, 200);
-                    }
-                    else
-                    {
-                        PlaceTb tb = new PlaceTb
-                        {
-                            PlaceCd = dto.PlaceCd,
-                            Name = dto.Name,
-                            ContractNum = dto.CONTRACT_NUM,
-                            Note = dto.NOTE,
-                            CreateDt = DateTime.Now,
-                            CreateUser = "토큰USER",
-                            UpdateDt = DateTime.Now,
-                            UpdateUser = "토큰USER"
-                        };
-
-                        var result = await PlaceInfoRepository.AddAsync(tb);
-
-                        if (result is not null)
-                        {
-                            return FuncResponseOBJ("데이터가 정상 처리되었습니다.", new PlacesDTO()
-                            {
-                                PlaceCd = result.PlaceCd,
-                                Name = result.Name,
-                                CONTRACT_NUM = result.ContractNum,
-                                NOTE = result.Note
-                            }, 200);
-                        }
-                        else
-                        {
-                            return FuncResponseOBJ("데이터가 처리되지 않았습니다.", null, 200);
-                        }
-                    }
-                }
-                else
-                {
-                    return FuncResponseOBJ("데이터 요청이 잘못되었습니다.", null, 400);
-                }
-            }catch(Exception ex)
-            {
-                return FuncResponseOBJ(ex.Message, null, 500);
-            }
-        }
+      
 
         /// <summary>
         /// 삭제
@@ -227,7 +174,7 @@ namespace FamTec.Server.Services.Place
                                 PlaceCd = model.PlaceCd,
                                 Name = model.Name,
                                 CONTRACT_NUM = model.ContractNum,
-                                NOTE = model.Note
+                                Note = model.Note
                             }, 200);
                         }
                         else if (result == false)
@@ -281,7 +228,7 @@ namespace FamTec.Server.Services.Place
                                 PlaceCd = model.PlaceCd,
                                 Name = model.Name,
                                 CONTRACT_NUM = model.ContractNum,
-                                NOTE = model.Note
+                                Note = model.Note
                             }, 200);
                         }
                         else if (result == false)
@@ -305,6 +252,6 @@ namespace FamTec.Server.Services.Place
             }
         }
 
-     
+  
     }
 }

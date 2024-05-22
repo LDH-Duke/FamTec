@@ -3,11 +3,14 @@ using FamTec.Server.Databases;
 using FamTec.Server.Hubs;
 using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
+using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Floor;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
-using FamTec.Server.Services.Login;
+using FamTec.Server.Services.Admin.Account;
+using FamTec.Server.Services.Admin.Department;
+using FamTec.Server.Services.Admin.Place;
 using FamTec.Server.Services.Place;
 using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -21,13 +24,17 @@ builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
 builder.Services.AddTransient<IAdminUserInfoRepository, AdminUserInfoRepository>();
 builder.Services.AddTransient<IAdminPlacesInfoRepository, AdminPlaceInfoRepository>();
 builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
+builder.Services.AddTransient<IDepartmentInfoRepository, DepartmentInfoRepository>();
 
 
 
 // Add services to the container.
+builder.Services.AddTransient<IAdminAccountService, AdminAccountService>();
+builder.Services.AddTransient<IAdminPlaceService, AdminPlaceService>();
+
 builder.Services.AddTransient<IPlaceService, PlaceService>();
 builder.Services.AddTransient<IUserService, UserService>();
-builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();

@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Shared;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminTb?> AddAsync(AdminTb? model)
+        public async ValueTask<AdminTb?> AddAdminUserInfo(AdminTb? model)
         {
             try
             {
@@ -64,12 +65,12 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         }
 
         /// <summary>
-        /// 매개변수의 관리자ID에 해당하는 관리자모델 리스트 조회
+        /// 매개변수의 관리자ID에 해당하는 관리자모델 모델 조회
         /// </summary>
         /// <param name="adminuseridx"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<AdminTb?> GetAdminUserList(int? usertbid)
+        public async ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid)
         {
             try
             {

@@ -1,4 +1,5 @@
-﻿using FamTec.Shared.Model;
+﻿using FamTec.Shared;
+using FamTec.Shared.Model;
 
 namespace FamTec.Server.Repository.Admin.AdminUser
 {
@@ -9,7 +10,8 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<AdminTb?> AddAsync(AdminTb? model);
+        ValueTask<AdminTb?> AddAdminUserInfo(AdminTb? model);
+
 
         /// <summary>
         /// 전체조회
@@ -30,7 +32,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<AdminTb?> GetAdminUserList(int? usertbid);
+        ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid);
 
         /// <summary>
         /// 매개변수의 부서ID에 해당하는 관리자모델 리스트 조회

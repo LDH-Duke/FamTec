@@ -5,11 +5,10 @@ namespace FamTec.Server.Repository.Place
     public interface IPlaceInfoRepository
     {
         /// <summary>
-        /// 추가
+        /// 사업장 추가
         /// </summary>
-        /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<PlaceTb?> AddAsync(PlaceTb? model); // 사용
+        ValueTask<PlaceTb?> AddPlaceInfo(PlaceTb model);
 
         /// <summary>
         /// 전제조회

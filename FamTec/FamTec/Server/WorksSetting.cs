@@ -91,9 +91,9 @@ namespace FamTec.Server
             user.UpdateUser = LevelCode.시스템관리자.ToString();
             user.DelYn = 0;
             user.Job = LevelCode.시스템관리자.ToString();
-            
 
             
+
             UserTb? selectUser = await context.UserTbs.FirstOrDefaultAsync(m => m.UserId!.Equals(user.UserId) && m.Password!.Equals(user.Password));
             if(selectUser is null)
             {

@@ -1,5 +1,7 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamTec.Server.Repository.Admin.AdminPlaces
@@ -62,48 +64,11 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         }
 
         /// <summary>
-        /// 관리자 PLACECODE에 해당하는 전체 사업장 출력
-        /// </summary>
-        /// <param name="placecd"></param>
-        /// <returns></returns>
-        public async ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? placeid)
-        {
-            try
-            {
-                if(placeid is not null)
-                {
-                    List<AdminPlaceTb>? model = await context.AdminPlaceTbs
-                        .Where(m => 
-                        m.PlaceId.Equals(placeid) && 
-                        m.DelYn != 1).ToListAsync();
-
-                    if (model is [_, ..])
-                    {
-                        return model;
-                    }
-                    else
-                    {
-                        return null;
-                    }
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
         /// 관리자 USERID에 해당하는 전체 사업장 출력
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlaceTb>?> GetAllUserList(int? admintbid)
+        public async ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? admintbid)
         {
             try
             {
@@ -168,6 +133,42 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
         }
 
+        public async ValueTask<List<PlaceTb>?> GetMyWorks(List<AdminPlaceTb>? model)
+        {
+            try
+            {
+                if(model is [_, ..])
+                {
+                    var dto = from table1 in context.PlaceTbs
+                              join table2 in model on table1.Id equals table2.Id
+                              select new MyWorksDTO 
+                              {
+                                  PlaceIndex = table1.Id.ToString(),
+                                  PlaceName = table1.Name.ToString(),
+                                  ContractNum = table1.ContractNum,
+                                  Status = table1.Status,
+                                  ContractDT = table1.ContractDt,
+                                  CancelDT = table1.CancelDt
+                              };
+
+                    Console.WriteLine("");
+
+                    return null;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
+
+
         /// <summary>
         /// 해당하는 관리자 사업장 삭제
         /// </summary>
@@ -219,6 +220,6 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
         }
 
-    
+
     }
 }
