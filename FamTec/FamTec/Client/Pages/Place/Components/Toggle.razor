@@ -1,11 +1,11 @@
 ﻿<label class="toggle-container">
     @if (Disable)
     {
-        <input class="toggle-input" type="checkbox" role="switch" disabled/>
+        <input class="toggle-input" @bind-value="currentValue" type="checkbox" role="switch" disabled />
     }else{
-        <input class="toggle-input" type="checkbox" role="switch"/>
+        <input class="toggle-input" @bind-value="currentValue" type="checkbox" role="switch" />
     }
-
+    @* <input class="toggle-input" @bind-value="@Value" type="checkbox" role="switch" @(Disabe ? disabled : null/> *@
     <span class="toggle-title">@Title</span>
 </label>
 
@@ -14,4 +14,22 @@
 @code {
     [Parameter] public string Title { get; set; }
     [Parameter] public bool Disable { get; set; } = false; //비활성화 여부
+    [Parameter] public sbyte? Value { get; set; }
+    [Parameter] public EventCallback<sbyte?> ValueChanged { get; set; }
+
+    private bool currentValue
+    {
+        get => Value.GetValueOrDefault() == 1;
+        set
+        {
+            var newValue = value ? (sbyte?)1 : (sbyte?)0;
+            if (Value != newValue)
+            {
+                Value = newValue;
+                ValueChanged.InvokeAsync(newValue);
+            }
+        }
+    }
+
+
 }

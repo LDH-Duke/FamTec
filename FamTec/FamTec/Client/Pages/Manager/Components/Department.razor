@@ -1,5 +1,6 @@
 ﻿@using FamTec.Client.Pages.Manager.Components.Common
 @using FamTec.Client.Pages.Manager.Components.DepartmentF
+@using FamTec.Shared.Client.DTO
 
 
 
@@ -38,7 +39,7 @@
 </div>
 
 @code {
-    [Parameter] public List<object> DataList { get; set; }
+    [Parameter] public List<DepartmentDTO> DataList { get; set; }
 
     private bool is_openModal = false;
 

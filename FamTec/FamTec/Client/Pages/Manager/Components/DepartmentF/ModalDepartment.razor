@@ -10,7 +10,7 @@
         </div>
         <div class="modaldepart-body">
             <div class="modaldepart-list">
-                <DepartmentList DataList="DepartmentList" Edit=true />
+                <DepartmentList DataList="departmentList" Edit=true />
             </div>
             <div class="modaldepart-btns">
                 <Button Name="수정" />
@@ -34,7 +34,7 @@
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
     List<DepartmentDTO> departmentList;
-    List<object> DepartmentList;
+    
 
     protected override Task OnInitializedAsync()
     {
@@ -95,7 +95,7 @@
             }
         };
 
-        DepartmentList = departmentList.Cast<object>().ToList();
+        
 
         return base.OnInitializedAsync();
     }

@@ -1,4 +1,5 @@
 ﻿@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
 
 
 
@@ -31,87 +32,94 @@
     List<PlaceManagerDTO> PlaceManagerList;
     List<object> placeManagerList;
     List<string> properties;
+    public HttpClient httpClient = new HttpClient();
 
     protected override async Task OnInitializedAsync()
     {
-        PlaceManagerList = new List<PlaceManagerDTO>
-        {
-            new PlaceManagerDTO
-            {
-                ID = "test1",
-                NAME = "홍길동",
-                DEPARTMENT = "시스템개발파트"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test2",
-                NAME = "최유진",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new PlaceManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-        };
+        /*
+         * 현재 매니저 목록 조회 Fetch Get
+         */
+        ResponseObj<PlaceManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<PlaceManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
 
-        placeManagerList = PlaceManagerList.Cast<object>().ToList();
-        properties = typeof(PlaceManagerDTO).GetProperties().Select(p => p.Name).ToList();
+
+        // PlaceManagerList = new List<PlaceManagerDTO>
+        // {
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test1",
+        //         NAME = "홍길동",
+        //         DEPARTMENT = "시스템개발파트"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test2",
+        //         NAME = "최유진",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        //     new PlaceManagerDTO
+        //     {
+        //         ID = "test3",
+        //         NAME = "구동매",
+        //         DEPARTMENT = "대한민국"
+        //     },
+        // };
+
+        // placeManagerList = PlaceManagerList.Cast<object>().ToList();
+        // properties = typeof(PlaceManagerDTO).GetProperties().Select(p => p.Name).ToList();
     }
 
     private Task ModalClose(){

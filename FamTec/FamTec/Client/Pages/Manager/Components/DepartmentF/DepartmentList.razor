@@ -1,11 +1,12 @@
-﻿
+﻿@using FamTec.Shared.Client.DTO
+
 <ul class="depart-list">
     @foreach (var item in DataList)
     {
         <li class="depart-item">
             <NavLink>
                 <span>
-                    @item.GetType().GetProperty("Name").GetValue(item)
+                    @item.Name
                 </span>
                
             </NavLink>
@@ -17,6 +18,6 @@
     }
 </ul>
 @code {
-    [Parameter] public List<object> DataList { get; set; }
+    [Parameter] public List<DepartmentDTO> DataList { get; set; }
     [Parameter] public bool Edit { get; set; }
 }

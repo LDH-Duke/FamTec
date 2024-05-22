@@ -1,12 +1,17 @@
 ﻿
 
-<button class="btn" @onclick="onClickBtn">
+<button class="btn @(Width ? "width" : null)"
+        @onclick="onClickBtn"
+        type="@Type"
+        >
     @Name
 </button>
 
 
 @code {
-    [Parameter] public string Name { get; set; }
+    [Parameter] public string? Name { get; set; }
+    [Parameter] public string? Type { get; set; }
+    [Parameter] public bool Width { get; set; } = false;
     [Parameter] public EventCallback OnClick { get; set; }
 
     private async Task onClickBtn()

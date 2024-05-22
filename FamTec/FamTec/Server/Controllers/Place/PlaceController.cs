@@ -1,5 +1,4 @@
-﻿using FamTec.Server.Controllers.Object;
-using FamTec.Shared.Client.DTO;
+﻿using FamTec.Shared.Client.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Models;
 using Microsoft.AspNetCore.Http;

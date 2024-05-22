@@ -1,11 +1,13 @@
 ﻿@page "/admin/manager"
 @using FamTec.Client.Pages.Manager.Components
 @using FamTec.Shared.Client.DTO;
+@using FamTec.Shared.Model
+@using FamTec.Shared.Server
 
 
 <div class="grid-layout">
     <div class="depart">
-        <Department DataList="@DepartmentList" />
+        <Department DataList="@departmentList" />
     </div>
     <div class="managerlist">
         <ManagerList DataList="managerList" />
@@ -19,31 +21,35 @@
 
     List<ManagerDTO> managerList;
     List<object> ManagerList;
+    List<AdminTb> managerTable;
 
     protected override async Task OnInitializedAsync()
     {
-        
+        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+        ResponseObj<AdminTb> resManager = await httpClient.GetFromJsonAsync<ResponseObj<AdminTb>>("http://127.0.0.1:5245/api/Admin/allmanager");
+        departmentList = resDepartment.data;
+        managerTable = resManager.data;
 
-        departmentList = new List<DepartmentDTO>
-        {
-            new DepartmentDTO
-            {
-                Id = 1,
-                Name = "전략영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 2,
-                Name = "시스템개발"
-            },
-            new DepartmentDTO
-            {
-                Id = 3,
-                Name = "특화영업"
-            },
-        };
+        // departmentList = new List<DepartmentDTO>
+        // {
+        //     new DepartmentDTO
+        //     {
+        //         Id = 1,
+        //         Name = "전략영업"
+        //     },
+        //     new DepartmentDTO
+        //     {
+        //         Id = 2,
+        //         Name = "시스템개발"
+        //     },
+        //     new DepartmentDTO
+        //     {
+        //         Id = 3,
+        //         Name = "특화영업"
+        //     },
+        // };
 
-        DepartmentList = departmentList.Cast<object>().ToList();
+        // DepartmentList = departmentList.Cast<object>().ToList();
 
 
         managerList = new List<ManagerDTO>

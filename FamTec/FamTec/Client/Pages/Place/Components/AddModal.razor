@@ -1,5 +1,4 @@
-﻿@using FamTec.Server.Controllers.Object
-@using FamTec.Shared.Client.DTO
+﻿@using FamTec.Shared.Client.DTO
 
 
 <div class="placemodal-backgroud appear">
@@ -8,67 +7,81 @@
             <div class="placemodal-title">
                 @Title
             </div>
-            <div class="placemodal-content">
-                <div class="placemodal-form">
-                    <EditForm Model="placeInfo">
-                        <InputField Label="코드"
-                                    InputType="text"
-                                    Placeholder="사업장 코드"
-                                    @bind-Value="@placeInfo.PlaceCd"
-                                    />
-                        <InputField Label="사업장명"
-                                    InputType="text"
-                                    Placeholder="사업장명" 
-                                    @bind-Value="@placeInfo.Name"
-                                    />
+            <EditForm Model="placeInfo" OnValidSubmit="OnAdd">
+                <div class="placemodal-content">
+                    <div class="placemodal-form">
+                            <div class="placeInfo-input">
+                                <InputField Label="코드"
+                                            InputType="text"
+                                            Placeholder="사업장 코드"
+                                            @bind-Value="@placeInfo.PlaceCd" />
+                                <InputField Label="사업장명"
+                                            InputType="text"
+                                            Placeholder="사업장명"
+                                            @bind-Value="@placeInfo.Name" />
 
-                        <InputField Label="전화번호"
-                                    InputType="text"
-                                    Placeholder="전화번호" 
-                                    @bind-Value="@placeInfo.Tel"
-                                    />
-                        <InputField Label="주소"
-                                    InputType="text"
-                                    Placeholder="주소" 
-                                    @bind-Value="@placeInfo.Address"
-                                    />
-                        <InputField Label="계약번호"
-                                    InputType="text"
-                                    Placeholder="계약번호" 
-                                    @bind-Value="@placeInfo.ContractNum"
-                                    />
-                        <InputField Label="계약일자"
-                                    InputType="date"
-                                    Placeholder="계약일자" 
-                                    @bind-Value="@placeInfo.ContractDt"
-                                    />
-                         <Toggle Title="기계설비 권한"/>
-                        <Toggle Title="기계설비 권한" Disable="true"/>
-                    </EditForm>
-                </div>
-                <div class="placemodal-manager">
-                    <div class="placemodal-m-header">
-                        <span class="placemodal-m-title">관리 매니저</span>
-                        <div>
-                            <Button 
-                                Name="추가" 
-                                OnClick=OnAddModal
-                                />
-                            <Button Name="삭제" />
-                        </div>
-                    </div>
-                    <div class="placemodal-m-list">
-                        <List DataList="@placeManagerList" />
-                    </div>
+                                <InputField Label="전화번호"
+                                            InputType="text"
+                                            Placeholder="전화번호"
+                                            @bind-Value="@placeInfo.Tel" />
+                                <InputField Label="주소"
+                                            InputType="text"
+                                            Placeholder="주소"
+                                            @bind-Value="@placeInfo.Address" />
+                                <InputField Label="계약번호"
+                                            InputType="text"
+                                            Placeholder="계약번호"
+                                            @bind-Value="@placeInfo.ContractNum" />
+                                <InputField Label="계약일자"
+                                            InputType="date"
+                                            Placeholder="계약일자"
+                                            @bind-Value="@placeInfo.ContractDt" />
+                            </div>
+                            <div class="placemodal-toggle">
+                                <Toggle Title="기계설비 권한" @bind-Value="@placeInfo.PermMachine"/>
+                                <Toggle Title="승강설비 권한" @bind-Value="@placeInfo.PermLift"/>
+                                <Toggle Title="소방설비 권한" @bind-Value="@placeInfo.PermFire"/>
+                                <Toggle Title="건축설비 권한" @bind-Value="@placeInfo.PermConstruct"/>
+                                <Toggle Title="통신설비 권한" @bind-Value="@placeInfo.PermNetwork"/>
+                                <Toggle Title="미화설비 권한" @bind-Value="@placeInfo.PermBeauty"/>
+                                <Toggle Title="보안설비 권한" @bind-Value="@placeInfo.PermSecurity"/>
+                                <Toggle Title="자재 권한" @bind-Value="@placeInfo.PermMaterial"/>
+                                <Toggle Title="에너지 권한" @bind-Value="@placeInfo.PermEnergy"/>
+                                <Toggle Title="민원관리 권한" @bind-Value="@placeInfo.PermVoc"/>
+                            </div>
+                        
+                        
                     
-                </div>
+                    </div>
+                    <div class="placemodal-manager">
+                        <div class="placemodal-m-header">
+                            <span class="placemodal-m-title">관리 매니저</span>
+                            <List />
+                            <div>
+                                <Button 
+                                    Name="추가" 
+                                    OnClick=OnAddModal
+                                    />
+                                <Button Name="삭제" />
+                            </div>
+                        </div>
+                        <div class="placemodal-m-list">
+                            <List DataList="@placeManagerList" />
+                        </div>
+                    
+                    </div>
                 
 
-            </div>
-            <button class="modal-btn" @onclick="ModalClose">
-                확인
-            </button>
-            <Button Name="등록"/>
+                </div>
+                <div class="placemodal-btns">
+                    <Button Name="등록" 
+                            Width=true 
+                            Type="sub"
+                            />
+                    <Button Name="닫기" Width=true OnClick="ModalClose" />
+                </div>
+            </EditForm>
+            
         </div>
         @if (isAddModal)
         {
@@ -83,6 +96,7 @@
     [Parameter] public string Content { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
+    List<string> managerList;
     List<PlaceManagerDTO> PlaceManagerList;
     List<object> placeManagerList;
     List<string> properties;
@@ -113,9 +127,33 @@
         return OnClose.InvokeAsync(false);
     }
 
-    private void OnAdd()
+    /*
+     * 등록 버튼 눌렀을 시
+     */
+    private async void OnAdd()
     {
-        
+        /*
+         * 1. 입력된 데이터 확인 
+         * 2. 추가 삭제 후 동기화 확인
+         * 3. POST
+         * 4. 모달 닫기
+         */
+        Console.WriteLine("코드"+placeInfo.PlaceCd);
+        Console.WriteLine("이름" + placeInfo.Name);
+        Console.WriteLine("전화번호" + placeInfo.Tel);
+        Console.WriteLine("주소" + placeInfo.Address);
+        Console.WriteLine("계약번호" + placeInfo.ContractNum);
+        Console.WriteLine("계약일자" + placeInfo.ContractDt);
+        Console.WriteLine("기계"+placeInfo.PermMachine);
+        Console.WriteLine("승강"+placeInfo.PermLift);
+        Console.WriteLine("소방"+placeInfo.PermFire);
+        Console.WriteLine("건축" + placeInfo.PermConstruct);
+        Console.WriteLine("통신"+placeInfo.PermNetwork);
+        Console.WriteLine("미화"+placeInfo.PermBeauty);
+        Console.WriteLine("보안" + placeInfo.PermSecurity);
+        Console.WriteLine("자재" + placeInfo.PermMaterial);
+        Console.WriteLine("에너지" + placeInfo.PermEnergy);
+        Console.WriteLine("민원"+placeInfo.PermVoc);
     }
 }
 

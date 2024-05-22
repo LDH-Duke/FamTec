@@ -1,5 +1,57 @@
 [
   {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminController",
+    "Method": "AddDepartment",
+    "RelativePath": "api/Admin/adddepartment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "department",
+        "Type": "FamTec.Shared.Client.DTO.AddDepartment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminController",
+    "Method": "AddManager",
+    "RelativePath": "api/Admin/addmanager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "manager",
+        "Type": "FamTec.Shared.Client.DTO.AddManagerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminController",
+    "Method": "FindAllDepartment",
+    "RelativePath": "api/Admin/alldepartment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminController",
+    "Method": "FindAllManager",
+    "RelativePath": "api/Admin/allmanager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.Place.PlaceController",
     "Method": "FindAllPlace",
     "RelativePath": "api/Place/allplace",

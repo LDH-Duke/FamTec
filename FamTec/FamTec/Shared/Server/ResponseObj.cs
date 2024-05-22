@@ -1,4 +1,4 @@
-﻿namespace FamTec.Server.Controllers.Object
+﻿namespace FamTec.Shared.Server
 {
     public class ResponseObj<T>
     {
