@@ -49,6 +49,26 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.AdminUserController",
+    "Method": "GetAllDepartment",
+    "RelativePath": "api/AdminUser/GetDepartmentList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUserController",
+    "Method": "GetAllPlace",
+    "RelativePath": "api/AdminUser/GetPlaceList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.AdminUserController",
     "Method": "Login",
     "RelativePath": "api/AdminUser/Login",
     "HttpMethod": "POST",
@@ -64,9 +84,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.PlaceController",
-    "Method": "GetAllPlace",
-    "RelativePath": "api/Place/GetAllPlace",
+    "ContainingType": "FamTec.Server.Controllers.AdminUserController",
+    "Method": "GetMyWorks",
+    "RelativePath": "api/AdminUser/MyWorks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -74,33 +94,17 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.PlaceController",
-    "Method": "GetPlaceId",
-    "RelativePath": "api/Place/GetPlace/{id}",
-    "HttpMethod": "GET",
+    "ContainingType": "FamTec.Server.Controllers.AdminUserController",
+    "Method": "UserSearch",
+    "RelativePath": "api/AdminUser/UserSearch",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.PlaceController",
-    "Method": "GetPlaceCode",
-    "RelativePath": "api/Place/GetPlaceCD/{code}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "code",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.User.UsersDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

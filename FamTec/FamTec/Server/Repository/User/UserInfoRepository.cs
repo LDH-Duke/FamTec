@@ -51,28 +51,6 @@ namespace FamTec.Server.Repository.User
             }
         }
 
-        /// <summary>
-        /// 사용자 전체조회
-        /// </summary>
-        /// <returns></returns>
-        public async ValueTask<List<UserTb>?> GetAllList()
-        {
-            try
-            {
-                List<UserTb>? model = await context.UserTbs
-                    .Where(m => m.DelYn != 1).ToListAsync();
-                
-                if (model is [_, ..])
-                    return model;
-                else
-                    return null;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
 
         /// <summary>
         /// USERID + PASSWORD에 해당하는 모델반환
@@ -110,93 +88,25 @@ namespace FamTec.Server.Repository.User
         }
 
         /// <summary>
-        /// 매개변수 사업장에 해당하는 사용자리스트 조회
-        /// </summary>
-        /// <param name="placeidx"></param>
-        /// <returns></returns>
-        public async ValueTask<List<UserTb>?> GetAllUserList(int? placeidx)
-        {
-            try
-            {
-                if(placeidx is not null)
-                {
-                    List<UserTb>? model = await context.UserTbs
-                        .Where(m => m.PlaceTbId.Equals(placeidx) &&
-                        m.DelYn != 1).ToListAsync();
-                    
-                    if (model is [_, ..])
-                        return model;
-                    else
-                        return null;
-                }
-                else
-                {
-                    return null;
-                }
-
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 사용자 정보 조회
-        /// </summary>
-        /// <param name="idx"></param>
-        /// <returns></returns>
-        public async ValueTask<UserTb?> GetUserInfo(int? idx)
-        {
-            try
-            {
-                if(idx is not null)
-                {
-                    UserTb? model = await context.UserTbs
-                        .FirstOrDefaultAsync(m => 
-                        m.Id == idx && 
-                        m.DelYn != 1);
-
-                    if (model is not null)
-                        return model;
-                    else
-                        return null;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-
-        /// <summary>
-        /// 사용자 ID 검색 - 사용자 단일모델 반환
+        /// 아이디 중복검사
         /// </summary>
         /// <param name="userid"></param>
         /// <returns></returns>
-        public async ValueTask<UserTb?> GetUserInfo(string? userid, int? placetbid)
+        public async ValueTask<UserTb?> UserIdCheck(string? userid)
         {
             try
             {
-                if (!String.IsNullOrWhiteSpace(userid) && placetbid is not null)
+                if(!String.IsNullOrWhiteSpace(userid))
                 {
-                    UserTb? model = await context.UserTbs
-                        .FirstOrDefaultAsync(m => 
-                        m.UserId.Equals(userid) && 
-                        m.PlaceTbId.Equals(placetbid) &&
-                        m.DelYn != 1);
-
-                    if (model is not null)
+                    UserTb? model = await context.UserTbs.FirstOrDefaultAsync(m => m.UserId == userid);
+                    if(model is not null)
+                    {
                         return model;
+                    }
                     else
+                    {
                         return null;
+                    }
                 }
                 else
                 {
@@ -209,63 +119,5 @@ namespace FamTec.Server.Repository.User
                 throw new ArgumentException();
             }
         }
-
-      
-        /// <summary>
-        /// 사용자 정보 수정
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<bool?> EditUserInfo(UserTb? model)
-        {
-            try
-            {
-                if(model is not null)
-                {
-                    context.UserTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-
-        /// <summary>
-        /// 사용자 정보 삭제
-        /// </summary>
-        /// <param name="tguserid"></param>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<bool?> DeleteUserInfo(UserTb? model)
-        {
-            try
-            {
-                if (model is not null)
-                {
-                    context.UserTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-      
     }
 }

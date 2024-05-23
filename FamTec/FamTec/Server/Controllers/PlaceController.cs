@@ -20,29 +20,7 @@ namespace FamTec.Server.Controllers
             this.PlaceService = _placeservice;
         }
 
-        [HttpGet]
-        [Route("GetAllPlace")]
-        public async ValueTask<IActionResult> GetAllPlace()
-        {
-            ResponseModel<PlacesDTO>? model = await PlaceService.GetAllPlaceService();
-            return Ok(model);
-        }
-
-        [HttpGet]
-        [Route("GetPlace/{id?}")]
-        public async ValueTask<IActionResult> GetPlaceId(int id)
-        {
-            ResponseModel<PlacesDTO>? model = await PlaceService.GetByPlaceService(id);
-            return Ok(model);
-        }
-
-        [HttpGet]
-        [Route("GetPlaceCD/{code?}")]
-        public async ValueTask<IActionResult> GetPlaceCode(string code)
-        {
-            ResponseModel<PlacesDTO>? model = await PlaceService.GetByPlaceService(code);
-            return Ok(model);
-        }
+   
 
 
     }

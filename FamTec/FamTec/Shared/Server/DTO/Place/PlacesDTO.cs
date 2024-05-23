@@ -40,12 +40,12 @@ namespace FamTec.Shared.Server.DTO.Place
         /// <summary>
         /// 계약일자
         /// </summary>
-        public DateTime ContractDT { get; set; }
+        public DateTime? ContractDT { get; set; }
 
         /// <summary>
         /// 해약일자
         /// </summary>
-        public DateTime CancelDT { get; set; }
+        public DateTime? CancelDT { get; set; }
 
         /// <summary>
         /// 설비메뉴 권한

@@ -31,18 +31,6 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         /// <returns></returns>
         ValueTask<DepartmentTb?> GetDepartmentInfo(string? Name);
 
-        /// <summary>
-        /// 부서정보 수정
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        ValueTask<bool?> EditDepartmentInfo(DepartmentTb? model);
-
-        /// <summary>
-        /// 부서정보 삭제
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        ValueTask<bool?> DeleteDepartmentInfo(DepartmentTb? model);
+ 
     }
 }

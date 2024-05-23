@@ -10,11 +10,11 @@ namespace FamTec.Shared.DTO
 {
     public class ResponseModel<T>
     { 
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
-        public List<T> Data { get; set; }
+        public List<T>? Data { get; set; }
 
-        public int StatusCode { get; set; }
+        public int? StatusCode { get; set; }
     }
 
 

@@ -11,25 +11,7 @@ namespace FamTec.Server.Repository.User
         /// <returns></returns>
         ValueTask<UserTb?> AddAsync(UserTb? model);
 
-        /// <summary>
-        /// 전체조회
-        /// </summary>
-        /// <returns></returns>
-        ValueTask<List<UserTb>?> GetAllList();
-
-        /// <summary>
-        /// 매개변수 사업장에 해당하는 사용자리스트 조회
-        /// </summary>
-        /// <param name="placetbid"></param>
-        /// <returns></returns>
-        ValueTask<List<UserTb>?> GetAllUserList(int? placetbid);
-
-        /// <summary>
-        /// ID로 단일모델 조회
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        ValueTask<UserTb?> GetUserInfo(string? userid, int? placetbid);
+    
 
         /// <summary>
         /// USERID + PASSWORD에 해당하는 모델반환
@@ -40,24 +22,11 @@ namespace FamTec.Server.Repository.User
         ValueTask<UserTb?> GetUserInfo(string? userid, string? password);
 
         /// <summary>
-        /// 사용자이름으로 단일모델 조회
+        /// USERID 검사
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="userid"></param>
         /// <returns></returns>
-        ValueTask<UserTb?> GetUserInfo(int? idx);
+        ValueTask<UserTb?> UserIdCheck(string? userid);
 
-        /// <summary>
-        /// 사용자 수정
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        ValueTask<bool?> EditUserInfo(UserTb? model);
-
-        /// <summary>
-        /// 사용자 삭제
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        ValueTask<bool?> DeleteUserInfo(UserTb? model);
     }
 }

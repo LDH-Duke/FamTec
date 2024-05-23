@@ -1,6 +1,9 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Shared.Client.DTO;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Admin;
+using FamTec.Shared.Server.DTO.Place;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,44 +46,52 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         }
 
         /// <summary>
-        /// 전체 사업장 조회
+        /// 관리자에 해당하는 사업장 리스트 출력
         /// </summary>
+        /// <param name="adminid"></param>
         /// <returns></returns>
-        public async ValueTask<List<AdminPlaceTb>?> GetAllList()
+        public async ValueTask<List<AdminPlaceDTO>?> GetMyWorks(int? adminid)
         {
             try
             {
-                List<AdminPlaceTb> model = await context.AdminPlaceTbs.Where(m => m.DelYn != 1).ToListAsync();
-                if (model == null)
-                    return null;
-                else
-                    return model;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 관리자 USERID에 해당하는 전체 사업장 출력
-        /// </summary>
-        /// <param name="userid"></param>
-        /// <returns></returns>
-        public async ValueTask<List<AdminPlaceTb>?> GetAllPlaceList(int? admintbid)
-        {
-            try
-            {
-                if(admintbid is not null)
+                if(adminid is not null)
                 {
-                    List<AdminPlaceTb>? model = await context.AdminPlaceTbs
-                        .Where(m => m.AdminTbId.Equals(admintbid) && 
-                        m.DelYn != 1).ToListAsync();
+                    List<AdminPlaceTb>? adminplacetb = await context.AdminPlaceTbs.Where(m => m.AdminTbId == adminid).ToListAsync();
 
-                    if (model is [_, ..])
+                    if(adminplacetb is [_, ..])
                     {
-                        return model;
+                        List<PlaceTb>? placetb = await context.PlaceTbs.ToListAsync();
+                        if(placetb is [_, ..])
+                        {
+                            List<AdminPlaceDTO>? result = (from admin in adminplacetb
+                                                   join place in placetb
+                                                   on admin.PlaceId equals place.Id
+                                                   where place.DelYn != 1
+                                                   select new AdminPlaceDTO
+                                                   {
+                                                      AdminPlaceTBID = admin.Id,
+                                                      AdminPlaceUserTBID = admin.AdminTbId,
+                                                      PlaceTBID = admin.PlaceId,
+                                                      PlaceCD = place.PlaceCd,
+                                                      Name = place.Name,
+                                                      ContractNum = place.ContractNum,
+                                                      ContractDT= place.ContractDt,
+                                                      CancelDT = place.CancelDt,
+                                                      status = place.Status
+                                                   }).ToList();
+                            if(result is [_, ..])
+                            {
+                                return result;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            return null;
+                        }
                     }
                     else
                     {
@@ -95,131 +106,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw;
             }
         }
-
-        /// <summary>
-        /// 테이블 정보에 해당하는 단일 사업장모델 반환
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public async ValueTask<AdminPlaceTb?> GetPlaceInfo(int? admintbid, int? placeid)
-        {
-            try
-            {
-                if(admintbid is not null && placeid is not null)
-                {
-                    AdminPlaceTb? model = await context.AdminPlaceTbs
-                        .FirstOrDefaultAsync(m => 
-                        m.AdminTbId.Equals(admintbid) && 
-                        m.PlaceId.Equals(placeid) && 
-                        m.DelYn != 1);
-
-                    if (model == null)
-                        return null;
-                    else
-                        return model;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        public async ValueTask<List<PlaceTb>?> GetMyWorks(List<AdminPlaceTb>? model)
-        {
-            try
-            {
-                if(model is [_, ..])
-                {
-                    var dto = from table1 in context.PlaceTbs
-                              join table2 in model on table1.Id equals table2.Id
-                              select new MyWorksDTO 
-                              {
-                                  PlaceIndex = table1.Id.ToString(),
-                                  PlaceName = table1.Name.ToString(),
-                                  ContractNum = table1.ContractNum,
-                                  Status = table1.Status,
-                                  ContractDT = table1.ContractDt,
-                                  CancelDT = table1.CancelDt
-                              };
-
-                    Console.WriteLine("");
-
-                    return null;
-                }
-                else
-                {
-                    return null;
-                }
-
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-
-        /// <summary>
-        /// 해당하는 관리자 사업장 삭제
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public async ValueTask<bool?> DeleteAdminPlacesInfo(AdminPlaceTb? model)
-        {
-            try
-            {
-                if (model is not null)
-                {
-                    context.AdminPlaceTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 해당하는 관리자 사업장 수정
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public async ValueTask<bool?> EditAdminPlacesInfo(AdminPlaceTb? model)
-        {
-            try
-            {
-                if (model is not null)
-                {
-                    context.AdminPlaceTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-
     }
 }

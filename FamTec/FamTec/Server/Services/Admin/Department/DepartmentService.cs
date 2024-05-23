@@ -3,6 +3,7 @@ using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Admin;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FamTec.Server.Services.Admin.Department
 {
@@ -41,6 +42,7 @@ namespace FamTec.Server.Services.Admin.Department
                     {
                         DepartmentTb? tb = new DepartmentTb
                         {
+                            Id = dto.ID,
                             Name = dto.Name,
                             CreateDt = DateTime.Now,
                             CreateUser = session.Name,
@@ -78,5 +80,33 @@ namespace FamTec.Server.Services.Admin.Department
             }
         }
 
+
+        /// <summary>
+        /// 부서 전체조회
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<ResponseModel<DepartmentDTO>> GetAllDepartmentService()
+        {
+            try
+            {
+                List<DepartmentTb>? model = await DepartmentInfoRepository.GetAllList();
+                if(model is [_, ..])
+                {
+                    return FuncResponseList("요청이 정상처리 되었습니다.", model.Select(e => new DepartmentDTO
+                    {
+                        ID = e.Id,
+                        Name = e.Name
+                    }).ToList(), 200);
+                }
+                else
+                {
+                    return FuncResponseList("데이터가 존재하지 않습니다.", null, 200);
+                }
+            }
+            catch(Exception ex)
+            {
+                return FuncResponseOBJ(ex.Message, null, 500);
+            }
+        }
     }
 }
