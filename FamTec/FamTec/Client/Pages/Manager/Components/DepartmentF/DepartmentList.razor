@@ -1,21 +1,29 @@
 ﻿@using FamTec.Shared.Client.DTO
 
 <ul class="depart-list">
-    @foreach (var item in DataList)
+    @if(DataList == null)
     {
-        <li class="depart-item">
-            <NavLink>
-                <span>
-                    @item.Name
-                </span>
-               
-            </NavLink>
-            @if (Edit)
-            {
-                <input class="depart-select" type="checkbox" />
-            }
-        </li>
+        <p>Loading...</p>
     }
+    else
+    {
+        @foreach (var item in DataList)
+        {
+            <li class="depart-item">
+                <NavLink>
+                    <span>
+                        @item.Name
+                    </span>
+
+                </NavLink>
+                @if (Edit)
+                {
+                    <input class="depart-select" type="checkbox" />
+                }
+            </li>
+        }
+    }
+    
 </ul>
 @code {
     [Parameter] public List<DepartmentDTO> DataList { get; set; }

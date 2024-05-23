@@ -24,6 +24,14 @@
 @code {
     [Parameter] public List<ManagerDTO> DataList { get; set; }
 
+    protected async override Task OnInitializedAsync()
+    {
+        foreach(var i in DataList)
+        {
+            Console.WriteLine(i.Name);
+        }
+        
+    }
 
     private void OnSignUp()
     {

@@ -1,5 +1,7 @@
 ﻿@using FamTec.Client.Pages.Manager.Components.Common
 @using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@inject HttpClient HttpClient
 
 <div class="modaldepart-container">
     <div class="modaldepart-wrap">
@@ -19,11 +21,13 @@
         </div>
         <div class="modaldepart-add">
             <span>부서 추가</span>
-            <div class="modaldepart-input">
-                <Input type="text" placeholder="부서명"/>
-                <Input Placeholder="부서명" />
-                <Button Name="추가"/>
-            </div>
+            <EditForm Model="newDepartment" OnValidSubmit="AddDepartment">
+                <div class="modaldepart-input">
+
+                        <Input Type="text" Placeholder="부서명" @bind-Value="newDepartment.Name"/>
+                        <Button Name="추가" />
+                </div>
+            </EditForm>
         </div>
         <Button Name="확인" OnClick="@ModalClose" />
     </div>
@@ -33,76 +37,59 @@
 @code {
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
+    // HttpClient httpClient = new HttpClient();
     List<DepartmentDTO> departmentList;
-    
+    AddDepartment newDepartment = new AddDepartment();
 
-    protected override Task OnInitializedAsync()
+
+    protected override async Task OnInitializedAsync()
     {
-        /*
-         * 1. 모달 오픈 시 db 부서내용 요청
-         */
-        departmentList = new List<DepartmentDTO>
-        {
-            new DepartmentDTO
-            {
-                Id = 1,
-                Name = "전략영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 2,
-                Name = "시스템개발"
-            },
-            new DepartmentDTO
-            {
-                Id = 3,
-                Name = "특화영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 4,
-                Name = "시스템개발"
-            },
-            new DepartmentDTO
-            {
-                Id = 5,
-                Name = "특화영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 6,
-                Name = "시스템개발"
-            },
-            new DepartmentDTO
-            {
-                Id = 7,
-                Name = "특화영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 8,
-                Name = "특화영업"
-            },
-            new DepartmentDTO
-            {
-                Id = 9,
-                Name = "시스템개발"
-            },
-            new DepartmentDTO
-            {
-                Id = 10,
-                Name = "특화영업"
-            }
-        };
+        await LoadDepartments();
 
-        
-
-        return base.OnInitializedAsync();
     }
 
+
+    private async Task LoadDepartments()
+    {
+        try
+        {
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+            departmentList = resDepartment.data;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+        }
+    }
 
     private Task ModalClose()
     {
         return OnClose.InvokeAsync(false);
     }
+
+    private async Task AddDepartment()
+    {
+        Console.WriteLine(newDepartment.Name == null);
+        if (newDepartment.Name == null)
+        {
+            Console.WriteLine("입력된 값이 없습니다.");
+        }
+        else
+        {
+            HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/Admin/adddepartment", newDepartment);
+            Console.WriteLine(res);
+
+            if (res.IsSuccessStatusCode)
+            {
+                await LoadDepartments();
+                newDepartment = new AddDepartment();
+            }
+            else
+            {
+                Console.WriteLine("부서 추가 에러");
+            }
+        }
+        
+    }
+
 }

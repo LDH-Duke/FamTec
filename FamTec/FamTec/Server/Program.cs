@@ -4,6 +4,7 @@ using FamTec.Shared.Models;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ObjectPool;
+using Microsoft.AspNetCore.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<WorksContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 #endregion
+
 
 #region SIGNAL R µî·Ï
 /*

@@ -19,7 +19,10 @@ namespace FamTec.Server.Controllers.Admin
             _workContext = workContext;
         }
 
-
+        /// <summary>
+        /// 매니저 목록 조회
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("allmanager")]
         public async Task<IActionResult> FindAllManager()
@@ -27,13 +30,21 @@ namespace FamTec.Server.Controllers.Admin
             try
             {
                 Console.WriteLine("매니저 전체조회");
-                List<AdminTb> res = await _workContext.AdminTbs.ToListAsync();
-                //List<ManagerDTO> list = res.Select(adminTb => new ManagerDTO
-                //{
-                    
-                //}).ToList();
-                return Ok(new ResponseObj<AdminTb> { message = "매니저 전체조회 성공", data=res, code=200});
-            }catch (Exception ex)
+                List<ManagerDTO> res = await _workContext.AdminTbs
+                                            .Include(a => a.UserTb)
+                                            .Include(a => a.DepartmentTb)
+                                            .Select(a => new ManagerDTO
+                                            {
+                                                Id = a.UserTb.Id,
+                                                UserId = a.UserTb.UserId,
+                                                Name = a.UserTb.Name,
+                                                Department = a.DepartmentTb.Name
+                                            }).ToListAsync();
+                
+                return Ok(new ResponseObj<ManagerDTO> { message = "매니저 전체조회 성공", data=res, code=200});
+                
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine("[Admin][Controller] 매니저 전체 조회 에러!!\n " + ex);
                 return Problem("[Admin][Controller] 매니저 전체 조회 에러!!\n" + ex);
@@ -45,6 +56,7 @@ namespace FamTec.Server.Controllers.Admin
         [Route("addmanager")]
         public async Task<IActionResult> AddManager([FromBody]AddManagerDTO manager)
         {
+            using var transaction = await _workContext.Database.BeginTransactionAsync();
             try
             {
                 /*
@@ -75,8 +87,9 @@ namespace FamTec.Server.Controllers.Admin
                     Status = 1,
                 };
                 UserTb resUsertb = _workContext.UserTbs.Add(userTb).Entity;
+                await _workContext.SaveChangesAsync();
 
-                if(resUsertb == null)
+                if (resUsertb == null)
                 {
                     return BadRequest("회원가입 되지않음");
                 }
@@ -87,13 +100,14 @@ namespace FamTec.Server.Controllers.Admin
                     UserTbId = resUsertb.Id,
                     DepartmentTbId = manager.DepartmentId
                 };
-                AdminTb resAdmintb = _workContext.AdminTbs.Add(adminTb).Entity; 
+                _workContext.AdminTbs.Add(adminTb); 
+
                 await _workContext.SaveChangesAsync();
+                await transaction.CommitAsync();
 
-                
 
 
-                return Ok(resUsertb);
+                return Ok(new ResponseObj<AddManagerDTO> { message="매니저 등록 완료", code=200 });
             }
             catch (Exception ex)
             {

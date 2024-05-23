@@ -12,8 +12,15 @@
                     {
                         var displayAttribute = property.GetCustomAttribute<DisplayAttribute>();
                         var headerText = displayAttribute?.Name;
-
-                        <th class="thead-th">@headerText</th>
+                        Console.WriteLine(headerText==null);
+                        if (headerText == null)
+                        {
+                            Console.WriteLine("id 필드 걸러짐");
+                        }
+                        else
+                        {
+                            <th class="thead-th">@headerText</th>
+                        }
                     }
                 </tr>
             </thead>
@@ -21,14 +28,20 @@
             <tbody class="tbody">
                 @foreach (var row in DataList)
                 {
+                    Console.WriteLine("동작");
                     <tr class="tbody-tr tr">
                         @foreach (var property in typeof(ManagerDTO).GetProperties())
                         {
-                            if (property.Name != "IsSelect")
+                            Console.WriteLine(property.Name);
+                            if (property.Name != "IsSelect" && property.Name !="Id")
                             {
                                 <td class="tbody-td">
                                     @property.GetValue(row)
                                 </td>
+                            }
+                            else if (property.Name == "Id")
+                            {
+                                Console.WriteLine("td 예외 데이터"+property.Name);
                             }
                             else
                             {
@@ -56,6 +69,10 @@
 
     protected override async Task OnInitializedAsync()
     {
+        foreach(var i in DataList)
+        {
+            Console.WriteLine(i.Name);
+        }
         return;
     }
 

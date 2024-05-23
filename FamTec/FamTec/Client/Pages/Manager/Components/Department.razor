@@ -43,6 +43,13 @@
 
     private bool is_openModal = false;
 
+    protected override void OnInitialized()
+    {
+        Console.WriteLine("부서관리 컴포넌트 활성화");
+
+    }
+
+
     /*
     * click add
     */
@@ -51,8 +58,6 @@
         Console.WriteLine("모달");
         is_openModal = true;
     }
-
-
 
     private void OnModalClose()
     {

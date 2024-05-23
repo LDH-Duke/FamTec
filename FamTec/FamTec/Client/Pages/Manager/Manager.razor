@@ -10,131 +10,25 @@
         <Department DataList="@departmentList" />
     </div>
     <div class="managerlist">
-        <ManagerList DataList="managerList" />
+        <ManagerList DataList="@managerList" />
     </div>
 </div>
 
 @code {
-    public HttpClient httpClient = new HttpClient();
+    HttpClient httpClient = new HttpClient();
     List<DepartmentDTO> departmentList;
     List<object> DepartmentList;
 
     List<ManagerDTO> managerList;
-    List<object> ManagerList;
-    List<AdminTb> managerTable;
+
 
     protected override async Task OnInitializedAsync()
     {
         ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
-        ResponseObj<AdminTb> resManager = await httpClient.GetFromJsonAsync<ResponseObj<AdminTb>>("http://127.0.0.1:5245/api/Admin/allmanager");
+        // ResponseObj<AdminTb> resManager = await httpClient.GetFromJsonAsync<ResponseObj<AdminTb>>("http://127.0.0.1:5245/api/Admin/allmanager");
+        ResponseObj<ManagerDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allmanager");
         departmentList = resDepartment.data;
-        managerTable = resManager.data;
-
-        // departmentList = new List<DepartmentDTO>
-        // {
-        //     new DepartmentDTO
-        //     {
-        //         Id = 1,
-        //         Name = "전략영업"
-        //     },
-        //     new DepartmentDTO
-        //     {
-        //         Id = 2,
-        //         Name = "시스템개발"
-        //     },
-        //     new DepartmentDTO
-        //     {
-        //         Id = 3,
-        //         Name = "특화영업"
-        //     },
-        // };
-
-        // DepartmentList = departmentList.Cast<object>().ToList();
-
-
-        managerList = new List<ManagerDTO>
-        {
-            new ManagerDTO
-            {
-                ID = "test1",
-                NAME = "홍길동",
-                DEPARTMENT = "시스템개발파트"
-            },
-            new ManagerDTO
-            {
-                ID = "test2",
-                NAME = "최유진",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test2",
-                NAME = "최유진",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test2",
-                NAME = "최유진",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            },
-            new ManagerDTO
-            {
-                ID = "test3",
-                NAME = "구동매",
-                DEPARTMENT = "대한민국"
-            }
-        };
-
-        ManagerList = managerList.Cast<object>().ToList();
+        managerList = resManager.data;
 
     }
 }
