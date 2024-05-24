@@ -56,13 +56,14 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             {
                 if(adminid is not null)
                 {
-                    List<AdminPlaceTb>? adminplacetb = await context.AdminPlaceTbs.Where(m => m.AdminTbId == adminid).ToListAsync();
+                    List<AdminPlaceTb>? adminplacetb = await context.AdminPlaceTbs.Where(m => m.AdminTbId == adminid && m.DelYn != 1).ToListAsync();
 
                     if(adminplacetb is [_, ..])
                     {
                         List<PlaceTb>? placetb = await context.PlaceTbs.ToListAsync();
                         if(placetb is [_, ..])
                         {
+
                             List<AdminPlaceDTO>? result = (from admin in adminplacetb
                                                    join place in placetb
                                                    on admin.PlaceId equals place.Id

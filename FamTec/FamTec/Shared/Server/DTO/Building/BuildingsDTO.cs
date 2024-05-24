@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FamTec.Shared.DTO
+namespace FamTec.Shared.Server.DTO.Building
 {
     /// <summary>
     /// 건물 DTO
     /// </summary>
     public class BuildingsDTO
     {
+        public int BuildingID { get; set; }
+
         /// <summary>
         /// 건물코드
         /// </summary>
-        [MaxLength(25)]
         public string? BuildingCode { get; set; }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace FamTec.Shared.DTO
         /// <summary>
         /// 준공년월
         /// </summary>
-        public DateTime? CompletionData { get; set; }
+        public DateTime? CompletionDt { get; set; }
 
         /// <summary>
         /// 건물구조
@@ -101,7 +102,7 @@ namespace FamTec.Shared.DTO
         /// 건물 지하깊이
         /// </summary>
         public float? BasementHeight { get; set; }
-        
+
         /// <summary>
         /// 주차대수
         /// </summary>
@@ -136,11 +137,11 @@ namespace FamTec.Shared.DTO
         /// 급수용량
         /// </summary>
         public float? WaterCapacity { get; set; }
-        
+
         /// <summary>
         /// 고가 수조
         /// </summary>
-        public float? ElevWaterTank { get; set; }
+        public float? ElevWaterCapacity { get; set; }
 
         /// <summary>
         /// 저수조
@@ -191,7 +192,7 @@ namespace FamTec.Shared.DTO
         /// 냉방용량
         /// </summary>
         public float? CoolCapacity { get; set; }
-        
+
         /// <summary>
         /// 조경면적
         /// </summary>
@@ -206,7 +207,7 @@ namespace FamTec.Shared.DTO
         /// 옥상면적
         /// </summary>
         public float? RooftopArea { get; set; }
-        
+
         /// <summary>
         /// 화장실 개수
         /// </summary>
@@ -231,7 +232,12 @@ namespace FamTec.Shared.DTO
         /// 정화조 용량
         /// </summary>
         public float? SepticTankCapacity { get; set; }
-        
+
+        /// <summary>
+        /// 생성일자
+        /// </summary>
+        public DateTime? CreateDT { get; set; }
+
         /// <summary>
         /// 건물코드 - 외래키 참조
         /// </summary>

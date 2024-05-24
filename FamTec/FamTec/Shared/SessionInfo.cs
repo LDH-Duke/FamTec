@@ -52,6 +52,16 @@ namespace FamTec.Shared
         /// 직책
         /// </summary>
         public string? Job { get; set; } = "시스템관리자";
-       
+
+        /// <summary>
+        /// 관리자의경우 사업장 여러개
+        /// </summary>
+        public List<int> PlaceIdx = new List<int>() { 4, 5, 6 };
+
+        /// <summary>
+        /// 그중 선택한거
+        /// </summary>
+        public int? selectPlace { get; set; } = 4;
+
     }
 }

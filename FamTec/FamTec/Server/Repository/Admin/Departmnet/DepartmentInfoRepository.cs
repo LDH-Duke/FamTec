@@ -52,7 +52,7 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         {
             try
             {
-                List<DepartmentTb>? model = await context.DepartmentTbs.ToListAsync();
+                List<DepartmentTb>? model = await context.DepartmentTbs.Where(m => m.DelYn != 1).ToListAsync();
 
                 if (model is [_, ..])
                     return model;
