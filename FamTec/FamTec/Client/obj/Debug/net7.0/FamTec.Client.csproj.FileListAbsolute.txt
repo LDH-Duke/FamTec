@@ -1032,3 +1032,5 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwr
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\lga9u5wzm7.gz
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Place\Components\Toggle.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Signup\ManagerSignUp.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Manager\Signup\Components\SignForm.razor.rz.scp.css

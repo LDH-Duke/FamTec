@@ -31,15 +31,16 @@ namespace FamTec.Server.Controllers.Admin
             {
                 Console.WriteLine("매니저 전체조회");
                 List<ManagerDTO> res = await _workContext.AdminTbs
-                                            .Include(a => a.UserTb)
-                                            .Include(a => a.DepartmentTb)
-                                            .Select(a => new ManagerDTO
-                                            {
-                                                Id = a.UserTb.Id,
-                                                UserId = a.UserTb.UserId,
-                                                Name = a.UserTb.Name,
-                                                Department = a.DepartmentTb.Name
-                                            }).ToListAsync();
+                    .Where(a => a.DelYn == 0)
+                    .Include(a => a.UserTb)
+                    .Include(a => a.DepartmentTb)
+                    .Select(a => new ManagerDTO                       
+                     {
+                        Id = a.UserTb.Id,
+                        UserId = a.UserTb.UserId,
+                        Name = a.UserTb.Name,
+                        Department = a.DepartmentTb.Name
+                     }).ToListAsync();
                 
                 return Ok(new ResponseObj<ManagerDTO> { message = "매니저 전체조회 성공", data=res, code=200});
                 
@@ -127,7 +128,9 @@ namespace FamTec.Server.Controllers.Admin
             try
             {
                 Console.WriteLine("부서 전체 조회");
-                List<DepartmentTb> res = await _workContext.DepartmentTbs.ToListAsync();
+                List<DepartmentTb> res = await _workContext.DepartmentTbs
+                    .Where(d => d.DelYn == 0)
+                    .ToListAsync();
                 List<DepartmentDTO> departmentList = res.Select(departTb => new DepartmentDTO
                 {
                     Id = departTb.Id,
@@ -176,6 +179,43 @@ namespace FamTec.Server.Controllers.Admin
             {
                 Console.WriteLine("[Admin][Controller] 부서 추가 에러!!\n " + ex);
                 return Problem("[Admin][Controller] 부서 추가 에러!!\n" + ex);
+            }
+        }
+
+        [HttpPut]
+        [Route("deletedepartment")]
+        public async Task<IActionResult> DeleteDepartment([FromBody]List<int> delData)
+        {
+            try
+            {
+                /*
+                 * 1. req data 셀렉트 검증
+                 * 1-1 없는 db 있을 시 return
+                 * 1-2 성공 시 del_yn y로 변경
+                 */
+                Console.WriteLine(delData);
+                var departments = await _workContext.DepartmentTbs
+                    .Where(d => delData.Contains(d.Id))
+                    .ToListAsync();
+
+                if (departments == null || !departments.Any())
+                {
+                    return NotFound("Departments not found");
+                }
+                foreach(var department in departments)
+                {
+                    department.DelYn = 1;
+                }
+
+                await _workContext.SaveChangesAsync();
+
+
+                return Ok(new {message = "삭제 성공"});
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("[Admin][Department][Delete] 부서 삭제 에러!!\n " + ex);
+                return Problem("[Admin][Department][Delete] 부서 삭제 에러!!\n" + ex);
             }
         }
     }

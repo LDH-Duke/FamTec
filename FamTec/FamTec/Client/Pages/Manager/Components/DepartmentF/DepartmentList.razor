@@ -18,7 +18,10 @@
                 </NavLink>
                 @if (Edit)
                 {
-                    <input class="depart-select" type="checkbox" />
+                    <input class="depart-select" 
+                            type="checkbox" 
+                            value="@item.Id"
+                           @onchange="(e)=>InVokeCheckboxSelect(e, item.Id)" />
                 }
             </li>
         }
@@ -28,4 +31,14 @@
 @code {
     [Parameter] public List<DepartmentDTO> DataList { get; set; }
     [Parameter] public bool Edit { get; set; }
+    [Parameter] public EventCallback<(bool ,int)> Select { get; set; }
+
+
+    private async Task InVokeCheckboxSelect(ChangeEventArgs e, int id)
+    {
+        bool isChecked = (bool)(e.Value ?? false);
+        await Select.InvokeAsync((isChecked, id));
+    }
+
+
 }

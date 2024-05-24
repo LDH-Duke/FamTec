@@ -44,7 +44,7 @@
 /* /Pages/Manager/Components/Department.razor.rz.scp.css */
 
 .depart-container[b-uvfku1810y]{
-    
+    overflow:hidden;
 
     border : 2px solid #200d69;
     border-radius:4px;
@@ -71,6 +71,11 @@
 
 .depart-container .depart-title>span[b-uvfku1810y]{
     color : #200d69;
+}
+
+.depart-container .depart-content[b-uvfku1810y]{
+    overflow:auto;
+    height:100%;
 }
 
 .depart-container .depart-list[b-uvfku1810y]{
@@ -109,7 +114,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    height: 100%;
+    /*height: 100%;*/
    
 }
 
@@ -460,6 +465,33 @@
     grid-row-start:3;
     grid-row-end:11;
 }
+/* /Pages/Manager/Signup/Components/SignForm.razor.rz.scp.css */
+body[b-14gc19hn8c] {
+}
+/* /Pages/Manager/Signup/ManagerSignUp.razor.rz.scp.css */
+.admin-signup-container[b-vhj16hqxqv]{
+    display : flex;
+    width : 100%;
+    height : 100%;
+}
+
+.admin-signup-container .form[b-vhj16hqxqv] {
+    flex:1;
+    border : 2px solid #200d69;
+    border-radius :4px;
+    background-color : #ffffff;
+
+    padding : 0.8rem;
+}
+
+.admin-signup-container .place[b-vhj16hqxqv]{
+    flex:1;
+    border : 2px solid #200d69;
+    border-radius :4px;
+    background-color : #ffffff;
+
+    padding : 0.8rem;
+}
 /* /Pages/Place/Components/AddModal.razor.rz.scp.css */
 
 .placemodal-backgroud[b-nooberi9xj] {
@@ -616,7 +648,7 @@
 .inputfield-container[b-ttnj8zi7mu] {
     display: grid;
     /*grid-template-columns: auto max-content max-content;*/
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     grid-template-areas: "label input";
     grid-gap: 1rem;
     width: 100%;

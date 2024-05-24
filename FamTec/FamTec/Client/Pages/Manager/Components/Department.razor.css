@@ -1,6 +1,6 @@
 ﻿
 .depart-container{
-    
+    overflow:hidden;
 
     border : 2px solid #200d69;
     border-radius:4px;
@@ -27,6 +27,11 @@
 
 .depart-container .depart-title>span{
     color : #200d69;
+}
+
+.depart-container .depart-content{
+    overflow:auto;
+    height:100%;
 }
 
 .depart-container .depart-list{

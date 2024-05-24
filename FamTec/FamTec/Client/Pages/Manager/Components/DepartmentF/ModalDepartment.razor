@@ -3,7 +3,7 @@
 @using FamTec.Shared.Server
 @inject HttpClient HttpClient
 
-<div class="modaldepart-container">
+<div class="modaldepart-container yappear">
     <div class="modaldepart-wrap">
         <div class="modaldepart-title">
             <span>
@@ -12,11 +12,15 @@
         </div>
         <div class="modaldepart-body">
             <div class="modaldepart-list">
-                <DepartmentList DataList="departmentList" Edit=true />
+                <DepartmentList 
+                    DataList="departmentList" 
+                    Edit=true 
+                    Select="OnSelected"
+                    />
             </div>
             <div class="modaldepart-btns">
                 <Button Name="수정" />
-                <Button Name="삭제"/>
+                <Button Name="삭제" OnClick="DeleteDepartment" />
             </div>
         </div>
         <div class="modaldepart-add">
@@ -36,10 +40,13 @@
 
 @code {
     [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public EventCallback OnListSync{ get; set; }
+
 
     // HttpClient httpClient = new HttpClient();
     List<DepartmentDTO> departmentList;
     AddDepartment newDepartment = new AddDepartment();
+    List<int> deleteDepartment = new List<int>();
 
 
     protected override async Task OnInitializedAsync()
@@ -48,7 +55,9 @@
 
     }
 
-
+    /*
+    * (GET) 부서 전체 조회
+    */
     private async Task LoadDepartments()
     {
         try
@@ -62,11 +71,45 @@
         }
     }
 
+    /*
+    * (DELETE) 부서 삭제
+    */
+    private async Task DeleteDepartment()
+    {
+        try
+        {
+            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Admin/deletedepartment",deleteDepartment);
+            if (resDelete.IsSuccessStatusCode)
+            {
+                await LoadDepartments();
+                await OnListSync.InvokeAsync();
+                newDepartment = new AddDepartment();
+            }
+            else
+            {
+                Console.WriteLine("부서 추가 에러");
+            }
+            
+            Console.WriteLine(resDelete);
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"[Client][ModalDepartment] 부서 삭제 에러 : {ex.Message}");
+            
+        }
+    }
+
+    /*
+    * 모달 닫기
+    */
     private Task ModalClose()
     {
         return OnClose.InvokeAsync(false);
     }
 
+    /*
+    * (POST)부서 추가
+    */
     private async Task AddDepartment()
     {
         Console.WriteLine(newDepartment.Name == null);
@@ -82,6 +125,7 @@
             if (res.IsSuccessStatusCode)
             {
                 await LoadDepartments();
+                await OnListSync.InvokeAsync();
                 newDepartment = new AddDepartment();
             }
             else
@@ -89,7 +133,24 @@
                 Console.WriteLine("부서 추가 에러");
             }
         }
-        
+
+    }
+
+    /*
+    * 부서 선택
+    */
+    public void OnSelected((bool isCheck, int id) selection)
+    {
+        Console.WriteLine("부서 체크 여부"+ selection.isCheck);
+        if (!selection.isCheck)
+        {
+            deleteDepartment.Remove(selection.id);
+        }
+        else
+        {
+            deleteDepartment.Add(selection.id);
+            
+        }
     }
 
 }
