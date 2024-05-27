@@ -1,0 +1,65 @@
+.table-container[b-tb4aiz4umf]{
+    width:100%;
+    table-layout : fixed;
+    padding : 0.8rem;
+}
+
+.table-container .table-head[b-tb4aiz4umf]{
+    position:sticky;
+    top:0;
+    box-shadow: 0 8px 12px -2px #a1a1a1;
+}
+
+.table-container .thead-tr[b-tb4aiz4umf]{
+    background-color:#200d69;
+    border-radius: 4px;
+}
+
+.table-container .table-th[b-tb4aiz4umf]{
+    color:#ffffff;
+    padding:0.8rem;
+    font-size:0.8rem;
+    font-weight:bold;
+    
+}
+
+/*
+    테이블 헤더 둥글게
+*/
+.table-container .table-th:first-child[b-tb4aiz4umf] {
+    border-radius: 4px 0 0 4px;
+}
+
+.table-container .table-th:last-child[b-tb4aiz4umf] {
+    border-radius: 0 4px 4px 0;
+}
+/* 둥글게 끝*/
+
+.table-container .table-body[b-tb4aiz4umf]{
+    overflow:auto;
+}
+
+.table-container .tbody-tr[b-tb4aiz4umf]{
+    border-bottom : 1px solid #200d694a;
+}
+
+
+.table-container .tbody-tr:hover td[b-tb4aiz4umf]{
+    background-color:#f0edfe;
+    
+}
+
+.table-container .table-td[b-tb4aiz4umf]{
+    text-overflow: ellipsis;
+    /*overflow:hidden;*/
+    white-space: nowrap;
+    word-break:break-all;
+
+    padding:0.8rem;
+
+    
+    text-align: center;
+    font-size:0.8rem;
+    font-weight:bold;
+    color : #200d69;
+}

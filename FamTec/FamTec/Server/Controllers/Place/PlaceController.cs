@@ -29,6 +29,7 @@ namespace FamTec.Server.Controllers.Place
                 Console.WriteLine("사업장 조회");
                 List<PlaceTb> res = await _workContext.PlaceTbs.ToListAsync();
                 List<PlaceDTO> placeList = res.Select(placeTb => new PlaceDTO{
+                    Id=placeTb.Id,
                     PlaceCd = placeTb.PlaceCd,
                     Name = placeTb.Name,
                     Note = placeTb.Note,
@@ -44,6 +45,21 @@ namespace FamTec.Server.Controllers.Place
                 return Problem("[Place][Controller] 사업장 조회 에러!!\n"+ ex);
             }
             
+        }
+
+        [HttpPost]
+        [Route("addplace")]
+        public async Task<IActionResult> AddPlace()
+        {
+            try
+            {
+
+                return Ok();
+            }catch(Exception ex)
+            {
+                Console.WriteLine("[Place][Controller] 사업장 추가 에러!!\n " + ex);
+                return Problem("[Place][Controller] 사업장 추가 에러!!\n" + ex);
+            }
         }
     }
 }

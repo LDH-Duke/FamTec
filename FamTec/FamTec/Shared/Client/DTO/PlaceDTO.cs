@@ -10,6 +10,7 @@ namespace FamTec.Shared.Client.DTO
 {
     public class PlaceDTO
     {
+        public int Id { get; set; }
         [Display(Name = "선택")]
         public bool IsSelect { get; set; } = false;
         [Display(Name ="사업장 코드")]

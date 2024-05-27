@@ -15,5 +15,6 @@ namespace FamTec.Shared.Client.DTO
         public string Phone { get; set; }
         public string Type { get; set; }
         public int DepartmentId {  get; set; }
+        public List<int> PlaceList { get; set; } = new List<int>();
     }
 }

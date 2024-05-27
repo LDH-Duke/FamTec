@@ -90,9 +90,17 @@ build_metadata.AdditionalFiles.CssScope = b-5ldung25r0
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-kxhhxaxxqe
 
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Signup/Components/PlaceTable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTaWdudXBcQ29tcG9uZW50c1xQbGFjZVRhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-zl9cf5mslr
+
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Signup/Components/SignForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTaWdudXBcQ29tcG9uZW50c1xTaWduRm9ybS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-14gc19hn8c
+
+[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Signup/Components/Table.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTaWdudXBcQ29tcG9uZW50c1xUYWJsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-tb4aiz4umf
 
 [C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Manager/Signup/ManagerSignUp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlclxTaWdudXBcTWFuYWdlclNpZ25VcC5yYXpvcg==

@@ -69,6 +69,16 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Place.PlaceController",
+    "Method": "AddPlace",
+    "RelativePath": "api/Place/addplace",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Place.PlaceController",
     "Method": "FindAllPlace",
     "RelativePath": "api/Place/allplace",
     "HttpMethod": "GET",

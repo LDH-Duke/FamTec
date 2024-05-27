@@ -1,8 +1,8 @@
-.drawer-container[b-rriyx9tl3w] {
+/*.drawer-container {
     min-width: min-content;
     width: 20%;
     border-right: 1px solid #d3d3d3;
-}
+}*/
 
 .drawer-container .drawer-wrap[b-rriyx9tl3w] {
     display: flex;

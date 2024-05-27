@@ -1,19 +1,31 @@
 ﻿@page "/admin/manager/signup"
 @using FamTec.Client.Pages.Manager.Signup.Components
+@using FamTec.Client.Pages.Manager.Components
+@using FamTec.Shared.Client.DTO
 
 <div class="admin-signup-container">
-    <div class="form">
-        <SignForm />
+    <div class="admin-signup-wrap">
+        <div class="form">
+            <SignForm />
+        </div>
+        <div class="place">
+            <PlaceTable NewManager="newManager" />
+        </div>
+
     </div>
-    <div class="place">
-        <div class="placelist">
-        </div>
-        <div class="addlist">
-        </div>
+    <div class="btns">
+        <Button Name="등록" Width="true" />
+        <Button Name="취소" Width="true" Type="true" />
     </div>
     
 </div>
 
 @code {
+    AddManagerDTO newManager;
+
+    protected async override Task OnInitializedAsync()
+    {
+        newManager = new();
+    }
 
 }
