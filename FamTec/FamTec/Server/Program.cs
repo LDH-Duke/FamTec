@@ -8,6 +8,7 @@ using FamTec.Server.Repository.Building;
 using FamTec.Server.Repository.Floor;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.Room;
+using FamTec.Server.Repository.Unit;
 using FamTec.Server.Repository.User;
 using FamTec.Server.Services.Admin.Account;
 using FamTec.Server.Services.Admin.Department;
@@ -16,6 +17,7 @@ using FamTec.Server.Services.Building;
 using FamTec.Server.Services.Floor;
 using FamTec.Server.Services.Place;
 using FamTec.Server.Services.Room;
+using FamTec.Server.Services.Unit;
 using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +32,7 @@ builder.Services.AddTransient<IAdminPlacesInfoRepository, AdminPlaceInfoReposito
 builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 builder.Services.AddTransient<IDepartmentInfoRepository, DepartmentInfoRepository>();
 builder.Services.AddTransient<IRoomInfoRepository, RoomInfoRepository>();
+builder.Services.AddTransient<IUnitInfoRepository, UnitInfoRepository>();
 
 
 // Add services to the container.
@@ -41,6 +44,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 builder.Services.AddTransient<IFloorService, FloorService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IUnitService, UnitService>();
 
 
 builder.Services.AddControllersWithViews();

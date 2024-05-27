@@ -4,6 +4,7 @@ using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Floor;
+using System.Collections.Generic;
 
 namespace FamTec.Server.Services.Floor
 {
@@ -163,7 +164,10 @@ namespace FamTec.Server.Services.Floor
                 return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
         }
-
-
     }
 }
+
+
+
+
+

@@ -1,4 +1,5 @@
 ﻿using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Room;
 
 namespace FamTec.Server.Repository.Room
 {
@@ -11,7 +12,27 @@ namespace FamTec.Server.Repository.Room
         /// <returns></returns>
         ValueTask<RoomTb?> AddAsync(RoomTb? model);
 
-      
-        
+
+        /// <summary>
+        /// 층에 해당하는 공간 List 반환
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<List<RoomTb>?> GetRoomList(List<FloorTb?> model);
+
+        /// <summary>
+        /// 해당 모델 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<bool?> DeleteRoomInfo(RoomTb? model);
+
+        /// <summary>
+        /// 공간 인덱스로 공간 검색
+        /// </summary>
+        /// <param name="roomidx"></param>
+        /// <returns></returns>
+        ValueTask<RoomTb?> GetRoomInfo(int? roomidx);
+
     }
 }

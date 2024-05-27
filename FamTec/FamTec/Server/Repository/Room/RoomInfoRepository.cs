@@ -42,11 +42,113 @@ namespace FamTec.Server.Repository.Room
             }
         }
 
-        public async Task GetRoomList(int? placeid)
+
+
+        /// <summary>
+        /// 층에 해당하는 공간 List 반환
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<List<RoomTb>?> GetRoomList(List<FloorTb?> model)
         {
-            RoomManagementDTO dto = await context.
+            try
+            {
+                if(model is [_, ..])
+                {
+                    List<RoomTb>? room = await context.RoomTbs.Where(m => m.DelYn != 1).ToListAsync();
+
+                    if(room is [_, ..])
+                    {
+                        List<RoomTb>? result = (from floortb in model
+                                                join roomtb in room
+                                                on floortb.Id equals roomtb.FloorTbId
+                                                where floortb.DelYn != 1 && roomtb.DelYn != 1
+                                                select new RoomTb
+                                                {
+                                                    Id = roomtb.Id,
+                                                    Name = roomtb.Name,
+                                                    CreateDt = roomtb.CreateDt,
+                                                    CreateUser = roomtb.CreateUser,
+                                                    UpdateDt = roomtb.UpdateDt,
+                                                    UpdateUser = roomtb.UpdateUser,
+                                                    DelYn = roomtb.DelYn,
+                                                    DelDt = roomtb.DelDt,
+                                                    DelUser = roomtb.DelUser,
+                                                    FloorTbId = roomtb.FloorTbId
+                                                }).ToList();
+                        if (result is [_, ..])
+                            return result;
+                        else
+                            return null;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
+        public async ValueTask<bool?> DeleteRoomInfo(RoomTb? model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.RoomTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 공간 인덱스로 공간 검색
+        /// </summary>
+        /// <param name="roomidx"></param>
+        /// <returns></returns>
+        public async ValueTask<RoomTb?> GetRoomInfo(int? roomidx)
+        {
+            try
+            {
+                if(roomidx is not null)
+                {
+                    RoomTb? model = await context.RoomTbs.FirstOrDefaultAsync(m => m.Id == roomidx);
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
 
     }
 }

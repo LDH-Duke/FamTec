@@ -128,5 +128,61 @@ namespace FamTec.Server.Repository.Floor
                 throw;
             }
         }
+
+        /// <summary>
+        /// 건물에 해당하는 층List 반환
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public async ValueTask<List<FloorTb>?> GetFloorList(List<BuildingTb?> model)
+        {
+            try
+            {
+                if(model is [_, ..])
+                {
+                    List<FloorTb>? floor = await context.FloorTbs.Where(m => m.DelYn != 1).ToListAsync();
+
+                    if (floor is [_, ..])
+                    {
+                        List<FloorTb>? result = (from bdtb in model
+                                                 join floortb in floor
+                                                 on bdtb.Id equals floortb.BuildingTbId
+                                                 where floortb.DelYn != 1 && bdtb.DelYn != 1
+                                                 select new FloorTb
+                                                 {
+                                                     Id = floortb.Id,
+                                                     Name = floortb.Name,
+                                                     CreateDt = floortb.CreateDt,
+                                                     CreateUser = floortb.CreateUser,
+                                                     UpdateDt = floortb.UpdateDt,
+                                                     UpdateUser = floortb.UpdateUser,
+                                                     DelYn = floortb.DelYn,
+                                                     DelDt = floortb.DelDt,
+                                                     DelUser = floortb.DelUser,
+                                                     BuildingTbId = floortb.BuildingTbId
+                                                 }).ToList();
+
+                        if (result is [_, ..])
+                            return result;
+                        else
+                            return null;
+                    }
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+
     }
 }

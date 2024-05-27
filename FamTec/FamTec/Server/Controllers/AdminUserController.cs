@@ -60,7 +60,7 @@ namespace FamTec.Server.Controllers
         public async ValueTask<IActionResult> GetAllDepartment()
         {
             ResponseModel<DepartmentDTO>? model = await DepartmentService.GetAllDepartmentService();
-            return Ok(model);
+            return Ok();
         }
 
         // 부서추가

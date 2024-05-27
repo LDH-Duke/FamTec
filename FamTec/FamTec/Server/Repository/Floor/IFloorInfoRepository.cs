@@ -31,5 +31,12 @@ namespace FamTec.Server.Repository.Floor
         /// <param name="model"></param>
         /// <returns></returns>
         ValueTask<bool?> DeleteFloorInfo(FloorTb? model);
+
+        /// <summary>
+        /// 건물에 해당하는 층List 반환
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<List<FloorTb>?> GetFloorList(List<BuildingTb?> model);
     }
 }

@@ -110,6 +110,52 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FamTec.Server.Controllers.RoomController",
+    "Method": "DeleteRoomList",
+    "RelativePath": "api/Room/DeleteRoomList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "selList",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.RoomController",
+    "Method": "GetBuildingList",
+    "RelativePath": "api/Room/GetBuildingList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.RoomController",
+    "Method": "GetFloorList",
+    "RelativePath": "api/Room/GetFloorList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.RoomController",
+    "Method": "GetRoomList",
+    "RelativePath": "api/Room/GetRoomList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
     "Method": "AddFloor",
     "RelativePath": "api/SetBuilding/AddFloor",
@@ -209,6 +255,48 @@
     "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
     "Method": "SelectMyBuilding",
     "RelativePath": "api/SetBuilding/SelectMyBuilding",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UnitController",
+    "Method": "AddUnitInfo",
+    "RelativePath": "api/Unit/AddUnitInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.Unit.UnitsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UnitController",
+    "Method": "DeleteUnitInfo",
+    "RelativePath": "api/Unit/DeleteUnitInfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.Unit.UnitsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.UnitController",
+    "Method": "GetUnitList",
+    "RelativePath": "api/Unit/SelectUnitList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

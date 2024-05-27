@@ -14,7 +14,7 @@ namespace FamTec.Server.Repository.Unit
         }
 
         /// <summary>
-        /// 단위 추가
+        /// 단위정보 추가
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -36,50 +36,25 @@ namespace FamTec.Server.Repository.Unit
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw;
             }
         }
 
+
         /// <summary>
-        /// 단위 전체 출력
+        /// 사업장별 단위 리스트 조회
         /// </summary>
+        /// <param name="placeid"></param>
         /// <returns></returns>
-        public async ValueTask<List<UnitTb>?> GetAllList()
+        public async ValueTask<List<UnitTb>?> GetUnitList(int? placeid)
         {
             try
             {
-                List<UnitTb>? model = await context.UnitTbs
-                    .Where(m => m.DelYn != 1).ToListAsync();
-
-                if (model is [_, ..])
-                    return model;
-                else
-                    return null;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 해당 사업장코드에 해당하는 모든 단위 출력
-        /// </summary>
-        /// <param name="placecd"></param>
-        /// <returns></returns>
-        public async ValueTask<List<UnitTb>?> GetUnitList(int? placetbid)
-        {
-            try
-            {
-                if (placetbid is not null)
+                if(placeid is not null)
                 {
-                    List<UnitTb>? model = await context.UnitTbs
-                        .Where(m => 
-                        m.PlaceTbId.Equals(placetbid) && 
-                        m.DelYn != 1).ToListAsync();
-                    
-                    if(model is [_, ..])
+                    List<UnitTb>? model = await context.UnitTbs.Where(m => m.PlaceTbId == null || m.PlaceTbId == placeid && m.DelYn != 1).ToListAsync();
+
+                    if (model is [_, ..])
                         return model;
                     else
                         return null;
@@ -92,43 +67,47 @@ namespace FamTec.Server.Repository.Unit
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw;
             }
         }
 
         /// <summary>
-        /// 단위 인덱스에 해당하는 모델 조회
+        /// 단위정보 인덱스로 단위모델 조회
         /// </summary>
-        /// <param name="unitidx"></param>
+        /// <param name="UnitIdx"></param>
         /// <returns></returns>
-        public async ValueTask<UnitTb?> GetUnitInfo(int? unitidx, int? placetbid)
+        public async ValueTask<UnitTb?> GetUnitInfo(int? UnitIdx)
         {
-            if(unitidx is not null)
+            try
             {
-                UnitTb? model = await context.UnitTbs
-                    .FirstOrDefaultAsync(m => 
-                    m.Id.Equals(unitidx) && 
-                    m.PlaceTbId.Equals(placetbid) && 
-                    m.DelYn != 1);
+                if(UnitIdx is not null)
+                {
+                    UnitTb? model = await context.UnitTbs.FirstOrDefaultAsync(m => m.Id == UnitIdx && m.DelYn != 1);
 
-                if (model is not null)
-                    return model;
-
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
                 else
+                {
                     return null;
+                }
             }
-            else
+            catch(Exception ex)
             {
-                return null;
+                Console.WriteLine(ex);
+                throw;
             }
         }
 
+
         /// <summary>
-        /// 수정
+        /// 단위정보 삭제
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> EditUnitInfo(UnitTb? model)
+        public async ValueTask<bool?> DeleteUnitInfo(UnitTb? model)
         {
             try
             {
@@ -145,33 +124,7 @@ namespace FamTec.Server.Repository.Unit
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
-            }
-        }
-
-        /// <summary>
-        /// 삭제
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public async ValueTask<bool?> DeleteUnitInfo(UnitTb? model)
-        {
-            try
-            {
-                if (model is not null)
-                {
-                    context.UnitTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw;
             }
         }
 
