@@ -10,7 +10,7 @@
         </div>
         <Input Placeholder="Search" />
         <div class="addmanager-modal-item">
-            <Table DataList="ManagerList"/>
+            <Table DataList="ManagerList" ReturnType="object" SelectItem="OnSelectedItem" />
         </div>
         @* <div class="addmanager-modal-content">
             
@@ -27,6 +27,7 @@
 @code {
     [Parameter] public string Title { get; set; }
     [Parameter] public string Content { get; set; }
+    [Parameter] public List<ManagerDTO> AddManagerList { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
     List<ManagerDTO> ManagerList;
@@ -36,93 +37,33 @@
 
     protected override async Task OnInitializedAsync()
     {
-         /*
-         * 현재 매니저 목록 조회 Fetch Get
+        /*
+        * 현재 매니저 목록 조회 Fetch Get
         */
         ResponseObj<ManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
         ManagerList = res.data;
 
-        // PlaceManagerList = new List<PlaceManagerDTO>
-        // {
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test1",
-        //         NAME = "홍길동",
-        //         DEPARTMENT = "시스템개발파트"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test2",
-        //         NAME = "최유진",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        //     new PlaceManagerDTO
-        //     {
-        //         ID = "test3",
-        //         NAME = "구동매",
-        //         DEPARTMENT = "대한민국"
-        //     },
-        // };
-
-        // placeManagerList = PlaceManagerList.Cast<object>().ToList();
-        // properties = typeof(PlaceManagerDTO).GetProperties().Select(p => p.Name).ToList();
     }
 
     private Task ModalClose(){
         return OnClose.InvokeAsync(false);
+    }
+
+    private async Task OnSelectedItem((bool isSelected, object item) selection)
+    {
+        var managerItem = selection.item as ManagerDTO;
+
+        if(managerItem != null)
+        {
+            if (selection.isSelected)
+            {
+                AddManagerList.Add(managerItem);
+            }
+            else
+            {
+                AddManagerList.Remove(managerItem);
+            }
+        }
+        
     }
 }

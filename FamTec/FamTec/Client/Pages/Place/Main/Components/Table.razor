@@ -47,7 +47,7 @@
                             <td class="table-td">
                                 <input type="checkbox"
                                        value="@idValue"
-                                       @onchange="e=> InVokeCheckboxSelect(e,idValue)" />
+                                       @onchange="e=> InVokeCheckboxSelect(e,idValue, item)" />
                             </td>
                         }
 
@@ -64,12 +64,25 @@
 @code {
     [Parameter] public List<T> DataList { get; set; }
     [Parameter] public EventCallback<(bool, int)> Select { get; set; }
+    [Parameter] public EventCallback<(bool, object)> SelectItem { get; set; }
+    [Parameter] public string ReturnType { get; set; }
 
-    private async Task InVokeCheckboxSelect(ChangeEventArgs e, int id)
+    private async Task InVokeCheckboxSelect(ChangeEventArgs e, int id,T item)
     {
         bool isChecked = (bool)(e.Value ?? false);
-        Console.WriteLine("체크 여부"+ isChecked);
-        await Select.InvokeAsync((isChecked, id));
+        Console.WriteLine("체크 index값 : "+ id);
+
+
+        if (ReturnType == "object")
+        {
+            await SelectItem.InvokeAsync((isChecked, item));
+        }
+        else
+        {
+            await Select.InvokeAsync((isChecked, id));
+        }
     }
+
+    
 
 }

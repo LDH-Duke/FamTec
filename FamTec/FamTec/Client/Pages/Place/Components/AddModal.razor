@@ -1,4 +1,5 @@
 ﻿@using FamTec.Shared.Client.DTO
+@using FamTec.Client.Pages.Place.Main.Components
 
 
 <div class="placemodal-backgroud appear">
@@ -66,7 +67,7 @@
                             </div>
                         </div>
                         <div class="placemodal-m-list">
-                            <List DataList="@placeManagerList" />
+                            <Table DataList="ManagerList" />
                         </div>
                     
                     </div>
@@ -85,7 +86,10 @@
         </div>
         @if (isAddModal)
         {
-            <SearchManagerModal OnClose="OnCloseModal" />
+            <SearchManagerModal 
+                OnClose="OnCloseModal" 
+                AddManagerList=ManagerList
+                />
         }
 
     </div>
@@ -97,9 +101,8 @@
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
     List<string> managerList;
-    List<PlaceManagerDTO> PlaceManagerList;
-    List<object> placeManagerList;
-    List<string> properties;
+    List<ManagerDTO> ManagerList;
+
     AddPlaceDTO placeInfo = new AddPlaceDTO();
 
     bool isAddModal = false;
