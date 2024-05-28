@@ -1,6 +1,8 @@
 ﻿using FamTec.Server.Databases;
 using FamTec.Shared;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Admin.Place;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamTec.Server.Repository.Admin.AdminUser
@@ -75,8 +77,42 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             }
         }
 
-   
+        /// <summary>
+        /// 관리자 DTO 반환
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<List<ManagerListDTO>?> GetAllAdminUserList()
+        {
+            try
+            {
+                List<ManagerListDTO>? model = await context.AdminTbs
+                    .Where(m => m.DelYn != 1)
+                    .Include(m => m.UserTb)
+                    .Include(m => m.DepartmentTb)
+                    .Select(m => new ManagerListDTO
+                {
+                    UserId = m.UserTb!.Id,
+                    UserName = m.UserTb.Name,
+                    Tel = m.UserTb.Phone,
+                    AdminID = m.Id,
+                    Type = m.Type,
+                    DepartmentIdx = m.DepartmentTb!.Id,
+                    DepartmentName = m.DepartmentTb.Name
+                    
+                }).ToListAsync();
+                
+                if (model is [_, ..])
+                    return model;
+                else
+                    return null;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
+            }
+        }
 
-
+ 
     }
 }

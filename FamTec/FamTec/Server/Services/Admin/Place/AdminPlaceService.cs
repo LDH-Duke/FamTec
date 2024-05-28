@@ -1,14 +1,13 @@
-﻿using Azure;
-using FamTec.Client.Pages.Place;
-using FamTec.Server.Repository.Admin.AdminPlaces;
+﻿using FamTec.Server.Repository.Admin.AdminPlaces;
+using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Place;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
-using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
+using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
-using System.Reflection.Metadata.Ecma335;
+using Microsoft.IdentityModel.Abstractions;
 
 namespace FamTec.Server.Services.Admin.Place
 {
@@ -16,19 +15,32 @@ namespace FamTec.Server.Services.Admin.Place
     {
         private readonly IPlaceInfoRepository PlaceInfoRepository;
         private readonly IAdminPlacesInfoRepository AdminPlaceInfoRepository;
+        private readonly IAdminUserInfoRepository AdminUserInfoRepository;
 
         ResponseOBJ<PlacesDTO> Response;
         Func<string, PlacesDTO, int, ResponseModel<PlacesDTO>> FuncResponseOBJ;
         Func<string, List<PlacesDTO>, int, ResponseModel<PlacesDTO>> FuncResponseList;
-
+        
         ResponseOBJ<AdminPlaceDTO> AdminPlaceResponse;
         Func<string, AdminPlaceDTO, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseOBJ;
         Func<string, List<AdminPlaceDTO>, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseList;
 
-        public AdminPlaceService(IAdminPlacesInfoRepository _adminplaceinforepository, IPlaceInfoRepository _placeinforepository)
+        ResponseOBJ<ManagerListDTO> AddManagerResponse;
+        Func<string, ManagerListDTO, int, ResponseModel<ManagerListDTO>> AddManagerResponseOBJ;
+        Func<string, List<ManagerListDTO>, int, ResponseModel<ManagerListDTO>> AddManagerResponseList;
+
+        ResponseOBJ<string> strResponse;
+        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
+
+        ResponseOBJ<AddPlaceDTO> AddPlaceResponse;
+        Func<string, AddPlaceDTO, int, ResponseModel<AddPlaceDTO>> AddPlaceResponseOBJ;
+
+
+        public AdminPlaceService(IAdminPlacesInfoRepository _adminplaceinforepository, IPlaceInfoRepository _placeinforepository, IAdminUserInfoRepository _adminuserinforepository)
         {
             this.AdminPlaceInfoRepository = _adminplaceinforepository;
             this.PlaceInfoRepository = _placeinforepository;
+            this.AdminUserInfoRepository = _adminuserinforepository;
 
             Response = new ResponseOBJ<PlacesDTO>();
             FuncResponseOBJ = Response.RESPMessage;
@@ -37,87 +49,48 @@ namespace FamTec.Server.Services.Admin.Place
             AdminPlaceResponse = new ResponseOBJ<AdminPlaceDTO>();
             AdminPlaceResponseOBJ = AdminPlaceResponse.RESPMessage;
             AdminPlaceResponseList = AdminPlaceResponse.RESPMessageList;
+
+            AddManagerResponse = new ResponseOBJ<ManagerListDTO>();
+            AddManagerResponseOBJ = AddManagerResponse.RESPMessage;
+            AddManagerResponseList = AddManagerResponse.RESPMessageList;
+
+            AddPlaceResponse = new ResponseOBJ<AddPlaceDTO>();
+            AddPlaceResponseOBJ = AddPlaceResponse.RESPMessage;
+
+            strResponse = new ResponseOBJ<string>();
+            FuncResponseSTR = strResponse.RESPMessage;
         }
 
-        /* 사업장추가 (수정) */
-        public async ValueTask<ResponseModel<PlacesDTO>> AddPlaceService(PlacesDTO? dto, SessionInfo session)
+    
+        /// <summary>
+        /// 전체사업장 조회
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<ResponseModel<PlacesDTO>> GetAllWorksService()
         {
             try
             {
-                if (dto is not null && !String.IsNullOrWhiteSpace(session.Name))
-                {
-                    PlaceTb? model = await PlaceInfoRepository.GetByPlaceInfo(dto.PlaceCd);
-                    if (model is null)
-                    {
-                        // NULL 일때만 들어가야함.
-                        PlaceTb? tb = new PlaceTb
-                        {
-                            PlaceCd = dto.PlaceCd, // 사업장코드
-                            ContractNum = dto.CONTRACT_NUM, // 계약번호
-                            Name = dto.Name, // 사업장명
-                            Note = dto.Note, // 비고
-                            Address = dto.Address, // 주소
-                            ContractDt = dto.ContractDT, // 계약일자
-                            PermMachine = dto.PermMachine,
-                            PermLift = dto.PermLift,
-                            PermFire = dto.PermFire,
-                            PermConstruct = dto.PermConstruct,
-                            PermNetwrok = dto.PermNetwork,
-                            PermBeauty = dto.PermBeauty,
-                            PermSecurity = dto.PermSecurity,
-                            PermMaterial = dto.PermMaterial,
-                            PermEnergy = dto.PermEnergy,
-                            CancelDt = dto.CancelDT,
-                            Status = dto.Status,
-                            CreateDt = DateTime.Now,
-                            CreateUser = session.Name,
-                            UpdateDt = DateTime.Now,
-                            UpdateUser = session.Name,
-                            DelYn = 0,
-                            DelUser = null
-                        };
+                List<PlaceTb>? model = await PlaceInfoRepository.GetAllList();
 
-                        PlaceTb? result = await PlaceInfoRepository.AddPlaceInfo(tb);
-                        if (result is not null)
-                        {
-                            // 제대로 들어감
-                            return FuncResponseOBJ("요청이 정상 처리되었습니다.", new PlacesDTO()
-                            {
-                                PlaceCd = dto.PlaceCd,
-                                CONTRACT_NUM = dto.CONTRACT_NUM,
-                                Name = dto.Name,
-                                Note = dto.Note,
-                                Address = dto.Address,
-                                ContractDT = dto.ContractDT,
-                                PermMachine = dto.PermMachine,
-                                PermLift = dto.PermLift,
-                                PermFire = dto.PermFire,
-                                PermConstruct = dto.PermConstruct,
-                                PermNetwork = dto.PermNetwork,
-                                PermBeauty = dto.PermBeauty,
-                                PermSecurity = dto.PermSecurity,
-                                PermMaterial = dto.PermMaterial,
-                                PermEnergy = dto.PermEnergy,
-                                CancelDT = dto.CancelDT,
-                                Status = dto.Status
-                            }, 200);
-                        }
-                        else
-                        {
-                            return FuncResponseOBJ("요청이 처리되지 않았습니다.", null, 200);
-                        }
-                    }
-                    else
+                if(model is [_, ..])
+                {
+                    return FuncResponseList("전체데이터 조회 성공", model.Select(e => new PlacesDTO
                     {
-                        return FuncResponseOBJ("이미 해당코드의 사업장이 존재합니다.", null, 200);
-                    }
+                        PlaceIndex = e.Id,
+                        PlaceCd = e.PlaceCd,
+                        Name = e.Name,
+                        CONTRACT_NUM = e.ContractNum,
+                        ContractDT = e.ContractDt,
+                        CancelDT = e.CancelDt,
+                        Status = e.Status
+                    }).ToList(), 200);
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
@@ -164,6 +137,157 @@ namespace FamTec.Server.Services.Admin.Place
             catch (Exception ex)
             {
                 return AdminPlaceResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+            }
+        }
+
+        /// <summary>
+        /// 전체 관리자 리스트 반환
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<ResponseModel<ManagerListDTO>> GetAllManagerListService()
+        {
+            try
+            {
+                List<ManagerListDTO>? model = await AdminUserInfoRepository.GetAllAdminUserList();
+
+                if(model is [_, ..])
+                {
+                    return AddManagerResponseList("전체데이터 조회 성공", model, 200);
+                }
+                else 
+                {
+                    return AddManagerResponseOBJ("데이터 조회 실패", null, 200);
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                return AddManagerResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+            }
+        }
+
+        public async ValueTask<ResponseModel<string>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo)
+        {
+            try
+            {
+                if (dto is not null && sessioninfo is not null)
+                {
+                    PlaceTb? place = new PlaceTb
+                    {
+                        PlaceCd = dto.PlaceCd,
+                        ContractNum = dto.ContractNum,
+                        Name = dto.Name,
+                        Note = dto.Note,
+                        Address = dto.Address,
+                        ContractDt = dto.ContractDT,
+                        PermMachine = dto.PermMachine,
+                        PermLift = dto.PermLift,
+                        PermFire = dto.PermFire,
+                        PermConstruct = dto.PermConstruct,
+                        PermNetwrok = dto.PermNetwork,
+                        PermBeauty = dto.PermBeauty,
+                        PermSecurity = dto.PermSecurity,
+                        PermMaterial = dto.PermMaterial,
+                        PermEnergy = dto.PermEnergy,
+                        CancelDt = dto.CancelDT,
+                        Status = dto.Status,
+                        CreateDt = DateTime.Now,
+                        CreateUser = sessioninfo.Name,
+                        UpdateDt = DateTime.Now,
+                        UpdateUser = sessioninfo.Name
+                    };
+
+                    PlaceTb? place_result = await PlaceInfoRepository.AddPlaceInfo(place);
+
+                    int count = 0;
+
+                    for (int i = 0; i < dto.AdminList.Count; i++)
+                    {
+                        AdminPlaceTb? model = new AdminPlaceTb
+                        {
+                            CreateUser = sessioninfo.Name,
+                            CreateDt = DateTime.Now,
+                            UpdateUser = sessioninfo.Name,
+                            UpdateDt = DateTime.Now,
+                            AdminTbId = dto.AdminList[i].AdminID,
+                            PlaceId = place_result!.Id
+                        };
+
+                        AdminPlaceTb? result = await AdminPlaceInfoRepository.AddAsync(model);
+                        if (result is not null)
+                        {
+                            count++;
+                        }
+                    }
+
+                    return FuncResponseSTR("사업장 등록완료.", count.ToString(), 200);
+                }
+                else
+                {
+                    return FuncResponseSTR("잘못된 요청입니다.", null, 404);
+                }
+            }
+            catch(Exception ex)
+            {
+                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+            }
+        }
+
+        public async ValueTask<ResponseModel<AddPlaceDTO>?> GetPlaceService(int? placeid)
+        {
+            try
+            {
+                if (placeid is not null)
+                {
+                    AddPlaceDTO? model = await AdminPlaceInfoRepository.GetWorksInfo(7);
+
+                    if (model is not null)
+                        return AddPlaceResponseOBJ("데이터 조회 성공", model, 200);
+                    else
+                        return AddPlaceResponseOBJ("데이터 조회 실패", null, 200);
+                }
+                else
+                {
+                    return AddPlaceResponseOBJ("요청이 잘못되었습니다", null, 404);
+                }
+            }
+            catch(Exception ex)
+            {
+                return AddPlaceResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+            }
+        }
+
+        /// <summary>
+        /// 선택된 사업장 삭제
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <param name="sessioninfo"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseModel<string>> DeletePlaceService(List<int> placeidx, SessionInfo? sessioninfo)
+        {
+            try
+            {
+                if (placeidx is [_, ..] && sessioninfo is not null)
+                {
+                    bool? result = await AdminPlaceInfoRepository.DeleteMyWorks(placeidx, sessioninfo.Name);
+
+                    if (result == true)
+                    {
+                        return FuncResponseSTR("데이터 삭제 성공", null, 200);
+                    }
+                    else
+                    {
+                        return FuncResponseSTR("데이터 삭제 실패", null, 200);
+                    }
+                }
+                else
+                {
+                    return FuncResponseSTR("요청이 잘못되었습니다.", null, 404);
+                }
+            }
+            catch(Exception ex)
+            {
+                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
         }
     }

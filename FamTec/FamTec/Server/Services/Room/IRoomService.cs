@@ -32,13 +32,6 @@ namespace FamTec.Server.Services.Room
         /// <returns></returns>
         public ValueTask<ResponseModel<FloorDTO>> GetFloorList(int? buildingidx);
 
-        /// <summary>
-        /// 공간정보 삭제
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="session"></param>
-        /// <returns></returns>
-        public ValueTask<ResponseModel<string>?> DeleteRoomService(List<int>? index, SessionInfo? session);
 
     }
 }

@@ -44,6 +44,59 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         }
 
         /// <summary>
+        /// 부서삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<bool?> DeleteDepartmentInfo(DepartmentTb? model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.DepartmentTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 부서수정
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<bool?> UpdateDepartmentInfo(DepartmentTb? model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.DepartmentTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+
+        /// <summary>
         /// 부서 전체조회
         /// </summary>
         /// <returns></returns>
@@ -132,7 +185,6 @@ namespace FamTec.Server.Repository.Admin.Departmnet
             }
         }
 
-
-
+     
     }
 }

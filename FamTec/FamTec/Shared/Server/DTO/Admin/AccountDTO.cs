@@ -45,7 +45,7 @@ namespace FamTec.Shared.Server.DTO.Admin
         public sbyte? ADMIN_YN { get; set; }
 
         /// <summary>
-        /// 알람 윺무
+        /// 알람 유무
         /// </summary>
         public sbyte? ALRAM_YN { get; set; }
 

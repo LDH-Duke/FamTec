@@ -48,14 +48,7 @@ namespace FamTec.Server.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
-        [Route("DeleteRoomList")]
-        public async ValueTask<IActionResult> DeleteRoomList([FromBody]List<int> selList)
-        {
-            ResponseModel<string>? model = await RoomService.DeleteRoomService(selList, session);
-            return Ok(model);
-        }
-
+  
 
 
     }

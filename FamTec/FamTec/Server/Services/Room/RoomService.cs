@@ -280,43 +280,5 @@ namespace FamTec.Server.Services.Room
 
         }
 
-        public async ValueTask<ResponseModel<string>?> DeleteRoomService(List<int>? index, SessionInfo? session)
-        {
-            try
-            {
-                if(index is [_, ..])
-                {
-                    int count = 0;
-
-                    for (int i = 0; i < index.Count; i++)
-                    {
-                        RoomTb? model = await RoomInfoRepository.GetRoomInfo(index[i]);
-
-                        if(model is not null)
-                        {
-                            model.DelYn = 1;
-                            model.DelDt = DateTime.Now;
-                            model.DelUser = session.Name;
-
-                            bool? result = await RoomInfoRepository.DeleteRoomInfo(model);
-
-                            if(result == true)
-                            {
-                                count++;
-                            }
-                        }
-                    }
-                    return FuncResponseSTR("데이터 삭제완료", count.ToString(), 200);
-                }
-                else
-                {
-                    return FuncResponseSTR("요청이 잘못되었습니다.", null, 404);
-                }
-            }
-            catch(Exception ex)
-            {
-                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
-            }
-        }
     }
 }

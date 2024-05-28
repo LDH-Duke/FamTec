@@ -11,17 +11,17 @@ namespace FamTec.Shared
         /// <summary>
         /// 로그인 후 인덱스
         /// </summary>
-        public int? UserIdx { get; set; } = 3;
+        public int? UserIdx { get; set; } = 4;
 
         /// <summary>
         /// 로그인아이디
         /// </summary>
-        public string? UserId { get; set; } = "Admin";
+        public string? UserId { get; set; } = "TESTUSER";
 
         /// <summary>
         /// 사용자이름
         /// </summary>
-        public string? Name { get; set; } = "시스템개발파트";
+        public string? Name { get; set; } = "테스트관리자";
 
         /// <summary>
         /// 관리자 여부
@@ -41,7 +41,7 @@ namespace FamTec.Shared
         /// <summary>
         /// 계정유형
         /// </summary>
-        public string? Type { get; set; } = "시스템관리자";
+        public string? Type { get; set; } = "마스터";
 
         /// <summary>
         /// 부서명
@@ -51,7 +51,7 @@ namespace FamTec.Shared
         /// <summary>
         /// 직책
         /// </summary>
-        public string? Job { get; set; } = "시스템관리자";
+        public string? Job { get; set; } = "부서장";
 
         /// <summary>
         /// 관리자의경우 사업장 여러개
@@ -61,7 +61,7 @@ namespace FamTec.Shared
         /// <summary>
         /// 그중 선택한거
         /// </summary>
-        public int? selectPlace { get; set; } = 4;
+        public int? selectPlace { get; set; } = 5;
 
     }
 }

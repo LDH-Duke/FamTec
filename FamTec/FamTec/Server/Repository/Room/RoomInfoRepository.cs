@@ -99,26 +99,7 @@ namespace FamTec.Server.Repository.Room
             }
         }
 
-        public async ValueTask<bool?> DeleteRoomInfo(RoomTb? model)
-        {
-            try
-            {
-                if(model is not null)
-                {
-                    context.RoomTbs.Update(model);
-                    return await context.SaveChangesAsync() > 0 ? true : false;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw;
-            }
-        }
+    
 
         /// <summary>
         /// 공간 인덱스로 공간 검색

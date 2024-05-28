@@ -1,5 +1,6 @@
 ﻿using FamTec.Shared;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Admin.Place;
 
 namespace FamTec.Server.Repository.Admin.AdminUser
 {
@@ -19,8 +20,13 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// <returns></returns>
         ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid);
 
-        
+        /// <summary>
+        /// 관리자리스트 
+        /// </summary>
+        /// <returns></returns>
+        ValueTask<List<ManagerListDTO>?> GetAllAdminUserList();
 
+     
 
     }
 }

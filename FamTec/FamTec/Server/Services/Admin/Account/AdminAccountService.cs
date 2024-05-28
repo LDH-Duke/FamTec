@@ -38,7 +38,7 @@ namespace FamTec.Server.Services.Admin.Account
         }
 
         /// <summary>
-        /// 관리자 로그인 서비스
+        /// 관리자 접속화면 서비스
         /// </summary>
         /// <param name="userid"></param>
         /// <param name="password"></param>
@@ -117,14 +117,18 @@ namespace FamTec.Server.Services.Admin.Account
 
         }
 
+        /// <summary>
+        /// 관리자 아이디 생성 서비스
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="session"></param>
+        /// <returns></returns>
         public async ValueTask<ResponseModel<AccountDTO>> AdminRegisterService(AccountDTO? dto, SessionInfo session)
         {
             try
             {
                 if(dto is not null && !String.IsNullOrWhiteSpace(session.Name))
                 {
-                    //int level = (type)
-
                     UserTb? usermodel = new UserTb
                     {
                         UserId = dto.USERID,
