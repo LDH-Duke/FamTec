@@ -1,4 +1,5 @@
 ﻿@using FamTec.Client.Pages.Place.Components
+@using FamTec.Shared.Client.DTO
 
 <div class="form-container">
     <div class="form-title">
@@ -6,14 +7,16 @@
     </div>
     <div class="form-input">
         <div class="form-input-wrap">
-            <InputField  
+        <InputField 
             InputType="text" 
             Placeholder="Id"
+            @bind-Value="@NewManager.UserId"
             Label="아이디"
             />
         <InputField 
             InputType="password" 
             Placeholder="Password"
+            @bind-Value="@NewManager.Password"
             Label="비밀번호"
             />
         <InputField 
@@ -24,27 +27,31 @@
         <InputField 
             InputType="text" 
             Placeholder="Name"
+            @bind-Value="@NewManager.Name"
             Label="이름"
             />
         <InputField 
             InputType="text" 
             Placeholder="Phone"
+            @bind-Value="@NewManager.Phone"
             Label="전화번호"
             />
         <InputField 
             InputType="text" 
             Placeholder="Email"
+            @bind-Value="@NewManager.Email"
             Label="이메일"
             />
         <InputField 
             InputType="text"
             Placeholder="Type"
+            @bind-Value="@NewManager.Type"
             Label="계정 유형" 
             />
-        <InputField 
-            InputType="text"
-            Placeholder="Type"
-            Label="부서" 
+        <InputSelectField 
+            Label="부서"
+            SelectData="DepartmentList"
+            SelectedValueChanged="HandleSelectedValueChange"
             />
         </div>
         
@@ -53,5 +60,13 @@
 </div>
 
 @code {
+    [Parameter] public AddManagerDTO NewManager { get; set; }
+    [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
 
+
+    private void HandleSelectedValueChange(int value)
+    {
+        NewManager.DepartmentId = value;
+
+    }
 }

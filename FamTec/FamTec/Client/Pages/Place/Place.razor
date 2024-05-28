@@ -6,11 +6,11 @@
 @using Newtonsoft.Json
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
+@using FamTec.Client.Pages.Place.Main.Components
 
 <div class="place-container">
-    <div class="place-table1-wrap">
-        <div class="table-header">
-            <span class="table-header-title">
+        <div class="place-header">
+            <span class="place-title">
                 사업장 목록
             </span>
             <div class="table-header-option">
@@ -20,17 +20,14 @@
                     OnClick="@onAddPlace" />
             </div>
         </div>
-        
-        <Table Title="사업장 목록"
-               Properties="@PlaceProperties"
-               DataList="@PlaceList"
-               Select="@OnSelected"
-               UnSelect="@UnSelected" />
+        <div class="place-table">
+            <Table DataList="PlaceList" />
+        </div>
         @if (is_openModal)
         {
             <AddModal Title="사업장 등록" OnClose="@OnModalClose" />
         }
-    </div>
+    
  
 </div>
 

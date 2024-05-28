@@ -5,6 +5,7 @@
     grid-template-areas: "label input";
     grid-gap: 1rem;
     width: 100%;
+    position: relative;
 }
 
 .inputfield-container .inputfield-label[b-ttnj8zi7mu]{
@@ -30,6 +31,7 @@
     outline: none;
     border: none;
     border-bottom: 2px solid #c6c6c6;
+
 }
 
 .inputfield-container .inputfield-input:focus[b-ttnj8zi7mu]{
@@ -37,15 +39,18 @@
 }
 
 .inputfield-container .btn[b-ttnj8zi7mu]{
-    grid-area: btn ;
-
+    position : absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+    height:100%;
     font-size: 0.7rem;
     background-color: #200d69;
     color: #ffffff;
     
     border: none;
     border-radius: 4px;
-    padding: 0 0.5rem;;
+    padding: 0 0.5rem;
 }
 
 .inputfield-container .btn:hover[b-ttnj8zi7mu]{

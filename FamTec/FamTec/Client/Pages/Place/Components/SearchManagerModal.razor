@@ -1,6 +1,6 @@
 ﻿@using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
-
+@using FamTec.Client.Pages.Place.Main.Components
 
 
 <div class="addmanager-modal-container yappear">
@@ -10,7 +10,7 @@
         </div>
         <Input Placeholder="Search" />
         <div class="addmanager-modal-item">
-            <List DataList="@placeManagerList" />
+            <Table DataList="ManagerList"/>
         </div>
         @* <div class="addmanager-modal-content">
             
@@ -29,18 +29,18 @@
     [Parameter] public string Content { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
-    List<PlaceManagerDTO> PlaceManagerList;
+    List<ManagerDTO> ManagerList;
     List<object> placeManagerList;
     List<string> properties;
     public HttpClient httpClient = new HttpClient();
 
     protected override async Task OnInitializedAsync()
     {
-        /*
+         /*
          * 현재 매니저 목록 조회 Fetch Get
-         */
-        ResponseObj<PlaceManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<PlaceManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
-
+        */
+        ResponseObj<ManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
+        ManagerList = res.data;
 
         // PlaceManagerList = new List<PlaceManagerDTO>
         // {

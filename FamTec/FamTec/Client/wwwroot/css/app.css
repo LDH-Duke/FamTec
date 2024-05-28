@@ -87,6 +87,9 @@ body,
 .page {
     height: 100%;
 }
+.page{
+    overflow:hidden;
+}
 
 ol,ul,li{
     list-style:none;

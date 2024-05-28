@@ -1,17 +1,17 @@
 ﻿
-
 <div class="inputfield-container">
     <label class="inputfield-label">
         @Label
     </label>
     <input class="inputfield-input"
-           type="@InputType"
-           @bind-value="@Value"
-           placeholder="@Placeholder"
-           @oninput="onChangeText"
-           @onblur="OnBlur"
-        />
-    @if(Label == "Id"){
+        type="@InputType"
+        @bind-value="@Value"
+        placeholder="@Placeholder"
+        @oninput="onChangeText"
+        @onblur="OnBlur"
+    />
+    @if (Label == "아이디")
+    {
         <button class="btn" type="button" @onclick="OnClick">
             중복확인
         </button>
@@ -32,8 +32,6 @@
     
     private async Task onChangeText(ChangeEventArgs e)
     {
-        Console.WriteLine(Label);
-        Console.WriteLine(e.Value.ToString());
         Value = e?.Value?.ToString();
 
         await ValueChanged.InvokeAsync(Value);
