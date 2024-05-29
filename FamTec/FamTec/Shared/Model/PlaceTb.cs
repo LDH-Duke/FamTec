@@ -25,6 +25,10 @@ public partial class PlaceTb
     [StringLength(255)]
     public string? Name { get; set; }
 
+    [Column("TEL")]
+    [StringLength(255)]
+    public string? Tel { get; set; }
+
     [Column("NOTE")]
     [StringLength(255)]
     public string? Note { get; set; }
@@ -62,8 +66,9 @@ public partial class PlaceTb
 
     [Column("PERM_ENERGY", TypeName = "tinyint(4)")]
     public sbyte? PermEnergy { get; set; }
-    //[Column("PERM_VOC", TypeName = "tinyint(4)")]
-    //public sbyte? PermVoc { get; set; }
+
+    [Column("PERM_VOC", TypeName = "tinyint(4)")]
+    public sbyte? PermVoc { get; set; }
 
     [Column("CANCEL_DT", TypeName = "datetime")]
     public DateTime? CancelDt { get; set; }

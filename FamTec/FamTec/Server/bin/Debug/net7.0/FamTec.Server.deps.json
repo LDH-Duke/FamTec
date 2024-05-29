@@ -13,7 +13,6 @@
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Microsoft.EntityFrameworkCore.Design": "7.0.18",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Microsoft.EntityFrameworkCore.Tools": "7.0.18",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
@@ -859,7 +858,6 @@
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.18",
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },

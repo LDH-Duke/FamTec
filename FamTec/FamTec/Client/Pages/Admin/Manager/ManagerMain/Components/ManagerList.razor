@@ -1,5 +1,9 @@
+<<<<<<< HEAD:FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/ManagerList.razor
 ﻿@using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Shared.Client.DTO
+=======
+﻿@using FamTec.Shared.Server.DTO.Admin.Place
+>>>>>>> Temp:FamTec/FamTec/Client/Pages/Manager/Components/ManagerList.razor
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
@@ -23,7 +27,7 @@
 </div>
 
 @code {
-    [Parameter] public List<ManagerDTO> DataList { get; set; }
+    [Parameter] public List<ManagerListDTO> DataList { get; set; }
 
     protected async override Task OnInitializedAsync()
     {

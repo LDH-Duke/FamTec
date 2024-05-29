@@ -110,6 +110,7 @@ public partial class UserTb
     [Column("PLACE_TB_ID", TypeName = "int(11)")]
     public int? PlaceTbId { get; set; }
 
+
     [InverseProperty("UserTb")]
     public virtual ICollection<AdminTb> AdminTbs { get; set; } = new List<AdminTb>();
 

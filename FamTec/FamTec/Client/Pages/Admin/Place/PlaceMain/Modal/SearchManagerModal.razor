@@ -1,6 +1,12 @@
+<<<<<<< HEAD:FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/SearchManagerModal.razor
 ﻿@using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
+=======
+﻿@using FamTec.Shared.Server
+@using FamTec.Client.Pages.Place.Main.Components
+@using FamTec.Shared.Server.DTO.Admin.Place
+>>>>>>> Temp:FamTec/FamTec/Client/Pages/Place/Components/SearchManagerModal.razor
 
 
 <div class="addmanager-modal-container yappear">
@@ -27,11 +33,11 @@
 @code {
     [Parameter] public string Title { get; set; }
     [Parameter] public string Content { get; set; }
-    [Parameter] public List<ManagerDTO> AddManagerList { get; set; }
+    [Parameter] public List<ManagerListDTO> AddManagerList { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
-    [Parameter] public EventCallback<List<ManagerDTO>> OnAddManagerListChanged { get; set; }
+    [Parameter] public EventCallback<List<ManagerListDTO>> OnAddManagerListChanged { get; set; }
 
-    List<ManagerDTO> ManagerList;
+    List<ManagerListDTO> ManagerList;
     List<object> placeManagerList;
     List<string> properties;
     public HttpClient httpClient = new HttpClient();
@@ -41,7 +47,8 @@
         /*
         * 현재 매니저 목록 조회 Fetch Get
         */
-        ResponseObj<ManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
+        ResponseObj<ManagerListDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerListDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
+    
         ManagerList = res.data;
 
     }
@@ -52,7 +59,7 @@
 
     private async Task OnSelectedItem((bool isSelected, object item) selection)
     {
-        var managerItem = selection.item as ManagerDTO;
+        var managerItem = selection.item as ManagerListDTO;
 
         if(managerItem != null)
         {
