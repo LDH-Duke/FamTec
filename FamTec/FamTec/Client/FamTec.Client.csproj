@@ -29,7 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Admin\Manager\Components\ManagerList\" />
     <Folder Include="Pages\Admin\Place\PlaceEdit\" />
     <Folder Include="Pages\User\" />
   </ItemGroup>

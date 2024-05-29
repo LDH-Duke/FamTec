@@ -1,0 +1,31 @@
+.depart-list[b-uq4pwmuq1t] {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /*height: 100%;*/
+   
+}
+
+.depart-list .depart-item[b-uq4pwmuq1t] {
+    display: flex;
+    justify-content:space-between;
+    width:100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.depart-list .depart-item:hover[b-uq4pwmuq1t] {
+    transition: all ease-in-out 0.2s;
+    background-color: #200d69;
+}
+
+.depart-list .depart-item:hover[b-uq4pwmuq1t]  span {
+    transition: all ease-in-out 0.2s;
+    color: #ffffff;
+}
+
+.depart-list .depart-item > span[b-uq4pwmuq1t] {
+    color: #4f4f4f;
+}

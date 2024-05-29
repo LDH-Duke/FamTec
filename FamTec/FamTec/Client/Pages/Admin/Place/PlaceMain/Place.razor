@@ -1,0 +1,135 @@
+﻿@page "/admin/place"
+
+@using FamTec.Client.Pages.Admin.Place.PlaceMain.Modal
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@using Newtonsoft.Json
+@using System.Reflection
+@using System.ComponentModel.DataAnnotations
+@using FamTec.Client.Pages.Admin.CommonComponents
+
+<div class="place-container">
+        <div class="place-header">
+            <span class="place-title">
+                사업장 목록
+            </span>
+            <div class="table-header-option">
+                <Input Placeholder="Research" />
+                <Button 
+                    Name="추가"
+                    Width="true"
+                    OnClick="@onAddPlace" />
+            </div>
+        </div>
+        <div class="place-table">
+            <Table DataList="PlaceList" />
+        </div>
+        @if (is_openModal)
+        {
+            <AddModal Title="사업장 등록" OnClose="@OnModalClose" />
+        }
+    
+ 
+</div>
+
+@code {
+     /*
+     * 테이블 데이터
+    */
+    List<PlaceDTO> PlaceList;
+    List<string> PlaceProperties = new List<string>();
+    List<PlaceDTO> SelecList = new List<PlaceDTO>();
+    DateTime a;
+
+    public HttpClient httpClient = new HttpClient();
+
+    bool is_openModal = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        /*
+        * fetch 서버 요청
+        */
+        Console.WriteLine("매니저 조회 시작");
+        ResponseObj<PlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/Place/allplace");
+        PlaceList = res.data;
+
+        var properties = typeof(PlaceDTO).GetProperties();
+
+        foreach(var property in properties)
+        {
+            var displayAttribute = property.GetCustomAttribute<DisplayAttribute>();
+            if(displayAttribute != null)
+            {
+                string displayName = displayAttribute.Name;
+                PlaceProperties.Add(displayName);
+            }
+        }
+    }
+
+    /*
+    * Add to List<PlaceDTO>SelectList when able Checkbox
+    */
+    public void OnSelected(object row)
+    {
+        /*
+        * To Do
+        * 동일 row 중복 처리
+        */
+        Console.WriteLine(row);
+
+        if(row is PlaceDTO palceRow)
+        {
+            if (!SelecList.Contains(row))
+            {
+                Console.WriteLine("추가");
+                SelecList.Add(palceRow);
+            }
+
+        }
+
+
+
+        Console.WriteLine(SelecList);
+    }
+
+    /*
+    * Remove to List<PlaceDTO>SelectList when disable Checkbox
+    */
+    public void UnSelected(object row)
+    {
+        if(row is PlaceDTO palceRow)
+        {
+            Console.WriteLine("삭제 전");
+            foreach(PlaceDTO a in SelecList)
+            {
+
+                Console.WriteLine(a.PlaceCd);
+            }
+            SelecList.Remove(palceRow);
+            Console.WriteLine("삭제 후");
+            foreach (PlaceDTO a in SelecList)
+            {
+
+                Console.WriteLine(a.PlaceCd);
+            }
+        }
+    }
+
+    /*
+    * click add
+    */
+    private void onAddPlace()
+    {
+        is_openModal = true;
+    }
+
+
+
+    private void OnModalClose()
+    {
+        is_openModal = false;
+        StateHasChanged();
+    }
+}
