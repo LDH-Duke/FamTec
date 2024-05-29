@@ -13,7 +13,10 @@
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Microsoft.EntityFrameworkCore.Design": "7.0.18",
+<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
+=======
+>>>>>>> Server
           "Microsoft.EntityFrameworkCore.Tools": "7.0.18",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
@@ -649,6 +652,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "Newtonsoft.Json/13.0.3": {
         "runtime": {
           "lib/net6.0/Newtonsoft.Json.dll": {
@@ -657,6 +661,8 @@
           }
         }
       },
+=======
+>>>>>>> Server
       "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Relational": "7.0.18",
@@ -859,8 +865,11 @@
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.18",
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
+<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
+=======
+>>>>>>> Server
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "runtime": {
@@ -1326,6 +1335,7 @@
       "path": "mysqlconnector/2.2.5",
       "hashPath": "mysqlconnector.2.2.5.nupkg.sha512"
     },
+<<<<<<< HEAD
     "Newtonsoft.Json/13.0.3": {
       "type": "package",
       "serviceable": true,
@@ -1333,6 +1343,8 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
+=======
+>>>>>>> Server
     "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
       "type": "package",
       "serviceable": true,

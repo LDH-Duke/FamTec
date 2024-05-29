@@ -1089,6 +1089,7 @@
           }
         }
       },
+<<<<<<< HEAD
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -1102,6 +1103,8 @@
           }
         }
       },
+=======
+>>>>>>> Server
       "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -1598,8 +1601,11 @@
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.18",
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
+<<<<<<< HEAD
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
+=======
+>>>>>>> Server
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "compile": {
@@ -3114,6 +3120,7 @@
         "mysqlconnector.nuspec"
       ]
     },
+<<<<<<< HEAD
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -3144,6 +3151,8 @@
         "packageIcon.png"
       ]
     },
+=======
+>>>>>>> Server
     "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
       "sha512": "Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "type": "package",
@@ -4172,31 +4181,34 @@
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 7.0.18",
       "Microsoft.EntityFrameworkCore >= 7.0.18",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.18",
+<<<<<<< HEAD
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.18",
+=======
+>>>>>>> Server
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.18",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\stec\\.nuget\\packages\\": {},
+    "C:\\Users\\kyw\\.nuget\\packages\\": {},
     "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
+      "projectUniqueName": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
       "projectName": "FamTec.Server",
-      "projectPath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
-      "packagesPath": "C:\\Users\\stec\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Server\\obj\\",
+      "projectPath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
+      "packagesPath": "C:\\Users\\kyw\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\stec\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kyw\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -4214,11 +4226,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\FamTec.Client.csproj": {
-              "projectPath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\FamTec.Client.csproj"
+            "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\FamTec.Client.csproj": {
+              "projectPath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\FamTec.Client.csproj"
             },
-            "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Shared\\FamTec.Shared.csproj": {
-              "projectPath": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Shared\\FamTec.Shared.csproj"
+            "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Shared\\FamTec.Shared.csproj": {
+              "projectPath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Shared\\FamTec.Shared.csproj"
             }
           }
         }
@@ -4252,10 +4264,6 @@
             "target": "Package",
             "version": "[7.0.18, )"
           },
-          "Microsoft.EntityFrameworkCore.SqlServer": {
-            "target": "Package",
-            "version": "[7.0.18, )"
-          },
           "Microsoft.EntityFrameworkCore.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
@@ -4278,24 +4286,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[7.0.16, 7.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[7.0.16, 7.0.16]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[7.0.16, 7.0.16]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[7.0.16, 7.0.16]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4304,7 +4294,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

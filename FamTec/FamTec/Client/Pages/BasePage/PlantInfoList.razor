@@ -1,0 +1,138 @@
+﻿@page "/plantinfolist"
+@using FamTec.Shared.DTO
+@using FamTec.Shared.Model
+@using System.Text
+@inject IJSRuntime JS
+@inject HttpClient Http
+
+@*
+<style>
+    table{
+        border-collapse: collapse;
+        line-height: 1.5;
+    }
+
+    thead th{
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        text-align: center;
+        color: #369;
+        border-bottom: 3px solid #036;
+    }
+
+    tbody th{
+        width: 150px;
+        padding: 10px;
+        font-weight: bold;
+        vertical-align: top;
+        border-bottom: 1px solid #ccc;
+        background: #f3f6f7;
+        text-align: center;
+    }
+
+    td {
+        width: 500px;
+        padding: 10px;
+        text-align:center;
+        vertical-align: top;
+        border-bottom: 1px solid #ccc;
+    }
+</style>
+
+<div>
+    <input type="button" class="btn btn-primary" style="width:100px" @onclick="btnAdd" value="등록"/>
+    <input type="button" class="btn btn-danger" style="width:100px" @onclick="btnDelete" value="삭제"/>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>&nbsp;</th>
+            <th>CODE</th>
+            <th>건물이름</th>
+            <th>건물주소</th>
+            <th>건물층수</th>
+            <th>준공년월</th>
+            <th>등록일자</th>
+            <th>민원QR</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(building is [_, ..]){
+            @foreach (var item in building)
+            {
+                <tr>
+                    <td style="width:20px">
+                        <input type="checkbox" @bind-value="item.IndexChk" style="cursor:pointer;" />
+                    </td>
+                    <td>@item.BuildingCd</td>
+                    <td>@item.Name</td>
+                    <td>@item.Address</td>
+                    <td>@item.FloorNum</td>
+                    <td>@item.CompletionDate</td>
+                    <td>@item.CreateDt</td>
+                    <td >
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24pt" height="24pt" viewBox="0 0 48.000000 48.000000" preserveAspectRatio="xMidYMid meet" @onclick="()=> btnClick(item)" style="cursor:pointer;">
+                            <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                                <path d="M160 360 l0 -70 -29 0 c-17 0 -32 -3 -35 -8 -2 -4 29 -43 70 -87 l74 -80 70 75 c38 41 69 81 70 88 0 7 -12 12 -30 12 l-30 0 0 70 0 70 -80 0 -80 0 0 -70z m130 -20 c0 -61 3 -72 19 -78 18 -6 16 -12 -25 -57 l-44 -50 -46 49 c-43 47 -44 50 -25 58 19 6 21 15 21 78 l0 70 50 0 50 0 0 -70z" />
+                                <path d="M57 164 c-12 -13 -7 -59 9 -82 15 -21 21 -22 170 -22 142 0 156 2 175 21 14 14 19 30 17 51 -4 46 -26 47 -30 1 l-3 -38 -155 0 -155 0 -3 30 c-4 33 -14 49 -25 39z" />
+                            </g>
+                        </svg>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<div style="display:none;">
+    <div id="qrcodes" style="width:100px; height:100px; margin:auto; margin-top:15px;" />
+</div>
+*@
+
+@*
+@code {
+    private BuildingsDTO[]? building;
+    string placecd = "P001";
+
+    protected override async Task OnInitializedAsync()
+    {
+        building = await Http.GetFromJsonAsync<BuildingsDTO[]>($"api/Buildings/SelectBuilding/{placecd}");
+
+        StateHasChanged();
+    }
+
+    // 추가
+    protected void btnAdd()
+    {
+        //JS.InvokeAsync<object>("alert", building[0].IndexChk.ToString());
+        JS.InvokeAsync<object>("alert", "등록화면으로 이동");
+    }
+
+    // 삭제
+    protected void btnDelete()
+    {
+        foreach(var item in building)
+        {
+            if (item.IndexChk)
+            {
+                JS.InvokeAsync<object>("alert", item.Name);
+            }
+        }
+    }
+
+    // qr 추가
+    protected void btnClick(BuildingsDTO model)
+    {
+
+        string qrdata = $"buildingcd={model.BuildingCd}";
+        byte[] convertString = Encoding.ASCII.GetBytes(qrdata);
+        string result = Convert.ToBase64String(convertString);
+
+        string url = $"https://123.2.156.148:8888/vocedit?{result}";
+
+        JS.InvokeVoidAsync("qrcreate", url, model.Name);
+    }
+}
+    *@
