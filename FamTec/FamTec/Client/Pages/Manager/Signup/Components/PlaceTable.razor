@@ -1,6 +1,7 @@
 ﻿
 @using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin.Place
 @inject HttpClient HttpClient
 
 <div class="placetable-container">
@@ -21,14 +22,14 @@
 
 @code {
     [Parameter] public AddManagerDTO NewManager { get; set; }
-    List<PlaceDTO> PlaceList;
+    List<AllPlaceDTO> PlaceList;
     int SelectCount = 0;
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/Place/allplace");
+        ResponseObj<AllPlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<AllPlaceDTO>>("https://127.0.0.1:7114/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
-        PlaceList.RemoveAll(place => place.Status == 0);
+        PlaceList.RemoveAll(place => place.Status == 0);   
     }
 
     /*

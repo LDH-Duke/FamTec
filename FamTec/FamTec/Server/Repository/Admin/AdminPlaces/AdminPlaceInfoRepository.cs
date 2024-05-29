@@ -1,5 +1,4 @@
 ﻿using FamTec.Server.Databases;
-using FamTec.Shared.Client.DTO;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Admin;
@@ -8,8 +7,7 @@ using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata.Ecma335;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+
 
 namespace FamTec.Server.Repository.Admin.AdminPlaces
 {

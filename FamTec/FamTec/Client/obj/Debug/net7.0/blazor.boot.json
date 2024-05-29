@@ -1,11 +1,7 @@
 {
   "entryAssembly": "FamTec.Client",
   "resources": {
-<<<<<<< HEAD
-    "hash": "sha256-cf/pVsi6qMOhGD3ImHQypz0GkI9KWcA0XkbbHboBqlU=",
-=======
-    "hash": "sha256-s6xr2Bq5+EujiB1CckK2c3BMWPaSaT959pIEyfJr84k=",
->>>>>>> Server
+    "hash": "sha256-GMVwVzWiEJJIz7ffgLQaoE4TmZur57EfhkuuFkpCKzE=",
     "runtime": {
       "dotnet.7.0.16.74r60x5dgn.js": "sha256-4BiArKugJJtpQrznGF5zWfmJ2TB98+p6rKsyoqhtMk4=",
       "dotnet.timezones.blat": "sha256-rwyJqJu36keQwNmm/O1XV7tnkkVldIOK8GIjn4gTUt4=",
@@ -70,10 +66,7 @@
       "Microsoft.Win32.SystemEvents.dll": "sha256-yklb9shrfwktYkkoEBmFqUFTLRSdzYrP6hcPilO+iFA=",
       "Mono.TextTemplating.dll": "sha256-57img5VLX+wAnl9OVpb+sxtMXVadVaRjPPWtsObQbOw=",
       "MySqlConnector.dll": "sha256-SvUnC2U+xrLDeKZ+ZR1DOaZcC0qNNzA4ncgVlM6LtOI=",
-<<<<<<< HEAD
       "Newtonsoft.Json.dll": "sha256-IsZJ91/OW+fHzNqIgEc7Y072ns8z9dGritiSyvR9Wgc=",
-=======
->>>>>>> Server
       "Pomelo.EntityFrameworkCore.MySql.dll": "sha256-syJhjtABMnhsBya48+Hse+WM7BMonlaQBL303Bl5sYQ=",
       "System.CodeDom.dll": "sha256-Wux4xpM0/BzRySb0qchXJg3S4D/xc56W3vHWgpa4a4s=",
       "System.Configuration.ConfigurationManager.dll": "sha256-0nS91x919QBfyuwCiSH3HYnLbWIgItdNLgeJejodFBo=",
@@ -253,21 +246,12 @@
       "mscorlib.dll": "sha256-7yxnoj0sx/xIMKjSCkfYzaeQKDj1UsUSr/JXW7fRggs=",
       "netstandard.dll": "sha256-c9xgB5oQro5/rBTTHeD+4cqLi9QOB+6fhaP3jmkeGo4=",
       "System.Private.CoreLib.dll": "sha256-FGXoQzMt7mcWfUZbWXoXgg8tPIt7PF+QZoXXBQWegAQ=",
-<<<<<<< HEAD
-      "FamTec.Shared.dll": "sha256-XbJ9ZLa1LCXqTz6wV+DiXmzwFrg3q5TIGKBcsJldKE8=",
-      "FamTec.Client.dll": "sha256-rvrU9cWddU0Fs8l+wXMcN88XCVHyU+KV+4tPoNbur4o="
+      "FamTec.Shared.dll": "sha256-haEiRWexW77wKFils3Ee/FKoqC3ezbu+yQldphU+vXc=",
+      "FamTec.Client.dll": "sha256-b3xib4dDv071edLzTcaSA+aN8A8G2qt2paSPQ7CtSE8="
     },
     "pdb": {
-      "FamTec.Shared.pdb": "sha256-jsnuAIzw1ryspwQZNzNBK7Q9LLMgD24DyychonmAoAA=",
-      "FamTec.Client.pdb": "sha256-Bo5mXr9xus6GwIaKLCGnMeuW8oGeLEEO13hsEsSbtYQ="
-=======
-      "FamTec.Shared.dll": "sha256-D6ChDqqI5k2lvcqCPxKamxjD4kbOkrcOJyuuUpGgg6w=",
-      "FamTec.Client.dll": "sha256-ntNmjCOoUx6E9fv4TcLri6vnKMcxmkZgqXLh3yNKhhA="
-    },
-    "pdb": {
-      "FamTec.Shared.pdb": "sha256-mu62poQp/eRCYMfh59I2vJ8MmQBd51CnCL+VJkkXCqo=",
-      "FamTec.Client.pdb": "sha256-bQHbvgD3h32J+UHEELEBcPRVczS07x2lMzb6qspvoP8="
->>>>>>> Server
+      "FamTec.Shared.pdb": "sha256-fqgU/uGEgNpTYH5f4vLcWTjU6Mb/B0+dErJiFTP7ouo=",
+      "FamTec.Client.pdb": "sha256-O02/AvV2741uC1wK8NzNGpCG6p8GSBUjNR42jqM4/Y4="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

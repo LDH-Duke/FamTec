@@ -104,13 +104,10 @@
               "version": "[8.0.2, )",
               "autoReferenced": true
             },
-<<<<<<< HEAD
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
             },
-=======
->>>>>>> Server
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"

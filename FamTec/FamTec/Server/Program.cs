@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 using FamTec.Server.Hubs;
-using FamTec.Shared.Model;
-using FamTec.Shared.Models;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.ObjectPool;
 using Microsoft.AspNetCore.Hosting;
-=======
 using FamTec.Server;
 using FamTec.Server.Databases;
-using FamTec.Server.Hubs;
 using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Admin.Departmnet;
@@ -27,9 +22,6 @@ using FamTec.Server.Services.Floor;
 using FamTec.Server.Services.Room;
 using FamTec.Server.Services.Unit;
 using FamTec.Server.Services.User;
-using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.EntityFrameworkCore;
->>>>>>> Server
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,7 +52,6 @@ builder.Services.AddRazorPages();
 
 
 #region DB연결 정보
-<<<<<<< HEAD
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<WorksContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
@@ -75,19 +66,16 @@ builder.Services.AddSignalR(opts =>
     opts.KeepAliveInterval = TimeSpan.FromMinutes(1);
 });
 =======
-var connstr = builder.Configuration.GetConnectionString("DefaultConnection");
->>>>>>> Server
-
-builder.Services.AddDbContext<WorksContext>(options =>
-    options.UseMySql(connstr, ServerVersion.AutoDetect(connstr)));
+*/
 #endregion
 
 #region SIGNAL R CORS 등록
+
 builder.Services.AddCors(opts =>
 {
     opts.AddDefaultPolicy(policy =>
     {
-        policy.WithOrigins("https://localhost:8888")
+        policy.WithOrigins("https://localhost:7114","http://localhost:5245","https://localhost:8888")
         .AllowAnyMethod()
         .AllowAnyHeader()
         .AllowCredentials()

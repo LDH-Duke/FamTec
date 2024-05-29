@@ -1,6 +1,7 @@
-﻿using FamTec.Shared.Client.DTO;
+﻿using FamTec.Server.Databases;
+using FamTec.Shared.Client.DTO;
 using FamTec.Shared.Model;
-using FamTec.Shared.Models;
+using FamTec.Shared.Server.DTO.Admin.Place;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,7 @@ namespace FamTec.Server.Controllers.Place
             {
                 Console.WriteLine("사업장 조회");
                 List<PlaceTb> res = await _workContext.PlaceTbs.ToListAsync();
-                List<PlaceDTO> placeList = res.Select(placeTb => new PlaceDTO{
+                List<AllPlaceDTO> placeList = res.Select(placeTb => new AllPlaceDTO{
                     Id=placeTb.Id,
                     PlaceCd = placeTb.PlaceCd,
                     Name = placeTb.Name,

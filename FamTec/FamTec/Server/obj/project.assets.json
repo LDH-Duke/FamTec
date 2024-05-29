@@ -1089,7 +1089,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -1103,8 +1102,6 @@
           }
         }
       },
-=======
->>>>>>> Server
       "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -1601,11 +1598,7 @@
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.18",
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
-<<<<<<< HEAD
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
-=======
->>>>>>> Server
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "compile": {
@@ -3120,7 +3113,6 @@
         "mysqlconnector.nuspec"
       ]
     },
-<<<<<<< HEAD
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -3151,8 +3143,6 @@
         "packageIcon.png"
       ]
     },
-=======
->>>>>>> Server
     "Pomelo.EntityFrameworkCore.MySql/7.0.0": {
       "sha512": "Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "type": "package",
@@ -4181,10 +4171,6 @@
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 7.0.18",
       "Microsoft.EntityFrameworkCore >= 7.0.18",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.18",
-<<<<<<< HEAD
-      "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.18",
-=======
->>>>>>> Server
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.18",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
     ]

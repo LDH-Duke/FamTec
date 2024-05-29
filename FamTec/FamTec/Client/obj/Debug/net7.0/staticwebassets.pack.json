@@ -77,15 +77,11 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-<<<<<<< HEAD
-      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\steclogo.png",
+      "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\steclogo.png",
       "PackagePath": "staticwebassets\\img\\steclogo.png"
     },
     {
-      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\index.html",
-=======
       "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\index.html",
->>>>>>> Server
       "PackagePath": "staticwebassets\\index.html"
     },
     {

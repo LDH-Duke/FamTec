@@ -62,11 +62,6 @@ public partial class PlaceTb
 
     [Column("PERM_ENERGY", TypeName = "tinyint(4)")]
     public sbyte? PermEnergy { get; set; }
-<<<<<<< HEAD
-    //[Column("PERM_VOC", TypeName = "tinyint(4)")]
-    //public sbyte? PermVoc { get; set; }
-=======
->>>>>>> Server
 
     [Column("CANCEL_DT", TypeName = "datetime")]
     public DateTime? CancelDt { get; set; }

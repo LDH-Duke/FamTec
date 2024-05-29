@@ -85,11 +85,12 @@ namespace FamTec.Server.Services.Admin.Place
                 {
                     return FuncResponseAllList("전체데이터 조회 성공", model.Select(e => new AllPlaceDTO
                     {
-                        PlaceID = e.Id,
-                        PlaceName = e.Name,
+                        Id = e.Id,
+                        PlaceCd = e.PlaceCd,
+                        Name = e.Name,
+                        Note = e.Note,
                         ContractNum = e.ContractNum,
-                        ContractDT = e.ContractDt,
-                        CancelDT = e.CancelDt,
+                        ContractDt = e.ContractDt,
                         Status = e.Status
                     }).ToList(), 200);
                 }

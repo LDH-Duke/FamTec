@@ -3,6 +3,7 @@
 @using FamTec.Shared.Client.DTO
 @using FamTec.Client.Pages.Place.Components
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin.Place
 @using Newtonsoft.Json
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
@@ -35,9 +36,9 @@
      /*
      * 테이블 데이터
     */
-    List<PlaceDTO> PlaceList;
+    List<AllPlaceDTO> PlaceList;
     List<string> PlaceProperties = new List<string>();
-    List<PlaceDTO> SelecList = new List<PlaceDTO>();
+    List<AllPlaceDTO> SelecList = new List<AllPlaceDTO>();
 
 
     public HttpClient httpClient = new HttpClient();
@@ -51,10 +52,11 @@
         * fetch 서버 요청
         */
         Console.WriteLine("매니저 조회 시작");
-        ResponseObj<PlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/Place/allplace");
+        ResponseObj<AllPlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<AllPlaceDTO>>("https://127.0.0.1:7114/api/Place/allplace");
         PlaceList = res.data;
+        Console.WriteLine(PlaceList.Count);
 
-        var properties = typeof(PlaceDTO).GetProperties();
+        var properties = typeof(AllPlaceDTO).GetProperties();
 
         foreach(var property in properties)
         {
@@ -78,7 +80,7 @@
         */
         Console.WriteLine(row);
 
-        if(row is PlaceDTO palceRow)
+        if (row is AllPlaceDTO palceRow)
         {
             if (!SelecList.Contains(row))
             {
@@ -98,17 +100,17 @@
     */
     public void UnSelected(object row)
     {
-        if(row is PlaceDTO palceRow)
+        if (row is AllPlaceDTO palceRow)
         {
             Console.WriteLine("삭제 전");
-            foreach(PlaceDTO a in SelecList)
+            foreach (AllPlaceDTO a in SelecList)
             {
 
                 Console.WriteLine(a.PlaceCd);
             }
             SelecList.Remove(palceRow);
             Console.WriteLine("삭제 후");
-            foreach (PlaceDTO a in SelecList)
+            foreach (AllPlaceDTO a in SelecList)
             {
 
                 Console.WriteLine(a.PlaceCd);

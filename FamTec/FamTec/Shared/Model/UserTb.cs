@@ -26,13 +26,10 @@ public partial class UserTb
     [StringLength(255)]
     public string? Name { get; set; }
 
-<<<<<<< HEAD
     [Column("JOB")]
     [StringLength(255)]
     public string? Job { get; set; }
 
-=======
->>>>>>> Server
     [Column("EMAIL")]
     [StringLength(255)]
     public string? Email { get; set; }
@@ -113,13 +110,7 @@ public partial class UserTb
     [Column("PLACE_TB_ID", TypeName = "int(11)")]
     public int? PlaceTbId { get; set; }
 
-<<<<<<< HEAD
-=======
-    [Column("JOB")]
-    [StringLength(255)]
-    public string? Job { get; set; }
 
->>>>>>> Server
     [InverseProperty("UserTb")]
     public virtual ICollection<AdminTb> AdminTbs { get; set; } = new List<AdminTb>();
 

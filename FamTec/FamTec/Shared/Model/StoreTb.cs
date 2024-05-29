@@ -23,25 +23,10 @@ public partial class StoreTb
     [Column("NUM", TypeName = "int(11)")]
     public int? Num { get; set; }
 
-    /// <summary>
-<<<<<<< HEAD
-    /// 단가
-    /// 
-=======
-    /// 단가\n
->>>>>>> Server
-    /// </summary>
     [Column("UNIT_PRICE")]
     public float? UnitPrice { get; set; }
 
-    /// <summary>
-<<<<<<< HEAD
-    /// 금액
-    /// 
-=======
-    /// 금액\n
->>>>>>> Server
-    /// </summary>
+
     [Column("PRICE")]
     public float? Price { get; set; }
 

@@ -74,12 +74,11 @@ public partial class MaterialTb
     [StringLength(255)]
     public string? DelUser { get; set; }
 
-<<<<<<< HEAD
-=======
+
     [Column("PLACE_ID")]
     public int? PlaceId { get; set; }
 
->>>>>>> Server
+
     [InverseProperty("MaterialTb")]
     public virtual ICollection<StoreTb> StoreTbs { get; set; } = new List<StoreTb>();
 }
