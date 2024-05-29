@@ -1,0 +1,73 @@
+﻿@page "/admin/manager/signup"
+@using FamTec.Client.Pages.Admin.Common
+@using FamTec.Client.Pages.Admin.Manager.Signup.Components
+@using FamTec.Client.Pages.Admin.Manager.Components
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@inject HttpClient HttpClient
+@inject NavigationManager Navigation
+
+<div class="admin-signup-container">
+    <div class="admin-signup-wrap">
+        <div class="form">
+            <SignForm NewManager="newManager" DepartmentList="departmetnList" />
+        </div>
+        <div class="place">
+            <PlaceTable NewManager="newManager" />
+        </div>
+
+    </div>
+    <div class="btns">
+        <Button Name="등록" Width="true" OnClick="Submit" />
+        <Button Name="취소" Width="true" Type="true" />
+    </div>
+    
+</div>
+
+@code {
+    AddManagerDTO newManager;
+    List<DepartmentDTO> departmetnList;
+
+    protected async override Task OnInitializedAsync()
+    {
+        await LoadDepartments();
+        newManager = new();
+    }
+
+    /*
+    * 부서 조회
+    */
+    private async Task LoadDepartments()
+    {
+        try
+        {
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+            departmetnList = resDepartment.data;
+        }catch(Exception ex)
+        {
+            Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러" + ex);
+        }
+
+    }
+
+    private async Task Submit()
+    {
+        Console.WriteLine("매니저 정보");
+        Console.WriteLine(newManager.UserId);
+        Console.WriteLine(newManager.Password);
+        Console.WriteLine(newManager.Name);
+        Console.WriteLine(newManager.Phone);
+        Console.WriteLine(newManager.Email);
+        Console.WriteLine(newManager.Type);
+        Console.WriteLine("매니저"+newManager.DepartmentId);
+        Console.WriteLine(newManager.PlaceList);
+        Console.WriteLine("매니저 정보 끝");
+
+        HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addmanager",newManager);
+        if (res.IsSuccessStatusCode)
+        {
+            Navigation.NavigateTo("/admin/manager");
+        }
+    }
+
+}

@@ -1,0 +1,80 @@
+﻿@using FamTec.Client.Pages.Admin.Common
+@using FamTec.Client.Pages.Admin.Manager.Components.Common
+@using FamTec.Client.Pages.Admin.Manager.Components.DepartmentF
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@inject HttpClient HttpClient
+
+
+<div class="depart-container">
+    <div class="depart-wrap">
+        <div class="depart-title">
+            <span>
+                부서관리
+            </span>
+        </div>
+        <div class="depart-content">
+            <DepartmentList DataList="departmentList" />
+        </div>
+        <div class="depart-btns">
+            <Button Name="편집" OnClick="@OnEdit" />
+        </div>
+        @if (is_openModal == true)
+        {
+            <ModalBack >
+                <ChildComponent>
+                    <ModalDepartment OnClose="@OnModalClose" OnListSync="ReloadDepartments" />
+                </ChildComponent>
+            </ModalBack>
+        }
+    </div>
+</div>
+
+@code {
+    // [Parameter] public List<DepartmentDTO> DataList { get; set; }
+    List<DepartmentDTO> departmentList;
+    private bool is_openModal = false;
+    
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("부서관리 컴포넌트 활성화");
+        await LoadDepartments();
+
+    }
+
+    private async Task LoadDepartments()
+    {
+        try
+        {
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+            departmentList = resDepartment.data;
+        }catch(Exception ex)
+        {
+            Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러");
+        }
+
+    }
+
+    private async Task ReloadDepartments()
+    {
+        await LoadDepartments();
+    }
+
+
+    /*
+    * click add
+    */
+    private void OnEdit()
+    {
+        Console.WriteLine("모달");
+        is_openModal = true;
+    }
+
+    private void OnModalClose()
+    {
+        is_openModal = false;
+        StateHasChanged();
+    }
+}
+

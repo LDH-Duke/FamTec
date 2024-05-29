@@ -1,0 +1,79 @@
+﻿@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@using FamTec.Client.Pages.Admin.Place.Main.Components
+
+
+<div class="addmanager-modal-container yappear">
+    <div class="addmanager-modal-wrap">
+        <div class="addmanager-modal-title">
+            매니저 조회
+        </div>
+        <Input Placeholder="Search" />
+        <div class="addmanager-modal-item">
+            <Table DataList="ManagerList" ReturnType="object" SelectItem="OnSelectedItem" />
+        </div>
+        @* <div class="addmanager-modal-content">
+            
+            
+        </div> *@
+        <button class="addmanager-modal-btn" @onclick="OnConfirm">
+            확인
+        </button>
+    </div>
+    
+</div>
+
+
+@code {
+    [Parameter] public string Title { get; set; }
+    [Parameter] public string Content { get; set; }
+    [Parameter] public List<ManagerDTO> AddManagerList { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public EventCallback<List<ManagerDTO>> OnAddManagerListChanged { get; set; }
+
+    List<ManagerDTO> ManagerList;
+    List<object> placeManagerList;
+    List<string> properties;
+    public HttpClient httpClient = new HttpClient();
+
+    protected override async Task OnInitializedAsync()
+    {
+        /*
+        * 현재 매니저 목록 조회 Fetch Get
+        */
+        ResponseObj<ManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allManager");
+        ManagerList = res.data;
+
+    }
+
+    private Task ModalClose(){
+        return OnClose.InvokeAsync(false);
+    }
+
+    private async Task OnSelectedItem((bool isSelected, object item) selection)
+    {
+        var managerItem = selection.item as ManagerDTO;
+
+        if(managerItem != null)
+        {
+            if (selection.isSelected)
+            {
+                if(!AddManagerList.Any(m => m.Id == managerItem.Id))
+                {
+                    AddManagerList.Add(managerItem);
+                }
+            }
+            else
+            {
+                AddManagerList.Remove(managerItem);
+            }
+        }
+        
+    }
+
+    private async Task OnConfirm()
+    {
+        await OnAddManagerListChanged.InvokeAsync(AddManagerList);
+        await OnClose.InvokeAsync(false);
+    }
+}

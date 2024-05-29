@@ -1,0 +1,54 @@
+.admin-signup-container[b-kr4k6183ip]{
+    display : flex;
+    flex-direction : column;
+    width : 100%;
+    height : 100%;
+
+    gap : 1.2rem;
+}
+
+
+.admin-signup-container .admin-signup-wrap[b-kr4k6183ip] {
+    display: flex;
+    gap: 3rem;
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+}
+
+.admin-signup-container .btns[b-kr4k6183ip]{
+    display :flex;
+    justify-content:flex-end;
+    gap : 0.5rem;
+}
+
+.admin-signup-container .form[b-kr4k6183ip] {
+    flex:1;
+    border : 2px solid #200d69;
+    border-radius :4px;
+    background-color : #ffffff;
+
+    padding : 1rem;
+}
+
+.admin-signup-container .place[b-kr4k6183ip]{
+    flex:2;
+    border : 2px solid #200d69;
+    border-radius :4px;
+    background-color : #ffffff;
+
+    padding : 1rem;
+}
+
+/*
+    grid레이아웃
+*/
+/*.admin-signup-container {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    grid-gap: 1.2rem;
+}
+*/

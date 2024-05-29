@@ -36,7 +36,7 @@ namespace FamTec.Server.Controllers.Admin
                     .Include(a => a.DepartmentTb)
                     .Select(a => new ManagerDTO                       
                      {
-                        Id = a.UserTb.Id,
+                        Id = a.Id,
                         UserId = a.UserTb.UserId,
                         Name = a.UserTb.Name,
                         Department = a.DepartmentTb.Name
