@@ -16,7 +16,7 @@
             
             
         </div> *@
-        <button class="addmanager-modal-btn" @onclick="ModalClose">
+        <button class="addmanager-modal-btn" @onclick="OnConfirm">
             확인
         </button>
     </div>
@@ -29,6 +29,7 @@
     [Parameter] public string Content { get; set; }
     [Parameter] public List<ManagerDTO> AddManagerList { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public EventCallback<List<ManagerDTO>> OnAddManagerListChanged { get; set; }
 
     List<ManagerDTO> ManagerList;
     List<object> placeManagerList;
@@ -57,7 +58,10 @@
         {
             if (selection.isSelected)
             {
-                AddManagerList.Add(managerItem);
+                if(!AddManagerList.Any(m => m.Id == managerItem.Id))
+                {
+                    AddManagerList.Add(managerItem);
+                }
             }
             else
             {
@@ -65,5 +69,11 @@
             }
         }
         
+    }
+
+    private async Task OnConfirm()
+    {
+        await OnAddManagerListChanged.InvokeAsync(AddManagerList);
+        await OnClose.InvokeAsync(false);
     }
 }

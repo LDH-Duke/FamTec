@@ -63,11 +63,17 @@
                                     Name="추가" 
                                     OnClick=OnAddModal
                                     />
-                                <Button Name="삭제" />
+                                <Button 
+                                    Name="삭제" 
+                                    OnClick="OnDeleteManager"
+                                    />
                             </div>
                         </div>
                         <div class="placemodal-m-list">
-                            <Table DataList="ManagerList" />
+                            <Table 
+                                DataList="ManagerList" 
+                                Select="OnSelected"
+                                />
                         </div>
                     
                     </div>
@@ -89,6 +95,7 @@
             <SearchManagerModal 
                 OnClose="OnCloseModal" 
                 AddManagerList=ManagerList
+                OnAddManagerListChanged=OnAddManagerListChanged
                 />
         }
 
@@ -100,8 +107,8 @@
     [Parameter] public string Content { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
-    List<string> managerList;
-    List<ManagerDTO> ManagerList;
+    List<int> selectedManagerIds = new List<int>();
+    List<ManagerDTO> ManagerList = new List<ManagerDTO>();
 
     AddPlaceDTO placeInfo = new AddPlaceDTO();
 
@@ -131,16 +138,16 @@
     }
 
     /*
-     * 등록 버튼 눌렀을 시
-     */
+    * 등록 버튼 눌렀을 시
+    */
     private async void OnAdd()
     {
         /*
-         * 1. 입력된 데이터 확인 
-         * 2. 추가 삭제 후 동기화 확인
-         * 3. POST
-         * 4. 모달 닫기
-         */
+        * 1. 입력된 데이터 확인 
+        * 2. 추가 삭제 후 동기화 확인
+        * 3. POST
+        * 4. 모달 닫기
+        */
         Console.WriteLine("코드"+placeInfo.PlaceCd);
         Console.WriteLine("이름" + placeInfo.Name);
         Console.WriteLine("전화번호" + placeInfo.Tel);
@@ -158,6 +165,45 @@
         Console.WriteLine("에너지" + placeInfo.PermEnergy);
         Console.WriteLine("민원"+placeInfo.PermVoc);
     }
+
+    /*
+    * 매니저 추가 로드
+    */
+    private void OnAddManagerListChanged(List<ManagerDTO> updatedManagerList)
+    {
+        ManagerList = updatedManagerList;
+        StateHasChanged();
+    }
+
+    /*
+    * 매니저 체크 
+    */
+    public void OnSelected((bool isCheck, int id) selection)
+    {
+
+        Console.WriteLine("부서 체크 여부" + selection.isCheck);
+        if (!selection.isCheck)
+        {
+            selectedManagerIds.Remove(selection.id);
+        }
+        else
+        {
+            Console.WriteLine("추가함");
+            selectedManagerIds.Add(selection.id);
+        }
+
+    }
+
+    /*
+    * 매니저 삭제
+    */
+    private void OnDeleteManager()
+    {
+        ManagerList = ManagerList.Where(m => !selectedManagerIds.Contains(m.Id)).ToList();
+        selectedManagerIds.Clear();
+        StateHasChanged();
+    }
+
 }
 
 
