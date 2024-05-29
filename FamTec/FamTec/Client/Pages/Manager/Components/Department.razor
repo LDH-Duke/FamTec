@@ -1,7 +1,7 @@
 ﻿@using FamTec.Client.Pages.Manager.Components.Common
 @using FamTec.Client.Pages.Manager.Components.DepartmentF
-@using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin
 @inject HttpClient HttpClient
 
 
@@ -46,7 +46,7 @@
     {
         try
         {
-            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/DePartment/GetDepartmentList");
             departmentList = resDepartment.data;
         }catch(Exception ex)
         {

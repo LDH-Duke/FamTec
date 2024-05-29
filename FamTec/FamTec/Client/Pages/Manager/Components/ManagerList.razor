@@ -1,4 +1,4 @@
-﻿@using FamTec.Shared.Client.DTO
+﻿@using FamTec.Shared.Server.DTO.Admin.Place
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
@@ -22,7 +22,7 @@
 </div>
 
 @code {
-    [Parameter] public List<ManagerDTO> DataList { get; set; }
+    [Parameter] public List<ManagerListDTO> DataList { get; set; }
 
     protected async override Task OnInitializedAsync()
     {

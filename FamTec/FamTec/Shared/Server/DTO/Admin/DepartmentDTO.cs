@@ -12,12 +12,19 @@ namespace FamTec.Shared.Server.DTO.Admin
         /// <summary>
         /// 부서 인덱스
         /// </summary>
-        public int ID { get; set; }
+        public int Id { get; set; }
+
+        /// <summary>
+        /// 선택여부
+        /// </summary>
+        public bool IsSelect { get; set; } = false;
 
         /// <summary>
         /// 부서명
         /// </summary>
         public string? Name { get; set; }
+
+        public string? Description { get; set; } = null;
 
     }
 }

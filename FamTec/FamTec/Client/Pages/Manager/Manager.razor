@@ -1,8 +1,9 @@
 ﻿@page "/admin/manager"
 @using FamTec.Client.Pages.Manager.Components
-@using FamTec.Shared.Client.DTO;
 @using FamTec.Shared.Model
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin
+@using FamTec.Shared.Server.DTO.Admin.Place
 
 
 <div class="grid-layout">
@@ -19,16 +20,16 @@
     List<DepartmentDTO> departmentList;
     List<object> DepartmentList;
 
-    List<ManagerDTO> managerList;
+    List<ManagerListDTO> managerList;
 
 
     protected override async Task OnInitializedAsync()
     {
-        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Department/GetDepartmentList");
         departmentList = resDepartment.data;
-        // ResponseObj<AdminTb> resManager = await httpClient.GetFromJsonAsync<ResponseObj<AdminTb>>("http://127.0.0.1:5245/api/Admin/allmanager");
-        ResponseObj<ManagerDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/Admin/allmanager");
         
+        ResponseObj<ManagerListDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerListDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
+
         managerList = resManager.data;
 
     }

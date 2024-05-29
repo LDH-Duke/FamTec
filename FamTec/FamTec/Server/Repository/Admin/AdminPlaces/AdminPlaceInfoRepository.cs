@@ -269,26 +269,21 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                                                             where (admintb.DelYn != 1 && adminplacetb.DelYn != 1)
                                                             select new ManagerListDTO
                                                             {
-                                                                UserId = usertb.Id,
-                                                                UserName = usertb.Name,
-                                                                AdminID = admintb.Id,
-                                                                Type = admintb.Type,
-                                                                Tel = usertb.Phone,
-                                                                DepartmentIdx = admintb.DepartmentTbId,
-                                                                DepartmentName = departmenttb.Name
+                                                                Id = usertb.Id,
+                                                                UserId = usertb.UserId,
+                                                                Name = usertb.Name,
+                                                                Department = departmenttb.Name
                                                             }).ToList();
 
                         if (ManagerDTO is not null)
                         {
-
                             AddPlaceDTO? dto = new AddPlaceDTO();
-                            dto.ID = place.Id;
                             dto.PlaceCd = place.PlaceCd;
-                            dto.ContractNum = place.ContractNum;
                             dto.Name = place.Name;
-                            dto.Note = place.Note;
+                            dto.Tel = place.Tel;
                             dto.Address = place.Address;
-                            dto.ContractDT = place.ContractDt;
+                            dto.ContractNum = place.ContractNum;
+                            dto.ContractDT = place.ContractDt.ToString();
                             dto.PermMachine = place.PermMachine;
                             dto.PermLift = place.PermLift;
                             dto.PermFire = place.PermFire;
@@ -298,20 +293,16 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                             dto.PermSecurity = place.PermSecurity;
                             dto.PermMaterial = place.PermMaterial;
                             dto.PermEnergy = place.PermEnergy;
-                            dto.CancelDT = place.CancelDt;
-                            dto.Status = place.Status;
+                            dto.PermVoc = place.PermVoc;
 
                             for (int i = 0; i < ManagerDTO.Count(); i++)
                             {
                                 dto.AdminList.Add(new ManagerListDTO
                                 {
+                                    Id = ManagerDTO[i].Id,
                                     UserId = ManagerDTO[i].UserId,
-                                    UserName = ManagerDTO[i].UserName,
-                                    AdminID = ManagerDTO[i].AdminID,
-                                    Type = ManagerDTO[i].Type,
-                                    Tel = ManagerDTO[i].Tel,
-                                    DepartmentIdx = ManagerDTO[i].DepartmentIdx,
-                                    DepartmentName = ManagerDTO[i].DepartmentName
+                                    Name = ManagerDTO[i].Name,
+                                    Department = ManagerDTO[i].Department
                                 });
                             }
 

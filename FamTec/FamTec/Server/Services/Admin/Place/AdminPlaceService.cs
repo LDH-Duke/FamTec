@@ -184,11 +184,11 @@ namespace FamTec.Server.Services.Admin.Place
                     PlaceTb? place = new PlaceTb
                     {
                         PlaceCd = dto.PlaceCd,
-                        ContractNum = dto.ContractNum,
                         Name = dto.Name,
-                        Note = dto.Note,
+                        Tel = dto.Tel,
                         Address = dto.Address,
-                        ContractDt = dto.ContractDT,
+                        ContractNum = dto.ContractNum,
+                        ContractDt = Convert.ToDateTime(dto.ContractDT),
                         PermMachine = dto.PermMachine,
                         PermLift = dto.PermLift,
                         PermFire = dto.PermFire,
@@ -198,8 +198,7 @@ namespace FamTec.Server.Services.Admin.Place
                         PermSecurity = dto.PermSecurity,
                         PermMaterial = dto.PermMaterial,
                         PermEnergy = dto.PermEnergy,
-                        CancelDt = dto.CancelDT,
-                        Status = dto.Status,
+                        PermVoc = dto.PermVoc,
                         CreateDt = DateTime.Now,
                         CreateUser = sessioninfo.Name,
                         UpdateDt = DateTime.Now,
@@ -212,13 +211,12 @@ namespace FamTec.Server.Services.Admin.Place
                     {
                         return AddPlaceResponseOBJ("사업장이 등록되었습니다.", new AddPlaceDTO
                         {
-                            ID = place_result.Id, // 사업장인덱스
                             PlaceCd = place_result.PlaceCd, // 사업장코드
-                            ContractNum = place_result.ContractNum, // 계약번호
                             Name = place_result.Name, // 사업장 이름
-                            Note = place_result.Note, // 비고
+                            Tel = place_result.Tel, // 전화번호
                             Address = place_result.Address, // 주소
-                            ContractDT = place_result.ContractDt, // 계약일자
+                            ContractNum = place_result.ContractNum, // 계약번호
+                            ContractDT = place_result.ContractDt.ToString(), // 계약일자
                             PermMachine = place_result.PermMachine, // 설비메뉴 권한
                             PermLift = place_result.PermLift, // 승강메뉴 권한
                             PermFire = place_result.PermFire, // 소방메뉴 권한
@@ -228,8 +226,7 @@ namespace FamTec.Server.Services.Admin.Place
                             PermSecurity = place_result.PermSecurity, // 보안메뉴 권한
                             PermMaterial = place_result.PermMaterial, // 자재메뉴 권한
                             PermEnergy = place_result.PermEnergy, // 에너지메뉴 권한
-                            CancelDT = place_result.CancelDt, // 해약일자
-                            Status = place_result.Status // 상태
+                            PermVoc = place_result.PermVoc // VOC 메뉴 권한
                         }, 200);
                     }
                     else

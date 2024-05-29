@@ -6,6 +6,7 @@ using FamTec.Server.Services.User;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
@@ -51,7 +52,7 @@ namespace FamTec.Server.Controllers.Admin
       
         [HttpPost]
         [Route("AddManager")]
-        public async ValueTask<IActionResult> AddManager([FromBody] ManagerLoginResultDTO dto)
+        public async ValueTask<IActionResult> AddManager([FromBody] AddManagerDTO dto)
         {
             /*
             AccountDTO dto = new AccountDTO()
@@ -73,7 +74,7 @@ namespace FamTec.Server.Controllers.Admin
                 PlaceIndex = 5
             });
             */
-            ResponseModel<ManagerLoginResultDTO>? model = await AdminService.AdminRegisterService(dto, session);
+            ResponseModel<AddManagerDTO>? model = await AdminService.AdminRegisterService(dto, session);
             return Ok(model);
         }
 

@@ -1,6 +1,5 @@
 ﻿@page "/admin/place"
 
-@using FamTec.Shared.Client.DTO
 @using FamTec.Client.Pages.Place.Components
 @using FamTec.Shared.Server
 @using FamTec.Shared.Server.DTO.Admin.Place
@@ -52,7 +51,7 @@
         * fetch 서버 요청
         */
         Console.WriteLine("매니저 조회 시작");
-        ResponseObj<AllPlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<AllPlaceDTO>>("https://127.0.0.1:7114/api/Place/allplace");
+        ResponseObj<AllPlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<AllPlaceDTO>>("https://127.0.0.1:7114/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
         Console.WriteLine(PlaceList.Count);
 

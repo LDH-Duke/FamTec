@@ -4,9 +4,9 @@ using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
 using FamTec.Shared;
-using FamTec.Shared.Client.DTO;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
@@ -26,6 +26,10 @@ namespace FamTec.Server.Services.Admin.Account
         Func<string, ManagerLoginResultDTO, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseOBJ;
         Func<string, List<ManagerLoginResultDTO>, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseList;
 
+        ResponseOBJ<AddManagerDTO> ResponseAdd;
+        Func<string, AddManagerDTO, int, ResponseModel<AddManagerDTO>> FuncResponseAdd;
+        
+
         public AdminAccountService(IUserInfoRepository _userinfoRepository, IAdminUserInfoRepository _admininfoRepository, IDepartmentInfoRepository _departmentinfoRepository, IPlaceInfoRepository _placeinfoRepository, IAdminPlacesInfoRepository _adminplaceinfoRepository)
         {
             UserInfoRepository = _userinfoRepository;
@@ -37,6 +41,9 @@ namespace FamTec.Server.Services.Admin.Account
             Response = new ResponseOBJ<ManagerLoginResultDTO>();
             FuncResponseOBJ = Response.RESPMessage;
             FuncResponseList = Response.RESPMessageList;
+
+            ResponseAdd = new ResponseOBJ<AddManagerDTO>();
+            FuncResponseAdd = ResponseAdd.RESPMessage;
         }
 
         /// <summary>
@@ -59,7 +66,7 @@ namespace FamTec.Server.Services.Admin.Account
                         {
                             // 관리자테이블 조회
                             AdminTb? admin = await AdminUserInfoRepository.GetAdminUserInfo(user.Id);
-
+                             
                             if (admin is not null)
                             {
                                 // LINQ - USERTB + 관리자TB 필요한것들 한번에 DTO넣어서 반환
@@ -136,7 +143,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminRegisterService(ManagerLoginResultDTO? dto, SessionInfo session)
+        public async ValueTask<ResponseModel<AddManagerDTO>> AdminRegisterService(AddManagerDTO? dto, SessionInfo session)
         {
             try
             {
@@ -144,11 +151,11 @@ namespace FamTec.Server.Services.Admin.Account
                 {
                     UserTb? usermodel = new UserTb
                     {
-                        UserId = dto.USERID,
-                        Name = dto.NAME,
-                        Password = dto.PASSWORD,
-                        Email = dto.EMAIL,
-                        Phone = dto.PHONE,
+                        UserId = dto.UserId,
+                        Name = dto.Name,
+                        Password = dto.Password,
+                        Email = dto.Email,
+                        Phone = dto.Phone,
                         PermBasic = 2,
                         PermMachine = 2,
                         PermLift = 2,
@@ -167,8 +174,7 @@ namespace FamTec.Server.Services.Admin.Account
                         CreateDt = DateTime.Now,
                         CreateUser = session.Name,
                         UpdateDt = DateTime.Now,
-                        UpdateUser = session.Name,
-                        Job = null,
+                        UpdateUser = session.Name
                     };
 
                     UserTb? userresult = await UserInfoRepository.AddAsync(usermodel);
@@ -186,39 +192,34 @@ namespace FamTec.Server.Services.Admin.Account
                         adminmodel.UpdateUser = session.Name;
                         adminmodel.DelYn = 0;
                         adminmodel.UserTbId = userresult.Id;
-                        adminmodel.DepartmentTbId = dto.DEPARTMENT_INDEX;
+                        adminmodel.DepartmentTbId = dto.DepartmentId;
 
                         AdminTb? adminresult = await AdminUserInfoRepository.AddAdminUserInfo(adminmodel);
 
-                        if (dto.placeDTO is not null && dto.placeDTO.Count > 0)
+                        return FuncResponseAdd("관리자 등록 완료.", new AddManagerDTO
                         {
-                            foreach (var item in dto.placeDTO)
-                            {
-                                AdminPlaceTb adminplace = new AdminPlaceTb();
-                                adminplace.CreateDt = DateTime.Now;
-                                adminplace.CreateUser = session.Name;
-                                adminplace.UpdateDt = DateTime.Now;
-                                adminplace.UpdateUser = session.Name;
-                                adminplace.DelYn = 0;
-                                adminplace.AdminTbId = adminresult!.Id;
-                                adminplace.PlaceId = item.PlaceIndex;
-
-                                //AdminPlaceTb? placeresult = await AdminPlacesInfoRepository.AddAsync(adminplace);
-                            }
-                        }
-                        
+                            UserId = userresult.UserId,
+                            Password = userresult.Password,
+                            Email = userresult.Email,
+                            Phone = userresult.Phone,
+                            Type = adminresult.Type,
+                            DepartmentId = adminresult.DepartmentTbId,
+                            Name = userresult.Name
+                        }, 200);
                     }
-                    return FuncResponseOBJ("관리자 등록 완료.", null, 200);
-                    //UserTb? searchtb = await UserInfoRepository.AddAsync()
+                    else
+                    {
+                        return FuncResponseAdd("관리자 등록 실패", new AddManagerDTO(), 200);
+                    }
                 }
                 else
                 {
-                    return FuncResponseOBJ("회원가입 정보가 잘못되었습니다.", null, 200);
+                    return FuncResponseAdd("요청이 잘못되었습니다.", new AddManagerDTO(), 404);
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ(ex.Message, null, 500);
+                return FuncResponseAdd("서버에서 요청을 처리하지 못하였습니다.", new AddManagerDTO(), 500);
             }
         }
 

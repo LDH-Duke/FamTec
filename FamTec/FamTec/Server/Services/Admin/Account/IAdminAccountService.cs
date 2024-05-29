@@ -1,5 +1,6 @@
 ﻿using FamTec.Shared;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 
@@ -20,7 +21,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminRegisterService(ManagerLoginResultDTO? dto, SessionInfo session);
+        public ValueTask<ResponseModel<AddManagerDTO>> AdminRegisterService(AddManagerDTO? dto, SessionInfo session);
 
     }
 }

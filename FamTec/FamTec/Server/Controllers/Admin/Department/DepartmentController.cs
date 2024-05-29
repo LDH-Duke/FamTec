@@ -29,9 +29,9 @@ namespace FamTec.Server.Controllers.Admin.Department
         /// <returns></returns>
         [HttpPost]
         [Route("AddDepartment")]
-        public async ValueTask<IActionResult> AddDepartment([FromBody] DepartmentDTO dto)
+        public async ValueTask<IActionResult> AddDepartment([FromBody] AddDepartmentDTO dto)
         {
-            ResponseModel<DepartmentDTO>? model = await DepartmentService.AddDepartmentService(dto, session);
+            ResponseModel<AddDepartmentDTO>? model = await DepartmentService.AddDepartmentService(dto, session);
             return Ok(model);
         }
 
@@ -52,7 +52,7 @@ namespace FamTec.Server.Controllers.Admin.Department
         /// </summary>
         /// <param name="selList"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut]
         [Route("DeleteDepartmentList")]
         public async ValueTask<IActionResult> DeleteDepartmentList([FromBody]List<int?> selList)
         {

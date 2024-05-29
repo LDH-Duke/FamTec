@@ -1,13 +1,13 @@
-﻿@using FamTec.Shared.Client.DTO
-@using System.ComponentModel.DataAnnotations
+﻿@using System.ComponentModel.DataAnnotations
 @using System.Reflection
+@using FamTec.Shared.Server.DTO.Admin.Place
 
 <div class="table-container">
     <div class="table-body">
         <table class="table">
             <thead class="thead">
                 <tr class="thead-tr tr">
-                    @foreach (var property in typeof(ManagerDTO).GetProperties())
+                    @foreach (var property in typeof(ManagerListDTO).GetProperties())
                     {
                         var displayAttribute = property.GetCustomAttribute<DisplayAttribute>();
                         var headerText = displayAttribute?.Name;
@@ -29,7 +29,7 @@
                 {
                     Console.WriteLine("동작");
                     <tr class="tbody-tr tr">
-                        @foreach (var property in typeof(ManagerDTO).GetProperties())
+                        @foreach (var property in typeof(ManagerListDTO).GetProperties())
                         {
                             Console.WriteLine(property.Name);
                             if (property.Name != "IsSelect" && property.Name !="Id")
@@ -60,7 +60,7 @@
 
 @code {
     [Parameter] public string? Title { get; set; }
-    [Parameter] public List<ManagerDTO>? DataList { get; set; }
+    [Parameter] public List<ManagerListDTO>? DataList { get; set; }
     [Parameter] public List<string>? Properties { get; set; }
     [Parameter] public EventCallback<object> Select { get; set; }
     [Parameter] public EventCallback<object> UnSelect { get; set; }

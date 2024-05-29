@@ -11,20 +11,11 @@ namespace FamTec.Shared.Server.DTO.Admin.Place
     /// </summary>
     public class AddPlaceDTO
     {
-        /// <summary>
-        /// 사업장 인덱스
-        /// </summary>
-        public int? ID { get; set; }
-
+   
         /// <summary>
         /// 사업장코드
         /// </summary>
         public string? PlaceCd { get; set; }
-
-        /// <summary>
-        /// 계약번호
-        /// </summary>
-        public string? ContractNum { get; set; }
 
         /// <summary>
         /// 사업장 명
@@ -32,9 +23,9 @@ namespace FamTec.Shared.Server.DTO.Admin.Place
         public string? Name { get; set; }
 
         /// <summary>
-        /// 비고값
+        /// 전화번호
         /// </summary>
-        public string? Note { get; set; }
+        public string? Tel { get; set; }
 
         /// <summary>
         /// 사업장 주소
@@ -42,64 +33,64 @@ namespace FamTec.Shared.Server.DTO.Admin.Place
         public string? Address { get; set; }
 
         /// <summary>
+        /// 계약번호
+        /// </summary>
+        public string? ContractNum { get; set; }
+
+        /// <summary>
         /// 계약일자
         /// </summary>
-        public DateTime? ContractDT { get; set; }
+        public string? ContractDT { get; set; }
 
         /// <summary>
         /// 설비메뉴 권한
         /// </summary>
-        public sbyte? PermMachine { get; set; }
+        public sbyte? PermMachine { get; set; } = 0;
 
         /// <summary>
         /// 승강메뉴 권한
         /// </summary>
-        public sbyte? PermLift { get; set; }
+        public sbyte? PermLift { get; set; } = 0;
 
         /// <summary>
         /// 소방메뉴 권한
         /// </summary>
-        public sbyte? PermFire { get; set; }
+        public sbyte? PermFire { get; set; } = 0;
 
         /// <summary>
         /// 건축메뉴 권한
         /// </summary>
-        public sbyte? PermConstruct { get; set; }
+        public sbyte? PermConstruct { get; set; } = 0;
 
         /// <summary>
         /// 통신메뉴 권한
         /// </summary>
-        public sbyte? PermNetwork { get; set; }
+        public sbyte? PermNetwork { get; set; } = 0;
 
         /// <summary>
         /// 미화 권한
         /// </summary>
-        public sbyte? PermBeauty { get; set; }
-        
+        public sbyte? PermBeauty { get; set; } = 0;
+
         /// <summary>
         /// 보안메뉴 권한
         /// </summary>
-        public sbyte? PermSecurity { get; set; }
+        public sbyte? PermSecurity { get; set; } = 0;
 
         /// <summary>
         /// 자재메뉴 권한
         /// </summary>
-        public sbyte? PermMaterial { get; set; }
+        public sbyte? PermMaterial { get; set; } = 0;
 
         /// <summary>
         /// 에너지메뉴 권한
         /// </summary>
-        public sbyte? PermEnergy { get; set; }
-        
-        /// <summary>
-        /// 해약일자
-        /// </summary>
-        public DateTime? CancelDT { get; set; }
+        public sbyte? PermEnergy { get; set; } = 0;
 
         /// <summary>
-        /// 상태
+        /// VOC 권한
         /// </summary>
-        public sbyte? Status { get; set; }
+        public sbyte? PermVoc { get; set; } = 0;
 
         /// <summary>
         /// 관리자리스트

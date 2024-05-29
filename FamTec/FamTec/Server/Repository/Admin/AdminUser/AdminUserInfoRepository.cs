@@ -91,14 +91,10 @@ namespace FamTec.Server.Repository.Admin.AdminUser
                     .Include(m => m.DepartmentTb)
                     .Select(m => new ManagerListDTO
                 {
-                    UserId = m.UserTb!.Id,
-                    UserName = m.UserTb.Name,
-                    Tel = m.UserTb.Phone,
-                    AdminID = m.Id,
-                    Type = m.Type,
-                    DepartmentIdx = m.DepartmentTb!.Id,
-                    DepartmentName = m.DepartmentTb.Name
-                    
+                    Id = m.UserTb!.Id,
+                    UserId = m.UserTb.UserId!,
+                    Name = m.UserTb.Name!,
+                    Department = m.DepartmentTb!.Name!
                 }).ToListAsync();
                 
                 if (model is [_, ..])

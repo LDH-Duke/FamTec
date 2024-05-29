@@ -15,8 +15,9 @@ namespace FamTec.Server.Services.Admin.Department
         Func<string, DepartmentDTO, int, ResponseModel<DepartmentDTO>> FuncResponseOBJ;
         Func<string, List<DepartmentDTO>, int, ResponseModel<DepartmentDTO>> FuncResponseList;
 
-        ResponseOBJ<string> strResponse;
-        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
+        ResponseOBJ<AddDepartmentDTO> ResponseAdd;
+        Func<string, AddDepartmentDTO, int, ResponseModel<AddDepartmentDTO>> FuncResponseAddOBJ;
+        Func<string, List<AddDepartmentDTO>, int, ResponseModel<AddDepartmentDTO>> FuncResponseAddList;
 
         public DepartmentService(IDepartmentInfoRepository _departmentinforepository)
         {
@@ -26,8 +27,10 @@ namespace FamTec.Server.Services.Admin.Department
             this.FuncResponseOBJ = Response.RESPMessage;
             this.FuncResponseList = Response.RESPMessageList;
 
-            this.strResponse = new ResponseOBJ<string>();
-            this.FuncResponseSTR = strResponse.RESPMessage;
+            this.ResponseAdd = new ResponseOBJ<AddDepartmentDTO>();
+            this.FuncResponseAddOBJ = ResponseAdd.RESPMessage;
+            this.FuncResponseAddList = ResponseAdd.RESPMessageList;
+
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="dto"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<DepartmentDTO>> AddDepartmentService(DepartmentDTO? dto, SessionInfo session)
+        public async ValueTask<ResponseModel<AddDepartmentDTO>> AddDepartmentService(AddDepartmentDTO? dto, SessionInfo session)
         {
             try
             {
@@ -59,30 +62,26 @@ namespace FamTec.Server.Services.Admin.Department
 
                         if(result is not null)
                         {
-                            return FuncResponseOBJ("요청이 정상 처리되었습니다.", new DepartmentDTO
-                            {
-                                ID = result.Id,
-                                Name = result.Name
-                            }, 200);
+                            return FuncResponseAddOBJ("요청이 정상 처리되었습니다.", new AddDepartmentDTO { Name = result.Name! }, 200);
                         }
                         else
                         {
-                            return FuncResponseOBJ("요청이 처리되지 않았습니다.", null, 200);
+                            return FuncResponseAddOBJ("요청이 처리되지 않았습니다.", new AddDepartmentDTO(), 200);
                         }
                     }
                     else
                     {
-                        return FuncResponseOBJ("이미 해당 부서가 존재합니다.", null, 200);
+                        return FuncResponseAddOBJ("이미 해당 부서가 존재합니다.", new AddDepartmentDTO(), 200);
                     }
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    return FuncResponseAddOBJ("요청이 잘못되었습니다.", new AddDepartmentDTO(), 404);
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ(ex.Message, null, 500);
+                return FuncResponseAddOBJ("서버에서 요청을 처리하지 못하였습니다.", new AddDepartmentDTO(), 500);
             }
         }
 
@@ -97,22 +96,23 @@ namespace FamTec.Server.Services.Admin.Department
             try
             {
                 List<DepartmentTb>? model = await DepartmentInfoRepository.GetAllList();
+
                 if(model is [_, ..])
                 {
                     return FuncResponseList("요청이 정상처리 되었습니다.", model.Select(e => new DepartmentDTO
                     {
-                        ID = e.Id,
+                        Id = e.Id,
                         Name = e.Name
                     }).ToList(), 200);
                 }
                 else
                 {
-                    return FuncResponseList("데이터가 존재하지 않습니다.", null, 200);
+                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", new DepartmentDTO(), 200);
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ(ex.Message, null, 500);
+                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", new DepartmentDTO(), 500);
             }
         }
 
@@ -167,7 +167,7 @@ namespace FamTec.Server.Services.Admin.Department
             {
                 if(dto is not null && session is not null)
                 {
-                    DepartmentTb? model = await DepartmentInfoRepository.GetDepartmentInfo(dto.ID);
+                    DepartmentTb? model = await DepartmentInfoRepository.GetDepartmentInfo(dto.Id);
                     
                     if(model is not null)
                     {
@@ -184,7 +184,7 @@ namespace FamTec.Server.Services.Admin.Department
                             {
                                 return FuncResponseOBJ("데이터 수정이 처리되었습니다.", new DepartmentDTO
                                 {
-                                    ID = model.Id,
+                                    Id = model.Id,
                                     Name = dto.Name
                                 }, 200);
                             }

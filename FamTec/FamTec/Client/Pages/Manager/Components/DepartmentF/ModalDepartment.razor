@@ -1,6 +1,8 @@
-﻿@using FamTec.Client.Pages.Manager.Components.Common
-@using FamTec.Shared.Client.DTO
+﻿@using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin
+@using FamTec.Client.Pages.Manager.Components.Common
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin
 @inject HttpClient HttpClient
 
 <div class="modaldepart-container yappear">
@@ -45,7 +47,7 @@
 
     // HttpClient httpClient = new HttpClient();
     List<DepartmentDTO> departmentList;
-    AddDepartment newDepartment = new AddDepartment();
+    AddDepartmentDTO newDepartment = new AddDepartmentDTO();
     List<int> deleteDepartment = new List<int>();
 
 
@@ -62,7 +64,8 @@
     {
         try
         {
-            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Admin/alldepartment");
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/DePartment/GetDepartmentList");
+        
             departmentList = resDepartment.data;
         }
         catch (Exception ex)
@@ -78,12 +81,12 @@
     {
         try
         {
-            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Admin/deletedepartment",deleteDepartment);
+            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Department/DeleteDepartmentList", deleteDepartment);
             if (resDelete.IsSuccessStatusCode)
             {
                 await LoadDepartments();
                 await OnListSync.InvokeAsync();
-                newDepartment = new AddDepartment();
+                newDepartment = new AddDepartmentDTO();
             }
             else
             {
@@ -119,14 +122,14 @@
         }
         else
         {
-            HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/Admin/adddepartment", newDepartment);
+            HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/Department/AddDepartment", newDepartment);
             Console.WriteLine(res);
 
             if (res.IsSuccessStatusCode)
             {
                 await LoadDepartments();
                 await OnListSync.InvokeAsync();
-                newDepartment = new AddDepartment();
+                newDepartment = new AddDepartmentDTO();
             }
             else
             {
