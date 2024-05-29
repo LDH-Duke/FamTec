@@ -4,10 +4,12 @@ using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
 using FamTec.Shared;
+using FamTec.Shared.Client.DTO;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
-using FamTec.Shared.Server.DTO.Admin;
+using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
+using FamTec.Shared.Server.DTO.Place;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace FamTec.Server.Services.Admin.Account
@@ -20,9 +22,9 @@ namespace FamTec.Server.Services.Admin.Account
         private readonly IPlaceInfoRepository PlaceInfoRepository;
         private readonly IAdminPlacesInfoRepository AdminPlacesInfoRepository;
 
-        ResponseOBJ<AccountDTO> Response;
-        Func<string, AccountDTO, int, ResponseModel<AccountDTO>> FuncResponseOBJ;
-        Func<string, List<AccountDTO>, int, ResponseModel<AccountDTO>> FuncResponseList;
+        ResponseOBJ<ManagerLoginResultDTO> Response;
+        Func<string, ManagerLoginResultDTO, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseOBJ;
+        Func<string, List<ManagerLoginResultDTO>, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseList;
 
         public AdminAccountService(IUserInfoRepository _userinfoRepository, IAdminUserInfoRepository _admininfoRepository, IDepartmentInfoRepository _departmentinfoRepository, IPlaceInfoRepository _placeinfoRepository, IAdminPlacesInfoRepository _adminplaceinfoRepository)
         {
@@ -32,7 +34,7 @@ namespace FamTec.Server.Services.Admin.Account
             PlaceInfoRepository = _placeinfoRepository;
             AdminPlacesInfoRepository = _adminplaceinfoRepository;
 
-            Response = new ResponseOBJ<AccountDTO>();
+            Response = new ResponseOBJ<ManagerLoginResultDTO>();
             FuncResponseOBJ = Response.RESPMessage;
             FuncResponseList = Response.RESPMessageList;
         }
@@ -43,7 +45,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="userid"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AccountDTO>> AdminLoginService(LoginDTO? dto)
+        public async ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminLoginService(LoginDTO? dto)
         {
             try
             {
@@ -64,22 +66,33 @@ namespace FamTec.Server.Services.Admin.Account
                                 DepartmentTb? dp = await DepartmentInfoRepository.GetDepartmentInfo(admin.DepartmentTbId);
                                 if (dp is not null)
                                 {
-                                    return FuncResponseOBJ("관리자 로그인 성공", new AccountDTO
+
+                                    ManagerLoginResultDTO account = new ManagerLoginResultDTO();
+                                    account.USER_INDEX = user.Id;
+                                    account.PASSWORD = user.Password;
+                                    account.NAME = user.Name;
+                                    account.EMAIL = user.Email;
+                                    account.PHONE = user.Phone;
+                                    account.ADMIN_YN = user.AdminYn;
+                                    account.ALRAM_YN = user.AlramYn;
+                                    account.STATUS = user.Status;
+                                    account.ADMIN_INDEX = admin.Id;
+                                    account.TYPE = admin.Type;
+                                    account.DEPARTMENT_INDEX = dp.Id;
+                                    account.DEPARTMENT_NAME = dp.Name;
+
+                                    // 로그인후 PlaceDTO 나오는것 다시 만들어야할듯.
+
+                                    List<PlacesDTO>? placedto = await AdminPlacesInfoRepository.GetLoginWorks(admin.Id);
+
+                                    if(placedto is [_, ..])
                                     {
-                                        USER_INDEX = user.Id,
-                                        USERID = user.UserId,
-                                        NAME = user.Name,
-                                        EMAIL = user.Email,
-                                        PHONE = user.Phone,
-                                        ADMIN_YN = user.AdminYn,
-                                        ALRAM_YN = user.AlramYn,
-                                        STATUS = user.Status,
-                                        JOB = user.Job,
-                                        ADMIN_INDEX = admin.Id,
-                                        TYPE = admin.Type,
-                                        DEPARTMENT_INDEX = dp.Id,
-                                        DEPARTMENT_NAME = dp.Name
-                                    }, 200);
+                                        for(int i = 0; i < placedto.Count; i++)
+                                        {
+                                            account.placeDTO!.Add(placedto[i]);
+                                        }
+                                    }
+                                    return FuncResponseOBJ("관리자 로그인 성공", account, 200);
                                 }
                                 else
                                 {
@@ -123,7 +136,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AccountDTO>> AdminRegisterService(AccountDTO? dto, SessionInfo session)
+        public async ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminRegisterService(ManagerLoginResultDTO? dto, SessionInfo session)
         {
             try
             {
@@ -190,7 +203,7 @@ namespace FamTec.Server.Services.Admin.Account
                                 adminplace.AdminTbId = adminresult!.Id;
                                 adminplace.PlaceId = item.PlaceIndex;
 
-                                AdminPlaceTb? placeresult = await AdminPlacesInfoRepository.AddAsync(adminplace);
+                                //AdminPlaceTb? placeresult = await AdminPlacesInfoRepository.AddAsync(adminplace);
                             }
                         }
                         

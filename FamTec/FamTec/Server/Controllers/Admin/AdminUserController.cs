@@ -6,7 +6,7 @@ using FamTec.Server.Services.User;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
-using FamTec.Shared.Server.DTO.Admin;
+using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
@@ -35,24 +35,23 @@ namespace FamTec.Server.Controllers.Admin
         }
 
 
-        // 로그인
+        /// <summary>
+        /// 로그인 * (확인함)
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
         public async ValueTask<IActionResult> Login([FromBody] LoginDTO dto)
         {
-
-            ResponseModel<AccountDTO>? model = await AdminService.AdminLoginService(dto);
+            ResponseModel<ManagerLoginResultDTO>? model = await AdminService.AdminLoginService(dto);
             return Ok(model);
         }
 
       
-
-        /*       -          MyWorks      - */
-       
-
         [HttpPost]
         [Route("AddManager")]
-        public async ValueTask<IActionResult> AddManager([FromBody] AccountDTO dto)
+        public async ValueTask<IActionResult> AddManager([FromBody] ManagerLoginResultDTO dto)
         {
             /*
             AccountDTO dto = new AccountDTO()
@@ -74,7 +73,7 @@ namespace FamTec.Server.Controllers.Admin
                 PlaceIndex = 5
             });
             */
-            ResponseModel<AccountDTO>? model = await AdminService.AdminRegisterService(dto, session);
+            ResponseModel<ManagerLoginResultDTO>? model = await AdminService.AdminRegisterService(dto, session);
             return Ok(model);
         }
 

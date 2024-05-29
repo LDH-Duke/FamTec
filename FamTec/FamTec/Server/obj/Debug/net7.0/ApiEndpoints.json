@@ -34,11 +34,17 @@
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "DetailWorks",
-    "RelativePath": "api/AdminPlace/DetailWorks",
+    "RelativePath": "api/AdminPlace/DetailWorks/{placeid}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "placeid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -64,11 +70,17 @@
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "GetMyWorks",
-    "RelativePath": "api/AdminPlace/MyWorks",
+    "RelativePath": "api/AdminPlace/MyWorks/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -91,7 +103,7 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Admin.AccountDTO",
+        "Type": "FamTec.Shared.Server.DTO.Admin.Place.ManagerLoginResultDTO",
         "IsRequired": true
       }
     ],
@@ -155,7 +167,7 @@
     "Parameters": [
       {
         "Name": "selList",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.Collections.Generic.List\u00601[[System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],
@@ -182,22 +194,6 @@
       {
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Admin.DepartmentDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.RoomController",
-    "Method": "DeleteRoomList",
-    "RelativePath": "api/Room/DeleteRoomList",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "selList",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": true
       }
     ],

@@ -8,6 +8,7 @@ using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace FamTec.Server.Repository.Admin.AdminPlaces
@@ -26,15 +27,17 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<AdminPlaceTb?> AddAsync(AdminPlaceTb? model)
+        public async ValueTask<bool?> AddAsync(List<AdminPlaceTb>? model)
         {
             try
             {
-                if (model is not null)
+                if (model is [_, ..])
                 {
-                    context.AdminPlaceTbs.Add(model);
-                    await context.SaveChangesAsync();
-                    return model;
+                    for (int i = 0; i < model.Count; i++)
+                    {
+                        context.AdminPlaceTbs.Add(model[i]);
+                    }
+                    return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
                 {
@@ -44,7 +47,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw;
+                return null;
             }
         }
 
@@ -152,6 +155,73 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                             {
                                 return null;
                             }
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 관리자 로그인후 해당관리자의 사업장리스트 반환
+        /// </summary>
+        /// <param name="adminid"></param>
+        /// <returns></returns>
+        public async ValueTask<List<PlacesDTO>?> GetLoginWorks(int? adminid)
+        {
+            try
+            {
+                if(adminid is not null)
+                {
+                    List<AdminPlaceTb>? adminplacetb = await context.AdminPlaceTbs.Where(m => m.AdminTbId == adminid && m.DelYn != 1).ToListAsync();
+
+                    if(adminplacetb is [_, ..])
+                    {
+
+                        List<PlacesDTO> dto = (from adminplc in adminplacetb
+                                               join placetb in context.PlaceTbs.Where(m => m.DelYn != 1).ToList()
+                                               on adminplc.PlaceId equals placetb.Id
+                                               select new PlacesDTO
+                                               {
+                                                   PlaceIndex = placetb.Id, // 사업장 인덱스
+                                                   PlaceCd = placetb.PlaceCd, // 사업장 코드
+                                                   CONTRACT_NUM = placetb.ContractNum, // 계약번호
+                                                   Name = placetb.Name, // 사업장명
+                                                   Note = placetb.Note, // 비고
+                                                   Address = placetb.Address, // 주소
+                                                   ContractDT = placetb.ContractDt, // 계약일자
+                                                   CancelDT = placetb.CancelDt, // 해약일자
+                                                   PermMachine = placetb.PermMachine, // 설비메뉴 권한
+                                                   PermLift = placetb.PermLift, // 승강메뉴 권한
+                                                   PermFire = placetb.PermFire, // 소방메뉴 권한
+                                                   PermConstruct = placetb.PermConstruct, // 건축메뉴 권한
+                                                   PermNetwork = placetb.PermNetwrok, // 통신메뉴 권한
+                                                   PermBeauty = placetb.PermBeauty, // 미화메뉴 권한
+                                                   PermSecurity = placetb.PermSecurity, // 보안메뉴 권한
+                                                   PermMaterial = placetb.PermMaterial, // 자재메뉴 권한
+                                                   PermEnergy = placetb.PermEnergy, // 에너지메뉴 권한
+                                                   Status = placetb.Status // 상태
+                                               }).ToList();
+
+                        if(dto is [_, ..])
+                        {
+                            return dto;
                         }
                         else
                         {

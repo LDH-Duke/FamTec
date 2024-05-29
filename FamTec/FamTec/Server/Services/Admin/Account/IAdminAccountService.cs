@@ -1,6 +1,6 @@
 ﻿using FamTec.Shared;
 using FamTec.Shared.DTO;
-using FamTec.Shared.Server.DTO.Admin;
+using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 
 namespace FamTec.Server.Services.Admin.Account
@@ -12,7 +12,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AccountDTO>> AdminLoginService(LoginDTO? dto);
+        public ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminLoginService(LoginDTO? dto);
 
         /// <summary>
         /// 관리자 아이디 생성 서비스
@@ -20,7 +20,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AccountDTO>> AdminRegisterService(AccountDTO? dto, SessionInfo session);
+        public ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminRegisterService(ManagerLoginResultDTO? dto, SessionInfo session);
 
     }
 }

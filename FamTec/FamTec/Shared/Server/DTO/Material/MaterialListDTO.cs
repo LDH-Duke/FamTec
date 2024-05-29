@@ -9,17 +9,17 @@ namespace FamTec.Shared.Server.DTO.Material
     public class MaterialListDTO
     {
         /// <summary>
-        /// 자재 INDEX
+        /// 자재(품목) INDEX
         /// </summary>
         public int ID { get; set; }
 
         /// <summary>
-        /// 자재 CODE
+        /// 자재(품목) CODE
         /// </summary>
         public string? MaterialCode { get; set; }
         
         /// <summary>
-        /// 자재명
+        /// 자재(품목)명
         /// </summary>
         public string? Name { get; set; }
 

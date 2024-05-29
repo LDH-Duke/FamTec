@@ -19,7 +19,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// 전체 사업장 조회
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseModel<PlacesDTO>> GetAllWorksService();
+        public ValueTask<ResponseModel<AllPlaceDTO>> GetAllWorksService();
 
         /// <summary>
         /// 전체 관리자리스트 반환
@@ -32,7 +32,15 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<string>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo);
+        public ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo);
+
+        /// <summary>
+        /// 사업장 등록시 관리자 등록
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="sessioninfo"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceAdminService(AddPlaceDTO? dto, SessionInfo? sessioninfo);
 
         /// <summary>
         /// 선택 사업장 삭제

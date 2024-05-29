@@ -17,8 +17,8 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="index"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<string>?> DeleteDepartmentService(List<int>? index, SessionInfo? session);
-
+        public ValueTask<ResponseModel<DepartmentDTO>?> DeleteDepartmentService(List<int?> index, SessionInfo? session);
+        
         /// <summary>
         /// 부서수정
         /// </summary>

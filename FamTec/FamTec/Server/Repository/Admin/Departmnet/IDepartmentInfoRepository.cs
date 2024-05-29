@@ -37,7 +37,7 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<bool?> DeleteDepartmentInfo(DepartmentTb? model);
+        ValueTask<bool?> DeleteDepartmentInfo(List<int?> selList, string? name);
 
         /// <summary>
         /// 부서수정

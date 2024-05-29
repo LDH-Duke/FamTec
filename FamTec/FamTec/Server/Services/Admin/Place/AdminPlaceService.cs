@@ -8,6 +8,7 @@ using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
 using Microsoft.IdentityModel.Abstractions;
+using Microsoft.JSInterop.Infrastructure;
 
 namespace FamTec.Server.Services.Admin.Place
 {
@@ -20,7 +21,11 @@ namespace FamTec.Server.Services.Admin.Place
         ResponseOBJ<PlacesDTO> Response;
         Func<string, PlacesDTO, int, ResponseModel<PlacesDTO>> FuncResponseOBJ;
         Func<string, List<PlacesDTO>, int, ResponseModel<PlacesDTO>> FuncResponseList;
-        
+
+        ResponseOBJ<AllPlaceDTO> ResponseAll;
+        Func<string, AllPlaceDTO, int, ResponseModel<AllPlaceDTO>> FuncResponseAll;
+        Func<string, List<AllPlaceDTO>, int, ResponseModel<AllPlaceDTO>> FuncResponseAllList;
+
         ResponseOBJ<AdminPlaceDTO> AdminPlaceResponse;
         Func<string, AdminPlaceDTO, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseOBJ;
         Func<string, List<AdminPlaceDTO>, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseList;
@@ -46,6 +51,10 @@ namespace FamTec.Server.Services.Admin.Place
             FuncResponseOBJ = Response.RESPMessage;
             FuncResponseList = Response.RESPMessageList;
 
+            ResponseAll = new ResponseOBJ<AllPlaceDTO>();
+            FuncResponseAll = ResponseAll.RESPMessage;
+            FuncResponseAllList = ResponseAll.RESPMessageList;
+
             AdminPlaceResponse = new ResponseOBJ<AdminPlaceDTO>();
             AdminPlaceResponseOBJ = AdminPlaceResponse.RESPMessage;
             AdminPlaceResponseList = AdminPlaceResponse.RESPMessageList;
@@ -66,7 +75,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// 전체사업장 조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<PlacesDTO>> GetAllWorksService()
+        public async ValueTask<ResponseModel<AllPlaceDTO>> GetAllWorksService()
         {
             try
             {
@@ -74,12 +83,11 @@ namespace FamTec.Server.Services.Admin.Place
 
                 if(model is [_, ..])
                 {
-                    return FuncResponseList("전체데이터 조회 성공", model.Select(e => new PlacesDTO
+                    return FuncResponseAllList("전체데이터 조회 성공", model.Select(e => new AllPlaceDTO
                     {
-                        PlaceIndex = e.Id,
-                        PlaceCd = e.PlaceCd,
-                        Name = e.Name,
-                        CONTRACT_NUM = e.ContractNum,
+                        PlaceID = e.Id,
+                        PlaceName = e.Name,
+                        ContractNum = e.ContractNum,
                         ContractDT = e.ContractDt,
                         CancelDT = e.CancelDt,
                         Status = e.Status
@@ -87,12 +95,12 @@ namespace FamTec.Server.Services.Admin.Place
                 }
                 else
                 {
-                    return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
+                    return FuncResponseAll("데이터가 존재하지 않습니다.", null, 200);
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return FuncResponseAll("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
         }
 
@@ -166,7 +174,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
         }
 
-        public async ValueTask<ResponseModel<string>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo)
+        public async ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo)
         {
             try
             {
@@ -199,38 +207,118 @@ namespace FamTec.Server.Services.Admin.Place
 
                     PlaceTb? place_result = await PlaceInfoRepository.AddPlaceInfo(place);
 
-                    int count = 0;
-
-                    for (int i = 0; i < dto.AdminList.Count; i++)
+                    if(place_result is not null)
                     {
-                        AdminPlaceTb? model = new AdminPlaceTb
+                        return AddPlaceResponseOBJ("사업장이 등록되었습니다.", new AddPlaceDTO
                         {
-                            CreateUser = sessioninfo.Name,
-                            CreateDt = DateTime.Now,
-                            UpdateUser = sessioninfo.Name,
-                            UpdateDt = DateTime.Now,
-                            AdminTbId = dto.AdminList[i].AdminID,
-                            PlaceId = place_result!.Id
-                        };
-
-                        AdminPlaceTb? result = await AdminPlaceInfoRepository.AddAsync(model);
-                        if (result is not null)
-                        {
-                            count++;
-                        }
+                            ID = place_result.Id, // 사업장인덱스
+                            PlaceCd = place_result.PlaceCd, // 사업장코드
+                            ContractNum = place_result.ContractNum, // 계약번호
+                            Name = place_result.Name, // 사업장 이름
+                            Note = place_result.Note, // 비고
+                            Address = place_result.Address, // 주소
+                            ContractDT = place_result.ContractDt, // 계약일자
+                            PermMachine = place_result.PermMachine, // 설비메뉴 권한
+                            PermLift = place_result.PermLift, // 승강메뉴 권한
+                            PermFire = place_result.PermFire, // 소방메뉴 권한
+                            PermConstruct = place_result.PermConstruct, // 건축메뉴 권한
+                            PermNetwork = place_result.PermNetwrok, // 통신메뉴 권한
+                            PermBeauty = place_result.PermBeauty, // 미화권한
+                            PermSecurity = place_result.PermSecurity, // 보안메뉴 권한
+                            PermMaterial = place_result.PermMaterial, // 자재메뉴 권한
+                            PermEnergy = place_result.PermEnergy, // 에너지메뉴 권한
+                            CancelDT = place_result.CancelDt, // 해약일자
+                            Status = place_result.Status // 상태
+                        }, 200);
                     }
-
-                    return FuncResponseSTR("사업장 등록완료.", count.ToString(), 200);
+                    else
+                    {
+                        return AddPlaceResponseOBJ("사업장 등록실패", null, 200);
+                    }
                 }
                 else
                 {
-                    return FuncResponseSTR("잘못된 요청입니다.", null, 404);
+                    return AddPlaceResponseOBJ("잘못된 요청입니다.", null, 404);
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return AddPlaceResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
+        }
+
+        public async ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceAdminService(AddPlaceDTO? dto, SessionInfo? sessioninfo)
+        {
+            /*
+                try
+                {
+                    int count = 0;
+
+                    List<AdminPlaceTb> adminplacetb = new List<AdminPlaceTb>();
+
+                    for (int i = 0; i < dto.AdminList.Count; i++)
+                    {
+                        adminplacetb.Add(new AdminPlaceTb
+                        {
+                            CreateDt = DateTime.Now,
+                            CreateUser = sessioninfo.Name,
+                            UpdateDt = DateTime.Now,
+                            UpdateUser = sessioninfo.Name,
+                            AdminTbId = dto.AdminList[i].AdminID,
+                            PlaceId = dto!.ID
+                        });
+                    }
+
+                    bool? result = await AdminPlaceInfoRepository.AddAsync(adminplacetb);
+
+                    if (result == true)
+                    {
+                        AddPlaceDTO? resultdto = new AddPlaceDTO();
+                        resultdto.ID = dto.ID;
+                        resultdto.PlaceCd = dto.PlaceCd;
+                        resultdto.ContractNum = dto.ContractNum;
+                        resultdto.Name = dto.Name;
+                        resultdto.Note = dto.Note;
+                        resultdto.Address = dto.Address;
+                        resultdto.ContractDT = dto.ContractDT;
+                        resultdto.PermMachine = dto.PermMachine;
+                        resultdto.PermLift = dto.PermLift;
+                        resultdto.PermFire = dto.PermFire;
+                        resultdto.PermConstruct = dto.PermConstruct;
+                        resultdto.PermNetwork = dto.PermNetwork;
+                        resultdto.PermBeauty = dto.PermBeauty;
+                        resultdto.PermSecurity = dto.PermSecurity;
+                        resultdto.PermMaterial = dto.PermMaterial;
+                        resultdto.PermEnergy = dto.PermEnergy;
+                        resultdto.CancelDT = dto.CancelDT;
+                        resultdto.Status = dto.Status;
+
+
+                        for(int i=0;i< adminplacetb.Count; i++)
+                        {
+                            resultdto.AdminList.Add(new ManagerListDTO
+                            {
+                                UserId = dto.AdminList[i].UserId,
+                                UserName = dto.AdminList[i].UserName,
+                            });
+                        }
+
+                        return AddPlaceResponseOBJ("사업장의 관리자가 등록되었습니다.", resultdto, 200);
+                    }
+                    else if (result == false)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                }
+            */
+            return null;
         }
 
         public async ValueTask<ResponseModel<AddPlaceDTO>?> GetPlaceService(int? placeid)
@@ -239,7 +327,7 @@ namespace FamTec.Server.Services.Admin.Place
             {
                 if (placeid is not null)
                 {
-                    AddPlaceDTO? model = await AdminPlaceInfoRepository.GetWorksInfo(7);
+                    AddPlaceDTO? model = await AdminPlaceInfoRepository.GetWorksInfo(placeid);
 
                     if (model is not null)
                         return AddPlaceResponseOBJ("데이터 조회 성공", model, 200);

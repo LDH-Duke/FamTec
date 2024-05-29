@@ -27,19 +27,19 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         }
         
         /// <summary>
-        /// 전체 사업장 리스트 조회
+        /// 전체 사업장 리스트 조회 * (확인함)
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllWorksList")]
         public async ValueTask<IActionResult> GetAllPlaceList()
         {
-            ResponseModel<PlacesDTO>? model = await AdminPlaceService.GetAllWorksService();
+            ResponseModel<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService();
             return Ok(model);
         }
 
         /// <summary>
-        /// 매니저리스트 전체 반환
+        /// 매니저리스트 전체 반환 * (확인함)
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -50,20 +50,29 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
             return Ok(model);
         }
 
-
+        /// <summary>
+        /// 선택된 매니저가 관리하는 사업장 LIST반환 * (확인함)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("MyWorks")]
-        public async ValueTask<IActionResult> GetMyWorks()
+        [Route("MyWorks/{id?}")]
+        public async ValueTask<IActionResult> GetMyWorks(int id)
         {
-            ResponseModel<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(7);
+            ResponseModel<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(id);
             return Ok(model);
         }
 
+        /// <summary>
+        /// 해당사업장을 관리하는 관리자 LIST 반환 * (확인함)
+        /// </summary>
+        /// <param name="placeid"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("DetailWorks")]
-        public async ValueTask<IActionResult> DetailWorks()
+        [Route("DetailWorks/{placeid?}")]
+        public async ValueTask<IActionResult> DetailWorks(int placeid)
         {
-            ResponseModel<AddPlaceDTO>? model = await AdminPlaceService.GetPlaceService(7);
+            ResponseModel<AddPlaceDTO>? model = await AdminPlaceService.GetPlaceService(placeid);
             return Ok(model);
         }
 
@@ -79,6 +88,11 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
             return Ok();
         }
         
+        /// <summary>
+        /// 사업장 생성시 관리자할당 * (확인함)
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AddWorks")]
         public async ValueTask<IActionResult> AddWorks([FromBody]AddPlaceDTO dto)
@@ -122,10 +136,16 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
                 DepartmentName = "융합1팀"
             });
             */
-            ResponseModel<string>? model = await AdminPlaceService.AddPlaceService(dto, session);
-            return Ok(model);
+            //ResponseModel<string>? model = await AdminPlaceService.AddPlaceService(dto, session);
+            //return Ok(model);
+            return Ok();
         }
 
+        /// <summary>
+        /// 사업장 자체를 삭제 * 확인함
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("DeleteWorks")]
         public async ValueTask<IActionResult> DeleteWorks([FromBody]List<int> placeidx)

@@ -48,17 +48,45 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteDepartmentInfo(DepartmentTb? model)
+        public async ValueTask<bool?> DeleteDepartmentInfo(List<int?> selList, string? name)
         {
             try
             {
-                if(model is not null)
+                if(selList is [_, ..] && !String.IsNullOrWhiteSpace(name))
                 {
-                    context.DepartmentTbs.Update(model);
+                    for (int i = 0; i < selList.Count; i++)
+                    {
+                        DepartmentTb? departmenttb = await context.DepartmentTbs.FirstOrDefaultAsync(m => m.Id == selList[i] && m.DelYn != 1);
+                        
+                        if (departmenttb is not null)
+                        {
+                            AdminTb? admintb = await context.AdminTbs.FirstOrDefaultAsync(m => m.DepartmentTbId == departmenttb.Id && m.DelYn != 1);
+                            
+                            if(admintb is null)
+                            {
+                                departmenttb.DelYn = 1;
+                                departmenttb.DelDt = DateTime.Now;
+                                departmenttb.DelUser = name;
+
+                                context.DepartmentTbs.Update(departmenttb);
+                            }
+                            else
+                            {
+                                // 할당된 사용자가 있음
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            // 부서가 없음
+                            return null;
+                        }
+                    }
                     return await context.SaveChangesAsync() > 0 ? true : false;
                 }
                 else
                 {
+                    // 조건이 잘못됨
                     return null;
                 }
             }

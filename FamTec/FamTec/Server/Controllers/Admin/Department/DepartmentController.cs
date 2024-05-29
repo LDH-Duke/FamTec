@@ -22,7 +22,11 @@ namespace FamTec.Server.Controllers.Admin.Department
             session = new SessionInfo();
         }
 
-        // 부서추가
+        /// <summary>
+        /// 부서추가 * 확인함
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AddDepartment")]
         public async ValueTask<IActionResult> AddDepartment([FromBody] DepartmentDTO dto)
@@ -31,7 +35,10 @@ namespace FamTec.Server.Controllers.Admin.Department
             return Ok(model);
         }
 
-        // 부서 전체조회
+        /// <summary>
+        /// 부서 전체조회 * 확인함
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetDepartmentList")]
         public async ValueTask<IActionResult> GetAllDepartment()
@@ -40,16 +47,25 @@ namespace FamTec.Server.Controllers.Admin.Department
             return Ok(model);
         }
 
-        // 부서삭제
+        /// <summary>
+        /// 부서삭제 * 확인함
+        /// </summary>
+        /// <param name="selList"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("DeleteDepartmentList")]
-        public async ValueTask<IActionResult> DeleteDepartmentList([FromBody]List<int> selList)
+        public async ValueTask<IActionResult> DeleteDepartmentList([FromBody]List<int?> selList)
         {
-            ResponseModel<string>? model = await DepartmentService.DeleteDepartmentService(selList, session);
+            //List<int?> selList = new List<int?> { 5, 6, 7};
+            ResponseModel<DepartmentDTO>? model = await DepartmentService.DeleteDepartmentService(selList, session);
             return Ok(model);
         }
 
-        // 부서수정
+        /// <summary>
+        /// 부서수정 * 확인함
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("UpdateDepartment")]
         public async ValueTask<IActionResult> UpdateDepartment([FromBody]DepartmentDTO dto)

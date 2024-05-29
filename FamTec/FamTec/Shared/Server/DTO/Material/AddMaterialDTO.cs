@@ -9,7 +9,7 @@ namespace FamTec.Shared.Server.DTO.Material
     public class AddMaterialDTO
     {
         /// <summary>
-        /// 자재 INDEX
+        /// 자재(품목) INDEX
         /// </summary>
         public int ID { get; set; }
 
@@ -52,5 +52,7 @@ namespace FamTec.Shared.Server.DTO.Material
         /// 재고위치
         /// </summary>
         public int? RoomIdx { get; set; }
+
+
     }
 }

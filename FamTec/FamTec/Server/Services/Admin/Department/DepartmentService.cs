@@ -122,43 +122,36 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="index"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<string>?> DeleteDepartmentService(List<int>? index, SessionInfo? session)
+        public async ValueTask<ResponseModel<DepartmentDTO>?> DeleteDepartmentService(List<int?> index, SessionInfo? session)
         {
             try
             {
                 if(index is [_, ..] && session is not null)
                 {
-                    int count = 0;
+                    bool? result = await DepartmentInfoRepository.DeleteDepartmentInfo(index, session.Name);
 
-                    for (int i = 0; i < index.Count; i++)
+                    if(result == true)
                     {
-                        DepartmentTb? model = await DepartmentInfoRepository.GetDepartmentInfo(index[i]);
-
-                        if(model is not null)
-                        {
-                            model.DelYn = 1;
-                            model.DelDt = DateTime.Now;
-                            model.DelUser = session.Name;
-
-                            bool? result = await DepartmentInfoRepository.DeleteDepartmentInfo(model);
-
-                            if (result == true)
-                            {
-                                count++;
-                            }
-                        }
+                        return FuncResponseOBJ("데이터 삭제완료", null, 200);
                     }
-                    return FuncResponseSTR("데이터 삭제완료", count.ToString(), 200);
+                    else if(result == false)
+                    {
+                        return FuncResponseOBJ("데이터 삭제실패", null, 200);
+                    }
+                    else
+                    {
+                        return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    }
                 }
                 else
                 {
-                    return FuncResponseSTR("요청이 잘못되었습니다.", null, 404);
+                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
                 }
 
             }
             catch(Exception ex)
             {
-                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
             }
         }
 
