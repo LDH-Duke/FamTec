@@ -1,11 +1,5 @@
-<<<<<<< HEAD:FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/AddModal.razor
-﻿@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Client.DTO
 @using FamTec.Client.Pages.Admin.CommonComponents
-=======
-﻿@using FamTec.Client.Pages.Place.Main.Components
-@using FamTec.Shared.Server.DTO.Admin.Place
->>>>>>> Temp:FamTec/FamTec/Client/Pages/Place/Components/AddModal.razor
-
 
 <div class="placemodal-backgroud appear">
     <div class="placemodal-container yappear ">
@@ -41,7 +35,7 @@
                                 <InputField Label="계약일자"
                                             InputType="date"
                                             Placeholder="계약일자"
-                                            @bind-Value="@placeInfo.ContractDT" />
+                                            @bind-Value="@placeInfo.ContractDt" />
                             </div>
                             <div class="placemodal-toggle">
                                 <Toggle Title="기계설비 권한" @bind-Value="@placeInfo.PermMachine"/>
@@ -114,7 +108,7 @@
     [Parameter] public EventCallback<bool> OnClose { get; set; }
 
     List<int> selectedManagerIds = new List<int>();
-    List<ManagerListDTO> ManagerList = new List<ManagerListDTO>();
+    List<ManagerDTO> ManagerList = new List<ManagerDTO>();
 
     AddPlaceDTO placeInfo = new AddPlaceDTO();
 
@@ -159,7 +153,7 @@
         Console.WriteLine("전화번호" + placeInfo.Tel);
         Console.WriteLine("주소" + placeInfo.Address);
         Console.WriteLine("계약번호" + placeInfo.ContractNum);
-        Console.WriteLine("계약일자" + placeInfo.ContractDT);
+        Console.WriteLine("계약일자" + placeInfo.ContractDt);
         Console.WriteLine("기계"+placeInfo.PermMachine);
         Console.WriteLine("승강"+placeInfo.PermLift);
         Console.WriteLine("소방"+placeInfo.PermFire);
@@ -175,7 +169,7 @@
     /*
     * 매니저 추가 로드
     */
-    private void OnAddManagerListChanged(List<ManagerListDTO> updatedManagerList)
+    private void OnAddManagerListChanged(List<ManagerDTO> updatedManagerList)
     {
         ManagerList = updatedManagerList;
         StateHasChanged();

@@ -1,13 +1,8 @@
 ﻿@page "/admin/manager/signup"
-<<<<<<< HEAD:FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/ManagerSignUp.razor
+
 @using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Client.Pages.Admin.Manager.ManagerSignup.Components
 @using FamTec.Shared.Client.DTO
-=======
-@using FamTec.Shared.Server.DTO.Admin
-@using FamTec.Client.Pages.Manager.Signup.Components
-@using FamTec.Client.Pages.Manager.Components
->>>>>>> Temp:FamTec/FamTec/Client/Pages/Manager/Signup/ManagerSignUp.razor
 @using FamTec.Shared.Server
 
 @inject HttpClient HttpClient
@@ -48,9 +43,9 @@
         try
         {
             ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/DePartment/GetDepartmentList");
-
             departmetnList = resDepartment.data;
-        }catch(Exception ex)
+        }
+        catch(Exception ex)
         {
             Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러" + ex);
         }
@@ -70,7 +65,6 @@
         Console.WriteLine(newManager.PlaceList);
         Console.WriteLine("매니저 정보 끝");
 
-        //HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addmanager",newManager);
         HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminUser/AddManager", newManager);
         if (res.IsSuccessStatusCode)
         {

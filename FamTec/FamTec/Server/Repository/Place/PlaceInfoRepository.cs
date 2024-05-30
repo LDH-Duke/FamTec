@@ -1,5 +1,4 @@
-﻿using FamTec.Client.Pages.Place;
-using FamTec.Server.Databases;
+﻿using FamTec.Server.Databases;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

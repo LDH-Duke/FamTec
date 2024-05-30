@@ -1,5 +1,73 @@
 [
   {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "AddDepartment",
+    "RelativePath": "api/Admin/adddepartment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "department",
+        "Type": "FamTec.Shared.Client.DTO.AddDepartmentDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "AddManager",
+    "RelativePath": "api/Admin/addmanager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "manager",
+        "Type": "FamTec.Shared.Client.DTO.AddManagerDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "FindAllDepartment",
+    "RelativePath": "api/Admin/alldepartment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "FindAllManager",
+    "RelativePath": "api/Admin/allmanager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "DeleteDepartment",
+    "RelativePath": "api/Admin/deletedepartment",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "delData",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "AddWorks",
     "RelativePath": "api/AdminPlace/AddWorks",
