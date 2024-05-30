@@ -1,0 +1,19 @@
+.placedetail-container[b-u2r3mc6cc1]{
+    display: flex;
+    flex-direction : column;
+    width:100%;
+    height:100%;
+
+    gap:1.2rem;
+}
+
+.placedetail-container .placedetail-wrap[b-u2r3mc6cc1]{
+    display:flex;
+    height:100%;
+    background-color : #f6dc86;
+}
+
+.placedetail-container .placedetail-btns[b-u2r3mc6cc1]{
+    height:50px;
+    background-color:#f6dc86
+}

@@ -1,15 +1,16 @@
 ﻿@using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
+@inject HttpClient HttpClient
 
 <div class="addmanager-modal-container yappear">
     <div class="addmanager-modal-wrap">
         <div class="addmanager-modal-title">
             매니저 조회
         </div>
-        <Input Placeholder="Search" />
+        <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
         <div class="addmanager-modal-item">
-            <Table DataList="ManagerList" ReturnType="object" SelectItem="OnSelectedItem" />
+            <Table DataList="FilterManagerList" ReturnType="object" SelectItem="OnSelectedItem" />
         </div>
         @* <div class="addmanager-modal-content">
             
@@ -33,16 +34,20 @@
     List<ManagerDTO> ManagerList;
     List<object> placeManagerList;
     List<string> properties;
-    public HttpClient httpClient = new HttpClient();
+
+
+    //검색 변수
+    List<ManagerDTO> FilterManagerList = new List<ManagerDTO>();
+    string searchText = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
         /*
         * 현재 매니저 목록 조회 Fetch Get
         */
-        ResponseObj<ManagerDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
-    
+        ResponseObj<ManagerDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
         ManagerList = res.data;
+        FilterManagerList = ManagerList;
 
     }
 
@@ -69,6 +74,21 @@
             }
         }
         
+    }
+
+     /*
+     * 검색 데이터 필터링
+    */
+    private void OnSearchTextChanged(string text)
+    {
+        // searchText = e.Value.ToString();
+        searchText = text;
+        FilterManagerList = string.IsNullOrEmpty(searchText)
+            ? ManagerList
+            : ManagerList.Where(p => p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.UserId.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.Department.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
     }
 
     private async Task OnConfirm()

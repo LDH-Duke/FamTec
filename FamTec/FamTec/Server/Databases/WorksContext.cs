@@ -47,7 +47,7 @@ public partial class WorksContext : DbContext
     public virtual DbSet<UserTb> UserTbs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=123.2.156.122,3306;database=WORKS;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
+        => optionsBuilder.UseMySql("server=127.0.0.1; port=3307;database=works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -180,6 +180,7 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermNetwrok).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermVoc).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
         });

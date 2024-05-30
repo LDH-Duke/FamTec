@@ -80,24 +80,33 @@ namespace FamTec.Server.Services.Admin.Place
             try
             {
                 List<PlaceTb>? model = await PlaceInfoRepository.GetAllList();
-
-                if(model is [_, ..])
+                return FuncResponseAllList("전체데이터 조회 성공", model.Select(e => new AllPlaceDTO
                 {
-                    return FuncResponseAllList("전체데이터 조회 성공", model.Select(e => new AllPlaceDTO
-                    {
-                        Id = e.Id,
-                        PlaceCd = e.PlaceCd,
-                        Name = e.Name,
-                        Note = e.Note,
-                        ContractNum = e.ContractNum,
-                        ContractDt = e.ContractDt,
-                        Status = e.Status
-                    }).ToList(), 200);
-                }
-                else
-                {
-                    return FuncResponseAll("데이터가 존재하지 않습니다.", null, 200);
-                }
+                    Id = e.Id,
+                    PlaceCd = e.PlaceCd,
+                    Name = e.Name,
+                    Note = e.Note,
+                    ContractNum = e.ContractNum,
+                    ContractDt = e.ContractDt,
+                    Status = e.Status
+                }).ToList(), 200);
+                //if (model is [_, ..])
+                //{
+                //    return FuncResponseAllList("전체데이터 조회 성공", model.Select(e => new AllPlaceDTO
+                //    {
+                //        Id = e.Id,
+                //        PlaceCd = e.PlaceCd,
+                //        Name = e.Name,
+                //        Note = e.Note,
+                //        ContractNum = e.ContractNum,
+                //        ContractDt = e.ContractDt,
+                //        Status = e.Status
+                //    }).ToList(), 200);
+                //}
+                //else
+                //{
+                //    return FuncResponseAll("데이터가 존재하지 않습니다.", null, 200);
+                //}
             }
             catch(Exception ex)
             {

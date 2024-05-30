@@ -272,6 +272,72 @@
     grid-area : checkbox;
     place-self :center;
 }
+/* /Pages/Admin/CommonComponents/SortTable.razor.rz.scp.css */
+.table-container[b-w9u4qq45j3]{
+    width:100%;
+    table-layout : fixed;
+    padding : 0.8rem;
+}
+
+.table-container .table-head[b-w9u4qq45j3]{
+    position:sticky;
+    top:0;
+    box-shadow: 0 8px 12px -2px #a1a1a1;
+}
+
+.table-container .thead-tr[b-w9u4qq45j3]{
+    background-color:#200d69;
+    border-radius: 4px;
+}
+
+.table-container .table-th[b-w9u4qq45j3]{
+    color:#ffffff;
+    padding:0.8rem;
+    font-size:0.8rem;
+    font-weight:bold;
+    white-space : nowrap;
+}
+
+/*
+    테이블 헤더 둥글게
+*/
+.table-container .table-th:first-child[b-w9u4qq45j3] {
+    border-radius: 4px 0 0 4px;
+}
+
+.table-container .table-th:last-child[b-w9u4qq45j3] {
+    border-radius: 0 4px 4px 0;
+}
+/* 둥글게 끝*/
+
+.table-container .table-body[b-w9u4qq45j3]{
+    overflow:auto;
+}
+
+.table-container .tbody-tr[b-w9u4qq45j3]{
+    border-bottom : 1px solid #200d694a;
+}
+
+
+.table-container .tbody-tr:hover td[b-w9u4qq45j3]{
+    background-color:#f0edfe;
+    
+}
+
+.table-container .table-td[b-w9u4qq45j3]{
+    text-overflow: ellipsis;
+    /*overflow:hidden;*/
+    white-space: nowrap;
+    word-break:break-all;
+
+    padding:0.8rem;
+
+    
+    text-align: center;
+    font-size:0.8rem;
+    font-weight:bold;
+    color : #200d69;
+}
 /* /Pages/Admin/CommonComponents/Table.razor.rz.scp.css */
 .table-container[b-iozvmum305]{
     width:100%;
@@ -336,6 +402,10 @@
     text-align: center;
     font-size:0.8rem;
     font-weight:bold;
+    color : #200d69;
+}
+
+.table-container[b-iozvmum305]  .table-td-link {
     color : #200d69;
 }
 /* /Pages/Admin/CommonComponents/Toggle.razor.rz.scp.css */
@@ -750,6 +820,8 @@
 }
 
 .placetable-container .placetable-title[b-04bohbjrnl]{
+    display:flex;
+    justify-content:space-between;
     font-size : 1.2rem;
     font-weight : bold;
 
@@ -864,6 +936,26 @@
     grid-gap: 1.2rem;
 }
 */
+/* /Pages/Admin/Place/PlaceDetail/PlaceDetail.razor.rz.scp.css */
+.placedetail-container[b-u2r3mc6cc1]{
+    display: flex;
+    flex-direction : column;
+    width:100%;
+    height:100%;
+
+    gap:1.2rem;
+}
+
+.placedetail-container .placedetail-wrap[b-u2r3mc6cc1]{
+    display:flex;
+    height:100%;
+    background-color : #f6dc86;
+}
+
+.placedetail-container .placedetail-btns[b-u2r3mc6cc1]{
+    height:50px;
+    background-color:#f6dc86
+}
 /* /Pages/Admin/Place/PlaceMain/Components/NotUse/Tableheaderbody.razor.rz.scp.css */
 .table-container[b-lhn55j9vfe] {
     display: flex;

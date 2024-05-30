@@ -1,0 +1,28 @@
+﻿.placedetail-container{
+    display: flex;
+    flex-direction : column;
+    width:100%;
+    height:100%;
+
+    gap:1.2rem;
+}
+/*
+    정보 영역
+*/
+.placedetail-container .placedetail-wrap{
+    display:flex;
+    height:100%;
+    background-color : #f6dc86;
+}
+
+.placedetail-container .placedetail-info{
+
+}
+
+/*
+    버튼 영역
+*/
+.placedetail-container .placedetail-btns{
+    height:50px;
+    background-color:#f6dc86
+}

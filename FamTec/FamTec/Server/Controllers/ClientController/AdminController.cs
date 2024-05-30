@@ -182,6 +182,11 @@ namespace FamTec.Server.Controllers.ClientController
             }
         }
 
+        /// <summary>
+        /// 부서 삭제
+        /// </summary>
+        /// <param name="delData"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("deletedepartment")]
         public async Task<IActionResult> DeleteDepartment([FromBody] List<int> delData)

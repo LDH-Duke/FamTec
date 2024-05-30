@@ -34,9 +34,21 @@
                     {
                         if (property.Name != "IsSelect" && property.Name != "Id")
                         {
-                            <td class="table-td">@property.GetValue(item)</td>
+                            if(property.Name == "Name" && Detail)
+                            {
+                                var idValue = item.GetType().GetProperty("Id").GetValue(item);
+                                var link = $"/admin/place/{idValue}";
+                                <td class="table-td">
+                                    <NavLink class="table-td-link" href=@link>
+                                        @property.GetValue(item)
+                                    </NavLink>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="table-td">@property.GetValue(item)</td>
+                            }
                         }
-
                         else if (property.Name == "Id")
                         {
 
@@ -44,9 +56,12 @@
                         else
                         {
                             var idValue = (int)item.GetType().GetProperty("Id").GetValue(item);
+                            bool isChecked = CheckedItems.Contains(idValue);
+
                             <td class="table-td">
                                 <input type="checkbox"
                                        value="@idValue"
+                                       checked="@isChecked"
                                        @onchange="e=> InVokeCheckboxSelect(e,idValue, item)" />
                             </td>
                         }
@@ -65,13 +80,23 @@
     [Parameter] public List<T> DataList { get; set; }
     [Parameter] public EventCallback<(bool, int)> Select { get; set; }
     [Parameter] public EventCallback<(bool, object)> SelectItem { get; set; }
+    [Parameter] public bool Detail { get; set; } = false;
     [Parameter] public string ReturnType { get; set; }
+
+    private HashSet<int> CheckedItems = new HashSet<int>();
 
     private async Task InVokeCheckboxSelect(ChangeEventArgs e, int id,T item)
     {
         bool isChecked = (bool)(e.Value ?? false);
         Console.WriteLine("체크 index값 : "+ id);
-
+        if (isChecked)
+        {
+            CheckedItems.Add(id);
+        }
+        else
+        {
+            CheckedItems.Remove(id);
+        }
 
         if (ReturnType == "object")
         {

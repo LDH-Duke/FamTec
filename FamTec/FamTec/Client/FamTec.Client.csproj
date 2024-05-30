@@ -30,8 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Admin\Place\PlaceEdit\" />
     <Folder Include="Pages\User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Admin\CommonComponents\SortTable.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

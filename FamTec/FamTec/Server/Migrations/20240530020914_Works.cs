@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FamTec.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Works : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
-                .Annotation("MySql:CharSet", "utf8mb3");
+                .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "department_tb",
@@ -21,25 +21,25 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3")
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.ID);
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "material_tb",
@@ -47,38 +47,39 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false, comment: "자재 인덱스")
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CATEGORY = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    TYPE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    MATERIAL_CODE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    UNIT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    STANDARD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    MFR = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, comment: "제조사", collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CATEGORY = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TYPE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MATERIAL_CODE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    UNIT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    STANDARD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    MFR = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, comment: "제조사", collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     SAFE_NUM = table.Column<int>(type: "int(11)", nullable: true),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3")
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PLACE_ID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.ID);
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "place_tb",
@@ -86,16 +87,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PLACE_CD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    CONTRACT_NUM = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    NOTE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    ADDRESS = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    PLACE_CD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CONTRACT_NUM = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TEL = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NOTE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ADDRESS = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CONTRACT_DT = table.Column<DateTime>(type: "datetime", nullable: true),
                     PERM_MACHINE = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     PERM_LIFT = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
@@ -106,26 +109,26 @@ namespace FamTec.Server.Migrations
                     PERM_SECURITY = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     PERM_MATERIAL = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     PERM_ENERGY = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
-                    PERM_VOC = table.Column<sbyte>(type: "tinyint(4)", nullable: true),
+                    PERM_VOC = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     CANCEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
                     STATUS = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'1'"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3")
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PRIMARY", x => x.ID);
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "building_tb",
@@ -133,23 +136,23 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    BUILDING_CD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    ADDRESS = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    TEL = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    USAGE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    CONST_COMP = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    BUILDING_CD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ADDRESS = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TEL = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    USAGE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CONST_COMP = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     COMPLETION_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    BUILDING_STRUCT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    ROOF_STRUCT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    BUILDING_STRUCT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ROOF_STRUCT = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     GROSS_FLOOR_AREA = table.Column<float>(type: "float", nullable: true),
                     LAND_AREA = table.Column<float>(type: "float", nullable: true),
                     BUILDING_AREA = table.Column<float>(type: "float", nullable: true),
@@ -183,19 +186,19 @@ namespace FamTec.Server.Migrations
                     TOILET_NUM = table.Column<int>(type: "int(11)", nullable: true),
                     MEN_TOILET_NUM = table.Column<int>(type: "int(11)", nullable: true),
                     WOMEN_TOILET_NUM = table.Column<int>(type: "int(11)", nullable: true),
-                    FIRE_RATING = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    FIRE_RATING = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     SEPTIC_TANK_CAPACITY = table.Column<float>(type: "float", nullable: true),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PLACE_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -207,8 +210,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "place_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "unit_tb",
@@ -216,18 +219,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    UNIT = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UNIT = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PLACE_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -239,8 +242,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "place_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "user_tb",
@@ -248,18 +251,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    USER_ID = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    PASSWORD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    JOB = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    EMAIL = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    PHONE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    USER_ID = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PASSWORD = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    JOB = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EMAIL = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PHONE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PERM_BASIC = table.Column<int>(type: "int(11)", nullable: true, defaultValueSql: "'0'"),
                     PERM_MACHINE = table.Column<int>(type: "int(11)", nullable: true, defaultValueSql: "'0'"),
                     PERM_LIFT = table.Column<int>(type: "int(11)", nullable: true, defaultValueSql: "'0'"),
@@ -276,15 +279,15 @@ namespace FamTec.Server.Migrations
                     ALRAM_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     STATUS = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'1'"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PLACE_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -296,8 +299,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "place_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "floor_tb",
@@ -305,18 +308,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     BUILDING_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -328,8 +331,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "building_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "meter_reader_tb",
@@ -337,22 +340,22 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CATEGORY = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    TYPE = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, comment: "계약종별", collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
-                    METER_ITEM = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CATEGORY = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TYPE = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, comment: "계약종별", collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    METER_ITEM = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     BUILDING_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -364,8 +367,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "building_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "admin_tb",
@@ -373,18 +376,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    TYPE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    TYPE = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     USER_TB_ID = table.Column<int>(type: "int(11)", nullable: true),
                     DEPARTMENT_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
@@ -402,8 +405,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "user_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "room_tb",
@@ -411,18 +414,18 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    NAME = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     FLOOR_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -434,8 +437,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "floor_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "energy_month_usage_tb",
@@ -466,8 +469,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "meter_reader_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "meter_item_tb",
@@ -475,19 +478,19 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    METER_ITEM = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, comment: "검침항목", collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    METER_ITEM = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, comment: "검침항목", collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     ACCUM_USAGE = table.Column<float>(type: "float", nullable: true),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     METER_READER_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -499,8 +502,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "meter_reader_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "admin_place_tb",
@@ -509,15 +512,15 @@ namespace FamTec.Server.Migrations
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     ADMIN_TB_ID = table.Column<int>(type: "int(11)", nullable: true),
                     PLACE_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
@@ -535,8 +538,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "place_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "store_tb",
@@ -544,21 +547,21 @@ namespace FamTec.Server.Migrations
                 {
                     ID = table.Column<int>(type: "int(11)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    CATEGORY = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CATEGORY = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     NUM = table.Column<int>(type: "int(11)", nullable: true),
-                    UNIT_PRICE = table.Column<float>(type: "float", nullable: true, comment: "단가\n"),
-                    PRICE = table.Column<float>(type: "float", nullable: true, comment: "금액\n"),
+                    UNIT_PRICE = table.Column<float>(type: "float", nullable: true, comment: "단가\\n"),
+                    PRICE = table.Column<float>(type: "float", nullable: true, comment: "금액\\n"),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     MATERIAL_TB_ID = table.Column<int>(type: "int(11)", nullable: true),
                     ROOM_TB_ID = table.Column<int>(type: "int(11)", nullable: true),
                     BUILDING_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
@@ -582,8 +585,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "room_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateTable(
                 name: "energy_usage_tb",
@@ -594,15 +597,15 @@ namespace FamTec.Server.Migrations
                     USAGE = table.Column<float>(type: "float", nullable: true),
                     METER_DT = table.Column<DateTime>(type: "datetime", nullable: true),
                     CREATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    CREATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     UPDATE_DT = table.Column<DateTime>(type: "datetime", nullable: true, defaultValueSql: "current_timestamp()"),
-                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    UPDATE_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DEL_YN = table.Column<sbyte>(type: "tinyint(4)", nullable: true, defaultValueSql: "'0'"),
                     DEL_DT = table.Column<DateTime>(type: "datetime", nullable: true),
-                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb3_general_ci")
-                        .Annotation("MySql:CharSet", "utf8mb3"),
+                    DEL_USER = table.Column<string>(type: "varchar(45)", maxLength: 45, nullable: true, collation: "utf8mb4_general_ci")
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     METER_ITEM_TB_ID = table.Column<int>(type: "int(11)", nullable: true)
                 },
                 constraints: table =>
@@ -614,8 +617,8 @@ namespace FamTec.Server.Migrations
                         principalTable: "meter_item_tb",
                         principalColumn: "ID");
                 })
-                .Annotation("MySql:CharSet", "utf8mb3")
-                .Annotation("Relational:Collation", "utf8mb3_general_ci");
+                .Annotation("MySql:CharSet", "utf8mb4")
+                .Annotation("Relational:Collation", "utf8mb4_general_ci");
 
             migrationBuilder.CreateIndex(
                 name: "fk_ADMIN_TB_has_PLACE_ADMIN_TB1_idx",

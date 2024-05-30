@@ -1,0 +1,23 @@
+﻿@page "/admin/place/{Id:int}"
+
+<div class="placedetail-container">
+    @Id
+    <div class="placedetail-wrap">
+        <div class="placedetail-info">
+        </div>
+        <div class="placedetail-option">
+            <div class="placedetail-toggle">
+            </div>
+            <div class="placedetail-manager">
+            </div>
+        </div>
+    </div>
+    <div class="placedetail-btns">
+
+    </div>
+    
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+}

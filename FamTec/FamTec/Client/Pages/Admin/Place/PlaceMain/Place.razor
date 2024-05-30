@@ -8,6 +8,7 @@
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
 @using FamTec.Client.Pages.Admin.CommonComponents
+@inject HttpClient HttpClient
 
 <div class="place-container">
         <div class="place-header">
@@ -15,15 +16,22 @@
                 사업장 목록
             </span>
             <div class="table-header-option">
-                <Input Placeholder="Research" />
+            <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
                 <Button 
-                    Name="추가"
+                    Name="등록"
                     Width="true"
                     OnClick="@onAddPlace" />
+            <Button Name="삭제"
+                    Width="true"
+                    Type="true"
+                    />
             </div>
         </div>
         <div class="place-table">
-            <Table DataList="PlaceList" />
+            <Table 
+                DataList="FilterPlaceList"
+                Detail="true"
+                />
         </div>
         @if (is_openModal)
         {
@@ -40,10 +48,12 @@
     List<PlaceDTO> PlaceList;
     List<string> PlaceProperties = new List<string>();
     List<PlaceDTO> SelecList = new List<PlaceDTO>();
-    DateTime a;
+    List<PlaceDTO> FilterPlaceList = new List<PlaceDTO>();
 
-    
-    public HttpClient httpClient = new HttpClient();
+    string searchText = string.Empty;
+
+
+    // public HttpClient httpClient = new HttpClient();
 
     bool is_openModal = false;
 
@@ -54,8 +64,9 @@
         * fetch 서버 요청
         */
         Console.WriteLine("매니저 조회 시작");
-        ResponseObj<PlaceDTO> res = await httpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("https://127.0.0.1:7114/api/AdminPlace/GetAllWorksList");
+        ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
+        FilterPlaceList = PlaceList;
         Console.WriteLine(PlaceList.Count);
 
         var properties = typeof(PlaceDTO).GetProperties();
@@ -71,7 +82,23 @@
         }
     }
 
+     /*
+     * 검색 데이터 필터링
+    */
+    private void OnSearchTextChanged(string text)
+    {
+        // searchText = e.Value.ToString();
+        searchText = text;
+        FilterPlaceList = string.IsNullOrEmpty(searchText)
+            ? PlaceList
+            : PlaceList.Where(p => p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.PlaceCd.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.ContractNum.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+    }
+
     /*
+     * 체크
     * Add to List<PlaceDTO>SelectList when able Checkbox
     */
     public void OnSelected(object row)
@@ -98,7 +125,8 @@
     }
 
     /*
-    * Remove to List<PlaceDTO>SelectList when disable Checkbox
+     * 체크 해제
+     * Remove to List<PlaceDTO>SelectList when disable Checkbox
     */
     public void UnSelected(object row)
     {
@@ -128,8 +156,9 @@
         is_openModal = true;
     }
 
-
-
+    /*
+     * 모달 활성화
+     */
     private void OnModalClose()
     {
         is_openModal = false;
