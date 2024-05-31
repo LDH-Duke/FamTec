@@ -1,0 +1,31 @@
+﻿:root {
+    /*
+        font-size
+    */
+    --title-size: 1.2rem;
+    --normal-size: 0.8rem;
+    --explain-size: 0.5rem;
+    /*
+        font-weight
+    */
+    --normal-wt: 400;
+    --bold-wt: 700;
+    /*
+        color
+    */
+    --main-color: #200D69;
+    --mid-color : #9A89BS;
+    --light-color: #FEF6FF;
+    --default-bg-color: #FFFFFF;
+    /*
+        border
+    */
+    --default-bd : 2px solid #200D69;
+
+
+    /*
+        border-radius
+    */
+    --default-rd : 4px;
+    --multi-rd : 8px;
+}
