@@ -1,23 +1,40 @@
 ﻿@page "/admin/place/{Id:int}"
+@using FamTec.Client.Pages.Admin.CommonComponents
+@using FamTec.Client.Pages.Admin.Place.PlaceDetail.Components
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+@inject HttpClient HttpClient
 
 <div class="placedetail-container">
-    @Id
     <div class="placedetail-wrap">
         <div class="placedetail-info">
+            <PlaceForm/>
         </div>
         <div class="placedetail-option">
             <div class="placedetail-toggle">
+                <PlaceToggle />
             </div>
             <div class="placedetail-manager">
+                <PlaceTable DataList="ManagerList" />
             </div>
         </div>
     </div>
     <div class="placedetail-btns">
-
+        <Button Name="편집" Width="true"/>
+        <Button Name="나가기" Width="true" />
     </div>
     
 </div>
 
 @code {
     [Parameter] public int Id { get; set; }
+
+    List<ManagerDTO> ManagerList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ResponseObj<ManagerDTO> resManager = await  HttpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
+        ManagerList = resManager.data;
+
+    }
 }

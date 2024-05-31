@@ -1,0 +1,30 @@
+﻿.placeform-container{
+    display:flex;
+    flex-direction:column;
+
+    border:2px solid #200d69;
+    border-radius:4px;
+    background-color : #ffffff;
+    padding : 1rem;
+
+    height:100%;
+}
+
+.placeform-container .placeform-title{
+    font-size:1.2rem;
+    font-weight:bold;
+    padding: 1rem;
+    border-bottom: 2px solid #200d69;
+}
+.placeform-container .placeform-title>span{
+    color:#200d69;
+}
+
+.placeform-container .placeform-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:1rem;
+    height:100%;
+    padding:1rem;
+}
