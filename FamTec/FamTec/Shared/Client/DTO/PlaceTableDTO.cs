@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FamTec.Shared.Client.DTO
 {
-    public class PlaceDTO
+    public class PlaceTableDTO
     {
         public int Id { get; set; }
         [Display(Name = "선택")]

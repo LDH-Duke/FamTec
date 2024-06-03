@@ -25,7 +25,5 @@ namespace FamTec.Shared.Client.DTO
         public sbyte? PermMaterial { get; set; } = 0;
         public sbyte? PermEnergy { get; set; } = 0;
         public sbyte? PermVoc { get; set; } = 0;
-
-
     }
 }

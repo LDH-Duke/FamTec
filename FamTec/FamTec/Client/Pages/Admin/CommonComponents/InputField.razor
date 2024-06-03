@@ -9,10 +9,11 @@
         placeholder="@Placeholder"
         @oninput="onChangeText"
         @onblur="OnBlur"
+        disabled="@(!EditMode)"
     />
     @if (Label == "아이디")
     {
-        <button class="btn" type="button" @onclick="OnClick">
+        <button class="btn" type="button" @onclick="OnClick" value="@Value">
             중복확인
         </button>
     }
@@ -25,6 +26,7 @@
     [Parameter] public string InputType{ get; set; }
     [Parameter] public string Value { get; set; }
     [Parameter] public string Placeholder { get; set; }
+    [Parameter] public bool EditMode { get; set; }
     [Parameter] public EventCallback<string> ValueChanged { get; set; }
     [Parameter] public EventCallback OnBlur{ get; set; }
     [Parameter] public EventCallback OnClick{get;set;}

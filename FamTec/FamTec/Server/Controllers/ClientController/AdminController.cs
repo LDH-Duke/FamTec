@@ -1,5 +1,6 @@
 ﻿using FamTec.Server.Databases;
 using FamTec.Shared.Client.DTO;
+using FamTec.Shared.Client.DTO.Place;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server;
 using Microsoft.AspNetCore.Http;
@@ -182,6 +183,11 @@ namespace FamTec.Server.Controllers.ClientController
             }
         }
 
+        /// <summary>
+        /// 부서 삭제
+        /// </summary>
+        /// <param name="delData"></param>
+        /// <returns></returns>
         [HttpPut]
         [Route("deletedepartment")]
         public async Task<IActionResult> DeleteDepartment([FromBody] List<int> delData)
@@ -216,6 +222,44 @@ namespace FamTec.Server.Controllers.ClientController
             {
                 Console.WriteLine("[Admin][Department][Delete] 부서 삭제 에러!!\n " + ex);
                 return Problem("[Admin][Department][Delete] 부서 삭제 에러!!\n" + ex);
+            }
+        }
+
+        [HttpPost]
+        [Route("addplacemanager")]
+        public async Task<IActionResult> AddPlaceManager([FromBody] AddPlaceManagerDTO<ManagerDTO> placemanager)
+        {
+            try
+            {
+                Console.WriteLine("사업장 매니저 추가");
+
+                int placeId = placemanager.PlaceId;
+                List<ManagerDTO> placeManagers = placemanager.PlaceManager;
+
+                // 각 관리자 정보를 AdminPlaceTb에 추가
+                foreach (var manager in placeManagers)
+                {
+                    AdminPlaceTb adminPlace = new AdminPlaceTb
+                    {
+                        AdminTbId = manager.Id, // 관리자 ID 설정
+                        PlaceId = placeId
+                        // 나머지 AdminPlaceTb 속성 설정
+                    };
+
+                    // AdminPlaceTb를 데이터베이스에 추가
+                    _workContext.AdminPlaceTbs.Add(adminPlace);
+                }
+
+                // 변경 사항을 저장
+                await _workContext.SaveChangesAsync();
+
+                return Ok("관리자 추가 완료");
+
+                return Ok();
+            }catch (Exception ex)
+            {
+                Console.WriteLine("[Admin][AdminPlace][Add] 사업장 매니저 추가 에러!!\n " + ex);
+                return Problem("[Admin][AdminPlace][Delete] 사업장 매니저 추가 에러!!\n" + ex);
             }
         }
     }

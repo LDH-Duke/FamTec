@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
+    "Method": "AddPlaceManager",
+    "RelativePath": "api/Admin/addplacemanager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placemanager",
+        "Type": "FamTec.Shared.Client.DTO.Place.AddPlaceManagerDTO\u00601[[FamTec.Shared.Client.DTO.ManagerDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.AdminController",
     "Method": "FindAllDepartment",
     "RelativePath": "api/Admin/alldepartment",
     "HttpMethod": "GET",
@@ -268,22 +284,34 @@
     "ReturnTypes": []
   },
   {
+<<<<<<< HEAD
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
     "Method": "AdminSettingLogin",
     "RelativePath": "api/Login/AdminSettingLogin",
+=======
+    "ContainingType": "FamTec.Server.Controllers.ClientController.PlaceController",
+    "Method": "AddPlace",
+    "RelativePath": "api/Place/addplace",
+>>>>>>> origin/Front
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
+<<<<<<< HEAD
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
+=======
+        "Name": "place",
+        "Type": "FamTec.Shared.Client.DTO.AddPlaceDTO",
+>>>>>>> origin/Front
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
+<<<<<<< HEAD
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
     "Method": "Test",
     "RelativePath": "api/Login/Test",
@@ -305,6 +333,19 @@
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
         "IsRequired": true
+=======
+    "ContainingType": "FamTec.Server.Controllers.ClientController.PlaceController",
+    "Method": "FindOnePlace",
+    "RelativePath": "api/Place/detail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+>>>>>>> origin/Front
       }
     ],
     "ReturnTypes": []

@@ -1,0 +1,56 @@
+﻿.placedetail-container{
+    display: flex;
+    flex-direction : column;
+    width:100%;
+    height:100%;
+
+    gap:1rem;
+}
+/*
+    정보 영역
+*/
+.placedetail-container .placedetail-wrap{
+    display:flex;
+    height:100%;
+    gap : 2rem;
+    overflow:hidden;
+
+    padding:1rem;
+}
+
+.placedetail-container .placedetail-info{
+    flex:1;
+    height:100%;
+    width:100%;
+
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
+}
+
+.placedetail-container .placedetail-option{
+    display:flex;
+    flex-direction:column;
+    gap:2rem;
+    flex:2;
+    height:100%;
+    width:100%;
+}
+
+.placedetail-container .placedetail-toggle{
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
+}
+
+.placedetail-container .placedetail-manager {
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
+}
+
+/*
+    버튼 영역
+*/
+.placedetail-container .placedetail-btns{
+    display:flex;
+    justify-content:flex-end;
+    gap:0.5rem;
+    padding:1rem;
+}

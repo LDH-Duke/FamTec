@@ -10,9 +10,10 @@
         <span>
             사업장 목록
         </span>
+        <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
     </div>
     <div class="placetable-table">
-        <Table DataList="PlaceList" Select="OnSelected" />
+        <Table DataList="FilterPlaceList" Select="OnSelected" />
     </div>
     <div class="placetable-count">
         <span>
@@ -23,14 +24,24 @@
 
 @code {
     [Parameter] public AddManagerDTO NewManager { get; set; }
-    List<PlaceDTO> PlaceList;
+    List<PlaceTableDTO> PlaceList;
     int SelectCount = 0;
+
+    //검색 변수
+    List<PlaceTableDTO> FilterPlaceList = new List<PlaceTableDTO>();
+    string searchText = string.Empty;
+
 
     protected async override Task OnInitializedAsync()
     {
+<<<<<<< HEAD
         ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
+=======
+        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
+>>>>>>> origin/Front
         PlaceList = res.data;
-        PlaceList.RemoveAll(place => place.Status == 0);   
+        PlaceList.RemoveAll(place => place.Status == 0);
+        FilterPlaceList = PlaceList;
     }
 
     /*
@@ -55,6 +66,21 @@
             SelectCount++;
         }
         
+    }
+
+      /*
+     * 검색 데이터 필터링
+    */
+    private void OnSearchTextChanged(string text)
+    {
+        // searchText = e.Value.ToString();
+        searchText = text;
+        FilterPlaceList = string.IsNullOrEmpty(searchText)
+            ? PlaceList
+            : PlaceList.Where(p => p.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.PlaceCd.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                                   p.ContractNum.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
     }
 
 }

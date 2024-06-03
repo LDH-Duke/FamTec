@@ -1,5 +1,8 @@
 @using FamTec.Shared.Client.DTO
 @using FamTec.Client.Pages.Admin.CommonComponents
+@using FamTec.Shared.Client.DTO.Place
+@using FamTec.Shared.Server
+@inject HttpClient HttpClient
 
 <div class="placemodal-backgroud appear">
     <div class="placemodal-container yappear ">
@@ -7,7 +10,8 @@
             <div class="placemodal-title">
                 @Title
             </div>
-            <EditForm Model="placeInfo" OnValidSubmit="OnAdd">
+            @* OnValidSubmit="OnAdd" *@
+            <EditForm Model="placeInfo" >
                 <div class="placemodal-content">
                     <div class="placemodal-form">
                             <div class="placeInfo-input">
@@ -56,7 +60,6 @@
                     <div class="placemodal-manager">
                         <div class="placemodal-m-header">
                             <span class="placemodal-m-title">관리 매니저</span>
-                            <List />
                             <div>
                                 <Button 
                                     Name="추가" 
@@ -82,9 +85,7 @@
 
                 </div>
                 <div class="placemodal-btns">
-                    <Button Name="등록" 
-                            @* Type="sub" *@
-                            />
+                    <Button Name="등록"  OnClick="OnAdd"/>
                     <Button Name="닫기" OnClick="ModalClose" />
                 </div>
             </EditForm>
@@ -110,7 +111,9 @@
     List<int> selectedManagerIds = new List<int>();
     List<ManagerDTO> ManagerList = new List<ManagerDTO>();
 
+
     AddPlaceDTO placeInfo = new AddPlaceDTO();
+    AddPlaceManagerDTO<ManagerDTO> placeManager = new AddPlaceManagerDTO<ManagerDTO>();
 
     bool isAddModal = false;
 
@@ -164,6 +167,30 @@
         Console.WriteLine("자재" + placeInfo.PermMaterial);
         Console.WriteLine("에너지" + placeInfo.PermEnergy);
         Console.WriteLine("민원"+placeInfo.PermVoc);
+
+        var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
+        if (resPlace.IsSuccessStatusCode)
+        {
+            var resData = await resPlace.Content.ReadFromJsonAsync<ResponseObj<int>>();
+            // 응답 데이터를 사용합니다.
+            if (resData != null)
+            {
+                // 여기서 responseData.Data를 사용하여 사업장 ID를 처리합니다.
+                List<int> placeIds = resData.data;
+                placeManager.PlaceId = placeIds[0];
+                var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addplacemanager", placeManager);
+                if (resManager.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("사업장 매니저 추가 완료");
+                    await ModalClose();
+
+                }
+            }
+        }
+        else
+        {
+            // Handle error or display appropriate message
+        }
     }
 
     /*
@@ -172,6 +199,8 @@
     private void OnAddManagerListChanged(List<ManagerDTO> updatedManagerList)
     {
         ManagerList = updatedManagerList;
+
+        placeManager.PlaceManager = ManagerList;
         StateHasChanged();
     }
 

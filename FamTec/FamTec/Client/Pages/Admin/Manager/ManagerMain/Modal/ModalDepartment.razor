@@ -81,7 +81,7 @@
     {
         try
         {
-            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Department/DeleteDepartmentList", deleteDepartment);
+            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Admin/deletedepartment", deleteDepartment);
             if (resDelete.IsSuccessStatusCode)
             {
                 await LoadDepartments();

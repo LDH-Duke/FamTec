@@ -63,3 +63,7 @@
     font-weight:bold;
     color : #200d69;
 }
+
+.table-container ::deep .table-td-link {
+    color : #200d69;
+}

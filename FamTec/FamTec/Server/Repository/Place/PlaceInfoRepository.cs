@@ -56,7 +56,7 @@ namespace FamTec.Server.Repository.Place
         {
             try
             {
-                List<PlaceTb>? model = await context.PlaceTbs.Where(m => m.DelYn != 1).ToListAsync();
+                List<PlaceTb>? model = await context.PlaceTbs.Where(m => m.DelYn == 0).ToListAsync();
 
                 if (model is [_, ..])
                     return model;
