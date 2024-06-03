@@ -8,8 +8,12 @@
             사업장 매니저
         </span>
         <div class="placetable-btns">
-            <Button Name="추가" Width="true"/>
-            <Button Name="삭제" Width="true" Type="true" />
+            @if (EditMode)
+            {
+                <Button Name="추가" Width="true"/>
+                <Button Name="삭제" Width="true" Type="true" />
+            }
+            
         </div>
     </div>
     <div class="placetable-table">
@@ -19,6 +23,7 @@
 
 @code {
     [Parameter] public List<T> DataList { get; set; }
+    [Parameter] public bool EditMode{ get; set; }
 
     protected override Task OnInitializedAsync()
     {

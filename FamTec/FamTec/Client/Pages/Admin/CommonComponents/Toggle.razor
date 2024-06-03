@@ -1,11 +1,13 @@
 ﻿<label class="toggle-container">
-    @if (Disable)
-    {
-        <input class="toggle-input" @bind-value="currentValue" type="checkbox" role="switch" disabled />
-    }else{
-        <input class="toggle-input" @bind-value="currentValue" type="checkbox" role="switch" />
-    }
-    @* <input class="toggle-input" @bind-value="@Value" type="checkbox" role="switch" @(Disabe ? disabled : null/> *@
+   
+    <input 
+        class="toggle-input" 
+        @bind-value="currentValue" 
+        type="checkbox" 
+        role="switch" 
+        checked="@IsCheckedBool" 
+        disabled="@(!EditMode)" 
+        />
     <span class="toggle-title">@Title</span>
 </label>
 
@@ -13,8 +15,10 @@
 
 @code {
     [Parameter] public string Title { get; set; }
-    [Parameter] public bool Disable { get; set; } = false; //비활성화 여부
+    [Parameter] public bool EditMode { get; set; } = false; //비활성화 여부
     [Parameter] public sbyte? Value { get; set; }
+    [Parameter] public sbyte? IsChecked { get; set; }
+    [Parameter] public bool? IsCheckedBool { get; set; } = false;
     [Parameter] public EventCallback<sbyte?> ValueChanged { get; set; }
 
     private bool currentValue
@@ -31,5 +35,17 @@
         }
     }
 
+    protected override Task OnInitializedAsync()
+    {
+        initiaToggle();
+        return base.OnInitializedAsync();
+    }
 
+    /*
+     * 토글 초기화
+     */
+    private void initiaToggle()
+    {
+        IsCheckedBool = IsChecked == 1 ? true : false;
+    }
 }

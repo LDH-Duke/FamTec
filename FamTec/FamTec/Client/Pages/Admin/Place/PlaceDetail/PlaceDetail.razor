@@ -2,26 +2,33 @@
 @using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Client.Pages.Admin.Place.PlaceDetail.Components
 @using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Client.DTO.Place
 @using FamTec.Shared.Server
 @inject HttpClient HttpClient
 
 <div class="placedetail-container yappear">
     <div class="placedetail-wrap">
         <div class="placedetail-info">
-            <PlaceForm/>
+            <PlaceForm placeInfo="PlaceInfo" EditMode=PlaceEdit />
         </div>
         <div class="placedetail-option">
             <div class="placedetail-toggle">
-                <PlaceToggle />
+                <PlaceToggle placePerm=PlacePerm EditMode=PlaceEdit />
             </div>
             <div class="placedetail-manager">
-                <PlaceTable DataList="ManagerList" />
+                <PlaceTable DataList="ManagerList" EditMode=PlaceEdit />
             </div>
         </div>
     </div>
     <div class="placedetail-btns">
-        <Button Name="편집" Width="true"/>
-        <Button Name="나가기" Width="true" />
+        @if(PlaceEdit){
+            <Button Name="저장" Width="true" />
+            <Button Name="취소" Width="true" OnClick="DetailMode" />
+        }else{
+            <Button Name="편집" Width="true" OnClick="EditMode" />
+            <Button Name="나가기" Width="true" />
+        }
+        
     </div>
     
 </div>
@@ -29,12 +36,37 @@
 @code {
     [Parameter] public int Id { get; set; }
 
+
     List<ManagerDTO> ManagerList;
+    PlaceInfo PlaceInfo;
+    PlacePerm PlacePerm;
+    PlaceDetail2DTO resPlaceDetail;
+
+    bool PlaceEdit = false;
+
+
+
 
     protected override async Task OnInitializedAsync()
     {
-        ResponseObj<ManagerDTO> resManager = await  HttpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
-        ManagerList = resManager.data;
+        ResponseObj<PlaceDetail2DTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDetail2DTO>>($"http://127.0.0.1:5245/api/place/detail/?Id={Id}");
 
+        ManagerList = res.data[0].ManagerList;
+        PlaceInfo = res.data[0].PlaceInfo;
+        PlacePerm = res.data[0].PlacePerm;
+        // Console.WriteLine(res);
+    }
+
+    private void EditMode()
+    {
+        PlaceEdit = true;
+        StateHasChanged();
+    }
+
+    private void DetailMode()
+    {
+        PlaceEdit = false;
+        StateHasChanged();
     }
 }
+    

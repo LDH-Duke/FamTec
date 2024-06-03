@@ -24,17 +24,17 @@
 
 @code {
     [Parameter] public AddManagerDTO NewManager { get; set; }
-    List<PlaceDTO> PlaceList;
+    List<PlaceTableDTO> PlaceList;
     int SelectCount = 0;
 
     //검색 변수
-    List<PlaceDTO> FilterPlaceList = new List<PlaceDTO>();
+    List<PlaceTableDTO> FilterPlaceList = new List<PlaceTableDTO>();
     string searchText = string.Empty;
 
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
+        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
         PlaceList.RemoveAll(place => place.Status == 0);
         FilterPlaceList = PlaceList;

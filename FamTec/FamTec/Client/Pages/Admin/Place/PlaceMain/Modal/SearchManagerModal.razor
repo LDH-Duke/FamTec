@@ -45,7 +45,7 @@
         /*
         * 현재 매니저 목록 조회 Fetch Get
         */
-        ResponseObj<ManagerDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
+        ResponseObj<ManagerDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/admin/allmanager");
         ManagerList = res.data;
         FilterManagerList = ManagerList;
 
