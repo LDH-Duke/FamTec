@@ -284,34 +284,22 @@
     "ReturnTypes": []
   },
   {
-<<<<<<< HEAD
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
     "Method": "AdminSettingLogin",
     "RelativePath": "api/Login/AdminSettingLogin",
-=======
-    "ContainingType": "FamTec.Server.Controllers.ClientController.PlaceController",
-    "Method": "AddPlace",
-    "RelativePath": "api/Place/addplace",
->>>>>>> origin/Front
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-<<<<<<< HEAD
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
-=======
-        "Name": "place",
-        "Type": "FamTec.Shared.Client.DTO.AddPlaceDTO",
->>>>>>> origin/Front
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-<<<<<<< HEAD
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
     "Method": "Test",
     "RelativePath": "api/Login/Test",
@@ -333,7 +321,27 @@
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
         "IsRequired": true
-=======
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.ClientController.PlaceController",
+    "Method": "AddPlace",
+    "RelativePath": "api/Place/addplace",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "place",
+        "Type": "FamTec.Shared.Client.DTO.AddPlaceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.ClientController.PlaceController",
     "Method": "FindOnePlace",
     "RelativePath": "api/Place/detail",
@@ -345,7 +353,6 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
->>>>>>> origin/Front
       }
     ],
     "ReturnTypes": []

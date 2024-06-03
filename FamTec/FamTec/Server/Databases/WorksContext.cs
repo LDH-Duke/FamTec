@@ -47,7 +47,7 @@ public partial class WorksContext : DbContext
     public virtual DbSet<UserTb> UserTbs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=127.0.0.1; port=3307;database=works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
+        => optionsBuilder.UseMySql("server=123.2.156.122; port=3306;database=works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
