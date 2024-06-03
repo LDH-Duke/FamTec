@@ -268,6 +268,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
+    "Method": "AdminSettingLogin",
+    "RelativePath": "api/Login/AdminSettingLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
+    "Method": "Test",
+    "RelativePath": "api/Login/Test",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.RoomController",
     "Method": "GetBuildingList",
     "RelativePath": "api/Room/GetBuildingList",

@@ -524,3 +524,5 @@ Scaffold-DbContext  "Data Source=123.2.156.122,1002;Database=FMS;User Id=stec;Pa
 
 ** 참고자료
 https://stackoverflow.com/questions/39176018/cannot-update-identity-column-in-entity-framework-core
+
+Scaffold-DbContext "Server=123.2.156.122,3306;Database=Works;User Id=root;Password=stecdev1234!;" Pomelo.EntityFrameworkCore.MySql -outputDir Model -DataAnnotations

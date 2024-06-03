@@ -1,4 +1,5 @@
-﻿using FamTec.Server.Repository.Admin.AdminPlaces;
+﻿using Azure.Core;
+using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.Place;
@@ -11,6 +12,10 @@ using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace FamTec.Server.Services.Admin.Account
 {
@@ -19,28 +24,27 @@ namespace FamTec.Server.Services.Admin.Account
         private readonly IUserInfoRepository UserInfoRepository;
         private readonly IAdminUserInfoRepository AdminUserInfoRepository;
         private readonly IDepartmentInfoRepository DepartmentInfoRepository;
-        private readonly IPlaceInfoRepository PlaceInfoRepository;
-        private readonly IAdminPlacesInfoRepository AdminPlacesInfoRepository;
 
-        ResponseOBJ<ManagerLoginResultDTO> Response;
-        Func<string, ManagerLoginResultDTO, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseOBJ;
-        Func<string, List<ManagerLoginResultDTO>, int, ResponseModel<ManagerLoginResultDTO>> FuncResponseList;
+        private readonly IConfiguration Configuration;
+
+        ResponseOBJ<string> ResponseSTR;
+        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
+        Func<string, List<string>, int, ResponseModel<string>> FuncResponseSTRList;
 
         ResponseOBJ<AddManagerDTO> ResponseAdd;
         Func<string, AddManagerDTO, int, ResponseModel<AddManagerDTO>> FuncResponseAdd;
         
 
-        public AdminAccountService(IUserInfoRepository _userinfoRepository, IAdminUserInfoRepository _admininfoRepository, IDepartmentInfoRepository _departmentinfoRepository, IPlaceInfoRepository _placeinfoRepository, IAdminPlacesInfoRepository _adminplaceinfoRepository)
+        public AdminAccountService(IUserInfoRepository _userinfoRepository, IAdminUserInfoRepository _admininfoRepository, IDepartmentInfoRepository _departmentinfoRepository, IConfiguration _configuration)
         {
             UserInfoRepository = _userinfoRepository;
             AdminUserInfoRepository = _admininfoRepository;
             DepartmentInfoRepository = _departmentinfoRepository;
-            PlaceInfoRepository = _placeinfoRepository;
-            AdminPlacesInfoRepository = _adminplaceinfoRepository;
+            Configuration = _configuration;
 
-            Response = new ResponseOBJ<ManagerLoginResultDTO>();
-            FuncResponseOBJ = Response.RESPMessage;
-            FuncResponseList = Response.RESPMessageList;
+            ResponseSTR = new ResponseOBJ<string>();
+            FuncResponseSTR = ResponseSTR.RESPMessage;
+            FuncResponseSTRList = ResponseSTR.RESPMessageList;
 
             ResponseAdd = new ResponseOBJ<AddManagerDTO>();
             FuncResponseAdd = ResponseAdd.RESPMessage;
@@ -52,89 +56,97 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="userid"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<ManagerLoginResultDTO>> AdminLoginService(LoginDTO? dto)
+        public async ValueTask<ResponseModel<string>> AdminLoginService(LoginDTO? dto)
         {
             try
             {
                 if (!string.IsNullOrWhiteSpace(dto?.UserID) && !string.IsNullOrWhiteSpace(dto?.UserPassword))
                 {
-                    UserTb? user = await UserInfoRepository.GetUserInfo(dto.UserID, dto.UserPassword);
+                    UserTb? usertb = await UserInfoRepository.GetUserInfo(dto.UserID, dto.UserPassword);
 
-                    if (user is not null)
+                    if(usertb is not null)
                     {
-                        if (user.AdminYn == 1)
+                        if(usertb.AdminYn == 1)
                         {
-                            // 관리자테이블 조회
-                            AdminTb? admin = await AdminUserInfoRepository.GetAdminUserInfo(user.Id);
-                             
-                            if (admin is not null)
+                            AdminTb? admintb = await AdminUserInfoRepository.GetAdminUserInfo(usertb.Id);
+
+                            if(admintb is not null)
                             {
-                                // LINQ - USERTB + 관리자TB 필요한것들 한번에 DTO넣어서 반환
-                                DepartmentTb? dp = await DepartmentInfoRepository.GetDepartmentInfo(admin.DepartmentTbId);
-                                if (dp is not null)
+                                DepartmentTb? departmenttb = await DepartmentInfoRepository.GetDepartmentInfo(admintb.DepartmentTbId);
+                                if(departmenttb is not null)
                                 {
-
-                                    ManagerLoginResultDTO account = new ManagerLoginResultDTO();
-                                    account.USER_INDEX = user.Id;
-                                    account.PASSWORD = user.Password;
-                                    account.NAME = user.Name;
-                                    account.EMAIL = user.Email;
-                                    account.PHONE = user.Phone;
-                                    account.ADMIN_YN = user.AdminYn;
-                                    account.ALRAM_YN = user.AlramYn;
-                                    account.STATUS = user.Status;
-                                    account.ADMIN_INDEX = admin.Id;
-                                    account.TYPE = admin.Type;
-                                    account.DEPARTMENT_INDEX = dp.Id;
-                                    account.DEPARTMENT_NAME = dp.Name;
-
-                                    // 로그인후 PlaceDTO 나오는것 다시 만들어야할듯.
-
-                                    List<PlacesDTO>? placedto = await AdminPlacesInfoRepository.GetLoginWorks(admin.Id);
-
-                                    if(placedto is [_, ..])
+                                    // 로그인성공
+                                    List<Claim> authClaims = new List<Claim>
                                     {
-                                        for(int i = 0; i < placedto.Count; i++)
-                                        {
-                                            account.placeDTO!.Add(placedto[i]);
-                                        }
+                                        new Claim("UserIdx",usertb.Id.ToString()),
+                                        new Claim(ClaimTypes.NameIdentifier, usertb.Name!),
+                                        new Claim("AdminIdx",admintb.Id.ToString()),
+                                        new Claim("DepartIdx",admintb.DepartmentTbId.ToString()!),
+                                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                                    };
+
+                                    if(admintb.Type == "시스템관리자")
+                                    {
+                                        authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
                                     }
-                                    return FuncResponseOBJ("관리자 로그인 성공", account, 200);
+                                    if(admintb.Type == "마스터")
+                                    {
+                                        authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
+                                    }
+                                    if(admintb.Type =="매니저")
+                                    {
+                                        authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
+                                    }
+
+                                    // JWT 인증 페이로드 사인 비밀키
+                                    var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:authSigningKey"]!));
+
+                                    var token = new JwtSecurityToken(
+                                        issuer: Configuration["JWT:Issuer"],
+                                        audience: Configuration["JWT:Audience"],
+                                        expires: DateTime.Now.AddDays(1),
+                                        claims: authClaims,
+                                        signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
+
+                                    string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+                                    // 로그인 성공
+                                    return FuncResponseSTR("로그인 성공", accessToken, 200);
                                 }
                                 else
                                 {
-                                    return FuncResponseOBJ("관리자 정보가 일치하지 않습니다.", null, 200);
+                                    // 정보가 잘못되었습니다.
+                                    return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
                                 }
                             }
                             else
                             {
-                                // 관리자가 아님 fail
-                                return FuncResponseOBJ("관리자 정보가 일치하지 않습니다.", null, 200);
+                                // 관리자 아님
+                                return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
                             }
                         }
                         else
                         {
-                            // 해당 계정은 관리자가 아닌데 - 관리자로 접근했기때문에 접근 FAIL
-                            return FuncResponseOBJ("관리자 정보가 일치하지 않습니다.", null, 200);
+                            // 관리자 아님
+                            return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
                         }
                     }
                     else
                     {
-                        // 로그인 정보가 잘못되었습니다.
-                        return FuncResponseOBJ("로그인 정보가 잘못되었습니다.", null, 200);
+                        // 아이디가 존재하지 않음
+                        return FuncResponseSTR("로그인 실패", "해당 아이디가 존재하지 않습니다.", 200);
                     }
                 }
                 else
                 {
-                    // 매개변수 잘못됨
-                    return FuncResponseOBJ("로그인 정보가 잘못되었습니다.", null, 200);
+                    // 요청이 잘못됨
+                    return FuncResponseSTR("로그인 실패", "요청 정보가 잘못되었습니다.", 404);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                return FuncResponseOBJ(ex.Message, null, 400);
+                return FuncResponseSTR("로그인 실패", "서버에서 요청을 처리하지 못하였습니다.", 500);
             }
-
         }
 
         /// <summary>

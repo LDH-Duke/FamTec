@@ -67,8 +67,8 @@ namespace FamTec.Server.Repository.User
                 {
                     UserTb? model = await context.UserTbs
                         .FirstOrDefaultAsync(m => 
-                        m.UserId.Equals(userid) &&
-                        m.Password.Equals(password));
+                        m.UserId!.Equals(userid) &&
+                        m.Password!.Equals(password));
 
                     if (model is not null)
                         return model;

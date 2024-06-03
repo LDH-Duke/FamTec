@@ -22,6 +22,9 @@ using FamTec.Server.Services.Floor;
 using FamTec.Server.Services.Room;
 using FamTec.Server.Services.Unit;
 using FamTec.Server.Services.User;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,6 +52,28 @@ builder.Services.AddTransient<IUnitService, UnitService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+
+#region JWT
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = "https://localhost:7114/",
+        ValidIssuer = "https://localhost:7114/",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:authSigningKey"]!))
+    };
+});
+#endregion
 
 
 #region DB연결 정보
@@ -125,6 +150,18 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+#region MiddleWare
+
+
+app.UseWhen(context => context.Request.Path.Equals("/api/Login/Test"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
+
+#endregion
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();

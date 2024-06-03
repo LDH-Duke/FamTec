@@ -28,7 +28,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("https://127.0.0.1:7114/api/AdminPlace/GetAllWorksList");
+        ResponseObj<PlaceDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
         PlaceList.RemoveAll(place => place.Status == 0);   
     }
