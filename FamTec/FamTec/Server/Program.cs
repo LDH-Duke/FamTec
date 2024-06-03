@@ -28,6 +28,18 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession();
+/*
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(60);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+*/
+
 builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
 builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
@@ -121,6 +133,7 @@ builder.Services.AddResponseCompression(opts =>
 
 
 var app = builder.Build();
+app.UseSession();
 
 #region SIGNALR CORS »ç¿ë
 app.UseCors();
@@ -159,6 +172,7 @@ app.UseWhen(context => context.Request.Path.Equals("/api/Login/Test"), appBuilde
 });
 
 #endregion
+
 
 app.UseAuthentication();
 app.UseAuthorization();

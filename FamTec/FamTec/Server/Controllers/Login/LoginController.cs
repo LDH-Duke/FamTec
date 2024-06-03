@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Services.Admin.Account;
+using FamTec.Server.Services.User;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
@@ -13,10 +14,12 @@ namespace FamTec.Server.Controllers.Login
     public class LoginController : ControllerBase
     {
         private IAdminAccountService AdminAccountService;
+        private IUserService UserService;
 
-        public LoginController(IAdminAccountService _adminaccountservice)
+        public LoginController(IAdminAccountService _adminaccountservice, IUserService _userservice)
         {
             this.AdminAccountService = _adminaccountservice;
+            this.UserService = _userservice;
         }
 
         [HttpPost]
@@ -37,7 +40,17 @@ namespace FamTec.Server.Controllers.Login
             var temp = HttpContext.Items["Token"];
             HttpContext.Items.Clear();
 
-            return Ok(HttpContext.Items["Token"].ToString());
+            HttpContext.Session.SetString("Session", "123123");
+            
+            return Ok(temp);
+        }
+
+        [HttpPost]
+        [Route("UserLogin")]
+        public async ValueTask<IActionResult> UserLogin([FromBody] LoginDTO dto)
+        {
+            ResponseModel<string>? model = await UserService.UserLoginService(dto);
+            return Ok(model);
         }
         
 

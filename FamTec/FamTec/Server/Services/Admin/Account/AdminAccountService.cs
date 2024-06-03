@@ -13,6 +13,8 @@ using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -75,6 +77,11 @@ namespace FamTec.Server.Services.Admin.Account
                                 DepartmentTb? departmenttb = await DepartmentInfoRepository.GetDepartmentInfo(admintb.DepartmentTbId);
                                 if(departmenttb is not null)
                                 {
+                                    List<Claim> temp = new List<Claim>
+                                    {
+                                        new Claim("temp","123")
+                                    };
+
                                     // 로그인성공
                                     List<Claim> authClaims = new List<Claim>
                                     {
@@ -85,7 +92,8 @@ namespace FamTec.Server.Services.Admin.Account
                                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                                     };
 
-                                    if(admintb.Type == "시스템관리자")
+                                    
+                                    if (admintb.Type == "시스템관리자")
                                     {
                                         authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
                                     }

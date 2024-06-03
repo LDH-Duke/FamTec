@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Session;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -11,6 +12,8 @@ namespace FamTec.Server
         private readonly RequestDelegate Next;
         private readonly IConfiguration Configuration;
         //private const string APIKEYNAME = "Authorization";
+        
+        
         public JwtMiddleware(RequestDelegate _next, IConfiguration _configuration)
         {
             this.Next = _next;
@@ -54,8 +57,7 @@ namespace FamTec.Server
             var jwtToken = (JwtSecurityToken)validatedToken;
 
             //context.Response.WriteAsync(validatedToken.ToString());
-            context.Session.SetString("token", validatedToken.ToString());
-            //context.Items.Add("Token", validatedToken.ToString());
+            context.Items.Add("Token", validatedToken.ToString());
             
 
             await Next(context);
