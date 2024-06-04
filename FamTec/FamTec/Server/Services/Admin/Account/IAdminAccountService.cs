@@ -1,5 +1,7 @@
 ﻿using FamTec.Shared;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
@@ -21,7 +23,14 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AddManagerDTO>> AdminRegisterService(AddManagerDTO? dto, SessionInfo session);
+        public ValueTask<ResponseUnit<AdminTb>?> AdminRegisterService(AddManagerDTO? dto);
+
+        /// <summary>
+        /// 매니저 삭제
+        /// </summary>
+        /// <param name="adminid"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseUnit<int>?> DeleteAdminService(List<int> adminid);
 
     }
 }

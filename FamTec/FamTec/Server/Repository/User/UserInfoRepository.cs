@@ -51,6 +51,64 @@ namespace FamTec.Server.Repository.User
             }
         }
 
+ 
+
+        /// <summary>
+        /// 유저 INDEX로 유저테이블 조회
+        /// </summary>
+        /// <param name="useridx"></param>
+        /// <returns></returns>
+        public async ValueTask<UserTb?> GetUserIndexInfo(int? useridx)
+        {
+            try
+            {
+                if(useridx is not null)
+                {
+                    UserTb? model = await context.UserTbs.FirstOrDefaultAsync(m => m.Id == useridx && m.DelYn != 1);
+                    
+                    if(model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 유저테이블 모델 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async ValueTask<bool?> DeleteUserInfo(UserTb? model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.UserTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentNullException();
+            }
+        }
+
 
         /// <summary>
         /// USERID + PASSWORD에 해당하는 모델반환

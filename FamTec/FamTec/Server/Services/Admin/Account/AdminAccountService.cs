@@ -7,6 +7,7 @@ using FamTec.Server.Repository.User;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
@@ -26,6 +27,8 @@ namespace FamTec.Server.Services.Admin.Account
         private readonly IUserInfoRepository UserInfoRepository;
         private readonly IAdminUserInfoRepository AdminUserInfoRepository;
         private readonly IDepartmentInfoRepository DepartmentInfoRepository;
+        private readonly IAdminPlacesInfoRepository AdminPlaceInfoRepository;
+
 
         private readonly IConfiguration Configuration;
 
@@ -35,13 +38,23 @@ namespace FamTec.Server.Services.Admin.Account
 
         ResponseOBJ<AddManagerDTO> ResponseAdd;
         Func<string, AddManagerDTO, int, ResponseModel<AddManagerDTO>> FuncResponseAdd;
-        
 
-        public AdminAccountService(IUserInfoRepository _userinfoRepository, IAdminUserInfoRepository _admininfoRepository, IDepartmentInfoRepository _departmentinfoRepository, IConfiguration _configuration)
+        ResponseOBJ<int?> ResponseINT;
+        Func<string, int?, int, ResponseModel<int?>> FuncResponseINT;
+
+
+        public AdminAccountService(IUserInfoRepository _userinfoRepository,
+            IAdminUserInfoRepository _admininfoRepository,
+            IDepartmentInfoRepository _departmentinfoRepository,
+            IAdminPlacesInfoRepository _adminplaceinforepository,
+            IConfiguration _configuration)
         {
-            UserInfoRepository = _userinfoRepository;
-            AdminUserInfoRepository = _admininfoRepository;
-            DepartmentInfoRepository = _departmentinfoRepository;
+            this.UserInfoRepository = _userinfoRepository;
+            this.AdminUserInfoRepository = _admininfoRepository;
+            this.DepartmentInfoRepository = _departmentinfoRepository;
+            this.AdminPlaceInfoRepository = _adminplaceinforepository;
+
+
             Configuration = _configuration;
 
             ResponseSTR = new ResponseOBJ<string>();
@@ -50,6 +63,9 @@ namespace FamTec.Server.Services.Admin.Account
 
             ResponseAdd = new ResponseOBJ<AddManagerDTO>();
             FuncResponseAdd = ResponseAdd.RESPMessage;
+
+            ResponseINT = new ResponseOBJ<int?>();
+            FuncResponseINT = ResponseINT.RESPMessage;
         }
 
         /// <summary>
@@ -163,11 +179,11 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AddManagerDTO>> AdminRegisterService(AddManagerDTO? dto, SessionInfo session)
+        public async ValueTask<ResponseUnit<AdminTb>?> AdminRegisterService(AddManagerDTO? dto)
         {
             try
             {
-                if(dto is not null && !String.IsNullOrWhiteSpace(session.Name))
+                if(dto is not null)
                 {
                     UserTb? usermodel = new UserTb
                     {
@@ -190,11 +206,7 @@ namespace FamTec.Server.Services.Admin.Account
                         PermVoc = 2,
                         AdminYn = 1,
                         AlramYn = 1,
-                        Status = 1,
-                        CreateDt = DateTime.Now,
-                        CreateUser = session.Name,
-                        UpdateDt = DateTime.Now,
-                        UpdateUser = session.Name
+                        Status = 1
                     };
 
                     UserTb? userresult = await UserInfoRepository.AddAsync(usermodel);
@@ -202,48 +214,120 @@ namespace FamTec.Server.Services.Admin.Account
                     if (userresult is not null)
                     {
                         AdminTb? adminmodel = new AdminTb();
+                        /*
                         if (session.Type == "시스템관리자")
                             adminmodel.Type = "마스터";
                         if (session.Type == "마스터")
                             adminmodel.Type = "매니저";
-                        adminmodel.CreateDt = DateTime.Now;
-                        adminmodel.CreateUser = session.Name;
-                        adminmodel.UpdateDt = DateTime.Now;
-                        adminmodel.UpdateUser = session.Name;
+                        */
+                        //adminmodel.CreateDt = DateTime.Now;
+                        //adminmodel.CreateUser = session.Name;
+                        //adminmodel.UpdateDt = DateTime.Now;
+                        //adminmodel.UpdateUser = session.Name;
                         adminmodel.DelYn = 0;
                         adminmodel.UserTbId = userresult.Id;
                         adminmodel.DepartmentTbId = dto.DepartmentId;
 
                         AdminTb? adminresult = await AdminUserInfoRepository.AddAdminUserInfo(adminmodel);
-
-                        return FuncResponseAdd("관리자 등록 완료.", new AddManagerDTO
+                        //return (adminmodel, 200);
+                        if (adminresult is not null)
                         {
-                            UserId = userresult.UserId,
-                            Password = userresult.Password,
-                            Email = userresult.Email,
-                            Phone = userresult.Phone,
-                            Type = adminresult.Type,
-                            DepartmentId = adminresult.DepartmentTbId,
-                            Name = userresult.Name
-                        }, 200);
+                            return new ResponseUnit<AdminTb> { message = "요청이 정상 처리되었습니다.", data = adminresult, code = 200 };
+                        }
+                        else
+                        {
+                            return new ResponseUnit<AdminTb> { message = "요청이 처리되지 않았습니다.", data = adminresult, code = 404 };
+                        }
                     }
                     else
                     {
-                        return FuncResponseAdd("관리자 등록 실패", new AddManagerDTO(), 200);
+                        return new ResponseUnit<AdminTb> { message = "요청이 처리되지 않았습니다.", data = new AdminTb(), code = 404 };
                     }
                 }
                 else
                 {
-                    return FuncResponseAdd("요청이 잘못되었습니다.", new AddManagerDTO(), 404);
+                    return new ResponseUnit<AdminTb> { message = "요청이 잘못되었습니다.", data = new AdminTb(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseAdd("서버에서 요청을 처리하지 못하였습니다.", new AddManagerDTO(), 500);
+                return new ResponseUnit<AdminTb> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new AdminTb(), code = 500 };
             }
         }
 
-      
+        public async ValueTask<ResponseUnit<int>?> DeleteAdminService(List<int> adminid)
+        {
+            int count = 0;
+            bool?[] isStep;
+            try
+            {
+                if(adminid is [_, ..])
+                {
 
+                    for (int i=0;i<adminid.Count;i++)
+                    {
+                        isStep = new bool?[3];
+
+                        AdminTb? admintb = await AdminUserInfoRepository.GetAdminUserInfo(adminid[i]);
+
+                        if (admintb is not null)
+                        {
+                            admintb.DelYn = 1;
+                            admintb.DelDt = DateTime.Now;
+
+                            bool? deleteresult = await AdminUserInfoRepository.DeleteAdminInfo(admintb);
+                            
+                            if (deleteresult == true)
+                            {
+                                isStep[0] = deleteresult;
+
+                                UserTb? usertb = await UserInfoRepository.GetUserIndexInfo(admintb.UserTbId);
+
+                                if (usertb is not null)
+                                {
+                                    usertb.DelYn = 1;
+                                    usertb.DelDt = DateTime.Now;
+
+                                    bool? delresult = await UserInfoRepository.DeleteUserInfo(usertb);
+
+                                    if (delresult == true)
+                                    {
+                                        isStep[1] = delresult;
+
+                                        List<AdminPlaceTb>? adminplacetb = await AdminPlaceInfoRepository.GetMyWorksModel(admintb.Id);
+
+                                        
+                                        if (adminplacetb is [_, ..])
+                                        {
+                                            bool? result = await AdminPlaceInfoRepository.DeleteMyWorks(adminplacetb);
+                                            
+                                            isStep[2] = result;
+
+
+                                            if (isStep[0] == true && isStep[1] == true && isStep[2] == true)
+                                                count++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseUnit<int> { message = "요청이 처리되지 않았습니다.", data = count, code = 404 };
+                        }
+                    }
+
+                    return new ResponseUnit<int> { message = $"요청이 {count}건 정상 처리되었습니다.", data = count, code = 200 };
+                }
+                else
+                {
+                    return new ResponseUnit<int> { message = "잘못된 요청입니다.", data = count, code = 404 };
+                }
+            }
+            catch(Exception ex)
+            {
+                return new ResponseUnit<int> { message = "서버에서 요청을 처리하지 못하였습니다.", data = count, code = 500 };
+            }
+        }
     }
 }

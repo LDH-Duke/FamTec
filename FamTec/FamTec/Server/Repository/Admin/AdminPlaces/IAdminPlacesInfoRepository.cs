@@ -55,6 +55,6 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placeid"></param>
         /// <returns></returns>
-        ValueTask<bool?> DeleteMyWorks(List<int>? placeid, string delName);
+        ValueTask<bool?> DeleteMyWorks(List<AdminPlaceTb>? modellist);
     }
 }

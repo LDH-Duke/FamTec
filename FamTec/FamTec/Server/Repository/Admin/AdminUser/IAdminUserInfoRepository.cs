@@ -18,7 +18,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid);
+        ValueTask<AdminTb?> GetAdminUserInfo(int? admintbid);
 
         /// <summary>
         /// 관리자리스트 
@@ -26,6 +26,13 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// <returns></returns>
         ValueTask<List<ManagerListDTO>?> GetAllAdminUserList();
 
+
+        /// <summary>
+        /// 관리자 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        ValueTask<bool?> DeleteAdminInfo(AdminTb? model);
      
 
     }

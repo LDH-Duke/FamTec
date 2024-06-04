@@ -1,6 +1,7 @@
 ﻿using FamTec.Server.Services.Admin.Place;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
@@ -27,27 +28,57 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         }
         
         /// <summary>
-        /// 전체 사업장 리스트 조회 * (확인함)
+        /// 전체 사업장 리스트 조회 [수정완료]
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllWorksList")]
         public async ValueTask<IActionResult> GetAllPlaceList()
         {
-            ResponseModel<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService();
-            return Ok(model);
+            ResponseList<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService();
+            
+            if(model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
-        /// 매니저리스트 전체 반환 * (확인함)
+        /// 매니저리스트 전체 반환 [수정완료]
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("GetAllManagerList")]
         public async ValueTask<IActionResult> GetAllManagerList()
         {
-            ResponseModel<ManagerListDTO> model = await AdminPlaceService.GetAllManagerListService();
-            return Ok(model);
+            ResponseList<ManagerListDTO>? model = await AdminPlaceService.GetAllManagerListService();
+            
+            if(model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
@@ -64,7 +95,7 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         }
 
         /// <summary>
-        /// 해당사업장을 관리하는 관리자 LIST 반환 * (확인함)
+        /// 해당사업장을 관리하는 관리자 LIST 반환 * [수정완료]
         /// </summary>
         /// <param name="placeid"></param>
         /// <returns></returns>
@@ -72,8 +103,24 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("DetailWorks")]
         public async ValueTask<IActionResult> DetailWorks([FromQuery]int placeid)
         {
-            ResponseModel<PlaceDetailDTO>? model = await AdminPlaceService.GetPlaceService(placeid);
-            return Ok(model);
+            ResponseUnit<PlaceDetailDTO>? res = await AdminPlaceService.GetPlaceService(placeid);
+
+            if(res is not null)
+            {
+                if(res.code  == 200)
+                {
+                    return Ok(res);
+                }
+                else
+                {
+                    return BadRequest(res);
+                }
+            }
+            else
+            {
+                return BadRequest(res);
+            }
+            
         }
 
         /// <summary>
@@ -98,6 +145,7 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         public async ValueTask<IActionResult> AddWorks([FromBody]AddPlaceDTO dto)
         {
             ResponseModel<int?> model = await AdminPlaceService.AddPlaceService(dto);
+            
             return Ok(model);
         }
 
@@ -105,23 +153,18 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("AddPlaceManager")]
         public async ValueTask<IActionResult> AddPlaceManager([FromBody]AddPlaceManagerDTO<ManagerListDTO> placemanager)
         {
-            ResponseModel<string> model = await AdminPlaceService.AddPlaceManagerService(placemanager);
-            return Ok(model);
+            dynamic model = await AdminPlaceService.AddPlaceManagerService(placemanager);
+            
+            if(model.code == 200)
+            {
+                return Ok(new ResponseUnit<string> { message = "success", data=model.data, code=model.code});
+            }
 
+            return Ok(new ResponseUnit<string> { message = "failed", data = model.data, code = model.code });
         }
 
-        /// <summary>
-        /// 사업장 자체를 삭제 * 확인함
-        /// </summary>
-        /// <param name="placeidx"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("DeleteWorks")]
-        public async ValueTask<IActionResult> DeleteWorks([FromBody]List<int> placeidx)
-        {
-            ResponseModel<string>? model = await AdminPlaceService.DeletePlaceService(placeidx, session);
-            return Ok(model);
-        }
+       
+      
 
     }
 }

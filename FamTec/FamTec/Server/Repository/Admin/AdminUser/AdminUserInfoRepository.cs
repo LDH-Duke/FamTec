@@ -44,18 +44,45 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         }
 
         /// <summary>
+        /// 관리자 삭제
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<bool?> DeleteAdminInfo(AdminTb? model)
+        {
+            try
+            {
+                if(model is not null)
+                {
+                    context.AdminTbs.Update(model);
+                    return await context.SaveChangesAsync() > 0 ? true : false;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
         /// 매개변수의 관리자ID에 해당하는 관리자모델 모델 조회
         /// </summary>
         /// <param name="adminuseridx"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid)
+        public async ValueTask<AdminTb?> GetAdminUserInfo(int? admintbid)
         {
             try
             {
-                if (usertbid is not null)
+                if (admintbid is not null)
                 {
-                    AdminTb? model = await context.AdminTbs.FirstOrDefaultAsync(m => m.UserTbId.Equals(usertbid) && m.DelYn != 1);
+                    AdminTb? model = await context.AdminTbs.FirstOrDefaultAsync(m => m.Id.Equals(admintbid) && m.DelYn != 1);
                     if (model is not null)
                     {
                         return model;

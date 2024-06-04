@@ -24,7 +24,7 @@ namespace FamTec.Server.Controllers.ClientController
         /// 매니저 목록 조회
         /// </summary>
         /// <returns></returns>
-        /*
+    
         [HttpGet]
         [Route("allmanager")]
         public async Task<IActionResult> FindAllManager()
@@ -53,80 +53,81 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Admin][Controller] 매니저 전체 조회 에러!!\n" + ex);
             }
         }
-       */
+     
 
         //매니저추가
-        /*
+    
         [HttpPost]
         [Route("addmanager")]
         public async Task<IActionResult> AddManager([FromBody] AddManagerDTO manager)
         {
-            //using var transaction = await _workContext.Database.BeginTransactionAsync();
-            //try
-            //{
-                
-            //      사용자 테이블 생성
-            //      생성 id를 포함한 데이터로 관리자db 생성
-                 
-            //    Console.WriteLine("매니저 추가");
-            //    UserTb userTb = new()
-            //    {
-            //        UserId = manager.UserId,
-            //        Name = manager.Name,
-            //        Password = manager.Password,
-            //        Email = manager.Email,
-            //        Phone = manager.Phone,
-            //        PermBasic = 2,
-            //        PermMachine = 2,
-            //        PermLift = 2,
-            //        PermFire = 2,
-            //        PermConstruct = 2,
-            //        PermNetwork = 2,
-            //        PermBeauty = 2,
-            //        PermSecurity = 2,
-            //        PermMaterial = 2,
-            //        PermEnergy = 2,
-            //        PermUser = 2,
-            //        PermVoc = 2,
-            //        AdminYn = 1,
-            //        Status = 1,
-            //    };
-            //    UserTb resUsertb = _workContext.UserTbs.Add(userTb).Entity;
-            //    await _workContext.SaveChangesAsync();
+            using var transaction = await _workContext.Database.BeginTransactionAsync();
+            try
+            {
 
-            //    if (resUsertb == null)
-            //    {
-            //        return BadRequest("회원가입 되지않음");
-            //    }
-
-            //    AdminTb adminTb = new()
-            //    {
-            //        Type = manager.Type,
-            //        UserTbId = resUsertb.Id,
-            //        DepartmentTbId = manager.DepartmentId
-            //    };
-            //    _workContext.AdminTbs.Add(adminTb);
-
-            //    await _workContext.SaveChangesAsync();
-            //    await transaction.CommitAsync();
+                //사용자 테이블 생성
+                //생성 id를 포함한 데이터로 관리자db 생성
 
 
+                Console.WriteLine("매니저 추가");
+                UserTb userTb = new()
+                {
+                    UserId = manager.UserId,
+                    Name = manager.Name,
+                    Password = manager.Password,
+                    Email = manager.Email,
+                    Phone = manager.Phone,
+                    PermBasic = 2,
+                    PermMachine = 2,
+                    PermLift = 2,
+                    PermFire = 2,
+                    PermConstruct = 2,
+                    PermNetwork = 2,
+                    PermBeauty = 2,
+                    PermSecurity = 2,
+                    PermMaterial = 2,
+                    PermEnergy = 2,
+                    PermUser = 2,
+                    PermVoc = 2,
+                    AdminYn = 1,
+                    Status = 1,
+                };
+                UserTb resUsertb = _workContext.UserTbs.Add(userTb).Entity;
+                await _workContext.SaveChangesAsync();
 
-            //    return Ok(new ResponseObj<AddManagerDTO> { message = "매니저 등록 완료", code = 200 });
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("[Admin][Controller] 매니저 추가 에러!!\n " + ex);
-            //    return Problem("[Admin][Controller] 매니저 추가 에러!!\n" + ex);
-            //}
+                if (resUsertb == null)
+                {
+                    return BadRequest("회원가입 되지않음");
+                }
+
+                AdminTb adminTb = new()
+                {
+                    Type = manager.Type,
+                    UserTbId = resUsertb.Id,
+                    DepartmentTbId = manager.DepartmentId
+                };
+                _workContext.AdminTbs.Add(adminTb);
+
+                await _workContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+
+
+                return Ok(new ResponseObj<AddManagerDTO> { message = "매니저 등록 완료", code = 200 });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[Admin][Controller] 매니저 추가 에러!!\n " + ex);
+                return Problem("[Admin][Controller] 매니저 추가 에러!!\n" + ex);
+            }
         }
-        */
+     
 
         /// <summary>
         /// 부서 전체 조회
         /// </summary>
         /// <returns></returns>
-        /*
+        
         [HttpGet]
         [Route("alldepartment")]
         public async Task<IActionResult> FindAllDepartment()
@@ -152,10 +153,10 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Admin][Controller] 부서 전체 조회 에러!!\n" + ex);
             }
         }
-        */
+    
 
         //부서 추가
-        /*
+     
         [HttpPost]
         [Route("adddepartment")]
         public async Task<IActionResult> AddDepartment([FromBody] AddDepartmentDTO department)
@@ -189,7 +190,7 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Admin][Controller] 부서 추가 에러!!\n" + ex);
             }
         }
-        */
+       
 
         /// <summary>
         /// 부서 삭제

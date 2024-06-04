@@ -40,7 +40,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                 }
                 else
                 {
-                    return null;
+                    return false;
                 }
             }
             catch(Exception ex)
@@ -55,44 +55,18 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placeid"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteMyWorks(List<int>? placeid, string delName)
+        public async ValueTask<bool?> DeleteMyWorks(List<AdminPlaceTb>? modellist)
         {
             try
             {
-                if (placeid is [_, ..])
+                if (modellist is [_, ..])
                 {
-                    for (int i = 0; i < placeid.Count; i++)
+                    for (int i = 0; i < modellist.Count(); i++)
                     {
-                        UserTb? usertb = await context.UserTbs.FirstOrDefaultAsync(m => m.DelYn != 1 && m.PlaceTbId == placeid[i]);
-                        if (usertb is not null)
-                        {
-                            return false;
-                        }
-                        else
-                        {
-                            AdminPlaceTb? adminplacetb = await context.AdminPlaceTbs.FirstOrDefaultAsync(m => m.DelYn != 1 && m.PlaceId == placeid[i]);
+                        modellist[i].DelYn = 1;
+                        modellist[i].DelDt = DateTime.Now;
 
-                            if (adminplacetb is not null)
-                            {
-                                return false;
-                            }
-                            else
-                            {
-                                PlaceTb? placetb = await context.PlaceTbs.FirstOrDefaultAsync(m => m.DelYn != 1 && m.Id == placeid[i]);
-                                if (placetb is not null)
-                                {
-                                    placetb.DelYn = 1;
-                                    placetb.DelDt = DateTime.Now;
-                                    placetb.DelUser = delName;
-
-                                    context.PlaceTbs.Update(placetb);
-                                }
-                                else
-                                {
-                                    return false;
-                                }
-                            }
-                        }
+                        context.AdminPlaceTbs.Update(modellist[i]);
                     }
 
                     return await context.SaveChangesAsync() > 0 ? true : false;

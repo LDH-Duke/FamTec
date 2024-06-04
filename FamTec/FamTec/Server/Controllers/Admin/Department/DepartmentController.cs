@@ -1,6 +1,7 @@
 ﻿using FamTec.Server.Services.Admin.Department;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +24,7 @@ namespace FamTec.Server.Controllers.Admin.Department
         }
 
         /// <summary>
-        /// 부서추가 * 확인함
+        /// 부서추가 [수정완료]
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
@@ -31,24 +32,53 @@ namespace FamTec.Server.Controllers.Admin.Department
         [Route("AddDepartment")]
         public async ValueTask<IActionResult> AddDepartment([FromBody] AddDepartmentDTO dto)
         {
-            ResponseModel<AddDepartmentDTO>? model = await DepartmentService.AddDepartmentService(dto, session);
-            return Ok(model);
+            ResponseUnit<AddDepartmentDTO>? model = await DepartmentService.AddDepartmentService(dto);
+
+            if(model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
-        /// 부서 전체조회 * 확인함
+        /// 부서 전체조회 [수정완료]
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("GetDepartmentList")]
         public async ValueTask<IActionResult> GetAllDepartment()
         {
-            ResponseModel<DepartmentDTO>? model = await DepartmentService.GetAllDepartmentService();
-            return Ok(model);
+            ResponseList<DepartmentDTO>? model = await DepartmentService.GetAllDepartmentService();
+            if(model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
-        /// 부서삭제 * 확인함
+        /// 부서삭제 [수정완료]
         /// </summary>
         /// <param name="selList"></param>
         /// <returns></returns>
@@ -56,9 +86,19 @@ namespace FamTec.Server.Controllers.Admin.Department
         [Route("DeleteDepartmentList")]
         public async ValueTask<IActionResult> DeleteDepartmentList([FromBody]List<int?> selList)
         {
-            //List<int?> selList = new List<int?> { 5, 6, 7};
-            ResponseModel<DepartmentDTO>? model = await DepartmentService.DeleteDepartmentService(selList);
-            return Ok(model);
+            ResponseUnit<bool>? model = await DepartmentService.DeleteDepartmentService(selList);
+
+            if(model is not null)
+            {
+                if (model.code == 200)
+                    return Ok(model);
+                else
+                    return BadRequest(model);
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
