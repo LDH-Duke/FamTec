@@ -26,9 +26,9 @@
         <ul class="nav-tab-wrap">
             <!-- 알림 -->
 
-            <li class="nav-tab-item">
+            @* <li class="nav-tab-item">
                 <button disabled="@(!IsConnected)">@MessageCount</button>
-            </li>
+            </li> *@
 
             <li class="nav-tab-item">
                 <NavLink class="nav-tab-link" href="signup">Sgin in</NavLink>
@@ -47,18 +47,18 @@
 
     protected override async Task OnInitializedAsync()
     {
-        hubConnection = new HubConnectionBuilder()
-                .WithUrl(NavigationManager.ToAbsoluteUri("/broadcastHub"))
-                .Build();
+        // hubConnection = new HubConnectionBuilder()
+        //         .WithUrl(NavigationManager.ToAbsoluteUri("/broadcastHub"))
+        //         .Build();
 
-        hubConnection.On("AlarmSelect", () =>
-        {
-            CallLoadData();
-            StateHasChanged();
-        });
+        // hubConnection.On("AlarmSelect", () =>
+        // {
+        //     CallLoadData();
+        //     StateHasChanged();
+        // });
 
-        await hubConnection.StartAsync();
-        await OnLoadData();
+        // await hubConnection.StartAsync();
+        // await OnLoadData();
     }
 
     private void CallLoadData()
@@ -81,7 +81,7 @@
     /// <summary>
     /// SignalR 연결여부
     /// </summary>
-    public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
+    // public bool IsConnected => hubConnection.State == HubConnectionState.Connected;
 
     public void Dispose()
     {

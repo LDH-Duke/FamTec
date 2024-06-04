@@ -14,46 +14,54 @@
             Placeholder="Id"
             @bind-Value="@NewManager.UserId"
             Label="아이디"
+            EditMode=EditMode
             />
         <InputField 
             InputType="password" 
             Placeholder="Password"
             @bind-Value="@NewManager.Password"
             Label="비밀번호"
+            EditMode=EditMode
             />
         <InputField 
             InputType="password" 
             Placeholder="Password Check"
             Label="비밀번호 확인"
+            EditMode=EditMode
             />
         <InputField 
             InputType="text" 
             Placeholder="Name"
             @bind-Value="@NewManager.Name"
             Label="이름"
+            EditMode=EditMode
             />
         <InputField 
             InputType="text" 
             Placeholder="Phone"
             @bind-Value="@NewManager.Phone"
             Label="전화번호"
+            EditMode=EditMode
             />
         <InputField 
             InputType="text" 
             Placeholder="Email"
             @bind-Value="@NewManager.Email"
             Label="이메일"
+            EditMode=EditMode
             />
         <InputField 
             InputType="text"
             Placeholder="Type"
             @bind-Value="@NewManager.Type"
             Label="계정 유형" 
+            EditMode=EditMode
             />
         <InputSelectField 
             Label="부서"
             SelectData="DepartmentList"
             SelectedValueChanged="HandleSelectedValueChange"
+            IsReverse=true
             />
         </div>
         
@@ -64,7 +72,7 @@
 @code {
     [Parameter] public AddManagerDTO NewManager { get; set; }
     [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
-
+    [Parameter] public bool EditMode { get; set; }
 
     private void HandleSelectedValueChange(int value)
     {
