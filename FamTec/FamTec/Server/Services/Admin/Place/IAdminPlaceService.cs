@@ -32,15 +32,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceService(AddPlaceDTO? dto, SessionInfo? sessioninfo);
-
-        /// <summary>
-        /// 사업장 등록시 관리자 등록
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <param name="sessioninfo"></param>
-        /// <returns></returns>
-        public ValueTask<ResponseModel<AddPlaceDTO>> AddPlaceAdminService(AddPlaceDTO? dto, SessionInfo? sessioninfo);
+        public ValueTask<ResponseModel<int?>> AddPlaceService(AddPlaceDTO? dto);
 
         /// <summary>
         /// 선택 사업장 삭제
@@ -55,7 +47,14 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="placeid"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AddPlaceDTO>?> GetPlaceService(int? placeid);
+        public ValueTask<ResponseModel<PlaceDetailDTO>?> GetPlaceService(int? placeid);
+
+        /// <summary>
+        /// 사업장에 관리자 추가 서비스
+        /// </summary>
+        /// <param name="placemanager"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseModel<string>> AddPlaceManagerService(AddPlaceManagerDTO<ManagerListDTO> placemanager);
 
     }
 }

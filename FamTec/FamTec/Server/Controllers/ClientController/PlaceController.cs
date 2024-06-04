@@ -20,7 +20,7 @@ namespace FamTec.Server.Controllers.ClientController
             _workContext = workContext;
         }
 
-
+        /*
         [HttpGet]
         [Route("detail")]
         public async Task<IActionResult> FindOnePlace([FromQuery] int id)
@@ -111,7 +111,9 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Place][Controller] 사업장 상세조회 에러!!\n" + ex);
             }
         }
+        */
 
+        /*
         [HttpPost]
         [Route("addplace")]
         public async Task<IActionResult> AddPlace([FromBody] AddPlaceDTO place)
@@ -152,7 +154,7 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Place][Controller] 사업장 생성 에러!!\n" + ex);
             }
         }
-
+        */
 
     }
 }

@@ -341,7 +341,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="placeid"></param>
         /// <returns></returns>
-        public async ValueTask<AddPlaceDTO?> GetWorksInfo(int? placeid)
+        public async ValueTask<PlaceDetailDTO?> GetWorksInfo(int? placeid)
         {
             try
             {
@@ -362,49 +362,46 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                                                             where (admintb.DelYn != 1 && adminplacetb.DelYn != 1)
                                                             select new ManagerListDTO
                                                             {
-                                                                Id = usertb.Id,
+                                                                Id = admintb.Id,
                                                                 UserId = usertb.UserId,
                                                                 Name = usertb.Name,
                                                                 Department = departmenttb.Name
                                                             }).ToList();
 
-                        if (ManagerDTO is not null)
+                        PlaceDetailDTO PlaceDetail = new PlaceDetailDTO
                         {
-                            AddPlaceDTO? dto = new AddPlaceDTO();
-                            dto.PlaceCd = place.PlaceCd;
-                            dto.Name = place.Name;
-                            dto.Tel = place.Tel;
-                            dto.Address = place.Address;
-                            dto.ContractNum = place.ContractNum;
-                            dto.ContractDT = place.ContractDt.ToString();
-                            dto.PermMachine = place.PermMachine;
-                            dto.PermLift = place.PermLift;
-                            dto.PermFire = place.PermFire;
-                            dto.PermConstruct = place.PermConstruct;
-                            dto.PermNetwork = place.PermNetwrok;
-                            dto.PermBeauty = place.PermBeauty;
-                            dto.PermSecurity = place.PermSecurity;
-                            dto.PermMaterial = place.PermMaterial;
-                            dto.PermEnergy = place.PermEnergy;
-                            dto.PermVoc = place.PermVoc;
-
-                            for (int i = 0; i < ManagerDTO.Count(); i++)
+                            PlaceInfo = new PlaceInfo
                             {
-                                dto.AdminList.Add(new ManagerListDTO
-                                {
-                                    Id = ManagerDTO[i].Id,
-                                    UserId = ManagerDTO[i].UserId,
-                                    Name = ManagerDTO[i].Name,
-                                    Department = ManagerDTO[i].Department
-                                });
-                            }
+                                Id = place.Id,
+                                PlaceCd = place.PlaceCd,
+                                Name = place.Name,
+                                Tel = place.Tel,
+                                ContractNum = place.ContractNum,
+                                ContractDt = place.ContractDt,
+                                CancelDt = place.CancelDt,
+                                Status = place.Status,
+                                Note = place.Note
+                            },
 
-                            return dto;
-                        }
-                        else
-                        {
-                            return null;
-                        }
+                            PlacePerm = new PlacePerm
+                            {
+                                Id = place.Id,
+                                PermMachine = place.PermMachine,
+                                PermLift = place.PermLift,
+                                PermFire = place.PermFire,
+                                PermConstruct = place.PermConstruct,
+                                PermNetwork = place.PermNetwrok,
+                                PermBeauty = place.PermBeauty,
+                                PermSecurity = place.PermSecurity,
+                                PermMaterial = place.PermMaterial,
+                                PermEnergy = place.PermEnergy,
+                                PermVoc = place.PermVoc
+                            },
+                            ManagerList = ManagerDTO
+                        };
+
+                        return PlaceDetail;
+                        
                     }
                     else
                     {

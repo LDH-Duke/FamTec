@@ -91,10 +91,5 @@ namespace FamTec.Shared.Server.DTO.Admin.Place
         /// VOC 권한
         /// </summary>
         public sbyte? PermVoc { get; set; } = 0;
-
-        /// <summary>
-        /// 관리자리스트
-        /// </summary>
-        public List<ManagerListDTO> AdminList { get; set; } =  new List<ManagerListDTO>();
     }
 }

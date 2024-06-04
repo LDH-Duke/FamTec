@@ -122,13 +122,13 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="index"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<DepartmentDTO>?> DeleteDepartmentService(List<int?> index, SessionInfo? session)
+        public async ValueTask<ResponseModel<DepartmentDTO>?> DeleteDepartmentService(List<int?> index)
         {
             try
             {
-                if(index is [_, ..] && session is not null)
+                if(index is [_, ..])
                 {
-                    bool? result = await DepartmentInfoRepository.DeleteDepartmentInfo(index, session.Name);
+                    bool? result = await DepartmentInfoRepository.DeleteDepartmentInfo(index);
 
                     if(result == true)
                     {

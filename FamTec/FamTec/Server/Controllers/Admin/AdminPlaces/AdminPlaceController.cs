@@ -69,10 +69,10 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         /// <param name="placeid"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("DetailWorks/{placeid?}")]
-        public async ValueTask<IActionResult> DetailWorks(int placeid)
+        [Route("DetailWorks")]
+        public async ValueTask<IActionResult> DetailWorks([FromQuery]int placeid)
         {
-            ResponseModel<AddPlaceDTO>? model = await AdminPlaceService.GetPlaceService(placeid);
+            ResponseModel<PlaceDetailDTO>? model = await AdminPlaceService.GetPlaceService(placeid);
             return Ok(model);
         }
 
@@ -97,48 +97,17 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("AddWorks")]
         public async ValueTask<IActionResult> AddWorks([FromBody]AddPlaceDTO dto)
         {
-            /*
-            AddPlaceDTO dto = new AddPlaceDTO();
-            dto.PlaceCd = "CD00004";
-            dto.ContractNum = "CN00000004";
-            dto.Name = "울산사업장";
-            dto.Note = "비고값";
-            dto.Address = "울산광역시 동구";
-            dto.ContractDT = DateTime.Now;
-            dto.PermMachine = 0;
-            dto.PermLift = 0;
-            dto.PermFire = 0;
-            dto.PermConstruct = 0;
-            dto.PermNetwork = 0;
-            dto.PermBeauty = 0;
-            dto.PermSecurity = 0;
-            dto.PermMaterial = 0;
-            dto.PermEnergy = 0;
-            dto.Status = 1;
+            ResponseModel<int?> model = await AdminPlaceService.AddPlaceService(dto);
+            return Ok(model);
+        }
 
-            dto.AdminList.Add(new AddManagerDTO
-            {
-                UserId = 3,
-                UserName = "Admin",
-                AdminID = 2,
-                Type = "시스템관리자",
-                DepartmentIdx = 3,
-                DepartmentName = "에스텍시스템"
-            });
+        [HttpPost]
+        [Route("AddPlaceManager")]
+        public async ValueTask<IActionResult> AddPlaceManager([FromBody]AddPlaceManagerDTO<ManagerListDTO> placemanager)
+        {
+            ResponseModel<string> model = await AdminPlaceService.AddPlaceManagerService(placemanager);
+            return Ok(model);
 
-            dto.AdminList.Add(new AddManagerDTO
-            {
-                UserId = 4,
-                UserName = "TESTUSER",
-                AdminID = 3,
-                Type = "마스터",
-                DepartmentIdx = 4,
-                DepartmentName = "융합1팀"
-            });
-            */
-            //ResponseModel<string>? model = await AdminPlaceService.AddPlaceService(dto, session);
-            //return Ok(model);
-            return Ok();
         }
 
         /// <summary>

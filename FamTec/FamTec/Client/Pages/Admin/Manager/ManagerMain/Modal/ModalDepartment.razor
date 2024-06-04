@@ -65,7 +65,7 @@
         try
         {
             ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/DePartment/GetDepartmentList");
-        
+
             departmentList = resDepartment.data;
         }
         catch (Exception ex)
@@ -81,11 +81,14 @@
     {
         try
         {
-            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Admin/deletedepartment", deleteDepartment);
+            // [4]
+            //HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Admin/deletedepartment", deleteDepartment);
+            HttpResponseMessage resDelete = await HttpClient.PutAsJsonAsync("http://127.0.0.1:5245/api/Department/DeleteDepartmentList", deleteDepartment);
             if (resDelete.IsSuccessStatusCode)
             {
                 await LoadDepartments();
                 await OnListSync.InvokeAsync();
+                deleteDepartment.Clear();
                 newDepartment = new AddDepartmentDTO();
             }
             else

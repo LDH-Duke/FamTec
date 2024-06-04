@@ -57,7 +57,7 @@ namespace FamTec.Server.Controllers.Admin.Department
         public async ValueTask<IActionResult> DeleteDepartmentList([FromBody]List<int?> selList)
         {
             //List<int?> selList = new List<int?> { 5, 6, 7};
-            ResponseModel<DepartmentDTO>? model = await DepartmentService.DeleteDepartmentService(selList, session);
+            ResponseModel<DepartmentDTO>? model = await DepartmentService.DeleteDepartmentService(selList);
             return Ok(model);
         }
 

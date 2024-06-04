@@ -18,40 +18,52 @@
                                 <InputField Label="코드"
                                             InputType="text"
                                             Placeholder="사업장 코드"
-                                            @bind-Value="@placeInfo.PlaceCd" />
+                                            @bind-Value="@placeInfo.PlaceCd" 
+                                            EditMode=EditMode
+                                            />
                                 <InputField Label="사업장명"
                                             InputType="text"
                                             Placeholder="사업장명"
-                                            @bind-Value="@placeInfo.Name" />
+                                            @bind-Value="@placeInfo.Name" 
+                                            EditMode=EditMode
+                                            />
 
                                 <InputField Label="전화번호"
                                             InputType="text"
                                             Placeholder="전화번호"
-                                            @bind-Value="@placeInfo.Tel" />
+                                            @bind-Value="@placeInfo.Tel" 
+                                            EditMode=EditMode
+                                            />
                                 <InputField Label="주소"
                                             InputType="text"
                                             Placeholder="주소"
-                                            @bind-Value="@placeInfo.Address" />
+                                            @bind-Value="@placeInfo.Address" 
+                                            EditMode=EditMode
+                                            />
                                 <InputField Label="계약번호"
                                             InputType="text"
                                             Placeholder="계약번호"
-                                            @bind-Value="@placeInfo.ContractNum" />
+                                            @bind-Value="@placeInfo.ContractNum" 
+                                            EditMode=EditMode
+                                            />
                                 <InputField Label="계약일자"
                                             InputType="date"
                                             Placeholder="계약일자"
-                                            @bind-Value="@placeInfo.ContractDt" />
+                                            @bind-Value="@placeInfo.ContractDt" 
+                                            EditMode=EditMode
+                                            />
                             </div>
                             <div class="placemodal-toggle">
-                                <Toggle Title="기계설비 권한" @bind-Value="@placeInfo.PermMachine"/>
-                                <Toggle Title="승강설비 권한" @bind-Value="@placeInfo.PermLift"/>
-                                <Toggle Title="소방설비 권한" @bind-Value="@placeInfo.PermFire"/>
-                                <Toggle Title="건축설비 권한" @bind-Value="@placeInfo.PermConstruct"/>
-                                <Toggle Title="통신설비 권한" @bind-Value="@placeInfo.PermNetwork"/>
-                                <Toggle Title="미화설비 권한" @bind-Value="@placeInfo.PermBeauty"/>
-                                <Toggle Title="보안설비 권한" @bind-Value="@placeInfo.PermSecurity"/>
-                                <Toggle Title="자재 권한" @bind-Value="@placeInfo.PermMaterial"/>
-                                <Toggle Title="에너지 권한" @bind-Value="@placeInfo.PermEnergy"/>
-                                <Toggle Title="민원관리 권한" @bind-Value="@placeInfo.PermVoc"/>
+                                <Toggle Title="기계설비 권한" @bind-Value="@placeInfo.PermMachine" EditMode=EditMode />
+                                <Toggle Title="승강설비 권한" @bind-Value="@placeInfo.PermLift" EditMode=EditMode />
+                                <Toggle Title="소방설비 권한" @bind-Value="@placeInfo.PermFire" EditMode=EditMode />
+                                <Toggle Title="건축설비 권한" @bind-Value="@placeInfo.PermConstruct" EditMode=EditMode />
+                                <Toggle Title="통신설비 권한" @bind-Value="@placeInfo.PermNetwork" EditMode=EditMode />
+                                <Toggle Title="미화설비 권한" @bind-Value="@placeInfo.PermBeauty" EditMode=EditMode />
+                                <Toggle Title="보안설비 권한" @bind-Value="@placeInfo.PermSecurity" EditMode=EditMode />
+                                <Toggle Title="자재 권한" @bind-Value="@placeInfo.PermMaterial"EditMode=EditMode/>
+                                <Toggle Title="에너지 권한" @bind-Value="@placeInfo.PermEnergy" EditMode=EditMode />
+                                <Toggle Title="민원관리 권한" @bind-Value="@placeInfo.PermVoc" EditMode=EditMode />
                             </div>
                         
                         
@@ -110,6 +122,7 @@
 
     List<int> selectedManagerIds = new List<int>();
     List<ManagerDTO> ManagerList = new List<ManagerDTO>();
+    bool EditMode = true;
 
 
     AddPlaceDTO placeInfo = new AddPlaceDTO();
@@ -168,7 +181,9 @@
         Console.WriteLine("에너지" + placeInfo.PermEnergy);
         Console.WriteLine("민원"+placeInfo.PermVoc);
 
-        var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
+        //var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
+        var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminPlace/AddWorks",placeInfo);
+
         if (resPlace.IsSuccessStatusCode)
         {
             var resData = await resPlace.Content.ReadFromJsonAsync<ResponseObj<int>>();
@@ -178,7 +193,10 @@
                 // 여기서 responseData.Data를 사용하여 사업장 ID를 처리합니다.
                 List<int> placeIds = resData.data;
                 placeManager.PlaceId = placeIds[0];
-                var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addplacemanager", placeManager);
+
+                //var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addplacemanager", placeManager);
+                var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminPlace/AddPlaceManager", placeManager);
+
                 if (resManager.IsSuccessStatusCode)
                 {
                     Console.WriteLine("사업장 매니저 추가 완료");

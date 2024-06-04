@@ -91,8 +91,8 @@ namespace FamTec.Server.Repository.Admin.AdminUser
                     .Include(m => m.DepartmentTb)
                     .Select(m => new ManagerListDTO
                 {
-                    Id = m.UserTb!.Id,
-                    UserId = m.UserTb.UserId!,
+                    Id = m.Id,
+                    UserId = m.UserTb!.UserId!,
                     Name = m.UserTb.Name!,
                     Department = m.DepartmentTb!.Name!
                 }).ToListAsync();

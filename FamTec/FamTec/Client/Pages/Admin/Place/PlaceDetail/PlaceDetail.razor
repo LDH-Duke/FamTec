@@ -1,9 +1,10 @@
 ﻿@page "/admin/place/{Id:int}"
 @using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Client.Pages.Admin.Place.PlaceDetail.Components
-@using FamTec.Shared.Client.DTO
-@using FamTec.Shared.Client.DTO.Place
+
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO.Admin.Place
+@using FamTec.Shared.Server.DTO.Place
 @inject HttpClient HttpClient
 
 <div class="placedetail-container yappear">
@@ -37,19 +38,18 @@
     [Parameter] public int Id { get; set; }
 
 
-    List<ManagerDTO> ManagerList;
+    List<ManagerListDTO> ManagerList;
     PlaceInfo PlaceInfo;
     PlacePerm PlacePerm;
-    PlaceDetail2DTO resPlaceDetail;
+    PlaceDetailDTO resPlaceDetail;
 
     bool PlaceEdit = false;
 
 
-
-
     protected override async Task OnInitializedAsync()
     {
-        ResponseObj<PlaceDetail2DTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDetail2DTO>>($"http://127.0.0.1:5245/api/place/detail/?Id={Id}");
+        //ResponseObj<PlaceDetail2DTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDetail2DTO>>($"http://127.0.0.1:5245/api/place/detail/?Id={Id}");
+        ResponseObj<PlaceDetailDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceDetailDTO>>($"http://127.0.0.1:5245/api/AdminPlace/DetailWorks/?placeid={Id}");
 
         ManagerList = res.data[0].ManagerList;
         PlaceInfo = res.data[0].PlaceInfo;

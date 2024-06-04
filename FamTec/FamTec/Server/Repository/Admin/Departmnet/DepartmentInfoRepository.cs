@@ -48,11 +48,11 @@ namespace FamTec.Server.Repository.Admin.Departmnet
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<bool?> DeleteDepartmentInfo(List<int?> selList, string? name)
+        public async ValueTask<bool?> DeleteDepartmentInfo(List<int?> selList)
         {
             try
             {
-                if(selList is [_, ..] && !String.IsNullOrWhiteSpace(name))
+                if(selList is [_, ..])
                 {
                     for (int i = 0; i < selList.Count; i++)
                     {
@@ -66,8 +66,7 @@ namespace FamTec.Server.Repository.Admin.Departmnet
                             {
                                 departmenttb.DelYn = 1;
                                 departmenttb.DelDt = DateTime.Now;
-                                departmenttb.DelUser = name;
-
+                                
                                 context.DepartmentTbs.Update(departmenttb);
                             }
                             else
