@@ -65,7 +65,7 @@
         Console.WriteLine(newManager.PlaceList);
         Console.WriteLine("매니저 정보 끝");
 
-        HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminUser/AddManager", newManager);
+        HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManager", newManager);
         if (res.IsSuccessStatusCode)
         {
             Navigation.NavigateTo("/admin/manager");

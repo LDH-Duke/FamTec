@@ -24,10 +24,10 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/Department/GetDepartmentList");
+        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://123.2.156.148:5245/api/Department/GetDepartmentList");
         departmentList = resDepartment.data;
         
-        ResponseObj<ManagerDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllManagerList");
+        ResponseObj<ManagerDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllManagerList");
 
         managerList = resManager.data;
     }

@@ -64,7 +64,7 @@
         * fetch 서버 요청
         */
         Console.WriteLine("매니저 조회 시작");
-        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://127.0.0.1:5245/api/AdminPlace/GetAllWorksList");
+        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
         PlaceList = res.data;
         FilterPlaceList = PlaceList;
         Console.WriteLine(PlaceList.Count);

@@ -125,7 +125,7 @@
         }
         else
         {
-            HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/Department/AddDepartment", newDepartment);
+            HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/Department/AddDepartment", newDepartment);
             Console.WriteLine(res);
 
             if (res.IsSuccessStatusCode)

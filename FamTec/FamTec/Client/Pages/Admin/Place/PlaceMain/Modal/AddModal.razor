@@ -182,7 +182,7 @@
         Console.WriteLine("민원"+placeInfo.PermVoc);
 
         //var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
-        var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminPlace/AddWorks",placeInfo);
+        var resPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddWorks", placeInfo);
 
         if (resPlace.IsSuccessStatusCode)
         {
@@ -195,7 +195,7 @@
                 placeManager.PlaceId = placeIds[0];
 
                 //var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addplacemanager", placeManager);
-                var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/AdminPlace/AddPlaceManager", placeManager);
+                var resManager = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddPlaceManager", placeManager);
 
                 if (resManager.IsSuccessStatusCode)
                 {
