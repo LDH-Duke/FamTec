@@ -13,155 +13,155 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = FamTec.Client
 build_property.RootNamespace = FamTec.Client
-build_property.ProjectDir = C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\
+build_property.ProjectDir = C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client
+build_property.MSBuildProjectDirectory = C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/App.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Index.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/SignalRExample.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/SignalRExample.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbmFsUkV4YW1wbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/SurveyPrompt.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/_Imports.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Button.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Button.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xCdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-rmq4jp0nl7
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Input.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Input.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xJbnB1dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0t9nmcse6h
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/InputField.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/InputField.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xJbnB1dEZpZWxkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-deu16zhd0b
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/InputSelectField.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/InputSelectField.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xJbnB1dFNlbGVjdEZpZWxkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-3jo45ajbt4
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/ModalBackground.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/ModalBackground.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xNb2RhbEJhY2tncm91bmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-k3ui2p513g
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/NotUse/List.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/NotUse/List.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xOb3RVc2VcTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-es0kr7a93z
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/SortTable.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/SortTable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xTb3J0VGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-w9u4qq45j3
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Table.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Table.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-iozvmum305
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Toggle.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/CommonComponents/Toggle.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ29tbW9uQ29tcG9uZW50c1xUb2dnbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-46u1abiyxa
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/Department.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/Department.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxDb21wb25lbnRzXERlcGFydG1lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-wpy6a6iy7x
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/DepartmentList.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/DepartmentList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxDb21wb25lbnRzXERlcGFydG1lbnRMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-uq4pwmuq1t
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/ManagerList.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/ManagerList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxDb21wb25lbnRzXE1hbmFnZXJMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-8px6k8yis6
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/NotUse/ManagerTable.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Components/NotUse/ManagerTable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxDb21wb25lbnRzXE5vdFVzZVxNYW5hZ2VyVGFibGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-mj93a9brp6
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Manager.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Manager.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-yqha0i1pk2
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Modal/ModalDepartment.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerMain/Modal/ModalDepartment.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyTWFpblxNb2RhbFxNb2RhbERlcGFydG1lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-id4obh3910
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/Components/PlaceTable.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/Components/PlaceTable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyU2lnbnVwXENvbXBvbmVudHNcUGxhY2VUYWJsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-04bohbjrnl
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/Components/SignForm.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/Components/SignForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyU2lnbnVwXENvbXBvbmVudHNcU2lnbkZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-lsvlqrwfdh
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/ManagerSignUp.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Manager/ManagerSignup/ManagerSignUp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cTWFuYWdlclxNYW5hZ2VyU2lnbnVwXE1hbmFnZXJTaWduVXAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-e9xqng0i4t
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceForm.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceForm.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VEZXRhaWxcQ29tcG9uZW50c1xQbGFjZUZvcm0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ka8q354chg
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceTable.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceTable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VEZXRhaWxcQ29tcG9uZW50c1xQbGFjZVRhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rth0o8ptzu
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceToggle.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/Components/PlaceToggle.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VEZXRhaWxcQ29tcG9uZW50c1xQbGFjZVRvZ2dsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-pzhayuyjkk
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/PlaceDetail.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceDetail/PlaceDetail.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VEZXRhaWxcUGxhY2VEZXRhaWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-u2r3mc6cc1
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Components/NotUse/Tableheaderbody.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Components/NotUse/Tableheaderbody.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VNYWluXENvbXBvbmVudHNcTm90VXNlXFRhYmxlaGVhZGVyYm9keS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-lhn55j9vfe
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/AddModal.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/AddModal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VNYWluXE1vZGFsXEFkZE1vZGFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-2iazqe303y
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/AddModal2.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/AddModal2.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VNYWluXE1vZGFsXEFkZE1vZGFsMi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-99rpduxq60
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/SearchManagerModal.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Modal/SearchManagerModal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VNYWluXE1vZGFsXFNlYXJjaE1hbmFnZXJNb2RhbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-bmfbmql8ia
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Place.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Admin/Place/PlaceMain/Place.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUGxhY2VcUGxhY2VNYWluXFBsYWNlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-7e9i0smogu
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/Drawer.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/Drawer.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXERyYXdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rriyx9tl3w
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/MainLayout.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-7s48qd2tqg
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/Nav.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/Nav.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-wg5fiaa4ah
 
-[C:/Users/stec/Desktop/duke/Dev/FamTec/FamTec/FamTec/Client/Shared/NavMenu.razor]
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-wqqoxqzzwa

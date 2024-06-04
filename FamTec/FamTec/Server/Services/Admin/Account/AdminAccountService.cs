@@ -258,16 +258,13 @@ namespace FamTec.Server.Services.Admin.Account
         public async ValueTask<ResponseUnit<int>?> DeleteAdminService(List<int> adminid)
         {
             int count = 0;
-            bool?[] isStep;
+            
             try
             {
                 if(adminid is [_, ..])
                 {
-
                     for (int i=0;i<adminid.Count;i++)
                     {
-                        isStep = new bool?[3];
-
                         AdminTb? admintb = await AdminUserInfoRepository.GetAdminUserInfo(adminid[i]);
 
                         if (admintb is not null)
@@ -279,8 +276,6 @@ namespace FamTec.Server.Services.Admin.Account
                             
                             if (deleteresult == true)
                             {
-                                isStep[0] = deleteresult;
-
                                 UserTb? usertb = await UserInfoRepository.GetUserIndexInfo(admintb.UserTbId);
 
                                 if (usertb is not null)
@@ -292,20 +287,13 @@ namespace FamTec.Server.Services.Admin.Account
 
                                     if (delresult == true)
                                     {
-                                        isStep[1] = delresult;
+                                        count++; // 삭제개수 카운팅
 
                                         List<AdminPlaceTb>? adminplacetb = await AdminPlaceInfoRepository.GetMyWorksModel(admintb.Id);
-
                                         
                                         if (adminplacetb is [_, ..])
                                         {
                                             bool? result = await AdminPlaceInfoRepository.DeleteMyWorks(adminplacetb);
-                                            
-                                            isStep[2] = result;
-
-
-                                            if (isStep[0] == true && isStep[1] == true && isStep[2] == true)
-                                                count++;
                                         }
                                     }
                                 }
