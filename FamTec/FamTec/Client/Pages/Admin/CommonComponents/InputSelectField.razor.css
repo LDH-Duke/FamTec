@@ -64,6 +64,12 @@
     max-height:200px;
 }
 
+.selectfield-container .reverse{
+    top:auto;
+    bottom : 100%;
+   
+}
+
 .selectfield-container .selectfield-display{
     font-weight:400;
     color: gray;

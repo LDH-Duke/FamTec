@@ -1,7 +1,9 @@
 ﻿@using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Shared.Client.DTO
 ﻿
+@using FamTec.Shared.Client.DTO.Place
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO
 
 @inject HttpClient HttpClient
 
@@ -23,7 +25,7 @@
 </div>
 
 @code {
-    [Parameter] public AddManagerDTO NewManager { get; set; }
+    [Parameter] public AddManagerPlaceDTO NewManagerPlace { get; set; }
     List<PlaceTableDTO> PlaceList;
     int SelectCount = 0;
 
@@ -34,32 +36,41 @@
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+        ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
 
         PlaceList = res.data;
         PlaceList.RemoveAll(place => place.Status == 0);
         FilterPlaceList = PlaceList;
     }
 
+     /*
+     * 사업장 조회
+    */
+    private async Task LoadPlaces()
+    {
+        
+    }
+
+
     /*
     * 부서 선택
     */
     public void OnSelected((bool isCheck, int id) selection)
     {
-        if (NewManager == null)
+        if (NewManagerPlace == null)
         {
             Console.WriteLine("dd");
         }
         Console.WriteLine("부서 체크 여부" + selection.isCheck);
         if (!selection.isCheck)
         {
-            NewManager.PlaceList.Remove(selection.id);
+            NewManagerPlace.PlaceList.Remove(selection.id);
             SelectCount--;
         }
         else
         {
             Console.WriteLine("추가함");
-            NewManager.PlaceList.Add(selection.id);
+            NewManagerPlace.PlaceList.Add(selection.id);
             SelectCount++;
         }
         

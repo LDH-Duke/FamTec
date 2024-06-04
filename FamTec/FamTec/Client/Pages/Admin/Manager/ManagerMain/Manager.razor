@@ -4,31 +4,25 @@
 @using FamTec.Shared.Client.DTO;
 @using FamTec.Shared.Model
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO
+@inject HttpClient HttpClient
+
 
 <div class="grid-layout yappear">
     <div class="depart">
-        <Department />
+        <Department/>
     </div>
     <div class="managerlist">
-        <ManagerList DataList="@managerList" />
+        <ManagerList/>
     </div>
 </div>
 
 @code {
-    HttpClient httpClient = new HttpClient();
-    List<DepartmentDTO> departmentList;
-    List<object> DepartmentList;
 
-    List<ManagerDTO> managerList;
 
 
     protected override async Task OnInitializedAsync()
     {
-        ResponseObj<DepartmentDTO> resDepartment = await httpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://123.2.156.148:5245/api/Department/GetDepartmentList");
-        departmentList = resDepartment.data;
-        
-        ResponseObj<ManagerDTO> resManager = await httpClient.GetFromJsonAsync<ResponseObj<ManagerDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllManagerList");
 
-        managerList = resManager.data;
     }
 }

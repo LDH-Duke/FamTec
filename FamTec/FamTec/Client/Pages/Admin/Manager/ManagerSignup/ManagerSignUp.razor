@@ -3,7 +3,10 @@
 @using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Client.Pages.Admin.Manager.ManagerSignup.Components
 @using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Client.DTO.Place
+@using FamTec.Shared.DTO
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO
 
 @inject HttpClient HttpClient
 @inject NavigationManager Navigation
@@ -11,10 +14,14 @@
 <div class="admin-signup-container yappear">
     <div class="admin-signup-wrap">
         <div class="form">
-            <SignForm NewManager="newManager" DepartmentList="departmetnList" />
+            <SignForm 
+                NewManager="newManager" 
+                DepartmentList="departmetnList" 
+                EditMode=EditMode
+                />
         </div>
         <div class="place">
-            <PlaceTable NewManager="newManager" />
+            <PlaceTable NewManagerPlace="managerPlace" />
         </div>
 
     </div>
@@ -26,8 +33,10 @@
 </div>
 
 @code {
-    AddManagerDTO newManager;
-    List<DepartmentDTO> departmetnList;
+    AddManagerDTO newManager = new AddManagerDTO();
+    AddManagerPlaceDTO managerPlace = new AddManagerPlaceDTO();
+    List<DepartmentDTO> departmetnList = new List<DepartmentDTO>();
+    bool EditMode = true;
 
     protected async override Task OnInitializedAsync()
     {
@@ -42,8 +51,10 @@
     {
         try
         {
-            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://127.0.0.1:5245/api/DePartment/GetDepartmentList");
+            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
             departmetnList = resDepartment.data;
+
+
         }
         catch(Exception ex)
         {
@@ -54,22 +65,41 @@
 
     private async Task Submit()
     {
-        Console.WriteLine("매니저 정보");
-        Console.WriteLine(newManager.UserId);
-        Console.WriteLine(newManager.Password);
-        Console.WriteLine(newManager.Name);
-        Console.WriteLine(newManager.Phone);
-        Console.WriteLine(newManager.Email);
-        Console.WriteLine(newManager.Type);
-        Console.WriteLine("매니저"+newManager.DepartmentId);
-        Console.WriteLine(newManager.PlaceList);
-        Console.WriteLine("매니저 정보 끝");
-
-        HttpResponseMessage res = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManager", newManager);
-        if (res.IsSuccessStatusCode)
+        try
         {
-            Navigation.NavigateTo("/admin/manager");
+            var resManger = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManager", newManager);
+            if (resManger.IsSuccessStatusCode)
+            {
+                Console.WriteLine("매니저 추가 성공");
+                var resManagerData = await resManger.Content.ReadFromJsonAsync<ResponseUnit<int>>();
+                int adminId = resManagerData.data;
+                managerPlace.AdminId = adminId;
+
+                var resManagerPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManagerWorks", managerPlace);
+                if (resManagerPlace.IsSuccessStatusCode)
+                {
+                    var resManagerPlaceData = await resManagerPlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
+                    Console.WriteLine("매니저 사업장 추가 성공");
+                    Navigation.NavigateTo("/admin/manager");
+                }
+                else
+                {
+                    Console.WriteLine("매니저 사업장 추가 실패");
+                    Navigation.NavigateTo("/admin/manager");
+                }
+            }
+            else
+            {
+                Console.WriteLine("매니저 등록 실패");
+                Navigation.NavigateTo("/admin/manager");
+            }
         }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"[Admin][Department] 클라이언트 매니저 등록 에러" + ex);
+        }
+
+       
     }
 
 }
