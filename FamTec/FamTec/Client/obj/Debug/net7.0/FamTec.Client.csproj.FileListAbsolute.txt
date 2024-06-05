@@ -2083,3 +2083,6 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\SignForm.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\ManagerDetail.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Modal\AddModal2.razor.rz.scp.css
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\PlaceTable.razor.rz.scp.css
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\SignForm.razor.rz.scp.css
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\ManagerDetail.razor.rz.scp.css
