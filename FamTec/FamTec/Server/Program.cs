@@ -26,6 +26,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.FileProviders;
+using FamTec.Server.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,6 +64,7 @@ builder.Services.AddTransient<IFloorService, FloorService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IUnitService, UnitService>();
 
+builder.Services.AddTransient<ILogService, LogService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -225,6 +228,7 @@ app.Use(async (context, next) =>
 });
 app.Run();
 */
+
 
 WorksSetting settings = new();
 await settings.DefaultSetting();

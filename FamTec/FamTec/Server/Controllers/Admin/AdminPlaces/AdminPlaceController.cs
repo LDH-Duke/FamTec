@@ -1,4 +1,5 @@
-﻿using FamTec.Server.Services.Admin.Place;
+﻿using FamTec.Server.Services;
+using FamTec.Server.Services.Admin.Place;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
@@ -13,10 +14,12 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
     public class AdminPlaceController : ControllerBase
     {
         private IAdminPlaceService AdminPlaceService;
+        private ILogService LogService;
 
-        public AdminPlaceController(IAdminPlaceService _adminplaceservice)
+        public AdminPlaceController(IAdminPlaceService _adminplaceservice, ILogService _logservice)
         {
             this.AdminPlaceService = _adminplaceservice;
+            this.LogService = _logservice;
         }
         
         /// <summary>
@@ -27,22 +30,30 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("GetAllWorksList")]
         public async ValueTask<IActionResult> GetAllPlaceList()
         {
-            ResponseList<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService();
-            
-            if(model is not null)
+            try
             {
-                if (model.code == 200)
+                ResponseList<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService();
+
+                if (model is not null)
                 {
-                    return Ok(model);
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
                 }
                 else
                 {
                     return BadRequest(model);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                return BadRequest(model);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
         }
 
@@ -54,22 +65,30 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("GetAllManagerList")]
         public async ValueTask<IActionResult> GetAllManagerList()
         {
-            ResponseList<ManagerListDTO>? model = await AdminPlaceService.GetAllManagerListService();
-            
-            if(model is not null)
+            try
             {
-                if (model.code == 200)
+                ResponseList<ManagerListDTO>? model = await AdminPlaceService.GetAllManagerListService();
+
+                if (model is not null)
                 {
-                    return Ok(model);
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
                 }
                 else
                 {
                     return BadRequest(model);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                return BadRequest(model);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
         }
 
@@ -95,24 +114,31 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("DetailWorks")]
         public async ValueTask<IActionResult> DetailWorks([FromQuery]int placeid)
         {
-            ResponseUnit<PlaceDetailDTO>? res = await AdminPlaceService.GetPlaceService(placeid);
-
-            if(res is not null)
+            try
             {
-                if(res.code  == 200)
+                ResponseUnit<PlaceDetailDTO>? res = await AdminPlaceService.GetPlaceService(placeid);
+
+                if (res is not null)
                 {
-                    return Ok(res);
+                    if (res.code == 200)
+                    {
+                        return Ok(res);
+                    }
+                    else
+                    {
+                        return BadRequest(res);
+                    }
                 }
                 else
                 {
                     return BadRequest(res);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                return BadRequest(res);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
-            
         }
 
         /// <summary>
@@ -124,22 +150,30 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("AddWorks")]
         public async ValueTask<IActionResult> AddWorks([FromBody]AddPlaceDTO dto)
         {
-            ResponseUnit<int?> model = await AdminPlaceService.AddPlaceService(dto);
-            
-            if(model is not null)
+            try
             {
-                if(model.code == 200)
+                ResponseUnit<int?> model = await AdminPlaceService.AddPlaceService(dto);
+
+                if (model is not null)
                 {
-                    return Ok(model);
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
                 }
                 else
                 {
                     return BadRequest(model);
                 }
             }
-            else
+            catch(Exception ex)
             {
-                return BadRequest(model);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
         }
 
@@ -152,22 +186,29 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("AddPlaceManager")]
         public async ValueTask<IActionResult> AddPlaceManager([FromBody]AddPlaceManagerDTO<ManagerListDTO> placemanager)
         {
-            ResponseUnit<bool> model = await AdminPlaceService.AddPlaceManagerService(placemanager);
-            
-            if(model is not null)
+            try
             {
-                if (model.code == 200)
+                ResponseUnit<bool> model = await AdminPlaceService.AddPlaceManagerService(placemanager);
+
+                if (model is not null)
                 {
-                    return Ok(model);
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
                 }
                 else
                 {
                     return BadRequest(model);
                 }
-            }
-            else
+            }catch(Exception ex)
             {
-                return BadRequest(model);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
         }
 
@@ -180,30 +221,34 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("DeleteWorks")]
         public async ValueTask<IActionResult> DeleteWorks([FromBody]List<int> DeletePlace)
         {
-            ResponseUnit<bool> model = await AdminPlaceService.DeleteManagerPlaceService(DeletePlace);
-
-            if(model is not null)
+            try
             {
-                if(model.code == 200)
+                ResponseUnit<bool> model = await AdminPlaceService.DeleteManagerPlaceService(DeletePlace);
+
+                if (model is not null)
                 {
-                    return Ok(model);
-                }
-                else if(model.code == 401)
-                {
-                    return Ok(model);
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else if (model.code == 401)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
                 }
                 else
                 {
                     return BadRequest(model);
                 }
-            }
-            else
+            }catch(Exception ex)
             {
-                return BadRequest(model);
+                LogService.LogMessage(ex.Message);
+                return StatusCode(500);
             }
         }
-       
-      
-
     }
 }
