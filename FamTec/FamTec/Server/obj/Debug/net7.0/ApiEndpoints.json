@@ -101,6 +101,22 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
+    "Method": "DeleteWorks",
+    "RelativePath": "api/AdminPlace/DeleteWorks",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DeletePlace",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "DetailWorks",
     "RelativePath": "api/AdminPlace/DetailWorks",
     "HttpMethod": "GET",
@@ -149,16 +165,6 @@
         "IsRequired": false
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
-    "Method": "UpdateWorks",
-    "RelativePath": "api/AdminPlace/UpdateWorks",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -211,6 +217,22 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminUserController",
+    "Method": "GetManagerInfo",
+    "RelativePath": "api/AdminUser/GetManagerInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "adminId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminUserController",
     "Method": "Login",
     "RelativePath": "api/AdminUser/Login",
     "HttpMethod": "POST",
@@ -239,6 +261,96 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "InsertBuilding",
+    "RelativePath": "api/Building/Addbuilding",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Building.BuildingsDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "AddFloor",
+    "RelativePath": "api/Building/AddFloor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Floor.FloorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "AddRoom",
+    "RelativePath": "api/Building/AddRoom",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Room.RoomDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "DeleteFloor",
+    "RelativePath": "api/Building/DeleteFloor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idx",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "GetFloorList",
+    "RelativePath": "api/Building/GetFloorList/{buildingid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "buildingid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "SelectMyBuilding",
+    "RelativePath": "api/Building/SelectMyBuilding",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -365,112 +477,6 @@
     "ContainingType": "FamTec.Server.Controllers.RoomController",
     "Method": "GetRoomList",
     "RelativePath": "api/Room/GetRoomList",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "AddFloor",
-    "RelativePath": "api/SetBuilding/AddFloor",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Floor.FloorDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "AddRoom",
-    "RelativePath": "api/SetBuilding/AddRoom",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Room.RoomDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "DeleteMyBuilding",
-    "RelativePath": "api/SetBuilding/DeleteBuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "idx",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "DeleteFloor",
-    "RelativePath": "api/SetBuilding/DeleteFloor",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "idx",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "GetFloorList",
-    "RelativePath": "api/SetBuilding/GetFloorList/{buildingid}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "buildingid",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "InsertBuilding",
-    "RelativePath": "api/SetBuilding/insertbuilding",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Building.BuildingsDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.SetBuildingController",
-    "Method": "SelectMyBuilding",
-    "RelativePath": "api/SetBuilding/SelectMyBuilding",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

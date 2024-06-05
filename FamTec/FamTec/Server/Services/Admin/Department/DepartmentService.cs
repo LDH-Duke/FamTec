@@ -30,7 +30,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="dto"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<AddDepartmentDTO>?> AddDepartmentService(AddDepartmentDTO? dto)
+        public async ValueTask<ResponseUnit<AddDepartmentDTO>> AddDepartmentService(AddDepartmentDTO? dto)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// 부서 전체조회
         /// </summary>
         /// <returns></returns>
-        public async ValueTask<ResponseList<DepartmentDTO>?> GetAllDepartmentService()
+        public async ValueTask<ResponseList<DepartmentDTO>> GetAllDepartmentService()
         {
             try
             {
@@ -122,7 +122,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="index"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<bool>?> DeleteDepartmentService(List<int?> index)
+        public async ValueTask<ResponseUnit<bool>> DeleteDepartmentService(List<int?> index)
         {
             try
             {

@@ -179,7 +179,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<AdminTb>?> AdminRegisterService(AddManagerDTO? dto)
+        public async ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto)
         {
             try
             {
@@ -255,7 +255,7 @@ namespace FamTec.Server.Services.Admin.Account
             }
         }
 
-        public async ValueTask<ResponseUnit<int>?> DeleteAdminService(List<int> adminid)
+        public async ValueTask<ResponseUnit<int>> DeleteAdminService(List<int> adminid)
         {
             int count = 0;
             
@@ -315,6 +315,39 @@ namespace FamTec.Server.Services.Admin.Account
             catch(Exception ex)
             {
                 return new ResponseUnit<int> { message = "서버에서 요청을 처리하지 못하였습니다.", data = count, code = 500 };
+            }
+        }
+
+        /// <summary>
+        /// 매니저 상세보기 서비스
+        /// </summary>
+        /// <param name="adminidx"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseUnit<DManagerDTO>> DetailAdminService(int? adminidx)
+        {
+            try
+            {
+                if (adminidx is not null)
+                {
+                    DManagerDTO? dto = await AdminPlaceInfoRepository.GetManagerDetails(adminidx);
+                    
+                    if(dto is not null)
+                    {
+                        return new ResponseUnit<DManagerDTO>() { message = "요청이 정상 처리되었습니다.", data = dto, code = 200 };
+                    }
+                    else
+                    {
+                        return new ResponseUnit<DManagerDTO>() { message = "요청이 처리되지 않았습니다.", data = new DManagerDTO(), code = 200 };
+                    }
+                }
+                else
+                {
+                    return new ResponseUnit<DManagerDTO>() { message = "잘못된 요청입니다.", data = new DManagerDTO(), code = 404 };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ResponseUnit<DManagerDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new DManagerDTO(), code = 500 };
             }
         }
     }

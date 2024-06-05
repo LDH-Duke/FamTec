@@ -2,6 +2,7 @@
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Building;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Collections.Generic;
@@ -32,11 +33,17 @@ namespace FamTec.Server.Services.Building
             FuncResponseSTR = strResponse.RESPMessage;
         }
 
-        public async ValueTask<ResponseModel<BuildingsDTO>?> AddBuildingService(BuildingsDTO? dto, SessionInfo? sessioninfo)
+        /// <summary>
+        /// 해당 사업장에 건물추가
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseUnit<bool>> AddBuildingService(BuildingsDTO? dto, int? placeidx )
         {
             try
             {
-                if(dto is not null && sessioninfo is not null)
+                if(dto is not null && placeidx is not null)
                 {
                     BuildingTb? model = new BuildingTb
                     {
@@ -83,77 +90,31 @@ namespace FamTec.Server.Services.Building
                         WomenToiletNum = dto.WomenToiletNum,
                         FireRating = dto.FireRating,
                         SepticTankCapacity = dto.SepticTankCapacity,
-                        CreateDt = DateTime.Now,
-                        CreateUser = sessioninfo.Name,
-                        UpdateDt = DateTime.Now,
-                        UpdateUser = sessioninfo.Name,
-                        PlaceTbId = sessioninfo.selectPlace
+                        
+
+                        // 토큰부분
+                        PlaceTbId = placeidx
                     };
 
-                    BuildingTb? result = await BuildingRepository.AddAsync(model);
-                    if(result is not null)
+                    BuildingTb? buildingtb = await BuildingRepository.AddAsync(model);
+                    
+                    if(buildingtb is not null)
                     {
-                        return FuncResponseOBJ("건물 등록 완료", new BuildingsDTO
-                        {
-                            BuildingCode = result.BuildingCd,
-                            Name = result.Name,
-                            Address = result.Address,
-                            Tel = result.Tel,
-                            Usage = result.Usage,
-                            ConstComp = result.ConstComp,
-                            CompletionDt = result.CompletionDt,
-                            BuildingStruct = result.BuildingStruct,
-                            RoofStruct = result.RoofStruct,
-                            GrossFloorArea = result.GrossFloorArea,
-                            LandArea = result.LandArea,
-                            BuildingArea = result.BuildingArea,
-                            FloorNum = result.FloorNum,
-                            GroundFloorNum = result.GroundFloorNum,
-                            BasementFloorNum = result.BasementFloorNum,
-                            BuildingHeight = result.BuildingHeight,
-                            GroundHeight = result.GroundHeight,
-                            PackingNum = result.ParkingNum,
-                            InnerPackingNum = result.InnerParkingNum,
-                            OuterPackingNum = result.OuterParkingNum,
-                            ElecCapacity = result.ElecCapacity,
-                            FaucetCapacity= result.FaucetCapacity,
-                            GenerationCapacity = result.GenerationCapacity,
-                            WaterCapacity = result.WaterCapacity,
-                            ElevWaterCapacity = result.ElevWaterCapacity,
-                            WaterTank = result.WaterTank,
-                            GasCapacity = result.GasCapacity,
-                            Boiler = result.Boiler,
-                            WaterDispenser = result.WaterDispenser,
-                            LiftNum = result.LiftNum,
-                            PeopleLiftNum = result.PeopleLiftNum,
-                            CargoLiftNum = result.CargoLiftNum,
-                            CoolHeatCapacity = result.CoolHeatCapacity,
-                            HeatCapacity = result.HeatCapacity,
-                            CoolCapacity = result.CoolCapacity,
-                            LandScapeArea = result.LandscapeArea,
-                            GroundArea = result.GroundArea,
-                            RooftopArea = result.RooftopArea,
-                            ToiletNum = result.ToiletNum,
-                            MenToiletNum = result.MenToiletNum,
-                            WomenToiletNum = result.WomenToiletNum,
-                            FireRating = result.FireRating,
-                            SepticTankCapacity = result.SepticTankCapacity,
-                            PlaceIdx = result.PlaceTbId
-                        }, 200);
+                        return new ResponseUnit<bool>() { message = "요청이 정상적으로 처리되었습니다.", data = true, code = 200 };
                     }
                     else
                     {
-                        return FuncResponseOBJ("건물 등록 실패", null, 200);
+                        return new ResponseUnit<bool>() { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
                     }
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다", null, 404);
+                    return new ResponseUnit<bool>() { message = "잘못된 요청입니다.", data = false, code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseUnit<bool>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
         }
 
@@ -162,32 +123,44 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<BuildingsDTO>?> GetBuilidngListService(SessionInfo? session)
+        public async ValueTask<ResponseList<BuildingsDTO>> GetBuilidngListService(int? placeidx)
         {
             try
             {
-                List<BuildingTb>? model = await BuildingRepository.GetAllBuildingList(session.selectPlace);
-
-                if(model is [_, ..])
+                if (placeidx is not null)
                 {
-                    return FuncResponseList("전체데이터 조회 성공", model.Select(e => new BuildingsDTO
+                    List<BuildingTb>? model = await BuildingRepository.GetAllBuildingList(placeidx);
+
+                    if (model is [_, ..])
                     {
-                        BuildingID = e.Id,
-                        BuildingCode = e.BuildingCd,
-                        Name = e.Name,
-                        Address = e.Address,
-                        FloorNum = e.FloorNum,
-                        CreateDT = e.CreateDt
-                    }).ToList(), 200);
+                        return new ResponseList<BuildingsDTO>()
+                        {
+                            message = "요청이 정상적으로 처리되었습니다.",
+                            data = model.Select(e => new BuildingsDTO
+                            {
+                                BuildingID = e.Id,
+                                BuildingCode = e.BuildingCd,
+                                Name = e.Name,
+                                Address = e.Address,
+                                FloorNum = e.FloorNum,
+                                CreateDT = e.CreateDt
+                            }).ToList(),
+                            code = 200
+                        };
+                    }
+                    else
+                    {
+                        return new ResponseList<BuildingsDTO>() { message = "요청이 정상적으로 처리되었습니다.", data = new List<BuildingsDTO>(), code = 200 };
+                    }
                 }
                 else
                 {
-                    return FuncResponseOBJ("건물데이터가 존재하지 않습니다.", null, 200);
+                    return new ResponseList<BuildingsDTO>() { message = "요청이 잘못되었습니다.", data = new List<BuildingsDTO>(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseList<BuildingsDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<BuildingsDTO>(), code = 500 };
             }
         }
 

@@ -25,7 +25,6 @@ namespace FamTec.Server
         public async Task InvokeAsync(HttpContext context)
         {
             // API 키 Configuration 수정
-            
             if(!context.Request.Headers.TryGetValue("Authorization", out var extractedApiKey))
             {
                 context.Response.StatusCode = StatusCodes.Status401Unauthorized;

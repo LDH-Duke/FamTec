@@ -1,13 +1,10 @@
 ﻿using FamTec.Server.Services.Admin.Place;
-using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics.Contracts;
 
 namespace FamTec.Server.Controllers.Admin.AdminPlaces
 {
@@ -15,16 +12,11 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
     [ApiController]
     public class AdminPlaceController : ControllerBase
     {
-        private SessionInfo session; // 테스트 세션
-
         private IAdminPlaceService AdminPlaceService;
-
 
         public AdminPlaceController(IAdminPlaceService _adminplaceservice)
         {
             this.AdminPlaceService = _adminplaceservice;
-
-            this.session = new SessionInfo();
         }
         
         /// <summary>
@@ -124,19 +116,7 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         }
 
         /// <summary>
-        /// TODO
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("UpdateWorks")]
-        public async ValueTask<IActionResult> UpdateWorks()
-        {
-            AddPlaceDTO dto = new AddPlaceDTO();
-            return Ok();
-        }
-        
-        /// <summary>
-        /// 사업장 생성시 관리자할당 * (확인함)
+        /// 사업장 생성시 관리자할당 [수정완료]
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
@@ -144,25 +124,84 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("AddWorks")]
         public async ValueTask<IActionResult> AddWorks([FromBody]AddPlaceDTO dto)
         {
-            ResponseModel<int?> model = await AdminPlaceService.AddPlaceService(dto);
+            ResponseUnit<int?> model = await AdminPlaceService.AddPlaceService(dto);
             
-            return Ok(model);
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
+        /// <summary>
+        /// 사압정에 매니저 추가 [수정완료]
+        /// </summary>
+        /// <param name="placemanager"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AddPlaceManager")]
         public async ValueTask<IActionResult> AddPlaceManager([FromBody]AddPlaceManagerDTO<ManagerListDTO> placemanager)
         {
-            dynamic model = await AdminPlaceService.AddPlaceManagerService(placemanager);
+            ResponseUnit<bool> model = await AdminPlaceService.AddPlaceManagerService(placemanager);
             
-            if(model.code == 200)
+            if(model is not null)
             {
-                return Ok(new ResponseUnit<string> { message = "success", data=model.data, code=model.code});
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
             }
-
-            return Ok(new ResponseUnit<string> { message = "failed", data = model.data, code = model.code });
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
+        /// <summary>
+        /// 사업장 삭제 [수정완료]
+        /// </summary>
+        /// <param name="DeletePlace"></param>
+        /// <returns></returns>
+        [HttpPut]
+        [Route("DeleteWorks")]
+        public async ValueTask<IActionResult> DeleteWorks([FromBody]List<int> DeletePlace)
+        {
+            ResponseUnit<bool> model = await AdminPlaceService.DeleteManagerPlaceService(DeletePlace);
+
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else if(model.code == 401)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
+        }
        
       
 

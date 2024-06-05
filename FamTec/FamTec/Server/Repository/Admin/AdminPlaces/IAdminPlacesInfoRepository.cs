@@ -1,5 +1,4 @@
-﻿using FamTec.Shared.DTO;
-using FamTec.Shared.Model;
+﻿using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
@@ -29,6 +28,14 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <returns></returns>
         ValueTask<List<AdminPlaceTb>?> GetMyWorksModel(int? adminid);
 
+
+        /// <summary>
+        /// 관리자 상세보기 페이지
+        /// </summary>
+        /// <param name="adminidx"></param>
+        /// <returns></returns>
+        ValueTask<DManagerDTO?> GetManagerDetails(int? adminidx);
+
         /// <summary>
         /// 관리자사업장 리스트 모델에 해당하는 사업장 리스트들 반환
         /// </summary>
@@ -56,5 +63,13 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <param name="placeid"></param>
         /// <returns></returns>
         ValueTask<bool?> DeleteMyWorks(List<AdminPlaceTb>? modellist);
+
+        /// <summary>
+        /// 관리자 사업장 조회 - 사업장 INDEX
+        /// </summary>
+        /// <param name="placetb"></param>
+        /// <returns></returns>
+        ValueTask<AdminPlaceTb?> GetWorksModelInfo(int? placeid);
+        
     }
 }

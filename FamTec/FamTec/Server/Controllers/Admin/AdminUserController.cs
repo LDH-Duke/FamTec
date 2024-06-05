@@ -21,8 +21,6 @@ namespace FamTec.Server.Controllers.Admin
     [ApiController]
     public class AdminUserController : ControllerBase
     {
-        private SessionInfo session; // 테스트 세션모델
-
         private IAdminAccountService AdminService;
         private IUserService UserService;
         private IAdminPlaceService AdminPlaceService;
@@ -32,9 +30,6 @@ namespace FamTec.Server.Controllers.Admin
             this.AdminService = _adminservice;
             this.UserService = _userservice;
             this.AdminPlaceService = _adminplaceservice;
-
-
-            session = new SessionInfo();
         }
 
 
@@ -76,6 +71,34 @@ namespace FamTec.Server.Controllers.Admin
             else
             {
                 return BadRequest(new ResponseUnit<int?> { message = "데이터가 처리되지 않았습니다.", data = null, code = 404 });
+            }
+        }
+
+        /// <summary>
+        /// 차후확인
+        /// </summary>
+        /// <param name="adminId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetManagerInfo")]
+        public async ValueTask<IActionResult> GetManagerInfo([FromQuery]int adminId)
+        {
+            ResponseUnit<DManagerDTO>? model = await AdminService.DetailAdminService(adminId);
+
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
             }
         }
 

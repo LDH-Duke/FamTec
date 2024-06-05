@@ -6,6 +6,7 @@ using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
+using Microsoft.AspNetCore.Http.Connections.Client;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
 
@@ -176,6 +177,70 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             {
                 Console.WriteLine(ex);
                 throw;
+            }
+        }
+
+        /// <summary>
+        /// 매니저 상세보기
+        /// </summary>
+        /// <param name="adminidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public async ValueTask<DManagerDTO?> GetManagerDetails(int? adminidx)
+        {
+            try
+            {
+                if (adminidx is not null)
+                {
+                    AdminTb? admintb = await context.AdminTbs.FirstOrDefaultAsync(m => m.Id == adminidx && m.DelYn != 1);
+
+                    if (admintb is not null)
+                    {
+                        DepartmentTb? departmenttb = await context.DepartmentTbs.FirstOrDefaultAsync(m => m.Id == admintb.DepartmentTbId && m.DelYn != 1);
+
+                        if (departmenttb is not null)
+                        {
+                            UserTb? usertb = await context.UserTbs.FirstOrDefaultAsync(m => m.Id == admintb.UserTbId && m.DelYn != 1);
+
+                            if (usertb is not null)
+                            {
+                                DManagerDTO dto = new DManagerDTO
+                                {
+                                    UserId = usertb.UserId,
+                                    Name = usertb.Name,
+                                    Password = usertb.Password,
+                                    Phone = usertb.Phone,
+                                    Email = usertb.Email,
+                                    Type = admintb.Type,
+                                    Department = departmenttb.Name
+                                };
+
+                                return dto;
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw new ArgumentException();
             }
         }
 
@@ -392,8 +457,42 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
                 Console.WriteLine(ex);
                 throw;
             }
-
         }
 
+        /// <summary>
+        /// 관리자 사업장 조회 - 사업장 INDEX
+        /// </summary>
+        /// <param name="placeid"></param>
+        /// <returns></returns>
+        public async ValueTask<AdminPlaceTb?> GetWorksModelInfo(int? placeid)
+        {
+            try
+            {
+                if(placeid is not null)
+                {
+                    AdminPlaceTb? adminplacetb = await context.AdminPlaceTbs.FirstOrDefaultAsync(m => m.DelYn != 1 && m.PlaceId == placeid);
+
+                    if(adminplacetb is not null)
+                    {
+                        return adminplacetb;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+     
     }
 }

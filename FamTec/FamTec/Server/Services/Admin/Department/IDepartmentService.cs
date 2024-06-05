@@ -12,13 +12,13 @@ namespace FamTec.Server.Services.Admin.Department
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<AddDepartmentDTO>?> AddDepartmentService(AddDepartmentDTO? dto);
+        public ValueTask<ResponseUnit<AddDepartmentDTO>> AddDepartmentService(AddDepartmentDTO? dto);
 
         /// <summary>
         /// 부서전체조회 [수정완료]
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseList<DepartmentDTO>?> GetAllDepartmentService();
+        public ValueTask<ResponseList<DepartmentDTO>> GetAllDepartmentService();
 
         /// <summary>
         /// 부서삭제 [수정완료]
@@ -26,7 +26,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="index"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<bool>?> DeleteDepartmentService(List<int?> index);
+        public ValueTask<ResponseUnit<bool>> DeleteDepartmentService(List<int?> index);
         
         /// <summary>
         /// 부서수정

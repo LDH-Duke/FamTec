@@ -1,8 +1,6 @@
 ﻿using FamTec.Server.Databases;
-using FamTec.Shared;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Admin.Place;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FamTec.Server.Repository.Admin.AdminUser
@@ -39,7 +37,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw new ArgumentNullException();
             }
         }
 
@@ -100,7 +98,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw new ArgumentNullException();
             }
         }
 
@@ -132,7 +130,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             catch(Exception ex)
             {
                 Console.WriteLine(ex);
-                throw new ArgumentException();
+                throw new ArgumentNullException();
             }
         }
 

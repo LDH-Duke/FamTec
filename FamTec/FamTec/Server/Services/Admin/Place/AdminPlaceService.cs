@@ -21,76 +21,25 @@ namespace FamTec.Server.Services.Admin.Place
         private readonly IAdminPlacesInfoRepository AdminPlaceInfoRepository;
         private readonly IAdminUserInfoRepository AdminUserInfoRepository;
 
-        ResponseOBJ<PlacesDTO> Response;
-        Func<string, PlacesDTO, int, ResponseModel<PlacesDTO>> FuncResponseOBJ;
-        Func<string, List<PlacesDTO>, int, ResponseModel<PlacesDTO>> FuncResponseList;
-
-        ResponseOBJ<AllPlaceDTO> ResponseAll;
-        Func<string, AllPlaceDTO, int, ResponseModel<AllPlaceDTO>> FuncResponseAll;
-        Func<string, List<AllPlaceDTO>, int, ResponseModel<AllPlaceDTO>> FuncResponseAllList;
 
         ResponseOBJ<AdminPlaceDTO> AdminPlaceResponse;
         Func<string, AdminPlaceDTO, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseOBJ;
         Func<string, List<AdminPlaceDTO>, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseList;
 
-        ResponseOBJ<ManagerListDTO> AddManagerResponse;
-        Func<string, ManagerListDTO, int, ResponseModel<ManagerListDTO>> AddManagerResponseOBJ;
-        Func<string, List<ManagerListDTO>, int, ResponseModel<ManagerListDTO>> AddManagerResponseList;
-
-        ResponseOBJ<string> strResponse;
-        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
-
-        ResponseOBJ<AddPlaceDTO> AddPlaceResponse;
-        Func<string, AddPlaceDTO, int, ResponseModel<AddPlaceDTO>> AddPlaceResponseOBJ;
-
-        ResponseOBJ<PlaceDetailDTO> PlaceDetailResponse;
-        Func<string, PlaceDetailDTO, int, ResponseModel<PlaceDetailDTO>> FuncPlaceDetailOBJ;
-
-        ResponseOBJ<int?> IntResponse;
-        Func<string, int?, int, ResponseModel<int?>> FuncResponseINT;
-
-        ResponseOBJ<bool> boolResponse;
-        Func<string, bool, int, ResponseModel<bool>> FuncResponseBool;
-
-
-        public AdminPlaceService(IAdminPlacesInfoRepository _adminplaceinforepository, IPlaceInfoRepository _placeinforepository, IAdminUserInfoRepository _adminuserinforepository)
+  
+        public AdminPlaceService(IAdminPlacesInfoRepository _adminplaceinforepository,
+            IPlaceInfoRepository _placeinforepository,
+            IAdminUserInfoRepository _adminuserinforepository)
         {
             this.AdminPlaceInfoRepository = _adminplaceinforepository;
             this.PlaceInfoRepository = _placeinforepository;
             this.AdminUserInfoRepository = _adminuserinforepository;
 
-            Response = new ResponseOBJ<PlacesDTO>();
-            FuncResponseOBJ = Response.RESPMessage;
-            FuncResponseList = Response.RESPMessageList;
-
-            boolResponse = new ResponseOBJ<bool>();
-            FuncResponseBool = boolResponse.RESPMessage;
-
-            ResponseAll = new ResponseOBJ<AllPlaceDTO>();
-            FuncResponseAll = ResponseAll.RESPMessage;
-            FuncResponseAllList = ResponseAll.RESPMessageList;
 
             AdminPlaceResponse = new ResponseOBJ<AdminPlaceDTO>();
             AdminPlaceResponseOBJ = AdminPlaceResponse.RESPMessage;
             AdminPlaceResponseList = AdminPlaceResponse.RESPMessageList;
-
-            AddManagerResponse = new ResponseOBJ<ManagerListDTO>();
-            AddManagerResponseOBJ = AddManagerResponse.RESPMessage;
-            AddManagerResponseList = AddManagerResponse.RESPMessageList;
-
-            AddPlaceResponse = new ResponseOBJ<AddPlaceDTO>();
-            AddPlaceResponseOBJ = AddPlaceResponse.RESPMessage;
-
-            strResponse = new ResponseOBJ<string>();
-            FuncResponseSTR = strResponse.RESPMessage;
-
-            PlaceDetailResponse = new ResponseOBJ<PlaceDetailDTO>();
-            FuncPlaceDetailOBJ = PlaceDetailResponse.RESPMessage;
-
-            IntResponse = new ResponseOBJ<int?>();
-            FuncResponseINT = IntResponse.RESPMessage;
         }
-
     
         /// <summary>
         /// 전체사업장 조회
@@ -201,7 +150,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
         }
 
-        public async ValueTask<ResponseModel<int?>> AddPlaceService(AddPlaceDTO? dto)
+        public async ValueTask<ResponseUnit<int?>> AddPlaceService(AddPlaceDTO? dto)
         {
             try
             {
@@ -231,21 +180,21 @@ namespace FamTec.Server.Services.Admin.Place
 
                     if(place_result is not null)
                     {
-                        return FuncResponseINT("사업장이 등록되었습니다.", place_result.Id , 200);
+                        return new ResponseUnit<int?>{ message = "요청이 정상 처리되었습니다.", data = place_result.Id, code = 200 };
                     }
                     else
                     {
-                        return FuncResponseINT("사업장 등록실패", null, 200);
+                        return new ResponseUnit<int?> { message = "요청이 처리되지 않았습니다.", data = null, code = 200 };
                     }
                 }
                 else
                 {
-                    return FuncResponseINT("잘못된 요청입니다.", null, 404);
+                    return new ResponseUnit<int?> { message = "잘못된 요청입니다.", data = null, code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseINT("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseUnit<int?> { message = "서버에서 요청을 처리하지 못하였습니다.", data = null, code = 404 };
             }
         }
 
@@ -287,78 +236,65 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="placemanager"></param>
         /// <returns></returns>
-        public async ValueTask<object> AddPlaceManagerService(AddPlaceManagerDTO<ManagerListDTO> placemanager)
+        public async ValueTask<ResponseUnit<bool>> AddPlaceManagerService(AddPlaceManagerDTO<ManagerListDTO> placemanager)
         {
             try
             {
-                /*
-                if(placemanager.PlaceId is not null)
+                if (placemanager is not null)
                 {
                     int placeid = placemanager.PlaceId;
-                    
-                }
-                else
-                {
+                    List<ManagerListDTO> placeManagers = placemanager.PlaceManager;
 
-                }
-                */
-
-                /*
-                if(placemanager is null)
-                {
-                    return new { data = "", code = 404 };
-                }
-
-                // 사업장 
-                int placeid = placemanager.PlaceId;
-                List<ManagerListDTO> placeManagers = placemanager.PlaceManager;
-
-                if (placeManagers is not [_, ..])
-                {
-                    return FuncResponseSTR("요청이 잘못되었습니다.", null, 404);
-                }
-
-                List<AdminPlaceTb> adminplace = new List<AdminPlaceTb>();
-
-                foreach (var manager in placeManagers)
-                {
-                    adminplace.Add(new AdminPlaceTb
+                    if (placeManagers is [_, ..])
                     {
-                        AdminTbId = manager.Id,
-                        PlaceId = placeid
-                    });
-                }
+                        List<AdminPlaceTb> adminplace = new List<AdminPlaceTb>();
 
-                if (adminplace is not [_, ..])
-                {
-                    return FuncResponseSTR("요청이 잘못되었습니다.", null, 404);
-                }
+                        foreach (var manager in placeManagers)
+                        {
+                            adminplace.Add(new AdminPlaceTb
+                            {
+                                AdminTbId = manager.Id,
+                                PlaceId = placeid
+                            });
+                        }
 
-              
+                        if (adminplace is [_, ..])
+                        {
+                            bool? result = await AdminPlaceInfoRepository.AddAsync(adminplace);
 
-                bool? result = await AdminPlaceInfoRepository.AddAsync(adminplace);
+                            if (result == true)
+                            {
+                                return new ResponseUnit<bool> { message = "요청이 정상 처리되었습니다.", data = true, code = 200 };
+                            }
+                            else if (result == false)
+                            {
+                                return new ResponseUnit<bool> { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
+                            }
+                            else
+                            {
+                                return new ResponseUnit<bool> { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseUnit<bool> { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
+                        }
 
-                if (result == true)
-                {
-                    return new { data = result, code = 200 };
-                    //return FuncResponseSTR("관리자 추가 완료", null, 200);
-                }
-                else if (result == false)
-                {
-                    return new { data= "", code = 401};
+                    }
+                    else
+                    {
+                        return new ResponseUnit<bool> { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
+                    }
                 }
                 else
                 {
-                    return new { data = "", code = 401 };
+                    return new ResponseUnit<bool> { message = "잘못된 요청입니다.", data = false, code = 404 };
                 }
-                */
-                return null;
             }
             catch(Exception ex)
             {
-                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseUnit<bool> { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
-
         }
 
         /// <summary>
@@ -366,7 +302,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<bool>?> AddManagerPlaceSerivce(AddManagerPlaceDTO? dto)
+        public async ValueTask<ResponseUnit<bool>> AddManagerPlaceSerivce(AddManagerPlaceDTO? dto)
         {
             try
             {
@@ -394,7 +330,6 @@ namespace FamTec.Server.Services.Admin.Place
                         if(result == true)
                         {
                             return new ResponseUnit<bool>() { message = "요청이 정상 처리되었습니다.", data = true, code = 200 };
-                            //return FuncResponseBool("사업장 등록 성공", true, 200);
                         }
                         else if(result == false)
                         {
@@ -421,6 +356,49 @@ namespace FamTec.Server.Services.Admin.Place
             }
         }
 
-      
+        /// <summary>
+        /// 사업장 완전삭제
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseUnit<bool>> DeleteManagerPlaceService(List<int> placeidx)
+        {
+            try
+            {
+                if (placeidx is [_, ..])
+                {
+                    for (int i = 0; i < placeidx.Count(); i++)
+                    {
+                        AdminPlaceTb? chktb = await AdminPlaceInfoRepository.GetWorksModelInfo(placeidx[i]);
+
+                        if(chktb is not null)
+                        {
+                            return new ResponseUnit<bool>() { message = "할당된 사업장이 존재합니다.", data = false, code = 401 };
+                        }
+                    }
+
+                    for (int i = 0; i < placeidx.Count(); i++) 
+                    {
+                        // 모델조회
+                        PlaceTb? placetb = await PlaceInfoRepository.GetByPlaceInfo(placeidx[i]);
+                        placetb!.DelYn = 1;
+                        placetb!.DelDt = DateTime.Now;
+                        // 삭제
+                        bool? result = await PlaceInfoRepository.DeletePlaceInfo(placetb);
+                    }
+
+                    return new ResponseUnit<bool>() { message = "삭제완료.", data = true, code = 200 };
+                }
+                else
+                {
+                    return new ResponseUnit<bool>() { message = "선택한 내용이 없습니다.", data = false, code = 404 };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ResponseUnit<bool>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
+            }
+
+        }
     }
 }

@@ -23,14 +23,21 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<AdminTb>?> AdminRegisterService(AddManagerDTO? dto);
+        public ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto);
 
         /// <summary>
         /// 매니저 삭제
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<int>?> DeleteAdminService(List<int> adminid);
+        public ValueTask<ResponseUnit<int>> DeleteAdminService(List<int> adminid);
+
+        /// <summary>
+        /// 매니저 상세보기 서비스
+        /// </summary>
+        /// <param name="adminidx"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseUnit<DManagerDTO>> DetailAdminService(int? adminidx);
 
     }
 }
