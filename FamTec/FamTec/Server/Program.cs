@@ -174,16 +174,7 @@ app.UseWhen(context => context.Request.Path.Equals("/api/Login/Test"), appBuilde
 
 #endregion
 
-#region 블레이저 전용 파일서버 생성
-app.UseFileServer(new FileServerOptions
-{
-    FileProvider = new PhysicalFileProvider("N:\\개인"), // 실제경로
-    RequestPath = "/System", // 호출할때 사용될 경로
-    EnableDirectoryBrowsing = true // 필수옵션
-});
 
-
-#endregion
 
 
 app.UseAuthentication();
