@@ -1,0 +1,35 @@
+.form-container[b-vema0fw9we] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #ffffff;
+    border : 2px solid #200d69;
+    border-radius : 4px;
+    padding:1rem;
+}
+
+.form-container .form-title[b-vema0fw9we]{
+    font-size : 1.2rem;
+    font-weight : bold;
+
+    padding:0.75rem;
+
+    border-bottom : 2px solid #200d69;
+}
+
+.form-container .form-title>span[b-vema0fw9we]{
+    color:#200d69;
+}
+
+.form-container .form-input[b-vema0fw9we]{
+    padding:0.75rem;
+    height:100%;
+}
+
+.form-container .form-input-wrap[b-vema0fw9we]{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    justify-content:space-between;
+    gap : 0.5rem;
+}

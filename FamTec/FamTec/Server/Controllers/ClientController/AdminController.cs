@@ -121,7 +121,27 @@ namespace FamTec.Server.Controllers.ClientController
                 return Problem("[Admin][Controller] 매니저 추가 에러!!\n" + ex);
             }
         }
-     
+        [HttpPut]
+        [Route("deletemanager")]
+        public async Task<IActionResult> DeleteManager([FromBody] List<int> adminIds)
+        {
+            try
+            {
+                Console.WriteLine("[매니저 삭제 컨트롤러 시작]");
+
+
+
+
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("[Admin][Controller][Delete] 매니저 삭제 에러!!\n " + ex);
+                return Problem("[Admin][Controller][Delete] 매니저 삭제 에러!!\n" + ex);
+            }
+        }
+
+        
 
         /// <summary>
         /// 부서 전체 조회

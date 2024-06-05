@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FamTec.Shared.Client.DTO
 {
-    internal class DeleteDTO
+    public class DeleteDTO
     {
-        public List<int>? Id { get; set; }
+        public List<int>? Id { get; set; } = new List<int>();
     }
 }

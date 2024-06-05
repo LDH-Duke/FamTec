@@ -1,0 +1,113 @@
+﻿@using FamTec.Client.Pages.Admin.Place.PlaceMain.Components
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Client.DTO.Manager
+@using FamTec.Client.Pages.Admin.CommonComponents
+@using FamTec.Shared.Server.DTO
+@inject HttpClient HttpClient
+
+<div class="form-container">
+    <div class="form-title">
+        <span>매니저 정보</span>
+    </div>
+    <div class="form-input">
+        <div class="form-input-wrap">
+            <InputField 
+                InputType="text" 
+                Placeholder="Name"
+                @bind-Value="@Manager.Name"
+                Label="이름"
+                EditMode=EditMode
+            />
+            <InputField 
+                InputType="text" 
+                Placeholder="Id"
+                @bind-Value="@Manager.UserId"
+                Label="아이디"
+                EditMode=EditMode
+                />
+            <InputField 
+                InputType="password" 
+                Placeholder="Password"
+                @bind-Value="@Manager.Password"
+                Label="비밀번호"
+                EditMode=EditMode
+                />
+        
+            <InputField 
+                InputType="text" 
+                Placeholder="Phone"
+                @bind-Value="@Manager.Phone"
+                Label="전화번호"
+                EditMode=EditMode
+                />
+            <InputField 
+                InputType="text" 
+                Placeholder="Email"
+                @bind-Value="@Manager.Email"
+                Label="이메일"
+                EditMode=EditMode
+                />
+            <InputField 
+                InputType="text"
+                Placeholder="Type"
+                @bind-Value="@Manager.Type"
+                Label="계정 유형" 
+                EditMode=EditMode
+                />
+
+            @if (EditMode)
+            {
+                <InputSelectField 
+                    Label="부서"
+                    SelectData="DepartmentList"
+                    /*SelectedValueChanged="HandleSelectedValueChange"*/
+                    IsReverse=true
+                />
+            }
+            else
+            {
+                <InputField 
+                    InputType="text"
+                    Placeholder="Type"
+                    @bind-Value="@Manager.Department"
+                    Label="부서" 
+                    />
+            }
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+@code {
+    [Parameter] public int Id { get; set; }
+    [Parameter] public DManagerDTO Manager { get; set; }
+    [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
+    [Parameter] public bool EditMode { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await LoadDetailManager();
+    }
+
+    // private void HandleSelectedValueChange(int value)
+    // {
+    //     Manager.DepartmentId = value;
+
+    // }
+    private async Task LoadDetailManager()
+    {
+        ResponseUnit<DManagerDTO> resDetailManager = await HttpClient.GetFromJsonAsync<ResponseUnit<DManagerDTO>>($"http://123.2.156.148:5245/api/AdminUser/GetManagerInfo/?adminId={Id}");
+        try
+        {
+            
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+    
+}
+

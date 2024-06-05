@@ -2,6 +2,7 @@
 @using FamTec.Client.Pages.Admin.CommonComponents
 @using FamTec.Shared.Client.DTO.Place
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO
 @inject HttpClient HttpClient
 
 <div class="placemodal-backgroud appear">
@@ -119,6 +120,7 @@
     [Parameter] public string Title { get; set; }
     [Parameter] public string Content { get; set; }
     [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public EventCallback LoadPlace { get; set; }
 
     List<int> selectedManagerIds = new List<int>();
     List<ManagerDTO> ManagerList = new List<ManagerDTO>();
@@ -164,45 +166,43 @@
         * 3. POST
         * 4. 모달 닫기
         */
-        Console.WriteLine("코드"+placeInfo.PlaceCd);
-        Console.WriteLine("이름" + placeInfo.Name);
-        Console.WriteLine("전화번호" + placeInfo.Tel);
-        Console.WriteLine("주소" + placeInfo.Address);
-        Console.WriteLine("계약번호" + placeInfo.ContractNum);
-        Console.WriteLine("계약일자" + placeInfo.ContractDt);
-        Console.WriteLine("기계"+placeInfo.PermMachine);
-        Console.WriteLine("승강"+placeInfo.PermLift);
-        Console.WriteLine("소방"+placeInfo.PermFire);
-        Console.WriteLine("건축" + placeInfo.PermConstruct);
-        Console.WriteLine("통신"+placeInfo.PermNetwork);
-        Console.WriteLine("미화"+placeInfo.PermBeauty);
-        Console.WriteLine("보안" + placeInfo.PermSecurity);
-        Console.WriteLine("자재" + placeInfo.PermMaterial);
-        Console.WriteLine("에너지" + placeInfo.PermEnergy);
-        Console.WriteLine("민원"+placeInfo.PermVoc);
 
         //var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
         var resPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddWorks", placeInfo);
 
         if (resPlace.IsSuccessStatusCode)
         {
-            var resData = await resPlace.Content.ReadFromJsonAsync<ResponseObj<int>>();
+            ResponseUnit<int> resPlaceData = await resPlace.Content.ReadFromJsonAsync<ResponseUnit<int>>();
             // 응답 데이터를 사용합니다.
-            if (resData != null)
+            if (resPlaceData.code == 200)
             {
                 // 여기서 responseData.Data를 사용하여 사업장 ID를 처리합니다.
-                List<int> placeIds = resData.data;
-                placeManager.PlaceId = placeIds[0];
+                int placeId = resPlaceData.data;
+                placeManager.PlaceId = placeId;
 
-                //var resManager = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/admin/addplacemanager", placeManager);
-                var resManager = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddPlaceManager", placeManager);
-
-                if (resManager.IsSuccessStatusCode)
+                if (placeManager == null)
                 {
-                    Console.WriteLine("사업장 매니저 추가 완료");
                     await ModalClose();
-
                 }
+                else
+                {
+                    var resManager = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddPlaceManager", placeManager);
+
+                    if (resManager.IsSuccessStatusCode)
+                    {
+
+                        Console.WriteLine("사업장 매니저 추가 완료");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("사업장 매니저 추가 실패");
+                    }
+                    await LoadPlace.InvokeAsync();/////////////
+                    await ModalClose();
+                    
+                }
+               
             }
         }
         else

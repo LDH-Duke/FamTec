@@ -1,6 +1,7 @@
 ﻿@typeparam T
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
 
 <table class="table-container">
     <thead class="table-head">
@@ -37,7 +38,7 @@
                             if(property.Name == "Name" && Detail)
                             {
                                 var idValue = item.GetType().GetProperty("Id").GetValue(item);
-                                var link = $"/admin/place/{idValue}";
+                                var link = $"{Navigation.Uri}/{idValue}";
                                 <td class="table-td">
                                     <NavLink class="table-td-link" href=@link>
                                         @property.GetValue(item)
@@ -80,7 +81,8 @@
     [Parameter] public List<T> DataList { get; set; }
     [Parameter] public EventCallback<(bool, int)> Select { get; set; }
     [Parameter] public EventCallback<(bool, object)> SelectItem { get; set; }
-    [Parameter] public bool Detail { get; set; } = false;
+    [Parameter] public string Url { get; set; }
+    [Parameter] public bool Detail { get; set; }
     [Parameter] public string ReturnType { get; set; }
 
     private HashSet<int> CheckedItems = new HashSet<int>();
