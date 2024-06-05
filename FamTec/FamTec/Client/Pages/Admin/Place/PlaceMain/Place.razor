@@ -4,6 +4,7 @@
 @using FamTec.Client.Pages.Admin.Place.PlaceMain.Modal
 @using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
+@using FamTec.Shared.Server.DTO
 @using Newtonsoft.Json
 @using System.Reflection
 @using System.ComponentModel.DataAnnotations
@@ -11,34 +12,33 @@
 @inject HttpClient HttpClient
 
 <div class="place-container yappear">
+    <div class="place-wrap">
         <div class="place-header">
             <span class="place-title">
                 사업장 목록
             </span>
             <div class="table-header-option">
-            <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
-                <Button 
-                    Name="등록"
-                    Width="true"
-                    OnClick="@onAddPlace" />
-            <Button Name="삭제"
-                    Width="true"
-                    Type="true"
-                    />
+                <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
+                <Button Name="등록"
+                        Width="true"
+                        OnClick="@onAddPlace" />
+                <Button Name="삭제"
+                        Width="true"
+                        Type="true"
+                        OnClick="@OnDeletePlace" />
             </div>
         </div>
         <div class="place-table">
-            <Table 
-                DataList="FilterPlaceList"
-                Detail="true"
-                />
+            <Table DataList="FilterPlaceList"
+                   Select="OnSelected"
+                   Detail="true" />
         </div>
         @if (is_openModal)
         {
-            <AddModal Title="사업장 등록" OnClose="@OnModalClose" />
+            @* <AddModal2 Title="사업장 등록" OnClose="@OnModalClose"/> *@
+            <AddModal Title="사업장 등록" OnClose="@OnModalClose" LoadPlace="LoadPlace" />
         }
-    
- 
+    </div>
 </div>
 
 @code {
@@ -46,9 +46,10 @@
      * 테이블 데이터
     */
     List<PlaceTableDTO> PlaceList;
-    List<string> PlaceProperties = new List<string>();
     List<PlaceTableDTO> SelecList = new List<PlaceTableDTO>();
     List<PlaceTableDTO> FilterPlaceList = new List<PlaceTableDTO>();
+    // DeleteDTO DeletePlace = new DeleteDTO();
+    List<int> DeletePlace = new List<int>();
 
     string searchText = string.Empty;
 
@@ -63,27 +64,33 @@
         /*
         * fetch 서버 요청
         */
-        Console.WriteLine("매니저 조회 시작");
-        ResponseObj<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseObj<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
-        PlaceList = res.data;
-        FilterPlaceList = PlaceList;
-        Console.WriteLine(PlaceList.Count);
+        Console.WriteLine("[사업장 OnInitializedAsync]");
+        await LoadPlace();
+        
 
-        var properties = typeof(PlaceTableDTO).GetProperties();
+    }
 
-        foreach(var property in properties)
+    /*
+    * 사업장 데이터 조회
+    */
+    private async Task LoadPlace()
+    {
+        try
         {
-            var displayAttribute = property.GetCustomAttribute<DisplayAttribute>();
-            if(displayAttribute != null)
-            {
-                string displayName = displayAttribute.Name;
-                PlaceProperties.Add(displayName);
-            }
+            Console.WriteLine("[매니저 조회 시작]");
+            ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+            PlaceList = res.data;
+            FilterPlaceList = PlaceList;
+        }
+        catch(Exception ex)
+        {
+
         }
     }
 
-     /*
-     * 검색 데이터 필터링
+
+    /*
+    * 검색 데이터 필터링
     */
     private void OnSearchTextChanged(string text)
     {
@@ -98,55 +105,65 @@
     }
 
     /*
-     * 체크
-    * Add to List<PlaceDTO>SelectList when able Checkbox
+    * 매니저 체크
     */
-    public void OnSelected(object row)
+    public void OnSelected((bool isCheck, int id) selection)
     {
-        /*
-        * To Do
-        * 동일 row 중복 처리
-        */
-        Console.WriteLine(row);
 
-        if (row is PlaceTableDTO palceRow)
+        Console.WriteLine("부서 체크 여부" + selection.isCheck);
+        if (!selection.isCheck)
         {
-            if (!SelecList.Contains(row))
-            {
-                Console.WriteLine("추가");
-                SelecList.Add(palceRow);
-            }
-
+            // DeletePlace.Id.Remove(selection.id);
+            DeletePlace.Remove(selection.id);
+        }
+        else
+        {
+            Console.WriteLine("추가함");
+            // DeletePlace.Id.Add(selection.id);
+            DeletePlace.Add(selection.id);
         }
 
-
-
-        Console.WriteLine(SelecList);
     }
+
 
     /*
-     * 체크 해제
-     * Remove to List<PlaceDTO>SelectList when disable Checkbox
+    * 사업장 삭제
     */
-    public void UnSelected(object row)
+    private async Task OnDeletePlace()
     {
-        if (row is PlaceTableDTO palceRow)
+        try
         {
-            Console.WriteLine("삭제 전");
-            foreach (PlaceTableDTO a in SelecList)
+            if(DeletePlace == null)
             {
-
-                Console.WriteLine(a.PlaceCd);
+                Console.WriteLine("삭제 데이터 없음");
             }
-            SelecList.Remove(palceRow);
-            Console.WriteLine("삭제 후");
-            foreach (PlaceTableDTO a in SelecList)
+            else
             {
-
-                Console.WriteLine(a.PlaceCd);
+                var resDeletePlace = await HttpClient.PutAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/DeleteWorks", DeletePlace);
+                ResponseUnit<bool> resDeletePlaceData = await resDeletePlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
+                if (resDeletePlaceData.code == 200)
+                {
+                    
+                    Console.WriteLine(resDeletePlaceData.message);
+                    DeletePlace.Clear();
+                    await LoadPlace();
+                }
+                else
+                {
+                    Console.WriteLine(resDeletePlaceData.message);
+                    DeletePlace.Clear();
+                    await LoadPlace();
+                }
+                
             }
         }
+        catch(Exception ex)
+        {
+            Console.WriteLine("삭제 에러");
+        }
     }
+
+
 
     /*
     * click add
@@ -164,4 +181,68 @@
         is_openModal = false;
         StateHasChanged();
     }
+
+    //  /*
+    // * 체크
+    // * Add to List<PlaceDTO>SelectList when able Checkbox
+    // */
+    // public void OnSelected(object row)
+    // {
+    //     /*
+    //     * To Do
+    //     * 동일 row 중복 처리
+    //     */
+    //     Console.WriteLine(row);
+
+    //     if (row is PlaceTableDTO palceRow)
+    //     {
+    //         if (!SelecList.Contains(row))
+    //         {
+    //             Console.WriteLine("추가");
+    //             SelecList.Add(palceRow);
+    //         }
+
+    //     }
+
+
+
+    //     Console.WriteLine(SelecList);
+    // }
+
+    // /*
+    // * 체크 해제
+    // * Remove to List<PlaceDTO>SelectList when disable Checkbox
+    // */
+    // public void UnSelected(object row)
+    // {
+    //     if (row is PlaceTableDTO palceRow)
+    //     {
+    //         Console.WriteLine("삭제 전");
+    //         foreach (PlaceTableDTO a in SelecList)
+    //         {
+
+    //             Console.WriteLine(a.PlaceCd);
+    //         }
+    //         SelecList.Remove(palceRow);
+    //         Console.WriteLine("삭제 후");
+    //         foreach (PlaceTableDTO a in SelecList)
+    //         {
+
+    //             Console.WriteLine(a.PlaceCd);
+    //         }
+    //     }
+    // }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

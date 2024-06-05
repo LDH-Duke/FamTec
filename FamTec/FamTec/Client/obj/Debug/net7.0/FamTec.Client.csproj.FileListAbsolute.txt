@@ -1819,7 +1819,6 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceDetail\PlaceDetail.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Components\NotUse\Tableheaderbody.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Modal\AddModal.razor.rz.scp.css
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Modal\AddModal2.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Modal\SearchManagerModal.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Place.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\Drawer.razor.rz.scp.css
@@ -2080,3 +2079,7 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamT
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\refint\FamTec.Client.dll
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\FamTec.Client.pdb
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\ref\FamTec.Client.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\PlaceTable.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\SignForm.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\ManagerDetail.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceMain\Modal\AddModal2.razor.rz.scp.css

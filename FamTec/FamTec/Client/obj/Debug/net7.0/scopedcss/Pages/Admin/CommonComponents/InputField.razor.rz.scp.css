@@ -27,11 +27,18 @@
     place-self: center;
 
     width : 100%;
-    padding : 1rem 0;
+    padding : 1rem;
     outline: none;
-    border: none;
+    border: 2px solid transparent;
     border-bottom: 2px solid #c6c6c6;
 
+}
+
+.inputfield-container .block[b-deu16zhd0b]{
+    border: 2px solid darkgray;
+    border-radius: 4px;
+    padding: 1rem;
+    background-color: lightgray;
 }
 
 .inputfield-container .inputfield-input:focus[b-deu16zhd0b]{

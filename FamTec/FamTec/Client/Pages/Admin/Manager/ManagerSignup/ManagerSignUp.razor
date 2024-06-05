@@ -51,7 +51,7 @@
     {
         try
         {
-            ResponseObj<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseObj<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
+            ResponseList<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseList<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
             departmetnList = resDepartment.data;
 
 
