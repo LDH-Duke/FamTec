@@ -101,7 +101,7 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         [Route("MyWorks/{id?}")]
         public async ValueTask<IActionResult> GetMyWorks(int id)
         {
-            ResponseModel<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(id);
+            ResponseList<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(id);
             return Ok(model);
         }
 

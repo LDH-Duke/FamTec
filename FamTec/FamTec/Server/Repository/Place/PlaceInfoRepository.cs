@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Server.Services;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,12 @@ namespace FamTec.Server.Repository.Place
     public class PlaceInfoRepository : IPlaceInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public PlaceInfoRepository(WorksContext _context)
+        public PlaceInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -41,8 +44,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -65,8 +68,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -97,8 +100,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
 
         }
@@ -130,8 +133,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -158,8 +161,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -185,8 +188,8 @@ namespace FamTec.Server.Repository.Place
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 

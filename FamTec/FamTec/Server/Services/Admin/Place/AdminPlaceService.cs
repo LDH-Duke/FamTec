@@ -1,17 +1,11 @@
-﻿using FamTec.Client.Pages.Admin.Manager.ManagerMain;
-using FamTec.Server.Repository.Admin.AdminPlaces;
+﻿using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Place;
-using FamTec.Shared;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.IdentityModel.Abstractions;
-using Microsoft.JSInterop.Infrastructure;
 
 namespace FamTec.Server.Services.Admin.Place
 {
@@ -20,25 +14,18 @@ namespace FamTec.Server.Services.Admin.Place
         private readonly IPlaceInfoRepository PlaceInfoRepository;
         private readonly IAdminPlacesInfoRepository AdminPlaceInfoRepository;
         private readonly IAdminUserInfoRepository AdminUserInfoRepository;
-
-
-        ResponseOBJ<AdminPlaceDTO> AdminPlaceResponse;
-        Func<string, AdminPlaceDTO, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseOBJ;
-        Func<string, List<AdminPlaceDTO>, int, ResponseModel<AdminPlaceDTO>> AdminPlaceResponseList;
+        private ILogService LogService;
 
   
         public AdminPlaceService(IAdminPlacesInfoRepository _adminplaceinforepository,
             IPlaceInfoRepository _placeinforepository,
-            IAdminUserInfoRepository _adminuserinforepository)
+            IAdminUserInfoRepository _adminuserinforepository,
+            ILogService _logservice)
         {
             this.AdminPlaceInfoRepository = _adminplaceinforepository;
             this.PlaceInfoRepository = _placeinforepository;
             this.AdminUserInfoRepository = _adminuserinforepository;
-
-
-            AdminPlaceResponse = new ResponseOBJ<AdminPlaceDTO>();
-            AdminPlaceResponseOBJ = AdminPlaceResponse.RESPMessage;
-            AdminPlaceResponseList = AdminPlaceResponse.RESPMessageList;
+            this.LogService = _logservice;
         }
     
         /// <summary>
@@ -76,8 +63,8 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseList<AllPlaceDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<AllPlaceDTO>(), code = 500 };
-                
             }
         }
 
@@ -86,7 +73,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<AdminPlaceDTO>> GetMyWorksService(int? adminid)
+        public async ValueTask<ResponseList<AdminPlaceDTO>> GetMyWorksService(int? adminid)
         {
             try
             {
@@ -96,32 +83,38 @@ namespace FamTec.Server.Services.Admin.Place
 
                     if (model is [_, ..])
                     {
-                        return AdminPlaceResponseList("요청이 정상처리 되었습니다.", model.Select(e => new AdminPlaceDTO
+                        return new ResponseList<AdminPlaceDTO>()
                         {
-                            AdminPlaceTBID = e.AdminPlaceTBID,
-                            AdminPlaceUserTBID = e.AdminPlaceUserTBID,
-                            PlaceTBID = e.PlaceTBID,
-                            PlaceCD = e.PlaceCD,
-                            Name = e.Name,
-                            ContractNum = e.ContractNum,
-                            ContractDT = e.ContractDT,
-                            CancelDT = e.CancelDT,
-                            status = e.status
-                        }).ToList(), 200);
+                            message = "요청이 정상 처리되었습니다.",
+                            data = model.Select(e => new AdminPlaceDTO
+                            {
+                                AdminPlaceTBID = e.AdminPlaceTBID,
+                                AdminPlaceUserTBID = e.AdminPlaceUserTBID,
+                                PlaceTBID = e.PlaceTBID,
+                                PlaceCD = e.PlaceCD,
+                                Name = e.Name,
+                                ContractNum = e.ContractNum,
+                                ContractDT = e.ContractDT,
+                                CancelDT = e.CancelDT,
+                                status = e.status
+                            }).ToList(),
+                            code = 200
+                        };
                     }
                     else
                     {
-                        return AdminPlaceResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
+                        return new ResponseList<AdminPlaceDTO>() { message = "데이터가 존재하지 않습니다.", data = new List<AdminPlaceDTO>(), code = 200 };
                     }
                 }
                 else
                 {
-                    return AdminPlaceResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    return new ResponseList<AdminPlaceDTO>() { message = "요청이 잘못되었습니다.", data = new List<AdminPlaceDTO>(), code = 404 };
                 }
             }
             catch (Exception ex)
             {
-                return AdminPlaceResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                LogService.LogMessage(ex.ToString());
+                return new ResponseList<AdminPlaceDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<AdminPlaceDTO>(), code = 500 };
             }
         }
 
@@ -146,6 +139,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseList<ManagerListDTO> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<ManagerListDTO>(), code = 500 };
             }
         }
@@ -194,6 +188,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<int?> { message = "서버에서 요청을 처리하지 못하였습니다.", data = null, code = 404 };
             }
         }
@@ -225,6 +220,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<PlaceDetailDTO> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new PlaceDetailDTO(), code = 500 };
             }
         }
@@ -293,6 +289,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<bool> { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
         }
@@ -352,6 +349,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<bool>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
         }
@@ -396,6 +394,7 @@ namespace FamTec.Server.Services.Admin.Place
             }
             catch (Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<bool>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
 

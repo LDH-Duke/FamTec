@@ -110,7 +110,7 @@ namespace FamTec.Server.Controllers.Admin.Department
         [Route("UpdateDepartment")]
         public async ValueTask<IActionResult> UpdateDepartment([FromBody]DepartmentDTO dto)
         {
-            ResponseModel<DepartmentDTO>? model = await DepartmentService.UpdateDepartmentService(dto, session);
+            ResponseUnit<DepartmentDTO>? model = await DepartmentService.UpdateDepartmentService(dto);
             return Ok(model);
         }
 

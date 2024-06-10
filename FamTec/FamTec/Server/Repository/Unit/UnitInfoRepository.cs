@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Server.Services;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +8,12 @@ namespace FamTec.Server.Repository.Unit
     public class UnitInfoRepository : IUnitInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public UnitInfoRepository(WorksContext _context)
+        public UnitInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -35,8 +38,8 @@ namespace FamTec.Server.Repository.Unit
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -66,8 +69,8 @@ namespace FamTec.Server.Repository.Unit
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -96,8 +99,8 @@ namespace FamTec.Server.Repository.Unit
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -123,8 +126,8 @@ namespace FamTec.Server.Repository.Unit
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 

@@ -1,27 +1,22 @@
 ﻿using FamTec.Server.Repository.Admin.Departmnet;
-using FamTec.Shared;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FamTec.Server.Services.Admin.Department
 {
     public class DepartmentService : IDepartmentService
     {
         private readonly IDepartmentInfoRepository DepartmentInfoRepository;
+        
+        private ILogService LogService;
 
-        ResponseOBJ<DepartmentDTO> Response;
-        Func<string, DepartmentDTO, int, ResponseModel<DepartmentDTO>> FuncResponseOBJ;
 
-
-        public DepartmentService(IDepartmentInfoRepository _departmentinforepository)
+        public DepartmentService(IDepartmentInfoRepository _departmentinforepository,
+            ILogService _logservice)
         {
             this.DepartmentInfoRepository = _departmentinforepository;
-
-            this.Response = new ResponseOBJ<DepartmentDTO>();
-            this.FuncResponseOBJ = Response.RESPMessage;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -77,6 +72,7 @@ namespace FamTec.Server.Services.Admin.Department
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<AddDepartmentDTO> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new AddDepartmentDTO(), code = 404 };
             }
         }
@@ -112,6 +108,7 @@ namespace FamTec.Server.Services.Admin.Department
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseList<DepartmentDTO> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<DepartmentDTO>(), code = 500 };
             }
         }
@@ -151,6 +148,7 @@ namespace FamTec.Server.Services.Admin.Department
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<bool> { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 404 };
             }
         }
@@ -161,11 +159,11 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<DepartmentDTO>?> UpdateDepartmentService(DepartmentDTO? dto, SessionInfo? session)
+        public async ValueTask<ResponseUnit<DepartmentDTO>?> UpdateDepartmentService(DepartmentDTO? dto)
         {
             try
             {
-                if(dto is not null && session is not null)
+                if(dto is not null)
                 {
                     DepartmentTb? model = await DepartmentInfoRepository.GetDepartmentInfo(dto.Id);
                     
@@ -177,40 +175,36 @@ namespace FamTec.Server.Services.Admin.Department
                         {
                             model.Name = dto.Name;
                             model.UpdateDt = DateTime.Now;
-                            model.UpdateUser = session.Name;
 
                             bool? result = await DepartmentInfoRepository.UpdateDepartmentInfo(model);
                             if (result == true)
                             {
-                                return FuncResponseOBJ("데이터 수정이 처리되었습니다.", new DepartmentDTO
-                                {
-                                    Id = model.Id,
-                                    Name = dto.Name
-                                }, 200);
+                                return new ResponseUnit<DepartmentDTO>() { message = "요청이 정상 처리되었습니다.", data = new DepartmentDTO { Id = model.Id, Name = dto.Name }, code = 200 };
                             }
                             else
                             {
-                                return FuncResponseOBJ("데이터 수정을 처리하지 못하였습니다.", null, 200);
+                                return new ResponseUnit<DepartmentDTO>() { message = "요청이 처리되지 않았습니다.", data = new DepartmentDTO(), code = 200 };
                             }
                         }
                         else
                         {
-                            return FuncResponseOBJ("해당 부서명이 존재합니다.", null, 200);
+                            return new ResponseUnit<DepartmentDTO>() { message = "입력하신 부서명이 존재합니다.", data = new DepartmentDTO(), code = 200 };
                         }   
                     }
                     else
                     {
-                        return FuncResponseOBJ("해당 인덱스가 존재하지 않습니다.", null, 404);
+                        return new ResponseUnit<DepartmentDTO>() { message = "해당 부서가 존재하지 않습니다.", data = new DepartmentDTO(), code = 200 };
                     }
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    return new ResponseUnit<DepartmentDTO>() { message = "요청이 잘못되었습니다.", data = new DepartmentDTO(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                LogService.LogMessage(ex.ToString());
+                return new ResponseUnit<DepartmentDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new DepartmentDTO(), code = 500 };
             }
         }
 

@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Server.Services;
 using FamTec.Shared;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Room;
@@ -9,10 +10,12 @@ namespace FamTec.Server.Repository.Room
     public class RoomInfoRepository : IRoomInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public RoomInfoRepository(WorksContext _context)
+        public RoomInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -37,8 +40,8 @@ namespace FamTec.Server.Repository.Room
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -94,8 +97,8 @@ namespace FamTec.Server.Repository.Room
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -126,8 +129,8 @@ namespace FamTec.Server.Repository.Room
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 

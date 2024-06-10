@@ -1,6 +1,7 @@
 ﻿using FamTec.Server.Services.Admin.Account;
 using FamTec.Server.Services.User;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -26,7 +27,7 @@ namespace FamTec.Server.Controllers.Login
         [Route("AdminSettingLogin")]
         public async ValueTask<IActionResult> AdminSettingLogin([FromBody] LoginDTO dto)
         {
-            ResponseModel<string>? model = await AdminAccountService.AdminLoginService(dto);
+            ResponseUnit<string>? model = await AdminAccountService.AdminLoginService(dto);
             return Ok(model);
             //AdminLoginService
         }

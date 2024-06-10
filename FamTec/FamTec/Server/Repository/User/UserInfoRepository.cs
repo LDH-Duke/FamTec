@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Server.Services;
 using FamTec.Shared.Model;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +10,12 @@ namespace FamTec.Server.Repository.User
     public class UserInfoRepository : IUserInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public UserInfoRepository(WorksContext _context)
+        public UserInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -46,8 +49,8 @@ namespace FamTec.Server.Repository.User
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -78,7 +81,7 @@ namespace FamTec.Server.Repository.User
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                LogService.LogMessage(ex.ToString());
                 throw new ArgumentNullException();
             }
         }
@@ -104,7 +107,7 @@ namespace FamTec.Server.Repository.User
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                LogService.LogMessage(ex.ToString());
                 throw new ArgumentNullException();
             }
         }
@@ -140,8 +143,8 @@ namespace FamTec.Server.Repository.User
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -173,8 +176,8 @@ namespace FamTec.Server.Repository.User
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
     }

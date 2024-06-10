@@ -1,36 +1,20 @@
 ﻿using FamTec.Server.Repository.Building;
 using FamTec.Shared;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Building;
-using Microsoft.AspNetCore.Http.HttpResults;
-using System.Collections.Generic;
 
 namespace FamTec.Server.Services.Building
 {
     public class BuildingService : IBuildingService
     {
         private readonly IBuildingInfoRepository BuildingRepository;
+        private ILogService LogService;
 
-        ResponseOBJ<BuildingsDTO> Response;
-        Func<string, BuildingsDTO, int, ResponseModel<BuildingsDTO>> FuncResponseOBJ;
-        Func<string, List<BuildingsDTO>, int, ResponseModel<BuildingsDTO>> FuncResponseList;
-
-        ResponseOBJ<string> strResponse;
-        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
-        
-
-        public BuildingService(IBuildingInfoRepository _buildingrepository)
+        public BuildingService(IBuildingInfoRepository _buildingrepository, ILogService _logservice)
         {
             this.BuildingRepository = _buildingrepository;
-
-            Response = new ResponseOBJ<BuildingsDTO>();
-            FuncResponseOBJ = Response.RESPMessage;
-            FuncResponseList = Response.RESPMessageList;
-
-            strResponse = new ResponseOBJ<string>();
-            FuncResponseSTR = strResponse.RESPMessage;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -114,6 +98,7 @@ namespace FamTec.Server.Services.Building
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<bool>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = false, code = 500 };
             }
         }
@@ -160,6 +145,7 @@ namespace FamTec.Server.Services.Building
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseList<BuildingsDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<BuildingsDTO>(), code = 500 };
             }
         }
@@ -170,7 +156,7 @@ namespace FamTec.Server.Services.Building
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<string>?> DeleteBuildingService(List<int>? index, SessionInfo? session)
+        public async ValueTask<ResponseUnit<string>?> DeleteBuildingService(List<int>? index, SessionInfo? session)
         {
             try
             {
@@ -197,16 +183,17 @@ namespace FamTec.Server.Services.Building
                         }
                     }
 
-                    return FuncResponseSTR("데이터 삭제 완료", count.ToString(), 200);
+                    return new ResponseUnit<string>() { message = "요청이 정상 처리되었습니다.", data = count.ToString(), code = 200 };
                 }
                 else
                 {
-                    return FuncResponseSTR("잘못된 요청 입니다.", null, 404);
+                    return new ResponseUnit<string>() { message = "요청이 잘못되었습니다.", data = null, code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseSTR("서버에서 요청을 처리하지 못하였습니다",null, 200);
+                LogService.LogMessage(ex.ToString());
+                return new ResponseUnit<string>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = null, code = 500 };
             }
         }
 

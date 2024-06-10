@@ -14,7 +14,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<AdminPlaceDTO>> GetMyWorksService(int? adminid);
+        public ValueTask<ResponseList<AdminPlaceDTO>> GetMyWorksService(int? adminid);
 
         /// <summary>
         /// 전체 사업장 조회

@@ -1,21 +1,13 @@
-﻿using Azure.Core;
-using FamTec.Server.Repository.Admin.AdminPlaces;
+﻿using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Admin.Departmnet;
-using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
-using FamTec.Shared;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Login;
-using FamTec.Shared.Server.DTO.Place;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -31,23 +23,15 @@ namespace FamTec.Server.Services.Admin.Account
 
 
         private readonly IConfiguration Configuration;
-
-        ResponseOBJ<string> ResponseSTR;
-        Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
-        Func<string, List<string>, int, ResponseModel<string>> FuncResponseSTRList;
-
-        ResponseOBJ<AddManagerDTO> ResponseAdd;
-        Func<string, AddManagerDTO, int, ResponseModel<AddManagerDTO>> FuncResponseAdd;
-
-        ResponseOBJ<int?> ResponseINT;
-        Func<string, int?, int, ResponseModel<int?>> FuncResponseINT;
+        private ILogService LogService;
 
 
         public AdminAccountService(IUserInfoRepository _userinfoRepository,
             IAdminUserInfoRepository _admininfoRepository,
             IDepartmentInfoRepository _departmentinfoRepository,
             IAdminPlacesInfoRepository _adminplaceinforepository,
-            IConfiguration _configuration)
+            IConfiguration _configuration,
+            ILogService _logservice)
         {
             this.UserInfoRepository = _userinfoRepository;
             this.AdminUserInfoRepository = _admininfoRepository;
@@ -55,17 +39,8 @@ namespace FamTec.Server.Services.Admin.Account
             this.AdminPlaceInfoRepository = _adminplaceinforepository;
 
 
-            Configuration = _configuration;
-
-            ResponseSTR = new ResponseOBJ<string>();
-            FuncResponseSTR = ResponseSTR.RESPMessage;
-            FuncResponseSTRList = ResponseSTR.RESPMessageList;
-
-            ResponseAdd = new ResponseOBJ<AddManagerDTO>();
-            FuncResponseAdd = ResponseAdd.RESPMessage;
-
-            ResponseINT = new ResponseOBJ<int?>();
-            FuncResponseINT = ResponseINT.RESPMessage;
+            this.Configuration = _configuration;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -74,7 +49,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="userid"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<string>> AdminLoginService(LoginDTO? dto)
+        public async ValueTask<ResponseUnit<string>> AdminLoginService(LoginDTO? dto)
         {
             try
             {
@@ -82,17 +57,18 @@ namespace FamTec.Server.Services.Admin.Account
                 {
                     UserTb? usertb = await UserInfoRepository.GetUserInfo(dto.UserID, dto.UserPassword);
 
-                    if(usertb is not null)
+                    if (usertb is not null)
                     {
-                        if(usertb.AdminYn == 1)
+                        if (usertb.AdminYn == 1)
                         {
                             AdminTb? admintb = await AdminUserInfoRepository.GetAdminUserInfo(usertb.Id);
 
-                            if(admintb is not null)
+                            if (admintb is not null)
                             {
                                 DepartmentTb? departmenttb = await DepartmentInfoRepository.GetDepartmentInfo(admintb.DepartmentTbId);
-                                if(departmenttb is not null)
+                                if (departmenttb is not null)
                                 {
+                                    /* 토큰에 같이 넣고싶은 데이터 */
                                     List<Claim> temp = new List<Claim>
                                     {
                                         new Claim("temp","123")
@@ -108,16 +84,16 @@ namespace FamTec.Server.Services.Admin.Account
                                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                                     };
 
-                                    
+
                                     if (admintb.Type == "시스템관리자")
                                     {
                                         authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
                                     }
-                                    if(admintb.Type == "마스터")
+                                    if (admintb.Type == "마스터")
                                     {
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
                                     }
-                                    if(admintb.Type =="매니저")
+                                    if (admintb.Type == "매니저")
                                     {
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
                                     }
@@ -135,41 +111,42 @@ namespace FamTec.Server.Services.Admin.Account
                                     string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
 
                                     // 로그인 성공
-                                    return FuncResponseSTR("로그인 성공", accessToken, 200);
+                                    return new ResponseUnit<string>() { message = "관리자 로그인 성공.", data = accessToken, code = 200 };
                                 }
                                 else
                                 {
                                     // 정보가 잘못되었습니다.
-                                    return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
+                                    return new ResponseUnit<string>() { message = "관리자 로그인 실패.", data = null, code = 200 };
                                 }
                             }
                             else
                             {
                                 // 관리자 아님
-                                return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
+                                return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 200 };
                             }
                         }
                         else
                         {
                             // 관리자 아님
-                            return FuncResponseSTR("로그인 실패", "로그인 정보가 잘못되었습니다.", 200);
+                            return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 200 };
                         }
                     }
                     else
                     {
                         // 아이디가 존재하지 않음
-                        return FuncResponseSTR("로그인 실패", "해당 아이디가 존재하지 않습니다.", 200);
+                        return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디가 존재하지 않습니다.)", data = null, code = 200 };
                     }
                 }
                 else
                 {
                     // 요청이 잘못됨
-                    return FuncResponseSTR("로그인 실패", "요청 정보가 잘못되었습니다.", 404);
+                    return new ResponseUnit<string>() { message = "로그인 실패 (요청 정보가 잘못되었습니다.)", data = null, code = 404 };
                 }
             }
             catch (Exception ex) 
             {
-                return FuncResponseSTR("로그인 실패", "서버에서 요청을 처리하지 못하였습니다.", 500);
+                LogService.LogMessage(ex.ToString());
+                return new ResponseUnit<string>() { message = "로그인 실패 (서버에서 요청을 처리하지 못하였습니다.)", data = null, code = 500 };
             }
         }
 
@@ -251,6 +228,7 @@ namespace FamTec.Server.Services.Admin.Account
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<AdminTb> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new AdminTb(), code = 500 };
             }
         }
@@ -314,6 +292,7 @@ namespace FamTec.Server.Services.Admin.Account
             }
             catch(Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<int> { message = "서버에서 요청을 처리하지 못하였습니다.", data = count, code = 500 };
             }
         }
@@ -347,6 +326,7 @@ namespace FamTec.Server.Services.Admin.Account
             }
             catch (Exception ex)
             {
+                LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<DManagerDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new DManagerDTO(), code = 500 };
             }
         }

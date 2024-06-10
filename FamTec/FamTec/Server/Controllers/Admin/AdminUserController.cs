@@ -42,7 +42,7 @@ namespace FamTec.Server.Controllers.Admin
         [Route("Login")]
         public async ValueTask<IActionResult> Login([FromBody] LoginDTO dto)
         {
-            ResponseModel<string>? model = await AdminService.AdminLoginService(dto);
+            ResponseUnit<string>? model = await AdminService.AdminLoginService(dto);
             return Ok(model);
         }
 

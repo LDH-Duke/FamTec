@@ -1,4 +1,5 @@
 ﻿using FamTec.Server.Databases;
+using FamTec.Server.Services;
 using FamTec.Shared.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -8,10 +9,12 @@ namespace FamTec.Server.Repository.Floor
     public class FloorInfoRepository : IFloorInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public FloorInfoRepository(WorksContext _context)
+        public FloorInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -36,8 +39,8 @@ namespace FamTec.Server.Repository.Floor
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -62,8 +65,8 @@ namespace FamTec.Server.Repository.Floor
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -92,8 +95,8 @@ namespace FamTec.Server.Repository.Floor
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -124,8 +127,8 @@ namespace FamTec.Server.Repository.Floor
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -178,8 +181,8 @@ namespace FamTec.Server.Repository.Floor
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 

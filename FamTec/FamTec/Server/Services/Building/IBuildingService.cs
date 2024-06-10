@@ -25,7 +25,7 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<string>?> DeleteBuildingService(List<int>? index, SessionInfo? session);
+        public ValueTask<ResponseUnit<string>?> DeleteBuildingService(List<int>? index, SessionInfo? session);
 
     }
 }

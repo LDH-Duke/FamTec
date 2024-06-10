@@ -34,7 +34,7 @@ namespace FamTec.Server.Services.Admin.Department
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<DepartmentDTO>?> UpdateDepartmentService(DepartmentDTO? dto, SessionInfo? session);
+        public ValueTask<ResponseUnit<DepartmentDTO>?> UpdateDepartmentService(DepartmentDTO? dto);
 
     }
 }

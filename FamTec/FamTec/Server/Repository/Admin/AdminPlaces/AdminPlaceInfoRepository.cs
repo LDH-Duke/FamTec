@@ -1,5 +1,6 @@
 ﻿using FamTec.Server.Databases;
 using FamTec.Server.Repository.Place;
+using FamTec.Server.Services;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO.Admin;
@@ -16,10 +17,12 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
     public class AdminPlaceInfoRepository : IAdminPlacesInfoRepository
     {
         private readonly WorksContext context;
+        private ILogService LogService;
 
-        public AdminPlaceInfoRepository(WorksContext _context)
+        public AdminPlaceInfoRepository(WorksContext _context, ILogService _logservice)
         {
             this.context = _context;
+            this.LogService = _logservice;
         }
 
         /// <summary>
@@ -46,8 +49,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                return null;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -79,8 +82,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -109,8 +112,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -175,8 +178,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -239,8 +242,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                throw new ArgumentException();
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -306,8 +309,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -370,8 +373,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -454,8 +457,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
@@ -488,8 +491,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
-                throw;
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
             }
         }
 
