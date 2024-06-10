@@ -13,14 +13,35 @@
     /*
         color
     */
-    --main-color: #200D69;
+    --main-color: #223377;
     --mid-color : #9A89BS;
-    --light-color: #FEF6FF;
-    --default-bg-color: #FFFFFF;
+    --light-color: #EFEFEF;
+    --content-back-color : #f5f8ff; 
+    --del-color:#832121;
+    --modalback-color : #a9a9a9b2;
+
+    --main-hover : #1b40d5;
+    --main-light : #c6d1fd;
+    --del-hover : #d31a1a;
+    
+
+    --default-color: #FFFFFF;
+
+    /*
+        background-color
+    */
+    --back-default-color : #FFFFFF;
+
+
     /*
         border
     */
-    --default-bd : 2px solid #200D69;
+    --comp-bd :0;
+    --default-bd : 2px solid #223377;
+    --layout-bd : 1px solid #d3d3d3;
+    --input-bd : 2px solid #d3d3d3;
+    --input-block-bd : 2px solid darkgray;
+
 
 
     /*
@@ -28,4 +49,19 @@
     */
     --default-rd : 4px;
     --multi-rd : 8px;
+
+
+    /*
+        padding
+    */
+    --wide-pd : 2rem;
+    --default-pd : 1rem;
+    --three-q-pd : 0.75rem;
+    --half-pd : 0.5rem;
+    --one-q-pd : 0.25rem;
+
+    /*
+        box-shadow
+    */
+    --default-bs : 0 10px 15px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
 }

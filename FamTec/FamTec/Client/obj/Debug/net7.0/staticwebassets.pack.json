@@ -77,8 +77,48 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Black.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Black.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Bold.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Bold.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-ExtraBold.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-ExtraBold.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-ExtraLight.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-ExtraLight.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Light.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Light.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Medium.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Medium.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Regular.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Regular.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-SemiBold.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-SemiBold.otf"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\font\\Pretendard-Thin.otf",
+      "PackagePath": "staticwebassets\\font\\Pretendard-Thin.otf"
+    },
+    {
       "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\Stec_Logo.png",
+      "PackagePath": "staticwebassets\\img\\Stec_Logo.png"
     },
     {
       "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\img\\steclogo.png",

@@ -1,4 +1,5 @@
 ﻿@using FamTec.Client.Pages.Admin.CommonComponents
+@using FamTec.Client.Pages.Admin.Manager.ManagerSignup.Modal
 @using FamTec.Shared.Client.DTO
 ﻿
 @using FamTec.Shared.Client.DTO.Place
@@ -9,10 +10,14 @@
 
 <div class="placetable-container">
     <div class="placetable-title">
-        <span>
+        <span class="title">
             사업장 목록
         </span>
-        <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
+        <div class="place-table-option">
+            <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
+            <Button Name="추가" Width=true OnClick="OnOpenModal" />
+            <Button Name="삭제" Width=true Type=true />
+        </div>
     </div>
     <div class="placetable-table">
         <Table DataList="FilterPlaceList" Select="OnSelected"/>
@@ -22,12 +27,21 @@
             선택 : @SelectCount
         </span>
     </div>
+    @if (isOpen == true)
+        {
+            <ModalBackground >
+                <ChildComponent>
+                    <PlaceModal OnClose="OnCloseModal" />
+                </ChildComponent>
+            </ModalBackground>
+        }
 </div>
 
 @code {
     [Parameter] public AddManagerPlaceDTO NewManagerPlace { get; set; }
     List<PlaceTableDTO> PlaceList;
     int SelectCount = 0;
+    bool isOpen = false;
 
     //검색 변수
     List<PlaceTableDTO> FilterPlaceList = new List<PlaceTableDTO>();
@@ -43,12 +57,12 @@
         FilterPlaceList = PlaceList;
     }
 
-     /*
-     * 사업장 조회
+    /*
+    * 사업장 조회
     */
     private async Task LoadPlaces()
     {
-        
+
     }
 
 
@@ -73,7 +87,7 @@
             NewManagerPlace.PlaceList.Add(selection.id);
             SelectCount++;
         }
-        
+
     }
 
       /*
@@ -89,6 +103,20 @@
                                    p.PlaceCd.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
                                    p.ContractNum.Contains(searchText, StringComparison.OrdinalIgnoreCase))
                         .ToList();
+    }
+
+    /*
+    * 사업장 추가 모달
+    */
+    private void OnOpenModal()
+    {
+        isOpen = true;
+    }
+
+    private void OnCloseModal()
+    {
+        isOpen = false;
+        StateHasChanged();
     }
 
 }

@@ -2,15 +2,15 @@
 .input-container[b-0t9nmcse6h] {
     outline: none;
     width: auto;
-    border: 2px solid #200d69;
-    border-radius: 4px;
-    padding: 0.5rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #200d69;
-    background-color:#ebe7fe
+    border: var(--default-bd);
+    border-radius: var(--default-rd);
+    padding: var(--half-pd);
+    font-size: var(--normal-size);
+    font-weight: var(--bold-wt);
+    color: var(--main-color);
+    background-color:var(--main-light);
 }
 
 [b-0t9nmcse6h]::placeholder {
-    color: #200d69;
+    color: var(--main-color);
 }

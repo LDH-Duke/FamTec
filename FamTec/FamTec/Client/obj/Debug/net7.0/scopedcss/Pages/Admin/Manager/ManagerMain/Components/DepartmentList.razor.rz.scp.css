@@ -1,31 +1,30 @@
 .depart-list[b-uq4pwmuq1t] {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    /*height: 100%;*/
-   
+    gap: var(--half-pd);
 }
 
 .depart-list .depart-item[b-uq4pwmuq1t] {
     display: flex;
-    justify-content:space-between;
+    /*justify-content:space-between;*/ /* 선택버튼*/
+    gap : var(--default-pd);
     width:100%;
-    padding: 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
+    padding: var(--default-pd)  var(--half-pd);
+    border-radius: var(--default-rd);
+    font-size: var(--normal-size);
+    font-weight: var(--bold-wt);
 }
 
 .depart-list .depart-item:hover[b-uq4pwmuq1t] {
     transition: all ease-in-out 0.2s;
-    background-color: #200d69;
+    background-color: var(--main-color);
 }
 
-.depart-list .depart-item:hover[b-uq4pwmuq1t]  span {
+.depart-list .depart-item:hover[b-uq4pwmuq1t]  .item-title {
     transition: all ease-in-out 0.2s;
-    color: #ffffff;
+    color: var(--default-color);
 }
 
-.depart-list .depart-item > span[b-uq4pwmuq1t] {
-    color: #4f4f4f;
+.depart-list .depart-item[b-uq4pwmuq1t]  .item-title{
+    color : var(--main-color);
 }

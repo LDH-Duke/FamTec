@@ -7,7 +7,7 @@
 .drawer-container .drawer-wrap {
     display: flex;
     flex-direction: column;
-    padding: 0.75rem;
+    padding: var(--three-q-pd);
 }
 
 
@@ -39,23 +39,25 @@
     height: 100%;
     font-weight: bold;
     font-size: 0.8rem;
-    padding: 1rem;
+    padding: var(--default-pd);
 }
 
-.drawer-container ::deep .drawer-link > span {
+.drawer-container ::deep .drawer-link  .category-title {
     width: max-content;
+    color : var(--main-color);
+    font-weight : var(--bold-wt);
 }
 
 .drawer-container ::deep .drawer-link:hover {
-    border-radius: 4px;
-    background-color: #200d69;
-    color: white;
-    & span{
-            transition: all 0.3s;
-            color: #ffffff;
-        }
+    transition: all ease-in-out 0.2s;
+    border-radius: var(--default-rd);
+    background-color: var(--main-color);
+}
 
-    }
+.drawer-container ::deep .drawer-link:hover .category-title {
+    transition: all ease-in-out 0.2s;
+    color: var(--default-color);
+}
 
 .drawer-container .arrow {
     width: min-content;

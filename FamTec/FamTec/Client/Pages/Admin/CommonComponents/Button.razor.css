@@ -1,34 +1,33 @@
 ﻿
 .btn {
     height: 100%;
-    padding: 0.5rem;
+    padding: var(--half-pd) var(--default-pd);
     border: none;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    border: 2px solid #200d69;
+    border-radius: var(--default-rd);
+    font-size: var(--normal-size);
+    /*border: var(--default-bd);*/
 }
 
 .default {
-    color: #ffffff;
-    font-weight : bold;
-    background-color: #200d69;
+    color: var(--default-color);
+    font-weight : var(--bold-wt);
+    background-color: var(--main-color);
 }
 
 .default:hover {
     transition : all ease-in-out 0.2s;
-    background-color: #3e269a
+    background-color: var(--main-hover);
 }
 
 .type2 {
-    
-    color: #200d69;
-    font-weight: bold;
-    background-color: #ffffff;
+    color: var(--default-color);
+    font-weight: var(--bold-wt);
+    background-color: var(--del-color);
 }
 
 .type2:hover{
     transition : all ease-in-out 0.2s;
-    background-color : #f5f5f5;
+    background-color : var(--del-hover);
 }
 
 .width{

@@ -1,28 +1,28 @@
 ﻿.placetoggle-container {
     display: flex;
     flex-direction: column;
-    border: 2px solid #200d69;
-    border-radius: 4px;
-    background-color: #ffffff;
-    padding: 1rem;
+    border: var(--comp-bd);
+    border-radius: var(--default-rd);
+    background-color: var(--default-color);
+    padding: var(--default-pd);
     height: 100%;
 }
 
 
 .placetoggle-container .placetoggle-title{
-    font-size:1.2rem;
-    font-weight:bold;
-    padding: 1rem;
-    border-bottom: 2px solid #200d69;
+    font-size:var(--title-size);
+    font-weight:var(--bold-wt);
+    padding: var(--default-pd);
+    border-bottom: var(--default-bd);
 }
 .placetoggle-container .placetoggle-title>span{
-    color:#200d69;
+    color:var(--main-color);
 }
 
 .placetoggle-container .placetoggle-toggle{
     display : grid;
     grid-template-columns : repeat(5, 1fr);
-    gap:1rem;
-    padding : 1rem;
+    gap:var(--default-pd);
+    padding : var(--default-pd);
 
 }

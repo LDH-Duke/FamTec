@@ -1,22 +1,22 @@
 ﻿
 .managerlist-container{
-    background-color:#ffffff;
-    border:2px solid #200d69;
-    border-radius:4px;
+    background-color: var(--back-default-color);
+    border: var(--comp-bd);
+    border-radius:var(--default-rd);
     height:100%;
 
     overflow : hidden;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.16), 0 10px 15px rgba(0, 0, 0, 0.23);
+    box-shadow: var(--default-bs);
 }
 
 
 .managerlist-container .managerlist-wrap{
     display:flex;
     flex-direction:column;
-    gap : 0.5rem;
+    gap : var(--default-pd);
 
     height: 100%;
-    padding : 0.8rem;
+    padding : var(--default-pd);
 
 }
 
@@ -25,22 +25,22 @@
     justify-content : space-between;
     align-items:center;
 
-    padding : 0.5rem;
-    border-bottom : 2px solid #200d69;
+    padding : var(--default-pd);
+    border-bottom : var(--default-bd);
 
 }
 
 .managerlist-container .managerlist-btns{
     display : flex;
-    gap : 0.5rem;
+    gap : var(--half-pd);
     
 }
 
-.managerlist-container .managerlist-header > span {
+.managerlist-container .title {
     white-space: nowrap;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #200d69;
+    font-size: var(--title-size);
+    font-weight: var(--bold-wt);
+    color: var(--main-color);
 }
 
 .managerlist-container .managerlist-list{

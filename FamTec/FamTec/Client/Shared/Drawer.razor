@@ -9,7 +9,7 @@
                 <NavLink class="drawer-link"
                          href="@(category.Url != null ? category.Url : null)"
                          @onclick="() => ToggleDropdown(category)">
-                    <span class="title">@category.Name</span>
+                    <span class="category-title">@category.Name</span>
                     @if (category.SubCategory != null)
                     {
                         <span class="arrow">∨</span>

@@ -6,9 +6,9 @@
     grid-template-areas: "logo ctrl tab";
     padding: 0.5rem 2rem;
     width: 100%;
-    border-radius: 5px;
-    border-bottom: 1px solid #d3d3d3;
-    color: black;
+    /*border-radius: 5px;*/
+    /*border-bottom: 1px solid #d3d3d3;*/
+    background-color:var(--main-color);
     font-weight: bold;
     /*box-shadow: 3px 3px 8px 0px rgb(201, 201, 201);*/
     position: sticky;
@@ -21,10 +21,10 @@
     place-self: center;
     margin-right: 1rem;
     /*padding: 0.25rem;*/
-    border-radius: 5px;
-    color: #00cc8f;
+    border-radius: var(--default-rd);
+    /*color: #00cc8f;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: bold;*/
     cursor: pointer;
 }
 
@@ -49,7 +49,7 @@
     grid-auto-flow: column;
     grid-auto-columns: max-content;
     gap: 2rem;
-    padding: 0.5rem;
+    padding: var(--half-pd);
 }
 
 .nav-container .nav-ctrl-item[b-wg5fiaa4ah] {
@@ -62,11 +62,9 @@
     background-color: white;
     font-size: 1rem;
     font-weight: bold;
-    &:hover
-
-{
-    background-color: #d3d3d3;
-}
+    &:hover{
+            background-color: #d3d3d3;
+            }
 
 }
 
@@ -84,9 +82,9 @@
     grid-auto-columns: max-content;
     gap: 2rem;
     font-size: 0.9rem;
-    color: black
+    color: var(--daflut-color);
 }
 
-.nav-container .nav-tab-wrap .nav-tab-link[b-wg5fiaa4ah] {
-    color: black;
+.nav-container[b-wg5fiaa4ah]  .nav-tab-link {
+    color: var(--default-color);
 }
