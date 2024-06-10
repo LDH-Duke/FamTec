@@ -18,7 +18,7 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<AdminTb?> GetAdminUserInfo(int? admintbid);
+        ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid);
 
         /// <summary>
         /// 관리자리스트 

@@ -438,15 +438,25 @@
       {
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
-    "Method": "Test",
-    "RelativePath": "api/Login/Test",
+    "Method": "SystemManager",
+    "RelativePath": "api/Login/sign/SystemManager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
+    "Method": "SystemManager",
+    "RelativePath": "api/Login/SystemManager",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

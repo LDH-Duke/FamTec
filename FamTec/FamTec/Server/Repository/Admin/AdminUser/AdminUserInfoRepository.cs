@@ -77,13 +77,13 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// <param name="adminuseridx"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public async ValueTask<AdminTb?> GetAdminUserInfo(int? admintbid)
+        public async ValueTask<AdminTb?> GetAdminUserInfo(int? usertbid)
         {
             try
             {
-                if (admintbid is not null)
+                if (usertbid is not null)
                 {
-                    AdminTb? model = await context.AdminTbs.FirstOrDefaultAsync(m => m.Id.Equals(admintbid) && m.DelYn != 1);
+                    AdminTb? model = await context.AdminTbs.FirstOrDefaultAsync(m => m.UserTbId.Equals(usertbid) && m.DelYn != 1);
                     if (model is not null)
                     {
                         return model;

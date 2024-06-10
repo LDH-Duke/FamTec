@@ -68,12 +68,6 @@ namespace FamTec.Server.Services.Admin.Account
                                 DepartmentTb? departmenttb = await DepartmentInfoRepository.GetDepartmentInfo(admintb.DepartmentTbId);
                                 if (departmenttb is not null)
                                 {
-                                    /* 토큰에 같이 넣고싶은 데이터 */
-                                    List<Claim> temp = new List<Claim>
-                                    {
-                                        new Claim("temp","123")
-                                    };
-
                                     // 로그인성공
                                     List<Claim> authClaims = new List<Claim>
                                     {
@@ -84,6 +78,8 @@ namespace FamTec.Server.Services.Admin.Account
                                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                                     };
 
+                                    /* 토큰에 같이 넣고싶은 데이터 */
+                                    authClaims.Add(new Claim("DepartmentName",  departmenttb.Name ?? ""));
 
                                     if (admintb.Type == "시스템관리자")
                                     {

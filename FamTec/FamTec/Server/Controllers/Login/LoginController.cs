@@ -1,12 +1,11 @@
 ﻿using FamTec.Server.Services.Admin.Account;
 using FamTec.Server.Services.User;
+using FamTec.Server.Tokens;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace FamTec.Server.Controllers.Login
 {
@@ -16,34 +15,60 @@ namespace FamTec.Server.Controllers.Login
     {
         private IAdminAccountService AdminAccountService;
         private IUserService UserService;
+        private ITokenComm TokenComm;
 
-        public LoginController(IAdminAccountService _adminaccountservice, IUserService _userservice)
+        public LoginController(IAdminAccountService _adminaccountservice,
+            IUserService _userservice,
+            ITokenComm _tokencomm)
         {
             this.AdminAccountService = _adminaccountservice;
             this.UserService = _userservice;
+            this.TokenComm = _tokencomm;
         }
 
         [HttpPost]
         [Route("AdminSettingLogin")]
-        public async ValueTask<IActionResult> AdminSettingLogin([FromBody] LoginDTO dto)
+        public async ValueTask<IActionResult> AdminSettingLogin([FromBody] LoginDTO? dto)
         {
-            ResponseUnit<string>? model = await AdminAccountService.AdminLoginService(dto);
-            return Ok(model);
-            //AdminLoginService
+            if (dto is not null)
+            {
+                ResponseUnit<string>? model = await AdminAccountService.AdminLoginService(dto);
+
+                if (model is not null)
+                {
+                    if(model.code is 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest(model);
+                    }
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
 
-        [Authorize(Roles = "SystemManager")]
+        [Authorize(Roles = "SystemManager,Master,Manager")]
         [HttpGet]
-        [Route("Test")]
-        public async ValueTask<IActionResult> Test()
+        [Route("SystemManager")]
+        [Route("sign/SystemManager")]
+        public async ValueTask<IActionResult> SystemManager()
         {
-            var temp = HttpContext.Items["Token"];
+            string token = HttpContext.Items["Token"]!.ToString()!;
+            AdminSettingModel? model = TokenComm.TokenConvert(token);
             HttpContext.Items.Clear();
 
-            HttpContext.Session.SetString("Session", "123123");
-            
-            return Ok(temp);
+
+            return Ok(model);
         }
 
         [HttpPost]

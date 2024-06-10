@@ -27,6 +27,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.FileProviders;
 using FamTec.Server.Services;
+using FamTec.Server.Tokens;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -65,6 +66,9 @@ builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IUnitService, UnitService>();
 
 builder.Services.AddTransient<ILogService, LogService>();
+
+builder.Services.AddTransient<ITokenComm, TokenComm>();
+
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -169,11 +173,18 @@ app.UseRouting();
 
 #region MiddleWare
 
-
-app.UseWhen(context => context.Request.Path.Equals("/api/Login/Test"), appBuilder =>
+/*
+app.UseWhen(context => context.Request.Path.Equals("/api/Login/SystemManager"), appBuilder =>
 {
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
+*/
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Login/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
+
+
 
 #endregion
 
