@@ -5,6 +5,7 @@ using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO.Building;
 using FamTec.Shared.Server.DTO.Floor;
 using FamTec.Shared.Server.DTO.Room;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

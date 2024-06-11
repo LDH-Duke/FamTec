@@ -5,6 +5,7 @@ using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Admin.Place;
 using FamTec.Shared.Server.DTO.Place;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FamTec.Server.Controllers.Admin.AdminPlaces
@@ -21,7 +22,18 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
             this.AdminPlaceService = _adminplaceservice;
             this.LogService = _logservice;
         }
-        
+
+        [HttpPost]
+        [Route("Upload")]
+        public async Task<IActionResult> Post(IFormFile file)
+        {
+            if (file.Length > 0)
+            {
+                
+            }
+            return Ok();
+        }
+
         /// <summary>
         /// 전체 사업장 리스트 조회 [수정완료]
         /// </summary>
@@ -98,10 +110,11 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("MyWorks/{id?}")]
-        public async ValueTask<IActionResult> GetMyWorks(int id)
+        [Route("MyWorks")]
+        public async ValueTask<IActionResult> GetMyWorks([FromQuery]int adminid)
         {
-            ResponseList<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(id);
+
+            ResponseList<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(adminid);
             return Ok(model);
         }
 

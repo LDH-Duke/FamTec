@@ -6,6 +6,7 @@ using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace FamTec.Server.Controllers.Login
 {
@@ -26,6 +27,7 @@ namespace FamTec.Server.Controllers.Login
             this.TokenComm = _tokencomm;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [Route("AdminSettingLogin")]
         public async ValueTask<IActionResult> AdminSettingLogin([FromBody] LoginDTO? dto)
@@ -52,7 +54,7 @@ namespace FamTec.Server.Controllers.Login
             }
             else
             {
-                return BadRequest();
+                return StatusCode(404);
             }
         }
 
@@ -63,20 +65,44 @@ namespace FamTec.Server.Controllers.Login
         [Route("sign/SystemManager")]
         public async ValueTask<IActionResult> SystemManager()
         {
-            string token = HttpContext.Items["Token"]!.ToString()!;
-            AdminSettingModel? model = TokenComm.TokenConvert(token);
-            HttpContext.Items.Clear();
-
-
+            AdminSettingModel? model = TokenComm.TokenConvert(HttpContext.Request);
             return Ok(model);
         }
 
         [HttpPost]
         [Route("UserLogin")]
-        public async ValueTask<IActionResult> UserLogin([FromBody] LoginDTO dto)
+        public async ValueTask<IActionResult> UserLogin([FromBody] LoginDTO? dto)
         {
-            ResponseModel<string>? model = await UserService.UserLoginService(dto);
-            return Ok(model);
+            try
+            {
+                if (dto is not null)
+                {
+                    ResponseUnit<string>? model = await UserService.UserLoginService(dto);
+
+                    if (model is not null)
+                    {
+                        if (model.code == 200)
+                        {
+                            return Ok(model);
+                        }
+                        else
+                        {
+                            return Ok(model);
+                        }
+                    }
+                    else
+                    {
+                        return Ok(model);
+                    }
+                }
+                else
+                {
+                    return StatusCode(404);
+                }
+            }catch(Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
         
 

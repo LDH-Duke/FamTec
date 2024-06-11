@@ -39,7 +39,7 @@ namespace FamTec.Server.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("SelectMyBuilding")]
+        [Route("MyBuildings")]
         public async ValueTask<IActionResult> SelectMyBuilding()
         {
             int placeidx = 4;

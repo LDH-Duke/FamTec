@@ -1,24 +1,42 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace FamTec.Server.Tokens
 {
     public class TokenComm : ITokenComm
     {
-        public AdminSettingModel? TokenConvert(string? token)
+        public AdminSettingModel? TokenConvert(HttpRequest? token)
         {
-            if (!string.IsNullOrWhiteSpace(token))
+            if (token is not null)
             {
-                int split = token.IndexOf('.') + 1;
+                string? accessToken = token.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
 
-                string payload = token.Substring(split, token.Length - split);
+                var authSigningKey = Encoding.UTF8.GetBytes("DhftOS5uphK3vmCJQrexST1RsyjZBjXWRgJMFPU4");
+                
+                var tokenHandler = new JwtSecurityTokenHandler();
+                tokenHandler.ValidateToken(accessToken, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(authSigningKey),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                int split = validatedToken.ToString()!.IndexOf('.') + 1;
+
+                string payload = validatedToken.ToString()!.Substring(split, validatedToken.ToString()!.Length - split);
                 JObject? jobj = JObject.Parse(payload.ToString());
 
                 AdminSettingModel model = new AdminSettingModel();
                 if (jobj["UserIdx"] is not null)
                     model.UserIdx = Convert.ToInt32(jobj["UserIdx"]!.ToString());
                 
-                if(jobj["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"] is not null)
-                    model.UserName = jobj["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]!.ToString();
+                if(jobj["Name"] is not null)
+                    model.UserName = jobj["Name"]!.ToString();
                 
                 if(jobj["AdminIdx"] is not null)
                     model.AdminIdx = Convert.ToInt32(jobj["AdminIdx"]!.ToString());

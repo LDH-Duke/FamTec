@@ -3,8 +3,12 @@
 
 <div class="drawer-container">
     <ul class="drawer-wrap">
+            
+
+     
         @foreach (var category in CategoryList)
         {
+
             <li class="drawer-item">
                 <NavLink class="drawer-link"
                          href="@(category.Url != null ? category.Url : null)"
@@ -15,7 +19,7 @@
                         <span class="arrow">∨</span>
                     }
                 </NavLink>
-
+                
                 @if (category.SubCategory != null)
                 {
                     <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">

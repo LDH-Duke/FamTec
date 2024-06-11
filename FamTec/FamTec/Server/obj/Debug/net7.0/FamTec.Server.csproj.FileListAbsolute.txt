@@ -220,3 +220,5 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refi
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.genruntimeconfig.cache
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\ref\FamTec.Server.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Components.Authorization.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll

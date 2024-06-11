@@ -170,14 +170,30 @@
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "GetMyWorks",
-    "RelativePath": "api/AdminPlace/MyWorks/{id}",
+    "RelativePath": "api/AdminPlace/MyWorks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "adminid",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
+    "Method": "Post",
+    "RelativePath": "api/AdminPlace/Upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
       }
     ],
@@ -362,7 +378,7 @@
   {
     "ContainingType": "FamTec.Server.Controllers.BuildingController",
     "Method": "SelectMyBuilding",
-    "RelativePath": "api/Building/SelectMyBuilding",
+    "RelativePath": "api/Building/MyBuildings",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -474,7 +490,7 @@
       {
         "Name": "dto",
         "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

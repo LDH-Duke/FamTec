@@ -3,6 +3,7 @@ using FamTec.Server.Services.Admin.Account;
 using FamTec.Server.Services.Admin.Department;
 using FamTec.Server.Services.Admin.Place;
 using FamTec.Server.Services.User;
+using FamTec.Server.Tokens;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
@@ -14,6 +15,7 @@ using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
 using Microsoft.AspNetCore.Mvc;
+using System.Runtime.CompilerServices;
 
 namespace FamTec.Server.Controllers.Admin
 {
@@ -24,12 +26,14 @@ namespace FamTec.Server.Controllers.Admin
         private IAdminAccountService AdminService;
         private IUserService UserService;
         private IAdminPlaceService AdminPlaceService;
+        private ITokenComm TokenComm;
 
-        public AdminUserController(IAdminAccountService _adminservice, IUserService _userservice, IAdminPlaceService _adminplaceservice)
+        public AdminUserController(IAdminAccountService _adminservice, IUserService _userservice, IAdminPlaceService _adminplaceservice, ITokenComm _tokencomm)
         {
             this.AdminService = _adminservice;
             this.UserService = _userservice;
             this.AdminPlaceService = _adminplaceservice;
+            this.TokenComm = _tokencomm;
         }
 
 
@@ -43,7 +47,21 @@ namespace FamTec.Server.Controllers.Admin
         public async ValueTask<IActionResult> Login([FromBody] LoginDTO dto)
         {
             ResponseUnit<string>? model = await AdminService.AdminLoginService(dto);
-            return Ok(model);
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return Ok(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
 
         /// <summary>
@@ -55,13 +73,22 @@ namespace FamTec.Server.Controllers.Admin
         [Route("AddManager")]
         public async ValueTask<IActionResult> AddManager([FromBody] AddManagerDTO dto)
         {
-            ResponseUnit<AdminTb>? model = await AdminService.AdminRegisterService(dto);
+            AdminSettingModel? token = TokenComm.TokenConvert(HttpContext.Request);
 
-            if(model is not null)
+            if (token is not null)
             {
-                if(model.code == 200)
+                ResponseUnit<AdminTb>? model = await AdminService.AdminRegisterService(dto, token);
+
+                if (model is not null)
                 {
-                    return Ok(new ResponseUnit<int?> { message = "데이터가 정상 처리되었습니다.", data = model.data!.Id, code = 200 });
+                    if (model.code == 200)
+                    {
+                        return Ok(new ResponseUnit<int?> { message = "데이터가 정상 처리되었습니다.", data = model.data!.Id, code = 200 });
+                    }
+                    else
+                    {
+                        return BadRequest(new ResponseUnit<int?> { message = "데이터가 처리되지 않았습니다.", data = null, code = 404 });
+                    }
                 }
                 else
                 {
@@ -70,7 +97,7 @@ namespace FamTec.Server.Controllers.Admin
             }
             else
             {
-                return BadRequest(new ResponseUnit<int?> { message = "데이터가 처리되지 않았습니다.", data = null, code = 404 });
+                return StatusCode(404);
             }
         }
 
@@ -164,21 +191,23 @@ namespace FamTec.Server.Controllers.Admin
         [Route("UserSearch")]
         public async ValueTask<IActionResult> UserSearch([FromBody] UsersDTO dto)
         {
-            ResponseModel<UsersDTO>? model = await UserService.UserIdCheck(dto.USERID);
-            return Ok(model);
+            ResponseUnit<UsersDTO>? model = await UserService.UserIdCheck(dto.USERID);
+            if (model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest(model);
+                }
+            }
+            else
+            {
+                return BadRequest(model);
+            }
         }
-
-
-        // ===========================
-
-
-    
-
-
-
-
-
-
 
     }
 }

@@ -34,7 +34,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession();
+//builder.Services.AddSession();
 /*
 builder.Services.AddSession(options =>
 {
@@ -141,7 +141,7 @@ builder.Services.AddResponseCompression(opts =>
 
 
 var app = builder.Build();
-app.UseSession();
+//app.UseSession();
 
 #region SIGNALR CORS »ç¿ë
 app.UseCors();

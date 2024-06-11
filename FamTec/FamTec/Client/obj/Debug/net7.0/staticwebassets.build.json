@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Dz9vrWkTBfFEMVlG0NJxQQTbfz04eBJDJPC8p9C6+M0=",
+  "Hash": "ZtnwO5ITFgsSyq26cWV1jfuCYkDCHyEUOMG3uFreF3c=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -16,6 +16,25 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.20\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.20\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.20\\staticwebassets\\AuthenticationService.js"
+    },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Azure.Core.dll",
       "SourceId": "FamTec.Client",
@@ -318,7 +337,26 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Authorization.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
@@ -337,7 +375,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Components.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
@@ -356,7 +394,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Components.Forms.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
@@ -375,7 +413,26 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Components.Web.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll",
@@ -470,7 +527,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Metadata.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.20\\lib\\net7.0\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.SignalR.Client.Core.dll",
@@ -1211,7 +1268,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.jsinterop\\7.0.18\\lib\\net7.0\\Microsoft.JSInterop.dll"
+      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.jsinterop\\7.0.20\\lib\\net7.0\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.WebAssembly.dll",
@@ -5033,6 +5090,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Win32.Primitives.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\29gpagjjxd.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\2f30ezr8zr.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -5411,25 +5487,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Security.Cryptography.Csp.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\5st9ailjl8.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\5ynygzj248.gz",
@@ -6515,6 +6572,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Dynamic.Runtime.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\eithu4pe50.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\eofrrye3fb.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -6627,25 +6703,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Abstractions.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\f5pf72o91p.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\f7oecmja3o.gz",
@@ -7123,6 +7180,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Threading.Thread.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\i66rwdt9vu.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\imitr0deq9.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -7579,6 +7655,44 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Web.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\m0ovedvx73.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\m22rqtugky.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\m6qxmdy8kk.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -7653,25 +7767,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.DependencyInjection.Abstractions.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\myvk7ikwr6.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\n07zys4oal.gz",
@@ -7767,25 +7862,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ComponentModel.EventBasedAsync.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\nkh4xt1s3t.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\nqm2jl6k8c.gz",
@@ -7919,25 +7995,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Reflection.DispatchProxy.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\oxvcqexbkb.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\p7jsu5toqr.gz",
@@ -8109,6 +8166,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ObjectModel.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qp146xb9vc.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qq1e5pol31.gz",
@@ -8529,6 +8605,25 @@
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.CodeDom.dll"
     },
     {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\t9jqeexl7o.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
+    },
+    {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ta13q3mrky.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -8660,6 +8755,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Win32.Registry.dll"
+    },
+    {
+      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\tz9yvb9r2h.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\u9qq74wrrz.gz",
@@ -9059,25 +9173,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.Serialization.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\xqxgncud8l.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\xtxjrbcfnv.gz",

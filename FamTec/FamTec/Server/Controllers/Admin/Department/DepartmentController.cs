@@ -11,16 +11,11 @@ namespace FamTec.Server.Controllers.Admin.Department
     [Route("api/[controller]")]
     [ApiController]
     public class DepartmentController : ControllerBase
-    {
-        private SessionInfo session; // 테스트 세션모드
-
-        private IDepartmentService DepartmentService;
+    {private IDepartmentService DepartmentService;
 
         public DepartmentController(IDepartmentService _departmentservice)
         {
             this.DepartmentService = _departmentservice;
-
-            session = new SessionInfo();
         }
 
         /// <summary>

@@ -73,6 +73,7 @@ namespace FamTec.Server.Repository.Place
             }
         }
 
+
         /// <summary>
         /// 사업장코드로 사업장 조회
         /// </summary>

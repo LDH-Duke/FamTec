@@ -1,5 +1,6 @@
 ﻿@page "/signalr"
 
+@using FamTec.Shared.Server.DTO
 @using Microsoft.AspNetCore.SignalR.Client
 @implements IAsyncDisposable
 @inject NavigationManager Navigation
@@ -14,6 +15,9 @@
     <button @onclick="RemoveSecurityRoom">보안방 해제</button>
     <button @onclick="RemoveFacility">시설방 해제</button>
 </div>
+
+
+
 
 <div class="chat">
 
@@ -34,6 +38,8 @@
     private string? messageInput;
 
     private string type{ get; set; }
+
+
 
     protected override async Task OnInitializedAsync()
     {

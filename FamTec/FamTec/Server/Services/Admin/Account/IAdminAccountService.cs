@@ -1,4 +1,5 @@
-﻿using FamTec.Shared;
+﻿using FamTec.Server.Tokens;
+using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
@@ -23,7 +24,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto);
+        public ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto, AdminSettingModel? token);
 
         /// <summary>
         /// 매니저 삭제

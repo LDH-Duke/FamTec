@@ -4,6 +4,6 @@ namespace FamTec.Server.Tokens
 {
     public interface ITokenComm
     {
-        public AdminSettingModel? TokenConvert(string? token);
+        public AdminSettingModel? TokenConvert(HttpRequest? token);
     }
 }

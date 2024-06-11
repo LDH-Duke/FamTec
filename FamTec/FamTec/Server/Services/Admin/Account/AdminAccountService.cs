@@ -2,6 +2,7 @@
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Tokens;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
@@ -72,26 +73,33 @@ namespace FamTec.Server.Services.Admin.Account
                                     List<Claim> authClaims = new List<Claim>
                                     {
                                         new Claim("UserIdx",usertb.Id.ToString()),
-                                        new Claim(ClaimTypes.NameIdentifier, usertb.Name!),
+                                        new Claim("Name", usertb.Name!),
                                         new Claim("AdminIdx",admintb.Id.ToString()),
                                         new Claim("DepartIdx",admintb.DepartmentTbId.ToString()!),
                                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                                     };
+
 
                                     /* 토큰에 같이 넣고싶은 데이터 */
                                     authClaims.Add(new Claim("DepartmentName",  departmenttb.Name ?? ""));
 
                                     if (admintb.Type == "시스템관리자")
                                     {
+                                        authClaims.Add(new Claim("UserType", "시스템관리자"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
+                                        //authClaims.Add(new Claim("Roles", "SystemManager"));
                                     }
                                     if (admintb.Type == "마스터")
                                     {
+                                        authClaims.Add(new Claim("UserType", "마스터"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
+                                        //authClaims.Add(new Claim("Roles", "Master"));
                                     }
                                     if (admintb.Type == "매니저")
                                     {
+                                        authClaims.Add(new Claim("UserType", "매니저"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
+                                        //authClaims.Add(new Claim("Roles", "Manager"));
                                     }
 
                                     // JWT 인증 페이로드 사인 비밀키
@@ -112,25 +120,25 @@ namespace FamTec.Server.Services.Admin.Account
                                 else
                                 {
                                     // 정보가 잘못되었습니다.
-                                    return new ResponseUnit<string>() { message = "관리자 로그인 실패.", data = null, code = 200 };
+                                    return new ResponseUnit<string>() { message = "관리자 로그인 실패.", data = null, code = 401 };
                                 }
                             }
                             else
                             {
                                 // 관리자 아님
-                                return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 200 };
+                                return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 401 };
                             }
                         }
                         else
                         {
                             // 관리자 아님
-                            return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 200 };
+                            return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디는 관리자가 아닙니다.)", data = null, code = 401 };
                         }
                     }
                     else
                     {
                         // 아이디가 존재하지 않음
-                        return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디가 존재하지 않습니다.)", data = null, code = 200 };
+                        return new ResponseUnit<string>() { message = "로그인 실패 (해당 아이디가 존재하지 않습니다.)", data = null, code = 401 };
                     }
                 }
                 else
@@ -152,12 +160,14 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto)
+        public async ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(AddManagerDTO? dto, AdminSettingModel? token)
         {
             try
             {
                 if(dto is not null)
                 {
+                    AdminTb? verifictoken = await AdminUserInfoRepository.GetAdminUserInfo(token!.UserIdx);
+
                     UserTb? usermodel = new UserTb
                     {
                         UserId = dto.UserId,
@@ -179,7 +189,11 @@ namespace FamTec.Server.Services.Admin.Account
                         PermVoc = 2,
                         AdminYn = 1,
                         AlramYn = 1,
-                        Status = 1
+                        Status = 1,
+                        CreateDt = DateTime.Now,
+                        CreateUser = token.UserName,
+                        UpdateDt = DateTime.Now,
+                        UpdateUser = token.UserName
                     };
 
                     UserTb? userresult = await UserInfoRepository.AddAsync(usermodel);
@@ -187,22 +201,22 @@ namespace FamTec.Server.Services.Admin.Account
                     if (userresult is not null)
                     {
                         AdminTb? adminmodel = new AdminTb();
-                        /*
-                        if (session.Type == "시스템관리자")
+                        
+                        if (verifictoken!.Type == "시스템관리자")
                             adminmodel.Type = "마스터";
-                        if (session.Type == "마스터")
+                        if (verifictoken!.Type == "마스터")
                             adminmodel.Type = "매니저";
-                        */
-                        //adminmodel.CreateDt = DateTime.Now;
-                        //adminmodel.CreateUser = session.Name;
-                        //adminmodel.UpdateDt = DateTime.Now;
-                        //adminmodel.UpdateUser = session.Name;
+                        
+                        adminmodel.CreateDt = DateTime.Now;
+                        adminmodel.CreateUser = token.UserName;
+                        adminmodel.UpdateDt = DateTime.Now;
+                        adminmodel.UpdateUser = token.UserName;
                         adminmodel.DelYn = 0;
                         adminmodel.UserTbId = userresult.Id;
                         adminmodel.DepartmentTbId = dto.DepartmentId;
 
                         AdminTb? adminresult = await AdminUserInfoRepository.AddAdminUserInfo(adminmodel);
-                        //return (adminmodel, 200);
+                        
                         if (adminresult is not null)
                         {
                             return new ResponseUnit<AdminTb> { message = "요청이 정상 처리되었습니다.", data = adminresult, code = 200 };

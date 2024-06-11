@@ -55,8 +55,10 @@ namespace FamTec.Server
             
             var jwtToken = (JwtSecurityToken)validatedToken;
 
+            
+
             //context.Response.WriteAsync(validatedToken.ToString());
-            context.Items.Add("Token", validatedToken.ToString());
+            //context.Items.Add("Token", validatedToken.ToString());
             
 
             await Next(context);

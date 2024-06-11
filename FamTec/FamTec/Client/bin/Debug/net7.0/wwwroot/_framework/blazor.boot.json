@@ -1,7 +1,7 @@
 {
   "entryAssembly": "FamTec.Client",
   "resources": {
-    "hash": "sha256-yONFuKibjlsAUmj/kIZ53BAgW+C2XawDQ3yPNwotexY=",
+    "hash": "sha256-zYj9AKqozbI6K8ID6X48U/feMwNZpFeBvmzwPV/Rct4=",
     "runtime": {
       "dotnet.7.0.16.74r60x5dgn.js": "sha256-4BiArKugJJtpQrznGF5zWfmJ2TB98+p6rKsyoqhtMk4=",
       "dotnet.timezones.blat": "sha256-rwyJqJu36keQwNmm/O1XV7tnkkVldIOK8GIjn4gTUt4=",
@@ -14,15 +14,17 @@
       "Azure.Core.dll": "sha256-n99lo2Sb2Qmi7GGC7Veocf+M704XRp8f+PBXlpt9W8w=",
       "Azure.Identity.dll": "sha256-/CphBnWxgDF2cG5+//jGJC2gguTfTv47O/N9ZeR2U10=",
       "Humanizer.dll": "sha256-1oUwdVR9fjA+/WA1TZEaL/GO26WCzaL6WdkaLl3Pnpg=",
-      "Microsoft.AspNetCore.Authorization.dll": "sha256-JBqO8nNDacAcNVL9TJjoOdh0T7mtVksgoYZ8FJ1KivQ=",
-      "Microsoft.AspNetCore.Components.dll": "sha256-MJV8iLOXJdGIq2WrZGUtr55ULm04/vogrjOMFSE5MtE=",
-      "Microsoft.AspNetCore.Components.Forms.dll": "sha256-OjyhyfJVTIr8E0JBti7x2Cc74AwqBxMekDwJdWRKQFY=",
-      "Microsoft.AspNetCore.Components.Web.dll": "sha256-3Q1vvC7bBY7gWF1eTbdTNC6Mra8TjLcF/sE6wfxQMS0=",
+      "Microsoft.AspNetCore.Authorization.dll": "sha256-inb7VSJ8MbisrKkE6xM0zuYupL2VrGJebY/RYSfefaQ=",
+      "Microsoft.AspNetCore.Components.dll": "sha256-ScTTRq19ZjJQojkZfjSU4bgMM9JF/sX+n9bfusNfbCY=",
+      "Microsoft.AspNetCore.Components.Authorization.dll": "sha256-8mBZwKF9iX/FV0nNygVAgZKF0rZG7gw9t5hgmh3nhPE=",
+      "Microsoft.AspNetCore.Components.Forms.dll": "sha256-7psgFLvDwizdMsElAo+bjqThhWn7rk43Uahh86MHIEs=",
+      "Microsoft.AspNetCore.Components.Web.dll": "sha256-hwkWCaPPk19H8lCUF9Um4Jif6jI6u7k3vDarg1HGsE8=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-XRehAT8XvmJzCwJH4rRzaZT+GYkSOFpF33hFkyyIbI0=",
+      "Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll": "sha256-vHGmvAdEyeEbfSOZGX9W69HnB8e9c0gDJSmLbsY2zmI=",
       "Microsoft.AspNetCore.Connections.Abstractions.dll": "sha256-yb1HegGu+IsXlTb1hdbvRoJVFMjrCUPLM43Dm3RJUNQ=",
       "Microsoft.AspNetCore.Http.Connections.Client.dll": "sha256-UlBWD7s0Rf7yeBEI8znQnZRaM6qdejWfvfvcZrSadK0=",
       "Microsoft.AspNetCore.Http.Connections.Common.dll": "sha256-WMLa2i9KPSxbwhi763GPqIEAGZdFoAAQaP0jm7HRRtc=",
-      "Microsoft.AspNetCore.Metadata.dll": "sha256-CXcH8l3HgemYCNYyEaSFeyzz5cMyu8K2Z9pXGlv3vSU=",
+      "Microsoft.AspNetCore.Metadata.dll": "sha256-39jRMiE9R8zt3/hxcXhm8VIhHBNviDPyye7v4iydqA4=",
       "Microsoft.AspNetCore.SignalR.Client.dll": "sha256-YY7BnAmOV7rQpMT46iaLLJzgyfYCd3FCAHVXBUog3wE=",
       "Microsoft.AspNetCore.SignalR.Client.Core.dll": "sha256-J7laqLN6g2LmYbusakyx4Sop3HfT0o6Jy65nT9RkxXE=",
       "Microsoft.AspNetCore.SignalR.Common.dll": "sha256-4M/dn1nmZU4+H0elLzIupjw4As789ZGOn1pt8BoYwi0=",
@@ -60,7 +62,7 @@
       "Microsoft.IdentityModel.Protocols.dll": "sha256-rB+YebcHem+piT2rks1697IPL3YamDlB0tGEkSuCaQg=",
       "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": "sha256-A09D/snKEP99KWQLLafdIYhQWFgn7aq9lzf65K9YJSA=",
       "Microsoft.IdentityModel.Tokens.dll": "sha256-kp3RX0pYkw8h7J65VgB3U0juY6BZ9lR6dIYH7edSGkw=",
-      "Microsoft.JSInterop.dll": "sha256-yYGJMo99XFWdq/dBNZ/f2jKLy+2WXorPpIlQmUAouTs=",
+      "Microsoft.JSInterop.dll": "sha256-SYwgRHWmHVxYVoOX6AxFFFQMh6sXqrcw1Wie3yYufB8=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-6148scl1dhbrjHRPRz8JEo87grkkAKJBPBUgu6xzcRM=",
       "Microsoft.SqlServer.Server.dll": "sha256-qdyhtCvIdflmt4ssCIDmK4OPDtZWcWbX8fB65LduxL8=",
       "Microsoft.Win32.SystemEvents.dll": "sha256-yklb9shrfwktYkkoEBmFqUFTLRSdzYrP6hcPilO+iFA=",
@@ -246,12 +248,12 @@
       "mscorlib.dll": "sha256-7yxnoj0sx/xIMKjSCkfYzaeQKDj1UsUSr/JXW7fRggs=",
       "netstandard.dll": "sha256-c9xgB5oQro5/rBTTHeD+4cqLi9QOB+6fhaP3jmkeGo4=",
       "System.Private.CoreLib.dll": "sha256-FGXoQzMt7mcWfUZbWXoXgg8tPIt7PF+QZoXXBQWegAQ=",
-      "FamTec.Shared.dll": "sha256-J3GLUAZS0l0Xg93zdewPzu3POLucmyxIEeIAtZHPmaE=",
-      "FamTec.Client.dll": "sha256-Fp/SL/6xdWT9TT6bdDk5uZkAK06YwRMH+mtTlk50czI="
+      "FamTec.Shared.dll": "sha256-BpHo5PVTpe9FZimOCbT0neaaRHoVektX0l/9nEStLI0=",
+      "FamTec.Client.dll": "sha256-bQ++zNlyTn0o3IP47mGLV7gLC/fyCye7Ua2iPwyYLes="
     },
     "pdb": {
-      "FamTec.Shared.pdb": "sha256-6deZ5YE+55uDlpDKWmnpmsEs2Tm4/+CwmFc+JU3Kl6g=",
-      "FamTec.Client.pdb": "sha256-/BfIRN4S5Vam5SuL8CIdwZzkacRkz6QRCU3v3jjesJM="
+      "FamTec.Shared.pdb": "sha256-4OA576LyfmMdG+Gc0ZThVMv83BK0zWzPq3KVeRsfKrM=",
+      "FamTec.Client.pdb": "sha256-aAz+G/I7ybciG0tz//AxTBSju2pLQlobRjlGl4DW8rk="
     },
     "runtimeAssets": {
       "dotnet.wasm": {
