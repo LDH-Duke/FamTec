@@ -1,7 +1,7 @@
 {
   "entryAssembly": "FamTec.Client",
   "resources": {
-    "hash": "sha256-ggBQJSNuSGzRjpxJLF8uFo91XashH9kgLDhe6uoZeFY=",
+    "hash": "sha256-6QyvdzJnO3EocyApQBK/7u+TkTRHGwKok1JO5s6iu98=",
     "runtime": {
       "dotnet.7.0.16.v4x92qokea.js": "sha256-4BiArKugJJtpQrznGF5zWfmJ2TB98+p6rKsyoqhtMk4=",
       "dotnet.timezones.blat": "sha256-rwyJqJu36keQwNmm/O1XV7tnkkVldIOK8GIjn4gTUt4=",
@@ -13,6 +13,7 @@
     "assembly": {
       "Azure.Core.dll": "sha256-n99lo2Sb2Qmi7GGC7Veocf+M704XRp8f+PBXlpt9W8w=",
       "Azure.Identity.dll": "sha256-/CphBnWxgDF2cG5+//jGJC2gguTfTv47O/N9ZeR2U10=",
+      "Blazored.SessionStorage.dll": "sha256-zB1Pp8w/ys0ZXs5YTb/t+cNAnJQcBDXxTtF3gtgpXT8=",
       "Humanizer.dll": "sha256-1oUwdVR9fjA+/WA1TZEaL/GO26WCzaL6WdkaLl3Pnpg=",
       "Microsoft.AspNetCore.Authorization.dll": "sha256-JBqO8nNDacAcNVL9TJjoOdh0T7mtVksgoYZ8FJ1KivQ=",
       "Microsoft.AspNetCore.Components.dll": "sha256-MJV8iLOXJdGIq2WrZGUtr55ULm04/vogrjOMFSE5MtE=",
@@ -246,12 +247,12 @@
       "mscorlib.dll": "sha256-7yxnoj0sx/xIMKjSCkfYzaeQKDj1UsUSr/JXW7fRggs=",
       "netstandard.dll": "sha256-c9xgB5oQro5/rBTTHeD+4cqLi9QOB+6fhaP3jmkeGo4=",
       "System.Private.CoreLib.dll": "sha256-FGXoQzMt7mcWfUZbWXoXgg8tPIt7PF+QZoXXBQWegAQ=",
-      "FamTec.Shared.dll": "sha256-LCsy8xrnODeaJt3Nl/Mw7Jd9UJEq/h8ikPeq2lidyGo=",
-      "FamTec.Client.dll": "sha256-0mCFowshRsT/1Xt7AR1RNE4Y9Jzdu1OU1gMGLmjEA60="
+      "FamTec.Shared.dll": "sha256-w5U2T+GRHiDwK8DgML4PuoyvWVBXoyrmD71CzprCkJU=",
+      "FamTec.Client.dll": "sha256-qcmRPyHgtmyYAYaAeVOX+NT1h9IJJhW7CnGsj2TM9YQ="
     },
     "pdb": {
-      "FamTec.Shared.pdb": "sha256-9Vl4NAJw1cDO61ZHVmLd5b6EaobIsdtnBfQb14CO0YY=",
-      "FamTec.Client.pdb": "sha256-HSksie/H9Q1UVfIGtnxEs3Mf3/l7/6rjts3noNy6RFg="
+      "FamTec.Shared.pdb": "sha256-XjjUGoKkKgDwXpXSx1ATdKTQ+Y+4XKstCt7+pB4jYCM=",
+      "FamTec.Client.pdb": "sha256-d3p7nrxQG2P7Jh+lUi2D7UaZbzIFnud+dmbwPU0ZxFc="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

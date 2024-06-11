@@ -3,40 +3,50 @@
 
 <div class="drawer-container">
     <ul class="drawer-wrap">
-        @foreach (var category in CategoryList)
+        @if (IsUser != 1)
         {
-            <li class="drawer-item">
-                <NavLink class="drawer-link"
-                         href="@(category.Url != null ? category.Url : null)"
-                         @onclick="() => ToggleDropdown(category)">
-                    <span class="category-title">@category.Name</span>
+            Console.WriteLine("일반");
+            <li>일반 모드</li>
+        }
+        else
+        {
+            Console.WriteLine("관리자");
+            @foreach (var category in CategoryList)
+            {
+                <li class="drawer-item">
+                    <NavLink class="drawer-link"
+                             href="@(category.Url != null ? category.Url : null)"
+                             @onclick="() => ToggleDropdown(category)">
+                        <span class="category-title">@category.Name</span>
+                        @if (category.SubCategory != null)
+                        {
+                            <span class="arrow">∨</span>
+                        }
+                    </NavLink>
+
                     @if (category.SubCategory != null)
                     {
-                        <span class="arrow">∨</span>
+                        <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">
+                            @foreach (var subcategory in category.SubCategory)
+                            {
+                                <li class="drawer-sub-item">
+                                    <NavLink class="drawer-link">
+                                        @subcategory.Name
+                                    </NavLink>
+                                </li>
+                            }
+                        </ul>
                     }
-                </NavLink>
-
-                @if (category.SubCategory != null)
-                {
-                    <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">
-                        @foreach (var subcategory in category.SubCategory)
-                        {
-                            <li class="drawer-sub-item">
-                                <NavLink class="drawer-link">
-                                    @subcategory.Name
-                                </NavLink>
-                            </li>
-                        }
-                    </ul>
-                }
-            </li>
+                </li>
+            }
         }
     </ul>
 </div>
 
 
 @code {
-
+    [Parameter] public int IsUser { get; set; }
+    List<Category> CategoryList;
     public class Category
     {
         public string? Name { get; set; }
@@ -46,24 +56,28 @@
         public string? SvgImgUrl { get; set; }
     }
 
-    List<Category> CategoryList = new List<Category>
+    protected async override Task OnInitializedAsync()
     {
-        new Category
+        await Task.Run(() =>
         {
-            Name="사업장 관리",
-            Url = "/admin/place",
-        },
-        new Category
-        {
-            Name="매니저 관리",
-            Url = "/admin/manager",
-        },
-        new Category
-        {
-            Name="사업장 통계",
-            Url = "/admin/stats",
-        },
-    };
+            CategoryList = new List<Category>
+                    {
+                        new Category
+                        {
+                            Name="사업장 관리",
+                            Url = "/admin/place",
+                        },
+                        new Category
+                        {
+                            Name="매니저 관리",
+                            Url = "/admin/manager",
+                        },
+                    };
+        });
+        StateHasChanged();
+    }
+
+
 
     /*
      * 드롭다운 기능

@@ -17,7 +17,10 @@
     border-bottom : var(--default-bd);
 }
 
-.form-container .form-title>span[b-vema0fw9we]{
+.form-container .title[b-vema0fw9we]{
+    display:flex;
+    align-items:center;
+    height:35px;
     color:var(--main-color);
 }
 

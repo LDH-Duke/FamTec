@@ -59,4 +59,5 @@
 .toggle-container span[b-46u1abiyxa] {
     font-size : var(--normal-size);
     font-weight : var(--bold-wt);
+    color : var(--main-color);
 }

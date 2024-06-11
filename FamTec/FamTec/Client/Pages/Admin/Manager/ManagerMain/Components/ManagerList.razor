@@ -13,10 +13,14 @@
             <span class="title">
                 매니저 목록
             </span>
-            <div class="managerlist-btns">
-                <Button Name="등록" OnClick="@OnSignUp" />
-                <Button Name="삭제" Type=true OnClick="@OnDeleteManager" />
-            </div>
+            @if (UserType != "매니저")
+            {
+                <div class="managerlist-btns">
+                    <Button Name="등록" OnClick="@OnSignUp" />
+                    <Button Name="삭제" Type=true OnClick="@OnDeleteManager" />
+                </div>
+            }
+            
             
         </div>
         <div class="managerlist-list">
@@ -26,6 +30,8 @@
 </div>
 
 @code {
+    [Parameter] public string? UserType { get; set; }
+
     List<ManagerDTO>? managerList;
     List<int>? deleteManagerList = new List<int>();
 
@@ -47,6 +53,8 @@
         }
 
     }
+
+
 
     private async Task ReloadManagers()
     {

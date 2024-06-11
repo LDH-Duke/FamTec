@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "d1+6IC3/j/SghPLKDqXJS4LvCC+uUubJOI530gNoDII=",
+  "Hash": "GdyOEtmTwekCwf9/NyjzjKKt3OBEP6qERRqR5fS+Osw=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.18\\build\\net7.0\\blazor.webassembly.js"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.SessionStorage.dll",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.SessionStorage.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "WasmResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\lib\\net7.0\\Blazored.SessionStorage.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\dotnet.7.0.16.v4x92qokea.js",
@@ -9268,6 +9287,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Identity.Client.Extensions.Msal.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\yho89sbcbj.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazored.SessionStorage.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.SessionStorage.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazored.SessionStorage.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ysz0vyuv52.gz",

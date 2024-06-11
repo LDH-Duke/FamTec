@@ -27,4 +27,16 @@
 @code {
     [Parameter] public EventCallback OnClose { get; set; }
     int SelectCount = 0;
+
+    private async Task LoadPlace()
+    {
+        try
+        {
+            // ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine("[Manager][Add][PlaceModal] 사업장 조회 애러"+ ex);
+        }
+    }
 }

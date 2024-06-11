@@ -27,6 +27,9 @@
 }
 
 .depart-container .depart-title .title[b-wpy6a6iy7x]{
+    display:flex;
+    align-items:center;
+    height:33px;
     color : var(--main-color);
 }
 

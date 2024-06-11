@@ -37,9 +37,10 @@
     AddManagerPlaceDTO managerPlace = new AddManagerPlaceDTO();
     List<DepartmentDTO> departmetnList = new List<DepartmentDTO>();
     bool EditMode = true;
-
+    string session;
     protected async override Task OnInitializedAsync()
     {
+        await LoadSession();
         await LoadDepartments();
         newManager = new();
     }
@@ -61,6 +62,13 @@
             Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러" + ex);
         }
 
+    }
+
+    private async Task LoadSession()
+    {
+        string token = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
+        session = "Bearer " + token;
+        HttpClient.DefaultRequestHeaders.Add("Authorization", session);
     }
 
     private async Task Submit()

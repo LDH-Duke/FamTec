@@ -90,7 +90,7 @@
 }
 .selectfield-container .selectfield-option:hover{
     transition:all ease-in-out 0.2s;
-    background-color:var(--man-color);
+    background-color:var(--main-color);
     color: var(--default-color);
 }
 

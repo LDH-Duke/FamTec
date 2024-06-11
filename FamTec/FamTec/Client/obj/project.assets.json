@@ -46,6 +46,18 @@
           }
         }
       },
+      "Blazored.SessionStorage/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.1"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -1657,6 +1669,18 @@
           }
         }
       },
+      "Blazored.SessionStorage/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.1"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -3196,6 +3220,20 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Blazored.SessionStorage/2.4.0": {
+      "sha512": "e3XXH+zGGxDq1zC7YzLDD8mfvtoC6ESwTWOGD25H+FbPJlB7yQeL72hDY76tqkcrh98fh+y12r4BNhyQVV9YKw==",
+      "type": "package",
+      "path": "blazored.sessionstorage/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.sessionstorage.2.4.0.nupkg.sha512",
+        "blazored.sessionstorage.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.SessionStorage.dll",
+        "lib/net7.0/Blazored.SessionStorage.dll"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -5986,6 +6024,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Blazored.SessionStorage >= 2.4.0",
       "FamTec.Shared >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly >= 7.0.18",
       "Microsoft.AspNetCore.Components.WebAssembly.DevServer >= 7.0.18",
@@ -6058,6 +6097,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Blazored.SessionStorage": {
+            "target": "Package",
+            "version": "[2.4.0, )"
+          },
           "Microsoft.AspNetCore.Components.WebAssembly": {
             "target": "Package",
             "version": "[7.0.18, )"

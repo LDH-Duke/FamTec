@@ -42,4 +42,5 @@
 
 .place-container .place-table{
     overflow:auto;
+    height:100%;
 }

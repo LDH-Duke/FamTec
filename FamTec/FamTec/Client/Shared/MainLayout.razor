@@ -1,19 +1,78 @@
-﻿@inherits LayoutComponentBase
+﻿
+@using FamTec.Client.Middleware
+@using Microsoft.AspNetCore.Authorization
+@inject SessionService SessionService
+@inherits LayoutComponentBase
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject NavigationManager NavigationManager
+
 
 <div class="page">
-    <div class="nav">
-        <Nav/>
-    </div>
-    @* <div class="sidebar">
-        <NavMenu />
-    </div> *@
-
-    <main>
-        <div class="drawer">
-            <Drawer />
+    @if (!string.IsNullOrEmpty(_tokenData))
+    {
+        <div class="nav">
+            <Nav />
         </div>
-        <article class="content">
+
+        <main>
+        
+            <div class="drawer">
+                <Drawer IsUser=LoginMode />
+            </div>
+        
+
+            <article class="content">
+                @Body
+            </article>
+        </main>
+    }
+    else
+    {
+        <main>
             @Body
-        </article>
-    </main>
+        </main>
+    }
 </div>
+
+@code{
+    private bool userSessionIsValid;
+    private string _testToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWR4IjoiMyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiLsi5zsiqTthZzqsJzrsJztjIztirgiLCJBZG1pbklkeCI6IjIiLCJEZXBhcnRJZHgiOiIzIiwianRpIjoiMjQwMDAwMmItMTlhZC00NmI2LTkyYmMtZDkzYjk1OGE3MmQzIiwiRGVwYXJ0bWVudE5hbWUiOiLsl5DsiqTthY3si5zsiqTthZwiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJTeXN0ZW1NYW5hZ2VyIiwiZXhwIjoxNzE4MTYzNTQ1LCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo3MTE0LyIsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjcxMTQvIn0.CuWUC-RCrGK6AMGDwtKzjO5Lw1GYetm_r2qFKtCiMPw";
+    private string _tokenData;
+    private int LoginMode;
+    private bool IsLogin;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("메인 레이아웃");
+        // await sessionStorage.SetItemAsStringAsync("SWROKSSESSION", _testToken);
+        var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
+        _tokenData = await SessionService.GetClaimValue(session, "UserIdx");
+        LoginMode = await sessionStorage.GetItemAsync<int>("LoginMode");
+        IsLogin = await sessionStorage.GetItemAsync<bool>("Login");
+        if (_tokenData == null)
+        {
+            NavigationManager.NavigateTo("/login");
+            return;
+        }
+        else
+        {
+            if (LoginMode == 1 && !IsLogin)
+            {
+                await sessionStorage.SetItemAsync("Login", true);
+                NavigationManager.NavigateTo("/admin/place");
+                return;
+            }
+            else if (LoginMode == 0 && !IsLogin)
+            {
+                await sessionStorage.SetItemAsync("Login", true);
+                NavigationManager.NavigateTo("/user");
+                return;
+            }
+
+        }
+    }
+
+
+}
+
+

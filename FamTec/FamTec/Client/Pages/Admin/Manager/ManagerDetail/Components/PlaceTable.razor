@@ -26,6 +26,7 @@
 
 @code {
     [Parameter] public AddManagerPlaceDTO NewManagerPlace { get; set; }
+    [Parameter] public int Id { get; set; }
     List<PlaceTableDTO> PlaceList;
     int SelectCount = 0;
 
@@ -36,7 +37,7 @@
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+        ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>($"http://123.2.156.148:5245/api/AdminPlace/MyWorks/?adminid={Id}");
 
         PlaceList = res.data;
         PlaceList.RemoveAll(place => place.Status == 0);
