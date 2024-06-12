@@ -116,6 +116,7 @@ builder.Services.AddSignalR(opts =>
 
 #region SIGNAL R CORS µî·Ï
 
+
 builder.Services.AddCors(opts =>
 {
     opts.AddDefaultPolicy(policy =>

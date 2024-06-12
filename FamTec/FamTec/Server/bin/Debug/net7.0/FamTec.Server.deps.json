@@ -59,7 +59,7 @@
       },
       "Blazored.SessionStorage/2.4.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "7.0.18"
+          "Microsoft.AspNetCore.Components.Web": "7.0.20"
         },
         "runtime": {
           "lib/net7.0/Blazored.SessionStorage.dll": {

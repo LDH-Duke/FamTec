@@ -3,19 +3,6 @@
 
 <div class="drawer-container">
     <ul class="drawer-wrap">
-<<<<<<< HEAD
-            
-
-     
-        @foreach (var category in CategoryList)
-        {
-
-            <li class="drawer-item">
-                <NavLink class="drawer-link"
-                         href="@(category.Url != null ? category.Url : null)"
-                         @onclick="() => ToggleDropdown(category)">
-                    <span class="title">@category.Name</span>
-=======
         @if (IsUser != 1)
         {
             Console.WriteLine("일반");
@@ -37,7 +24,6 @@
                         }
                     </NavLink>
 
->>>>>>> origin/Front
                     @if (category.SubCategory != null)
                     {
                         <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">
@@ -51,27 +37,8 @@
                             }
                         </ul>
                     }
-<<<<<<< HEAD
-                </NavLink>
-                
-                @if (category.SubCategory != null)
-                {
-                    <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">
-                        @foreach (var subcategory in category.SubCategory)
-                        {
-                            <li class="drawer-sub-item">
-                                <NavLink class="drawer-link">
-                                    @subcategory.Name
-                                </NavLink>
-                            </li>
-                        }
-                    </ul>
-                }
-            </li>
-=======
                 </li>
             }
->>>>>>> origin/Front
         }
     </ul>
 </div>
@@ -94,7 +61,7 @@
         await Task.Run(() =>
         {
             CategoryList = new List<Category>
-                    {
+                        {
                         new Category
                         {
                             Name="사업장 관리",
@@ -105,7 +72,7 @@
                             Name="매니저 관리",
                             Url = "/admin/manager",
                         },
-                    };
+                        };
         });
         StateHasChanged();
     }
