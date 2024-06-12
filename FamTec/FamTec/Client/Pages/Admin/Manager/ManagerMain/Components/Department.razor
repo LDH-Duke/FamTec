@@ -10,7 +10,7 @@
 <div class="depart-container">
     <div class="depart-wrap">
         <div class="depart-title">
-            <span>
+            <span class="title">
                 부서관리
             </span>
         </div>
@@ -18,7 +18,11 @@
             <DepartmentList DataList="departmentList" />
         </div>
         <div class="depart-btns">
-            <Button Name="편집" OnClick="@OnEdit" />
+            @if(UserType != "매니저")
+            {
+                <Button Name="편집" OnClick="@OnEdit" />
+            }
+            
         </div>
         @if (is_openModal == true)
         {
@@ -32,6 +36,8 @@
 </div>
 
 @code {
+    [Parameter] public string? UserType{ get; set; }
+
     List<DepartmentDTO> departmentList;
     private bool is_openModal = false;
     

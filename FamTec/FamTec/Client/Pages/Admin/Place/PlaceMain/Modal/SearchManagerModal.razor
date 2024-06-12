@@ -12,13 +12,10 @@
         <div class="addmanager-modal-item">
             <Table DataList="FilterManagerList" ReturnType="object" SelectItem="OnSelectedItem" />
         </div>
-        @* <div class="addmanager-modal-content">
-            
-            
-        </div> *@
-        <button class="addmanager-modal-btn" @onclick="OnConfirm">
-            확인
-        </button>
+        <div class="addmanager-modal-btns">
+            <Button Name="확인" OnClick="OnConfirm" />
+        </div>
+
     </div>
     
 </div>

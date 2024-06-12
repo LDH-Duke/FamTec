@@ -10,19 +10,20 @@
         @foreach (var item in DataList)
         {
             <li class="depart-item">
+                @if (Edit)
+                {
+                    <input class="depart-select"
+                           type="checkbox"
+                           value="@item.Id"
+                           @onchange="(e)=>InVokeCheckboxSelect(e, item.Id)" />
+                }
                 <NavLink>
-                    <span>
+                    <span class="item-title">
                         @item.Name
                     </span>
 
                 </NavLink>
-                @if (Edit)
-                {
-                    <input class="depart-select" 
-                            type="checkbox" 
-                            value="@item.Id"
-                           @onchange="(e)=>InVokeCheckboxSelect(e, item.Id)" />
-                }
+                
             </li>
         }
     }

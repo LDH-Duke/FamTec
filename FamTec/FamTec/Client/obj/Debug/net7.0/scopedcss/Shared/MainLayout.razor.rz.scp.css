@@ -13,14 +13,14 @@ main[b-7s48qd2tqg] {
 
 .drawer[b-7s48qd2tqg] {
     min-width: min-content;
-    width: 20%;
-    border-right: 1px solid #d3d3d3;
+    width: 15%;
+    border-right: var(--layout-bd);
 }
 
 .content[b-7s48qd2tqg] {
     width: 100%;
     padding: 1rem;
-    background-color:#ebebeb;
+    background-color: var(--content-back-color);
 }
 
 /*.sidebar {

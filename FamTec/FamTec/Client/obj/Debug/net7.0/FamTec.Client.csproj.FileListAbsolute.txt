@@ -1804,7 +1804,6 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerMain\Components\NotUse\ManagerTable.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerMain\Manager.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerMain\Modal\ModalDepartment.razor.rz.scp.css
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerSignup\Components\PlaceTable.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerSignup\Components\SignForm.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerSignup\ManagerSignUp.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Place\PlaceDetail\Components\PlaceForm.razor.rz.scp.css
@@ -2080,6 +2079,7 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\PlaceTable.razor.rz.scp.css
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\Components\SignForm.razor.rz.scp.css
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerDetail\ManagerDetail.razor.rz.scp.css
+<<<<<<< HEAD
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.AspNetCore.Components.Authorization.dll.gz
@@ -2094,3 +2094,22 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\i
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\tz9yvb9r2h.gz
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\t9jqeexl7o.gz
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\eithu4pe50.gz
+=======
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerSignup\Components\PlaceSelectTable.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Admin\Manager\ManagerSignup\Modal\PlaceModal.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Blazored.SessionStorage.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Blazored.SessionStorage.dll.gz
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Blazored.SessionStorage.dll
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\yho89sbcbj.gz
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Button.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Input.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\InputField.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\InputSelectField.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\ModalBackground.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\NotUse\List.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\SortTable.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Table.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Toggle.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SignUp\SignUp.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\User\UserMain\Usermain.razor.rz.scp.css
+>>>>>>> origin/Front

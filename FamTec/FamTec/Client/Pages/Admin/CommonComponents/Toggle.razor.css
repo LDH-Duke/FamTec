@@ -1,7 +1,7 @@
 ﻿.toggle-container {
     display : inline-flex;
     align-items :center;
-    gap : 0.5rem;
+    gap : var(--half-pd);
     cursor : pointer;
     white-space:nowrap;
 }
@@ -28,12 +28,12 @@
 }
 
 [type="checkbox"]:checked {
-  background-color: #200d69;
-  border-color : #200d69;
+  background-color:var(--main-color);
+  border-color : var(--main-color);
 }
 
 [type="checkbox"]:checked::before {
-  background-color: #ffffff;
+  background-color: var(--default-color);
   left:1em;
 }
 
@@ -44,11 +44,11 @@
 }
 
 [type="checkbox"]:disabled:before {
-  background-color: #200d69a6;
+  background-color: var(--main-light);
 }
 
 [type="checkbox"]:enabled:hover {
-  box-shadow: 0 0 0 max(4px, 0.2em) #200d6967;
+  box-shadow: 0 0 0 max(4px, 0.2em) var(--main-light);
 }
 
 [type="checkbox"]:disabled + .toggle-title {
@@ -57,6 +57,7 @@
 }
 
 .toggle-container span {
-    font-size : 0.8rem;
-    font-weight : bold;
+    font-size : var(--normal-size);
+    font-weight : var(--bold-wt);
+    color : var(--main-color);
 }

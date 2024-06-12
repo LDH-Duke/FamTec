@@ -1,29 +1,29 @@
 ﻿.placetable-container {
     display: flex;
     flex-direction: column;
+    gap: var(--default-pd);
+
     height: 100%;
 
-    background-color:#ffffff;
-    padding : 1rem;
+    border : var(--comp-bd);
+    border-radius : var(--default-rd);
+    background-color : var(--back-default-color);
 
-    border:2px solid #200d69;
-    border-radius:4px;
-
-    gap:0.8rem;
+    padding : var(--default-pd);
 }
 
 .placetable-container .placetable-title{
-    display:flex;
-    justify-content:space-between;
-    font-size : 1.2rem;
-    font-weight : bold;
-
-    padding:0.75rem;
-
-    border-bottom : 2px solid #200d69;
+     display: flex;
+    justify-content: space-between;
+    font-size: var(--title-size);
+    font-weight: var(--bold-wt);
+    padding: var(--default-pd);
+    border-bottom: var(--default-bd);
 }
-.placetable-container .placetable-title > span {
-    color: #200d69;
+.placetable-container .title {
+    display : flex;
+    align-items : center;
+    color: var(--main-color);
 }
 
 .placetable-container .placetable-table {
@@ -32,16 +32,16 @@
 }
 .placetable-container .placetable-count{
 
-    border-radius : 4px;
-    padding : 0.75rem;
+    border-radius : var(--default-rd);
+    padding : var(--three-q-pd);
     
     
-    font-size : 0.8rem;
-    font-weight : bold;
+    font-size : var(--normal-size);
+    font-weight : var(--bold-wt);
 
-    background-color : #200d69;
+    background-color : var(--main-color);
 
 }
 .placetable-container .placetable-count>span{
-    color:#ffffff;
+   color:var(--default-color);
 }

@@ -7,51 +7,50 @@
 
 <div class="form-container">
     <div class="form-title">
-        <span>매니저 정보</span>
+        <span class="title">매니저 정보</span>
     </div>
     <div class="form-input">
-        <div class="form-input-wrap">
             <InputField 
                 InputType="text" 
                 Placeholder="Name"
-                @bind-Value="@Manager.Name"
                 Label="이름"
+                Value="@Manager.Name"
                 EditMode=EditMode
             />
             <InputField 
                 InputType="text" 
                 Placeholder="Id"
-                @bind-Value="@Manager.UserId"
                 Label="아이디"
+                Value="@Manager.UserId"
                 EditMode=EditMode
                 />
             <InputField 
                 InputType="password" 
                 Placeholder="Password"
-                @bind-Value="@Manager.Password"
                 Label="비밀번호"
+                Value="@Manager.Password"
                 EditMode=EditMode
                 />
         
             <InputField 
                 InputType="text" 
                 Placeholder="Phone"
-                @bind-Value="@Manager.Phone"
                 Label="전화번호"
+                Value="@Manager.Phone"
                 EditMode=EditMode
                 />
             <InputField 
                 InputType="text" 
                 Placeholder="Email"
-                @bind-Value="@Manager.Email"
                 Label="이메일"
+                Value="@Manager.Email"
                 EditMode=EditMode
                 />
             <InputField 
                 InputType="text"
                 Placeholder="Type"
-                @bind-Value="@Manager.Type"
                 Label="계정 유형" 
+                Value="@Manager.Type"
                 EditMode=EditMode
                 />
 
@@ -60,8 +59,6 @@
                 <InputSelectField 
                     Label="부서"
                     SelectData="DepartmentList"
-                    /*SelectedValueChanged="HandleSelectedValueChange"*/
-                    IsReverse=true
                 />
             }
             else
@@ -69,12 +66,11 @@
                 <InputField 
                     InputType="text"
                     Placeholder="Type"
-                    @bind-Value="@Manager.Department"
+                    Value="@Manager.Department"
                     Label="부서" 
+
                     />
             }
-            
-        </div>
         
     </div>
     
@@ -85,6 +81,7 @@
     [Parameter] public DManagerDTO Manager { get; set; }
     [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
     [Parameter] public bool EditMode { get; set; }
+
 
     protected async override Task OnInitializedAsync()
     {
@@ -101,7 +98,14 @@
         ResponseUnit<DManagerDTO> resDetailManager = await HttpClient.GetFromJsonAsync<ResponseUnit<DManagerDTO>>($"http://123.2.156.148:5245/api/AdminUser/GetManagerInfo/?adminId={Id}");
         try
         {
-            
+            Manager.Name = resDetailManager.data.Name;
+            Manager.UserId = resDetailManager.data.UserId;
+            Manager.Password = resDetailManager.data.Password;
+            Manager.Email = resDetailManager.data.Email;
+            Manager.Phone = resDetailManager.data.Phone;
+            Manager.Type = resDetailManager.data.Type;
+            Manager.Department= resDetailManager.data.Department;
+
         }
         catch (Exception ex)
         {

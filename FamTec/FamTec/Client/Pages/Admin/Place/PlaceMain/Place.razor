@@ -1,6 +1,5 @@
 ﻿@page "/admin/place"
 
-
 @using FamTec.Client.Pages.Admin.Place.PlaceMain.Modal
 @using FamTec.Shared.Client.DTO
 @using FamTec.Shared.Server
@@ -19,13 +18,18 @@
             </span>
             <div class="table-header-option">
                 <Input Placeholder="search" ValueChanged="OnSearchTextChanged" />
-                <Button Name="등록"
-                        Width="true"
-                        OnClick="@onAddPlace" />
-                <Button Name="삭제"
-                        Width="true"
-                        Type="true"
-                        OnClick="@OnDeletePlace" />
+
+                @if (_userType == "시스템관리자" || _userType == "마스터")
+                {
+                    <Button Name="등록"
+                            Width="true"
+                            OnClick="@onAddPlace" />
+                    <Button Name="삭제"
+                            Width="true"
+                            Type="true"
+                            OnClick="@OnDeletePlace" />
+                }
+
             </div>
         </div>
         <div class="place-table">
@@ -52,6 +56,8 @@
     List<int> DeletePlace = new List<int>();
 
     string searchText = string.Empty;
+    private string? _userType;
+    private int LoginMode;
 
 
     // public HttpClient httpClient = new HttpClient();
@@ -65,10 +71,20 @@
         * fetch 서버 요청
         */
         Console.WriteLine("[사업장 OnInitializedAsync]");
+        await LoadSession();
+
         await LoadPlace();
-        
+
 
     }
+
+    private async Task LoadSession()
+    {
+        var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
+        _userType = await SessionService.GetClaimValue(session, "UserType");
+        LoginMode = await sessionStorage.GetItemAsync<int>("LoginMode");
+    }
+
 
     /*
     * 사업장 데이터 조회
@@ -78,9 +94,18 @@
         try
         {
             Console.WriteLine("[매니저 조회 시작]");
-            ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
-            PlaceList = res.data;
-            FilterPlaceList = PlaceList;
+            if (_userType == "시스템관리자" || _userType == "마스터")
+            {
+                ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+                PlaceList = res.data;
+                FilterPlaceList = PlaceList;
+            }
+            else
+            {
+                
+            }
+
+            
         }
         catch(Exception ex)
         {

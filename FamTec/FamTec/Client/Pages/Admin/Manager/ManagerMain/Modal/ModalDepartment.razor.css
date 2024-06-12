@@ -1,12 +1,14 @@
 ﻿.modaldepart-container {
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
-    height: max-content;
-    border-radius: 4px;
-    gap: 1rem;
+    width: 20%;
+    border-radius: var(--default-rd);
+    border: var(--comp-bd);
+    gap: var(--default-pd);
+    box-shadow: var(--default-bs);
+
+
 }
 
 .modaldepart-container .modaldepart-wrap {
@@ -14,39 +16,41 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /*align-items: center;*/
-    gap: 1.2rem;
+    gap: var(--default-pd);
     width: auto;
-    padding: 1.2rem;
-    border-radius: 4px;
-    border: 2px solid #200d69;
-    background-color: #ffffff;
+/*    height:100%;*/
+    padding: var(--default-pd);
+    border-radius: var(--default-rd);
+    background-color: var(--back-default-color);
+
+
 }
 
 .modaldepart-container .modaldepart-title>span{
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #200d69;
+    font-size: var(--title-size);
+    font-weight: var(--bold-wt);
+    color: var(--main-color);
 }
 
 .modaldepart-container .modaldepart-body{
     display : flex;
     flex-direction : column;
-    gap : 0.5rem;
+    gap : var(--default-pd);
+
 }
 
 .modaldepart-container .modaldepart-list {
-    border: 2px solid #200d69;
-    border-radius: 4px;
-    padding: 0.5rem;
+    border: var(--default-bd);
+    border-radius: var(--default-rd);
+    padding: var(--half-pd);
 
-    height : 300px;
-    overflow :auto;
+    height : 400px;
+    overflow:auto;
 }
 
 .modaldepart-container .modaldepart-btns{
     display:flex;
-    gap : 0.5rem;
+    gap : var(--half-pd);
 }
 
 
@@ -54,18 +58,18 @@
     display : flex;
     flex-direction : column;
 
-    gap : 0.5rem;
+    gap : var(--half-pd);
 
-    font-size : 1rem;
-    font-weight : bold;
+    font-size : var(--title-size);
+    font-weight : var(--bold-wt);
     
 }
 
 .modaldepart-container .modaldepart-add>span{
-    color : #200d69;
+    color : var(--main-color);
 }
 
 .modaldepart-container .modaldepart-input{
     display:flex;
-    gap : 0.5rem;
+    gap : var(--half-pd);
 }
