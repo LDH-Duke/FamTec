@@ -72,11 +72,11 @@ namespace FamTec.Server.Services.Admin.Account
                                     // 로그인성공
                                     List<Claim> authClaims = new List<Claim>
                                     {
-                                        new Claim("UserIdx",usertb.Id.ToString()),
-                                        new Claim("Name", usertb.Name!),
-                                        new Claim("AdminIdx",admintb.Id.ToString()),
-                                        new Claim("DepartIdx",admintb.DepartmentTbId.ToString()!),
-                                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                                        new Claim("UserIdx",usertb.Id.ToString() ?? ""),
+                                        new Claim("Name", usertb.Name ?? ""),
+                                        new Claim("AdminIdx",admintb.Id.ToString() ?? ""),
+                                        new Claim("DepartIdx",admintb.DepartmentTbId.ToString() ?? ""),
+                                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString() ?? ""),
                                     };
 
 
@@ -87,19 +87,16 @@ namespace FamTec.Server.Services.Admin.Account
                                     {
                                         authClaims.Add(new Claim("UserType", "시스템관리자"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
-                                        //authClaims.Add(new Claim("Roles", "SystemManager"));
                                     }
                                     if (admintb.Type == "마스터")
                                     {
                                         authClaims.Add(new Claim("UserType", "마스터"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
-                                        //authClaims.Add(new Claim("Roles", "Master"));
                                     }
                                     if (admintb.Type == "매니저")
                                     {
                                         authClaims.Add(new Claim("UserType", "매니저"));
                                         authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
-                                        //authClaims.Add(new Claim("Roles", "Manager"));
                                     }
 
                                     // JWT 인증 페이로드 사인 비밀키
@@ -164,7 +161,7 @@ namespace FamTec.Server.Services.Admin.Account
         {
             try
             {
-                if(dto is not null)
+                if(dto is not null && token is not null)
                 {
                     AdminTb? verifictoken = await AdminUserInfoRepository.GetAdminUserInfo(token!.UserIdx);
 

@@ -28,7 +28,10 @@ namespace FamTec.Server.Controllers.Admin
         private IAdminPlaceService AdminPlaceService;
         private ITokenComm TokenComm;
 
-        public AdminUserController(IAdminAccountService _adminservice, IUserService _userservice, IAdminPlaceService _adminplaceservice, ITokenComm _tokencomm)
+        public AdminUserController(IAdminAccountService _adminservice,
+            IUserService _userservice,
+            IAdminPlaceService _adminplaceservice,
+            ITokenComm _tokencomm)
         {
             this.AdminService = _adminservice;
             this.UserService = _userservice;

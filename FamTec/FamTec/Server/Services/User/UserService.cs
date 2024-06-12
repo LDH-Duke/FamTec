@@ -202,6 +202,7 @@ namespace FamTec.Server.Services.User
                 if(!String.IsNullOrWhiteSpace(userid))
                 {
                     UserTb? model = await UserInfoRepository.UserIdCheck(userid);
+                    
                     if(model is not null)
                     {
                         return new ResponseUnit<UsersDTO>() { message = "해당아이디가 존재합니다.", data = new UsersDTO() { ID = model.Id, USERID = model.UserId, NAME = model.Name }, code = 200 };

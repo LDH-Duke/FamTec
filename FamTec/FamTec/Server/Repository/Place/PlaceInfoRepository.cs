@@ -48,7 +48,6 @@ namespace FamTec.Server.Repository.Place
                 throw new ArgumentNullException();
             }
         }
-
        
 
         /// <summary>

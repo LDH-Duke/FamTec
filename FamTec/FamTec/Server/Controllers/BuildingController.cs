@@ -24,7 +24,9 @@ namespace FamTec.Server.Controllers
 
         private SessionInfo session;
 
-        public BuildingController(IBuildingService _buildingservice, IFloorService _floorservice, IRoomService _roomservice)
+        public BuildingController(IBuildingService _buildingservice,
+            IFloorService _floorservice,
+            IRoomService _roomservice)
         {
             this.BuildingService = _buildingservice;
             this.FloorService = _floorservice;

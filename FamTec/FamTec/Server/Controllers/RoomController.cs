@@ -16,7 +16,6 @@ namespace FamTec.Server.Controllers
     public class RoomController : ControllerBase
     {
         private IRoomService RoomService;
-
         private SessionInfo session;
 
         public RoomController(IRoomService _roomservice)

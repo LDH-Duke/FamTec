@@ -11,7 +11,8 @@ namespace FamTec.Server.Services.Building
         private readonly IBuildingInfoRepository BuildingRepository;
         private ILogService LogService;
 
-        public BuildingService(IBuildingInfoRepository _buildingrepository, ILogService _logservice)
+        public BuildingService(IBuildingInfoRepository _buildingrepository,
+            ILogService _logservice)
         {
             this.BuildingRepository = _buildingrepository;
             this.LogService = _logservice;

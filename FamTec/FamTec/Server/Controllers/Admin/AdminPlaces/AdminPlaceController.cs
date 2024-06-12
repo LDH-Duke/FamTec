@@ -17,7 +17,8 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         private IAdminPlaceService AdminPlaceService;
         private ILogService LogService;
 
-        public AdminPlaceController(IAdminPlaceService _adminplaceservice, ILogService _logservice)
+        public AdminPlaceController(IAdminPlaceService _adminplaceservice,
+            ILogService _logservice)
         {
             this.AdminPlaceService = _adminplaceservice;
             this.LogService = _logservice;
