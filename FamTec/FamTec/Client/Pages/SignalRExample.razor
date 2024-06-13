@@ -47,52 +47,54 @@
         .WithUrl(Navigation.ToAbsoluteUri("/broadcastHub"))
         .Build();
 
+        await hubConnection.StartAsync();
+
         hubConnection.On<string>("ReceiveMessage", (message) =>
         {
             messages.Add(message);
             StateHasChanged();
         });
+        
 
-        await hubConnection.StartAsync();
     }   
 
     // 미화방 JOIN
     private async Task JoinSanitationRoom()
     {
         type = "SanitationRoom";
-        await hubConnection.InvokeAsync("JoinRoomAsync", "testid", "SanitationRoom");
+        await hubConnection.InvokeAsync("JoinRoomAsync", "SanitationRoom");
     }
 
     // 미화방 REMOVE
     private async Task RemoveSanitationRoom()
     {
-        await hubConnection.InvokeAsync("RemoveRoomAsync", "testid", "SanitationRoom");
+        await hubConnection.InvokeAsync("RemoveRoomAsync", "SanitationRoom");
     }
 
     // 보안방 JOIN
     private async Task JoinSecurityRoom()
     {
         type = "SecurityRoom";
-        await hubConnection.InvokeAsync("JoinRoomAsync", "testid", "SecurityRoom");
+        await hubConnection.InvokeAsync("JoinRoomAsync", "SecurityRoom");
     }
 
     // 보안방 REMOVE
     private async Task RemoveSecurityRoom()
     {
-        await hubConnection.InvokeAsync("RemoveRoomAsync", "testid", "SecurityRoom");
+        await hubConnection.InvokeAsync("RemoveRoomAsync", "SecurityRoom");
     }
 
     // 시설방 JOIN
     private async Task JoinFacility()
     {
         type = "FacilityRoom";
-        await hubConnection.InvokeAsync("JoinRoomAsync", "testid", "FacilityRoom");
+        await hubConnection.InvokeAsync("JoinRoomAsync", "FacilityRoom");
     }
   
     // 시설방 REMOVE
     private async Task RemoveFacility()
     {
-        await hubConnection.InvokeAsync("RemoveRoomAsync", "testid", "FacilityRoom");
+        await hubConnection.InvokeAsync("RemoveRoomAsync", "FacilityRoom");
     }
 
     private async Task Send()

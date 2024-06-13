@@ -7,9 +7,8 @@ using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Building;
 using FamTec.Shared.Server.DTO.Floor;
 using FamTec.Shared.Server.DTO.Room;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace FamTec.Server.Controllers
 {
@@ -34,6 +33,22 @@ namespace FamTec.Server.Controllers
             this.RoomService = _roomservice;
 
             this.session = new SessionInfo();
+        }
+
+        [HttpGet]
+        [Route("Temp")]
+        public async ValueTask<IActionResult> Temp()
+        {
+            HubConnection? hub = new HubConnectionBuilder()
+                .WithUrl(new Uri("/broadcastHub"))
+                .Build();
+
+            await hub.StartAsync();
+
+            await hub.InvokeAsync("SendMessageAsync", "123123", "SanitationRoom");
+            
+
+            return Ok("OK");
         }
 
         /// <summary>

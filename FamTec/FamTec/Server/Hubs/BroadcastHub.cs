@@ -10,13 +10,14 @@ namespace FamTec.Server.Hubs
         /// <param name="userid"></param>
         /// <param name="roomName"></param>
         /// <returns></returns>
-        public async Task JoinRoomAsync(string userid, string roomName)
+        public async Task JoinRoomAsync(string roomName)
         {
             /*
                 DB 검증로직
                     - DB의 USERID의 실제권한.
                     - (이 사람이 Role이 VOC 알람을 받는 사람이 맞는지.
              */
+            Console.WriteLine(Context.ConnectionId);
             await Groups.AddToGroupAsync(Context.ConnectionId, roomName);
             await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} {roomName} Join Success");
         }
@@ -27,8 +28,9 @@ namespace FamTec.Server.Hubs
         /// <param name="userid"></param>
         /// <param name="roomName"></param>
         /// <returns></returns>
-        public async Task RemoveRoomAsync(string userid, string roomName)
+        public async Task RemoveRoomAsync(string roomName)
         {
+            Console.WriteLine(Context.ConnectionId);
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, roomName);
             await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} {roomName} Remove Success");
         }

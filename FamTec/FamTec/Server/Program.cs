@@ -104,14 +104,12 @@ builder.Services.AddDbContext<WorksContext>(options =>
 
 
 #region SIGNAL R 등록
-/*
 builder.Services.AddSignalR(opts =>
 {
     opts.EnableDetailedErrors = true;
-    opts.KeepAliveInterval = TimeSpan.FromMinutes(1);
+    opts.KeepAliveInterval = TimeSpan.FromSeconds(10);
+
 });
-=======
-*/
 #endregion
 
 #region SIGNAL R CORS 등록
@@ -150,6 +148,7 @@ app.UseCors();
 
 #region SIGNALR HUB 사용
 app.UseResponseCompression();
+
 app.MapHub<BroadcastHub>("/broadcastHub");
 #endregion
 

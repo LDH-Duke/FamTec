@@ -386,6 +386,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "FamTec.Server.Controllers.BuildingController",
+    "Method": "Temp",
+    "RelativePath": "api/Building/Temp",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FamTec.Server.Controllers.Admin.Department.DepartmentController",
     "Method": "AddDepartment",
     "RelativePath": "api/Department/AddDepartment",
@@ -441,6 +451,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Hubs.HubController",
+    "Method": "Index",
+    "RelativePath": "api/Hub/Hub",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

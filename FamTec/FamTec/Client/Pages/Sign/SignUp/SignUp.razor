@@ -3,6 +3,8 @@
 @using FamTec.Shared.Server.DTO
 @using FamTec.Shared.Server.DTO.Login
 @using System.Text.Json
+@using Microsoft.AspNetCore.SignalR.Client
+@using Newtonsoft.Json.Linq
 @inject IJSRuntime IJSRuntime
 @inject HttpClient HttpClient
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
@@ -46,7 +48,15 @@
     protected override void OnInitialized()
     {
         Console.WriteLine("gg");
+
+        #region SIGNAL R 메시지 받는곳
+        HubObject.hubConnection!.On<string>("ReceiveMessage", (message) =>
+        {
+            Console.WriteLine(message);
+        });
+        #endregion
     }
+
 
 
     private async Task OnSignUp()
@@ -68,6 +78,7 @@
 
                 if (resLogin.IsSuccessStatusCode)
                 {
+
                     /*
                     * 세션 스토리지 저장
                     * 메인페이지 이동
@@ -83,6 +94,33 @@
                     }
                     await sessionStorage.SetItemAsStringAsync("SWORKSSESSION", res.data);
                     await sessionStorage.SetItemAsync("LoginMode", Convert.ToInt32(LoginMode));
+
+                    #region SignalR 그룹 조인
+                    SessionService tokenconvert = new SessionService(HttpClient);
+                    JObject json = tokenconvert.GetConvertToken(res.data);
+
+                    string? AdminYN = json["AdminIdx"].ToString() ?? "N" ;
+
+                    if(AdminYN is "N")
+                    {
+                        // 일반 유저일경우
+
+                    }
+                    else
+                    {
+                        // 관리자 일경우
+                    }
+
+
+                    Console.WriteLine("");
+                    //var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
+
+
+                    //string temp = await tokenconvert.GetClaimValue(session, "SWORKSSESSION");
+
+
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
+                    #endregion
 
                     NavigationManager.NavigateTo("/");
 
