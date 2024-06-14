@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GzSi+7GUPw0cYLXfAWetTlrW4OhLSztIUtaCleQ4s2q5UZXNatry2H1D2/CLOUggKcmdIpvn1HvBl0zebjEe4w==",
+  "dgSpecHash": "e+48w3OzxWt/1GTBsOqKCquPSswJCGM+MIvPikqR8iQDYNkL13FhALKc2wrdRPlhvSY0Sssn3hkWh+xCkH+hYw==",
   "success": true,
   "projectFilePath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\FamTec.Client.csproj",
   "expectedPackageFiles": [
@@ -56,8 +56,11 @@
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\7.0.0\\microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\microsoft.extensions.logging.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
+    "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging.configuration\\7.0.0\\microsoft.extensions.logging.configuration.7.0.0.nupkg.sha512",
+    "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging.console\\7.0.0\\microsoft.extensions.logging.console.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\microsoft.extensions.objectpool.2.2.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.options\\7.0.1\\microsoft.extensions.options.7.0.1.nupkg.sha512",
+    "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\microsoft.extensions.options.configurationextensions.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.identity.client\\4.56.0\\microsoft.identity.client.4.56.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.identity.client.extensions.msal\\4.56.0\\microsoft.identity.client.extensions.msal.4.56.0.nupkg.sha512",

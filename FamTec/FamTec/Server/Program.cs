@@ -107,12 +107,22 @@ builder.Services.AddDbContext<WorksContext>(options =>
 
 
 #region SIGNAL R 등록
+/*
 builder.Services.AddSignalR(opts =>
 {
     opts.EnableDetailedErrors = true;
     opts.KeepAliveInterval = TimeSpan.FromSeconds(10);
 
 });
+*/
+
+// 집에서 수정함
+builder.Services.AddSignalR().AddHubOptions<BroadcastHub>(options =>
+{
+    options.EnableDetailedErrors = true;
+    options.ClientTimeoutInterval = System.TimeSpan.FromSeconds(30);
+});
+
 #endregion
 
 #region SIGNAL R CORS 등록
@@ -130,8 +140,8 @@ builder.Services.AddCors(opts =>
     });
 });
 
-
-builder.Services.AddSignalR();
+/* 집에서 수정 */
+//builder.Services.AddSignalR();
 builder.Services.AddResponseCompression(opts =>
 {
     opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
