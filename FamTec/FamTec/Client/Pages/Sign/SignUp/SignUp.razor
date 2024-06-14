@@ -50,7 +50,7 @@
         Console.WriteLine("gg");
 
         #region SIGNAL R 메시지 받는곳
-        HubObject.hubConnection!.On<string>("ReceiveMessage", (message) =>
+        HubObject.hubConnection!.On<string>("ReceiveVoc", (message) =>
         {
             Console.WriteLine(message);
         });

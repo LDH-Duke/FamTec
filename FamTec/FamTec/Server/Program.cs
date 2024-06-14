@@ -28,6 +28,7 @@ using System.Text;
 using Microsoft.Extensions.FileProviders;
 using FamTec.Server.Services;
 using FamTec.Server.Tokens;
+using FamTec.Server.Services.Voc;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -68,6 +69,8 @@ builder.Services.AddTransient<IUnitService, UnitService>();
 builder.Services.AddTransient<ILogService, LogService>();
 
 builder.Services.AddTransient<ITokenComm, TokenComm>();
+
+builder.Services.AddTransient<IVocService, VocService>();
 
 
 builder.Services.AddControllersWithViews();

@@ -29,6 +29,9 @@ public partial class VocTb
     [Column("STATUS", TypeName = "int(11)")]
     public int? Status { get; set; }
 
+    [Column("TYPE", TypeName = "int(11)")]
+    public int? Type { get; set; }
+
     [Column("REPLY")]
     public bool? Reply { get; set; }
 

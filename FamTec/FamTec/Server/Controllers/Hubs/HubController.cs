@@ -1,5 +1,7 @@
 ﻿using FamTec.Server.Hubs;
+using FamTec.Server.Services.Voc;
 using FamTec.Shared.Client.DTO;
+using FamTec.Shared.Server.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
@@ -13,16 +15,39 @@ namespace FamTec.Server.Controllers.Hubs
     {
         private readonly IHubContext<BroadcastHub> HubContext;
 
+        private IVocService VocService;
 
-        public HubController(IHubContext<BroadcastHub> _hubcontext)
+
+        public HubController(IHubContext<BroadcastHub> _hubcontext, IVocService _vocservice)
         {
             this.HubContext = _hubcontext;
+            this.VocService = _vocservice;
         }
 
         [HttpPost]
         [Route("VocHub")]
         public async Task<IActionResult> VocHub([FromForm]string obj, [FromForm]IFormFile[] image)
         {
+            ResponseUnit<string>? model = await VocService.AddVocService(obj, image);
+
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    await HubContext.Clients.Group("SanitationRoom").SendAsync("ReceiveVoc", model.data.ToString());
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+
+            /*
             JObject? jobj = JObject.Parse(obj.ToString());
             int type = Int32.Parse(jobj["Type"]!.ToString()); // 종류
             string Name = jobj["Name"]!.ToString(); // 이름
@@ -62,6 +87,7 @@ namespace FamTec.Server.Controllers.Hubs
                 Console.WriteLine("전송");
                 await HubContext.Clients.Group("SanitationRoom").SendAsync("ReceiveMessage", "민원이 등록되었습니다");
             }
+            */
 
 
             return Ok();

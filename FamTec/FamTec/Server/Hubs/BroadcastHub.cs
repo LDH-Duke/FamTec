@@ -46,6 +46,11 @@ namespace FamTec.Server.Hubs
             await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{message}");
         }
 
+        public async Task SendMessageAsync2(string message, string roomName)
+        {
+            await Clients.Group(roomName).SendAsync("ReceiveVoc", $"{message}");
+        }
+
         public async Task SendMessage(string message)
         {
             await Clients.All.SendAsync("AlarmSelect", message);

@@ -275,6 +275,7 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.Reply).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'0'");
+            entity.Property(e => e.Type).HasDefaultValueSql("'0'");
 
             entity.HasOne(d => d.BuildingTb).WithMany(p => p.VocTbs).HasConstraintName("FK_BULDING_202406141619");
         });
