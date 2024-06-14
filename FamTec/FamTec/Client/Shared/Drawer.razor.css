@@ -18,21 +18,6 @@
     width: 100%;
 }
 
-    /* .drawer-container .drawer-item:hover {
-    border-radius: 4px;
-    background-color: #200d69;
-    
-
-    & span{
-        color: #ffffff;
-    }
-
-    & ::deep .drawer-link{
-        color: white;
-    }
-    
-} */
-
 .drawer-container ::deep .drawer-link {
     display: flex;
     width: auto;
@@ -69,11 +54,46 @@
 
 /*하위 메뉴*/
 
-.drawer-container .drawer-sub-wrap {
-    display: none;
+/*.drawer-container .drawer-sub-wrap {
+    background-color : var(--content-back-color);
+    display: flex;
+    flex-direction : column;
+
+    padding : var(--half-pd);
+
+    border-radius : var(--default-rd);
+    border : var(--comp-bd);
+
+    transition: all .2s ease-in-out;
+    
 }
 
+
+
 .drawer-container .active {
-    display: block;
-    transition: all 2s;
+    transition: all .2s ease-in-out;
+}
+*/
+
+.drawer-container .drawer-sub-wrap {
+    background-color: var(--content-back-color);
+    visibility : hidden;
+    padding: 0 var(--half-pd);
+    border-radius: var(--default-rd);
+    border: var(--comp-bd);
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.2s ease;
+    
+}
+
+.drawer-container .drawer-sub-wrap.active {
+    display: flex;
+    visibility : visible;
+    flex-direction: column;
+    padding: var(--half-pd);
+    max-height:1000px;
+    transition: all 0.2s ease;
+    opacity: 1;
+    margin-top : var(--half-pd);
 }
