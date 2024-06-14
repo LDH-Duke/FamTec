@@ -119,6 +119,10 @@
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Tewr.Blazor.FileReader": {
+              "target": "Package",
+              "version": "[3.3.2.23201, )"
             }
           },
           "imports": [

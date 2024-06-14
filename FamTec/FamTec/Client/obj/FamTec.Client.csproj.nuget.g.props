@@ -15,6 +15,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)tewr.blazor.filereader\3.3.2.23201\buildTransitive\Tewr.Blazor.FileReader.props" Condition="Exists('$(NuGetPackageRoot)tewr.blazor.filereader\3.3.2.23201\buildTransitive\Tewr.Blazor.FileReader.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.18\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\7.0.18\buildTransitive\net6.0\Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.2\build\Microsoft.NET.Sdk.WebAssembly.Pack.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.sdk.webassembly.pack\8.0.2\build\Microsoft.NET.Sdk.WebAssembly.Pack.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.net.illink.tasks\7.0.100-1.23211.1\build\Microsoft.NET.ILLink.Tasks.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.illink.tasks\7.0.100-1.23211.1\build\Microsoft.NET.ILLink.Tasks.props')" />

@@ -8,6 +8,8 @@ namespace FamTec.Server
     {
         private readonly WorksContext context;
 
+
+
         enum LevelCode : ushort
         {
             시스템관리자 = 100,
@@ -17,11 +19,21 @@ namespace FamTec.Server
 
         public WorksSetting()
         {
-            context = new WorksContext();
+            this.context = new WorksContext();
         }
 
         public async ValueTask DefaultSetting()
         {
+            // 파일서버 경로
+            DirectoryInfo di = new DirectoryInfo(CommPath.FileServer);
+            if(!di.Exists) di.Create();
+            
+            // VOC 파일 이미지서버 경로
+            di = new DirectoryInfo(CommPath.VocFileImages);
+            if (!di.Exists)di.Create();
+            
+
+
             DepartmentTb? department = new DepartmentTb();
             department.Name = "에스텍시스템";
             department.CreateDt = DateTime.Now;
@@ -275,6 +287,8 @@ namespace FamTec.Server
                 await context.SaveChangesAsync();
 
             }
+
+
 
 
         }

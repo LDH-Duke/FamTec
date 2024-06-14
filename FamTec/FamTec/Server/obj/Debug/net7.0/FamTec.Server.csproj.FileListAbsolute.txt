@@ -112,3 +112,4 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refint\FamTe
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.genruntimeconfig.cache
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\ref\FamTec.Server.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Tewr.Blazor.FileReader.dll

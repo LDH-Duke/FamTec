@@ -455,12 +455,23 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Hubs.HubController",
-    "Method": "Index",
-    "RelativePath": "api/Hub/Hub",
-    "HttpMethod": "GET",
+    "Method": "VocHub",
+    "RelativePath": "api/Hub/VocHub",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "obj",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile[]",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

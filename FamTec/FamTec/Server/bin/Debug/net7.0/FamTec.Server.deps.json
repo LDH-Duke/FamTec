@@ -25,7 +25,7 @@
       },
       "Azure.Core/1.35.0": {
         "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "System.Diagnostics.DiagnosticSource": "6.0.1",
           "System.Memory.Data": "1.0.2",
           "System.Numerics.Vectors": "4.5.0",
@@ -198,6 +198,21 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http/2.2.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.WebUtilities": "2.2.0",
+          "Microsoft.Extensions.ObjectPool": "2.2.0",
+          "Microsoft.Extensions.Options": "7.0.1",
+          "Microsoft.Net.Http.Headers": "2.2.0"
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "7.0.0"
+        }
+      },
       "Microsoft.AspNetCore.Http.Connections.Client/7.0.18": {
         "dependencies": {
           "Microsoft.AspNetCore.Http.Connections.Common": "7.0.18",
@@ -220,6 +235,11 @@
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.1824.16924"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "7.0.0"
         }
       },
       "Microsoft.AspNetCore.Metadata/7.0.20": {
@@ -280,11 +300,17 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
+      "Microsoft.AspNetCore.WebUtilities/2.2.0": {
+        "dependencies": {
+          "Microsoft.Net.Http.Headers": "2.2.0",
+          "System.Text.Encodings.Web": "7.0.0"
+        }
+      },
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "4.700.20.21406"
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
           }
         }
       },
@@ -525,6 +551,7 @@
           }
         }
       },
+      "Microsoft.Extensions.ObjectPool/2.2.0": {},
       "Microsoft.Extensions.Options/7.0.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
@@ -646,6 +673,12 @@
           }
         }
       },
+      "Microsoft.Net.Http.Headers/2.2.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "7.0.0",
+          "System.Buffers": "4.5.0"
+        }
+      },
       "Microsoft.SqlServer.Server/1.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
@@ -709,6 +742,7 @@
           }
         }
       },
+      "System.Buffers/4.5.0": {},
       "System.CodeDom/4.4.0": {
         "runtime": {
           "lib/netstandard2.0/System.CodeDom.dll": {
@@ -880,6 +914,18 @@
           }
         }
       },
+      "Tewr.Blazor.FileReader/3.3.2.23201": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.20",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Tewr.Blazor.FileReader.dll": {
+            "assemblyVersion": "3.3.2.23201",
+            "fileVersion": "3.3.2.23201"
+          }
+        }
+      },
       "FamTec.Client/1.0.0": {
         "dependencies": {
           "Blazored.SessionStorage": "2.4.0",
@@ -889,7 +935,8 @@
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
-          "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
+          "Pomelo.EntityFrameworkCore.MySql": "7.0.0",
+          "Tewr.Blazor.FileReader": "3.3.2.23201"
         },
         "runtime": {
           "FamTec.Client.dll": {}
@@ -897,6 +944,7 @@
       },
       "FamTec.Shared/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.18",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
@@ -1018,6 +1066,20 @@
       "path": "microsoft.aspnetcore.connections.abstractions/7.0.18",
       "hashPath": "microsoft.aspnetcore.connections.abstractions.7.0.18.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Http/2.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BAibpoItxI5puk7YJbIGj95arZueM8B8M5xT1fXBn3hb3L2G3ucrZcYXv1gXdaroLbntUs8qeV8iuBrpjQsrKw==",
+      "path": "microsoft.aspnetcore.http/2.2.2",
+      "hashPath": "microsoft.aspnetcore.http.2.2.2.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Http.Connections.Client/7.0.18": {
       "type": "package",
       "serviceable": true,
@@ -1031,6 +1093,13 @@
       "sha512": "sha512-HTkgC8g9ppKTomFlvAUc7D59Bav443BTytqqCOeZgF0liYTbYdBNfB/8xofsJYAmVV99vQSFsZDTJYKTJJReag==",
       "path": "microsoft.aspnetcore.http.connections.common/7.0.18",
       "hashPath": "microsoft.aspnetcore.http.connections.common.7.0.18.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Metadata/7.0.20": {
       "type": "package",
@@ -1067,12 +1136,19 @@
       "path": "microsoft.aspnetcore.signalr.protocols.json/7.0.18",
       "hashPath": "microsoft.aspnetcore.signalr.protocols.json.7.0.18.nupkg.sha512"
     },
-    "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
+    "Microsoft.AspNetCore.WebUtilities/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
-      "path": "microsoft.bcl.asyncinterfaces/1.1.1",
-      "hashPath": "microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512"
+      "sha512": "sha512-9ErxAAKaDzxXASB/b5uLEkLgUWv1QbeVxyJYEHQwMaxXOeFFVkQxiq8RyfVcifLU7NR0QY0p3acqx4ZpYfhHDg==",
+      "path": "microsoft.aspnetcore.webutilities/2.2.0",
+      "hashPath": "microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
     },
     "Microsoft.Data.SqlClient/5.1.5": {
       "type": "package",
@@ -1249,6 +1325,13 @@
       "path": "microsoft.extensions.logging.abstractions/7.0.1",
       "hashPath": "microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512"
     },
+    "Microsoft.Extensions.ObjectPool/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gA8H7uQOnM5gb+L0uTNjViHYr+hRDqCdfugheGo/MxQnuHzmhhzCBTIPm19qL1z1Xe0NEMabfcOBGv9QghlZ8g==",
+      "path": "microsoft.extensions.objectpool/2.2.0",
+      "hashPath": "microsoft.extensions.objectpool.2.2.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.Options/7.0.1": {
       "type": "package",
       "serviceable": true,
@@ -1333,6 +1416,13 @@
       "path": "microsoft.jsinterop.webassembly/7.0.18",
       "hashPath": "microsoft.jsinterop.webassembly.7.0.18.nupkg.sha512"
     },
+    "Microsoft.Net.Http.Headers/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iZNkjYqlo8sIOI0bQfpsSoMTmB/kyvmV2h225ihyZT33aTp48ZpF6qYnXxzSXmHt8DpBAwBTX+1s1UFLbYfZKg==",
+      "path": "microsoft.net.http.headers/2.2.0",
+      "hashPath": "microsoft.net.http.headers.2.2.0.nupkg.sha512"
+    },
     "Microsoft.SqlServer.Server/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -1374,6 +1464,13 @@
       "sha512": "sha512-Qk5WB/skSZet5Yrz6AN2ywjZaB1pxfAmvQ+5I4khTkLwwIamI4QJoH2NphCWLFQL+2ar8HvsNCTmwYk0qhqL0w==",
       "path": "pomelo.entityframeworkcore.mysql/7.0.0",
       "hashPath": "pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512"
+    },
+    "System.Buffers/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pL2ChpaRRWI/p4LXyy4RgeWlYF2sgfj/pnVMvBqwNFr5cXg7CXNnWZWxrOONLg8VGdFB8oB+EG2Qw4MLgTOe+A==",
+      "path": "system.buffers/4.5.0",
+      "hashPath": "system.buffers.4.5.0.nupkg.sha512"
     },
     "System.CodeDom/4.4.0": {
       "type": "package",
@@ -1542,6 +1639,13 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "Tewr.Blazor.FileReader/3.3.2.23201": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6YJjdFsDH3DIqCMHNdJTXbvitwV56fojQA5uehfWouJ9Po/IoZJy5EtcYYoo4s+WsSj3TbqGZH2C7qNuOEkVaA==",
+      "path": "tewr.blazor.filereader/3.3.2.23201",
+      "hashPath": "tewr.blazor.filereader.3.3.2.23201.nupkg.sha512"
     },
     "FamTec.Client/1.0.0": {
       "type": "project",

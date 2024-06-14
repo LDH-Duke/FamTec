@@ -453,10 +453,12 @@
           }
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {}
+          "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -1713,6 +1715,29 @@
           }
         }
       },
+      "Tewr.Blazor.FileReader/3.3.2.23201": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "6.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0"
+        },
+        "compile": {
+          "lib/net6.0/Tewr.Blazor.FileReader.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Tewr.Blazor.FileReader.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Tewr.Blazor.FileReader.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Tewr.Blazor.FileReader.props": {}
+        }
+      },
       "FamTec.Client/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1724,7 +1749,8 @@
           "Microsoft.AspNetCore.SignalR.Client": "7.0.18",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Newtonsoft.Json": "13.0.3",
-          "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
+          "Pomelo.EntityFrameworkCore.MySql": "7.0.0",
+          "Tewr.Blazor.FileReader": "3.3.2.23201"
         },
         "compile": {
           "bin/placeholder/FamTec.Client.dll": {}
@@ -2208,10 +2234,10 @@
         "microsoft.aspnetcore.webutilities.nuspec"
       ]
     },
-    "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
-      "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
+      "sha512": "UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "type": "package",
-      "path": "microsoft.bcl.asyncinterfaces/1.1.1",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2224,13 +2250,9 @@
         "lib/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.xml",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
         "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.xml",
-        "microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+        "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
         "microsoft.bcl.asyncinterfaces.nuspec",
-        "ref/net461/Microsoft.Bcl.AsyncInterfaces.dll",
-        "ref/netstandard2.0/Microsoft.Bcl.AsyncInterfaces.dll",
-        "ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "Microsoft.Data.SqlClient/5.1.5": {
@@ -4200,6 +4222,30 @@
         "system.windows.extensions.6.0.0.nupkg.sha512",
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "Tewr.Blazor.FileReader/3.3.2.23201": {
+      "sha512": "6YJjdFsDH3DIqCMHNdJTXbvitwV56fojQA5uehfWouJ9Po/IoZJy5EtcYYoo4s+WsSj3TbqGZH2C7qNuOEkVaA==",
+      "type": "package",
+      "path": "tewr.blazor.filereader/3.3.2.23201",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "build/Tewr.Blazor.FileReader.props",
+        "buildMultiTargeting/Tewr.Blazor.FileReader.props",
+        "buildTransitive/Tewr.Blazor.FileReader.props",
+        "icon.png",
+        "lib/net5.0/Tewr.Blazor.FileReader.dll",
+        "lib/net5.0/Tewr.Blazor.FileReader.xml",
+        "lib/net6.0/Tewr.Blazor.FileReader.dll",
+        "lib/net6.0/Tewr.Blazor.FileReader.xml",
+        "lib/netstandard2.0/Tewr.Blazor.FileReader.dll",
+        "lib/netstandard2.0/Tewr.Blazor.FileReader.xml",
+        "staticwebassets/FileReaderComponent.js",
+        "staticwebassets/FileReaderComponent.js.map",
+        "tewr.blazor.filereader.3.3.2.23201.nupkg.sha512",
+        "tewr.blazor.filereader.nuspec"
       ]
     },
     "FamTec.Client/1.0.0": {

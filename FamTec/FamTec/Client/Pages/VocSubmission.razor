@@ -1,0 +1,169 @@
+﻿@page "/VocSubmit"
+
+@using Microsoft.Net.Http.Headers
+
+@using System.Text
+@using System.Text.Json
+@using Tewr.Blazor.FileReader
+@using FamTec.Shared.Client.DTO
+@using static System.Net.Mime.MediaTypeNames
+@inject HttpClient httpClient
+
+@inject IFileReaderService fileReader
+
+<style>
+    table, th, td{
+        border: 1px solid black;
+    }
+</style>
+
+<h1>민원 접수</h1>
+
+<div style="display:flex; flex-direction:column; align-items:start; justify-content: space-between;">
+    <div style="display:flex">
+        <p>민원종류</p>
+        <InputSelect @bind-Value=dto.Type>
+            <option value="1">기계</option>
+            <option value="2">전기</option>
+            <option value="3">승강</option>
+            <option value="4">소방</option>
+            <option value="5">건축</option>
+            <option value="6">통신</option>
+            <option value="7">미화</option>
+            <option value="8">보안</option>
+            <option value="9">기타</option>
+        </InputSelect>
+    </div>
+
+    <div style="display:flex; padding:10px">
+        <p>성함: </p>
+        <input type="text" @bind=dto.Name placeholder="문자만 입력"/>
+        <p>휴대폰 번호: </p>
+        <input type="text" @bind=dto.PhoneNumber placeholder="숫자만 입력"/>
+    </div>
+
+    <div>
+        <p><b>※연락처를 남겨주시면 민원처리결과를 받아보실 수 있습니다.</b></p>
+    </div>
+
+    <div style="padding:10px">
+        <p>제목</p>
+        <input type="text" @bind=dto.Title placeholder="제목을 입력하세요."/>
+    </div>
+
+    <div style="padding:10px">
+        <p>내용</p>
+        <textarea rows="5" cols="70" @bind=dto.Contents></textarea>
+    </div>
+
+    <div style="padding:10px">
+        <div style="display:flex">
+            <p>첨부파일</p>
+            
+            
+            <input type="file" @ref="inputReference" @onchange="async () => await btnUpload()" multiple />
+            
+            @*
+            <InputFile OnChange="btnUpload" multiple/>
+            *@
+            @*<input type=" @onclick="btnUpload" value="첨부파일 추가"/>*@
+        </div>
+        <table style="border-collapse">
+            <thead>
+                <tr>
+                    <th style="width:450px">파일명</th>
+                    <th style="width:100px">용량</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if(Files is [_, ..])
+                {
+                    @foreach (var item in Files)
+                    {
+                        <tr>
+                            <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@item.Name</td>
+                            <td style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">@item.Size</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<input type="button" @onclick="async() => await btnSubmit()" value="등록"/>
+@code {
+    private VocDTO? dto;
+    ElementReference inputReference;
+    List<FileInfo>? Files;
+
+    List<Stream>? Streamlist;
+
+    private void btnTest()
+    {
+        Console.WriteLine(dto.Type);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        dto = new VocDTO();
+    }
+
+    protected async Task btnUpload()
+    {
+        Files = new List<FileInfo>();
+        Streamlist = new List<Stream>();
+
+        IEnumerable<IFileReference> file = (await fileReader.CreateReference(inputReference).EnumerateFilesAsync());
+
+        if (file == null)
+            return;
+
+        foreach(var item in file)
+        {
+            var fileInfo = await item.ReadFileInfoAsync();
+            Files.Add(new FileInfo()
+            {
+                Name = fileInfo.Name,
+                Size = $"{fileInfo.Size}b"
+            });
+
+            using (var ms = await item.CreateMemoryStreamAsync((int)fileInfo.Size))
+            {
+                Streamlist.Add(new MemoryStream(ms.ToArray()));
+            }
+        }
+    }
+
+    protected async Task btnSubmit()
+    {
+        var content = new MultipartFormDataContent();
+        content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data");
+
+        for (int i = 0; i < Streamlist.Count(); i++)
+        {
+            content.Add(new StreamContent(Streamlist[i], (int)Streamlist[i].Length), "image", Files[i].Name);
+        }
+        
+        using StringContent jsonContent = new(JsonSerializer.Serialize(new VocDTO
+         {
+            Type = dto.Type,
+            Name = dto.Name,
+            Title = dto.Title,
+            Contents = dto.Contents,
+            PhoneNumber = dto.PhoneNumber
+         }),System.Text.Encoding.UTF8,"application/json");
+
+        content.Add(jsonContent);
+        
+        var response = await httpClient.PostAsync($"http://123.2.156.148:5245/api/Hub/VocHub", content);
+
+        Console.WriteLine("");
+
+    }
+
+    class FileInfo
+    {
+        public string Name { get; set; }
+        public string Size{ get; set; }
+    }
+}

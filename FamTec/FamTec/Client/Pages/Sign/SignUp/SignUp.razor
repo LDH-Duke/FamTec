@@ -99,6 +99,7 @@
                     SessionService tokenconvert = new SessionService(HttpClient);
                     JObject json = tokenconvert.GetConvertToken(res.data);
 
+                    // 여기 수정해야함
                     string? AdminYN = json["AdminIdx"].ToString() ?? "N" ;
 
                     if(AdminYN is "N")

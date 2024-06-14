@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.Internal;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace FamTec.Shared.Client.DTO
     /// </summary>
     public class VocDTO
     {
+        /// <summary>
+        /// 유형
+        /// </summary>
+        public int? Type { get; set; }
+
         /// <summary>
         /// 성함
         /// </summary>
@@ -32,9 +38,6 @@ namespace FamTec.Shared.Client.DTO
         /// </summary>
         public string? Contents { get; set; }
         
-        /// <summary>
-        /// 첨부파일
-        /// </summary>
-        public List<FormFile> ImageFiles = new List<FormFile>();
+        
     }
 }

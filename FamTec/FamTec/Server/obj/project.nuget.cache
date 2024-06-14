@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c6E/mnYvfHbreGlHAau15f6zNW9TeWqX2U23fwvbB5eLvoN3cJ520VzyI5AOJVqwrI/eABNGFHoR/ozYZpvk2w==",
+  "dgSpecHash": "79rijqyJYHlgS8gVQyi7SuqBa6f9ieQfBuzZtyT04ZUo1wpjJDWsGXa7uEh+2e+e2KfpSSC+QB5kvmjxtQnhBg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Server\\FamTec.Server.csproj",
   "expectedPackageFiles": [
@@ -30,7 +30,7 @@
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\7.0.18\\microsoft.aspnetcore.signalr.common.7.0.18.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\7.0.18\\microsoft.aspnetcore.signalr.protocols.json.7.0.18.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
-    "C:\\Users\\kyw\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
+    "C:\\Users\\kyw\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.data.sqlclient\\5.1.5\\microsoft.data.sqlclient.5.1.5.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.1.1\\microsoft.data.sqlclient.sni.runtime.5.1.1.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.18\\microsoft.entityframeworkcore.7.0.18.nupkg.sha512",
@@ -100,7 +100,8 @@
     "C:\\Users\\kyw\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\system.threading.channels\\7.0.0\\system.threading.channels.7.0.0.nupkg.sha512",
     "C:\\Users\\kyw\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\kyw\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\kyw\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\tewr.blazor.filereader.3.3.2.23201.nupkg.sha512"
   ],
   "logs": []
 }
