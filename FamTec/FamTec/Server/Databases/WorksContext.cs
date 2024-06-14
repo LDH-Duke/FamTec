@@ -20,6 +20,8 @@ public partial class WorksContext : DbContext
 
     public virtual DbSet<AdminTb> AdminTbs { get; set; }
 
+    public virtual DbSet<AlarmTb> AlarmTbs { get; set; }
+
     public virtual DbSet<BuildingTb> BuildingTbs { get; set; }
 
     public virtual DbSet<DepartmentTb> DepartmentTbs { get; set; }
@@ -46,8 +48,10 @@ public partial class WorksContext : DbContext
 
     public virtual DbSet<UserTb> UserTbs { get; set; }
 
+    public virtual DbSet<VocTb> VocTbs { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseMySql("server=123.2.156.122; port=3306;database=works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
+        => optionsBuilder.UseMySql("server=123.2.156.122,3306;database=Works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -79,6 +83,18 @@ public partial class WorksContext : DbContext
             entity.HasOne(d => d.DepartmentTb).WithMany(p => p.AdminTbs).HasConstraintName("fk_ADMIN_TB_DEPARTMENT_TB1");
 
             entity.HasOne(d => d.UserTb).WithMany(p => p.AdminTbs).HasConstraintName("fk_ADMIN_TB_USER_TB");
+        });
+
+        modelBuilder.Entity<AlarmTb>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
+            entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
+
+            entity.HasOne(d => d.UserTb).WithMany(p => p.AlarmTbs).HasConstraintName("FK_USER_202406141623");
+
+            entity.HasOne(d => d.VocTb).WithMany(p => p.AlarmTbs).HasConstraintName("FK_VOC_202406141624");
         });
 
         modelBuilder.Entity<BuildingTb>(entity =>
@@ -138,6 +154,7 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.Mfr).HasComment("제조사");
+            entity.Property(e => e.PlaceId).HasComment("사업장 인덱스");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
         });
 
@@ -248,6 +265,18 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
 
             entity.HasOne(d => d.PlaceTb).WithMany(p => p.UserTbs).HasConstraintName("fk_USER_TB_PLACE_TB1");
+        });
+
+        modelBuilder.Entity<VocTb>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
+            entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
+            entity.Property(e => e.Reply).HasDefaultValueSql("'0'");
+            entity.Property(e => e.Status).HasDefaultValueSql("'0'");
+
+            entity.HasOne(d => d.BuildingTb).WithMany(p => p.VocTbs).HasConstraintName("FK_BULDING_202406141619");
         });
 
         OnModelCreatingPartial(modelBuilder);

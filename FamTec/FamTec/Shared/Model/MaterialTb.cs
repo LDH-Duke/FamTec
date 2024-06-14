@@ -74,10 +74,11 @@ public partial class MaterialTb
     [StringLength(255)]
     public string? DelUser { get; set; }
 
-
-    [Column("PLACE_ID")]
+    /// <summary>
+    /// 사업장 인덱스
+    /// </summary>
+    [Column("PLACE_ID", TypeName = "int(11)")]
     public int? PlaceId { get; set; }
-
 
     [InverseProperty("MaterialTb")]
     public virtual ICollection<StoreTb> StoreTbs { get; set; } = new List<StoreTb>();

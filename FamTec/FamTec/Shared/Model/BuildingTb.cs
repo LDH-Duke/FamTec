@@ -194,4 +194,7 @@ public partial class BuildingTb
 
     [InverseProperty("BuildingTb")]
     public virtual ICollection<StoreTb> StoreTbs { get; set; } = new List<StoreTb>();
+
+    [InverseProperty("BuildingTb")]
+    public virtual ICollection<VocTb> VocTbs { get; set; } = new List<VocTb>();
 }

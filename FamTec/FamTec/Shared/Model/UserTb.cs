@@ -26,10 +26,6 @@ public partial class UserTb
     [StringLength(255)]
     public string? Name { get; set; }
 
-    [Column("JOB")]
-    [StringLength(255)]
-    public string? Job { get; set; }
-
     [Column("EMAIL")]
     [StringLength(255)]
     public string? Email { get; set; }
@@ -110,9 +106,15 @@ public partial class UserTb
     [Column("PLACE_TB_ID", TypeName = "int(11)")]
     public int? PlaceTbId { get; set; }
 
+    [Column("JOB")]
+    [StringLength(255)]
+    public string? Job { get; set; }
 
     [InverseProperty("UserTb")]
     public virtual ICollection<AdminTb> AdminTbs { get; set; } = new List<AdminTb>();
+
+    [InverseProperty("UserTb")]
+    public virtual ICollection<AlarmTb> AlarmTbs { get; set; } = new List<AlarmTb>();
 
     [ForeignKey("PlaceTbId")]
     [InverseProperty("UserTbs")]
