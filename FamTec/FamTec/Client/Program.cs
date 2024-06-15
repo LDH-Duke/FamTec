@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.SignalR.Client;
 using Tewr.Blazor.FileReader;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -23,7 +24,8 @@ builder.Services.AddBlazoredSessionStorage();
 
 // 연결
 HubObject.hubConnection = new HubConnectionBuilder()
-    .WithUrl("http://123.2.156.148:5245/broadcastHub",transports:Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets | Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents | Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling) // 전송방법 3개 
+    //.WithUrl("http://123.2.156.148:5245/broadcastHub",transports:Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets | Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents | Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling) // 전송방법 3개 
+    .WithUrl("http://123.2.156.148:5245/VocHub", transports: Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets | Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents | Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling) // 뒤에 붙는 url은 상관없이 같기만 하면 되는지 check
     .ConfigureLogging(logging =>
     {
         logging.AddConsole();
@@ -38,6 +40,8 @@ HubObject.hubConnection.ServerTimeout = System.TimeSpan.FromSeconds(30); // 서버
 // 집에서 추가
 HubObject.hubConnection.Closed += async (exception) =>
 {
+    await Task.Delay(new Random().Next(0, 5) * 1000);
+    await HubObject.hubConnection.StartAsync(); // 다시재연결
     if (exception == null)
     {
         

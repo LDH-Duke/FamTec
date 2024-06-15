@@ -35,16 +35,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
 
-//builder.Services.AddSession();
-/*
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(60);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
-*/
-
 builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
 builder.Services.AddTransient<IUserInfoRepository, UserInfoRepository>();
@@ -54,7 +44,6 @@ builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 builder.Services.AddTransient<IDepartmentInfoRepository, DepartmentInfoRepository>();
 builder.Services.AddTransient<IRoomInfoRepository, RoomInfoRepository>();
 builder.Services.AddTransient<IUnitInfoRepository, UnitInfoRepository>();
-
 
 // Add services to the container.
 builder.Services.AddTransient<IAdminAccountService, AdminAccountService>();
@@ -162,7 +151,8 @@ app.UseCors();
 #region SIGNALR HUB 사용
 app.UseResponseCompression();
 
-app.MapHub<BroadcastHub>("/broadcastHub");
+app.MapHub<BroadcastHub>("/VocHub"); // 서버에서 변경해야하네
+//app.MapHub<BroadcastHub>("/broadcastHub"); 
 #endregion
 
 // Configure the HTTP request pipeline.
@@ -197,12 +187,7 @@ app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Login/sign"
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
 
-
-
 #endregion
-
-
-
 
 app.UseAuthentication();
 app.UseAuthorization();
