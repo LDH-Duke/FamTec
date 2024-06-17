@@ -2317,13 +2317,22 @@
     border-collapse: separate;
     width:100%;
     max-height : 100%;
-    overflow : hidden;
+}
+
+.table .thead[b-aotreu8nqx]{
+    background-color : var(--default-color);
+    position:sticky;
+    top:0;
 }
 
 .table .th[b-aotreu8nqx]{
     text-align : left;
     border-bottom : 2px solid #ddd;
     padding : 0 var(--half-pd);
+}
+
+.table .text-center[b-aotreu8nqx]{
+    text-align : center;
 }
 
 .table th>span[b-aotreu8nqx]{
@@ -2339,15 +2348,20 @@
     border-bottom : 2px solid #C2C2C2;
 }
 
+.table .tbody[b-aotreu8nqx]{
+    overflow:auto;
+}
+
 .table .tbody-tr:hover .td[b-aotreu8nqx]{
     background-color : var(--main-light);
     transition : all .1s ease-in;
 }
 
-.table .td[b-aotreu8nqx]{
+.table .td[b-aotreu8nqx] {
     border-top : var(--three-q-pd) solid var(--default-color);
-    background-color : #f5f5f5;
-    padding : var(--half-pd);
+
+    background-color: #f5f5f5;
+    padding: var(--half-pd);
 }
 
 
@@ -2394,6 +2408,7 @@
     padding: var(--default-pd);
     min-height: 100%;
     height:100%;
+    overflow:hidden;
 }
 
 .user-container .user-wrap[b-d1uo8hyl0z]{
@@ -2403,7 +2418,7 @@
     gap :var(--default-pd);
     padding : var(--default-pd);
     min-height: 100%;
-
+    height:100%;
     border : var(--comp-bd);
     border-radius : var(--default-rd);
     box-shadow : var(--default-bs);
@@ -2428,7 +2443,199 @@
 .user-container .user-content[b-d1uo8hyl0z]{
     height:100%;
     max-height : 100%;
-    overflow: hidden;
+    overflow: auto;
+}
+/* /Pages/Normal/Voc/VocMain/Components/DateSlider.razor.rz.scp.css */
+.dateslider-container[b-4z1wntt3bs]{
+    display : flex;
+    justify-content:center;
+    gap : var(--default-pd);
+
+    border-radius : var(--default-rd);
+
+    background-color:var(--default-color);
+}
+
+.dateslider-container .dateslider-btn[b-4z1wntt3bs]{
+    display:flex;
+    align-items: center;
+
+}
+
+.dateslider-container .dateslider-display[b-4z1wntt3bs] {
+    display: flex; /* 내부 요소를 가로로 정렬하기 위해 */
+    /*justify-content : center;*/
+    align-items: center; /* 세로 중앙 정렬 */
+    /*padding: var(--half-pd) var(--default-pd);*/
+    min-width: max-content; /* 최소 너비를 설정하여 고정 너비 유지 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+.dateslider-container .year[b-4z1wntt3bs], .month[b-4z1wntt3bs]{
+    letter-spacing : normal;
+    font-size : var(--normal-size);
+    font-weight : var(--bold-wt);
+    color : var(--main-color);
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+}
+
+/*.arrowL{
+    position : relative;
+}
+
+
+.arrowL::after{
+     position: absolute;
+    left: 0; 
+    top: 0; 
+    content: '';
+    width: 100%;*/ /* 사이즈 */
+    /*height: 100%;*/ /* 사이즈 */
+    /*border-top: 5px solid #000;*/ /* 선 두께 */
+    /*border-right: 5px solid #000;*/ /* 선 두께 */
+    /*transform: rotate(225deg);*/ /* 각도 */
+/*}
+.arrowR{
+    position : relative;
+}
+
+
+.arrowR::after{
+     position: absolute;
+    left: 0; 
+    top: 0; 
+    content: '';
+    width: 50px;*/ /* 사이즈 */
+    /*height: 50px;*/ /* 사이즈 */
+    /*border-top: 5px solid #000;*/ /* 선 두께 */
+    /*border-right: 5px solid #000;*/ /* 선 두께 */
+    /*transform: rotate(45deg);*/ /* 각도 */
+/*}*/
+/* /Pages/Normal/Voc/VocMain/Components/VocHistory.razor.rz.scp.css */
+
+.vochistory-container[b-i7u2all02v] {
+    padding: var(--default-pd);
+    width: 100%;    
+}
+
+.vochistory-container .vochistory-wrap[b-i7u2all02v]{
+    background-color : var(--default-color);
+    display : flex;
+    flex-direction:column;
+    gap :var(--default-pd);
+    padding : var(--default-pd);
+    min-height: 100%;
+    height:100%;
+    border : var(--comp-bd);
+    border-radius : var(--default-rd);
+    box-shadow : var(--default-bs);
+}
+
+
+.vochistory-container .vochistory-title[b-i7u2all02v]{
+     display : flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:var(--default-pd);
+    border-bottom : var(--default-bd);
+}
+
+.vochistory-container .title[b-i7u2all02v]{
+    white-space: nowrap;
+    font-size: var(--title-size);
+    font-weight: var(--bold-wt);
+    color: var(--main-color);
+}
+
+.vochistory-container .vochistory-content[b-i7u2all02v]{
+}
+
+
+/* /Pages/Normal/Voc/VocMain/Components/VocTable.razor.rz.scp.css */
+.table[b-on0bmwg9js] {
+    border-collapse: separate;
+    width: 100%;
+    table-layout: fixed;
+    height: 100%;
+}
+
+.table .thead[b-on0bmwg9js]{
+    background-color : var(--main-color);
+    position:sticky;
+    top:0;
+    box-shadow: 0 8px 12px -2px #a1a1a1;
+}
+
+.table .thead-tr[b-on0bmwg9js]{
+    background-color:var(--main-color);
+    border-radius: var(--default-rd);
+}
+
+/*
+    테이블 헤더 둥글게
+*/
+.table .th:first-child[b-on0bmwg9js] {
+    border-radius: 4px 0 0 4px;
+}
+
+.table .th:last-child[b-on0bmwg9js] {
+    border-radius: 0 4px 4px 0;
+}
+/* 둥글게 끝*/
+
+.table .th[b-on0bmwg9js]{
+    padding:var(--three-q-pd);
+    font-size:var(--normal-size);
+    font-weight:var(--bold-wt);
+   
+}
+
+.table .text-center[b-on0bmwg9js]{
+    text-align : center;
+}
+
+.table th>span[b-on0bmwg9js]{
+    color:var(--default-color);
+     white-space : nowrap;
+}
+
+.table .tbody[b-on0bmwg9js]{
+    overflow:auto;
+}
+
+.table-container .tbody-tr[b-on0bmwg9js] {
+    border-bottom: var(--layout-bd);
+}
+
+.table .tbody-tr:hover .td[b-on0bmwg9js]{
+    background-color : var(--main-light);
+    transition : all .1s ease-in;
+}
+
+.table .td[b-on0bmwg9js] {
+    border-top : var(--three-q-pd) solid var(--default-color);
+
+    background-color: #f5f5f5;
+    padding: var(--half-pd);
+}
+
+
+
+.table .maintitle[b-on0bmwg9js]{
+    font-size : 1rem;
+    color : var(--main-color);
+
+}
+
+.table .subtitle[b-on0bmwg9js]{
+    font-size : 14px;
+    color : var(--main-color);
+    
+}
+.italic[b-on0bmwg9js] {
+    font-style: italic;
+    color : #333;
 }
 /* /Pages/Sign/CommonComponents/Button.razor.rz.scp.css */
 

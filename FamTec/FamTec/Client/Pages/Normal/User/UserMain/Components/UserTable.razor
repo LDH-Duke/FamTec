@@ -10,7 +10,7 @@
                     User
                 </span>
             </th>
-            <th class="th">
+            <th class="th text-center">
                 <span>
                     Type
                 </span>
@@ -25,7 +25,7 @@
                     Created
                 </span>
             </th>
-            <th class="th">
+            <th class="th text-center">
                 <span>
                     Status
                 </span>
@@ -59,7 +59,7 @@
                         </div>
                         
                     </td>
-                    <td class="td">
+                    <td class="td text-center">
                         <span class="subtitle">
                             @typeof(T).GetProperty("Type")?.GetValue(row)?.ToString()
                         </span>
@@ -71,10 +71,10 @@
                     </td>
                     <td class="td">
                         <span class="subtitle">
-                            @typeof(T).GetProperty("Type")?.GetValue(row)?.ToString()
+                            @typeof(T).GetProperty("Created")?.GetValue(row)?.ToString()
                         </span>
                     </td>
-                    <td class="td">
+                    <td class="td text-center">
                         <span class="subtitle">
                             <StatusCard Status=@typeof(T).GetProperty("Status")?.GetValue(row)?.ToString() />
                            
