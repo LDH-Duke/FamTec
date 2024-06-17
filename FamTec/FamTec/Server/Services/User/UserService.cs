@@ -69,94 +69,123 @@ namespace FamTec.Server.Services.User
                         authClaims.Add(new Claim("UserIdx", usertb.Id.ToString())); // + USERID
                         authClaims.Add(new Claim("Name", usertb.Name!.ToString())); // + USERNAME
                         authClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-                        authClaims.Add(new Claim("AlarmYN", usertb.AlramYn!.ToString())); // AlarmYN
+                        //authClaims.Add(new Claim("AlarmYN", usertb.AlramYn!.ToString())); // AlarmYN
 
-                        JObject pemrsjson = new JObject();
-                        pemrsjson.Add("PermBasic", usertb.PermBasic.ToString());
-                        pemrsjson.Add("PermMachine", usertb.PermMachine.ToString());
-                        pemrsjson.Add("PermLift", usertb.PermLift.ToString());
-                        pemrsjson.Add("PermFire", usertb.PermFire.ToString());
-                        pemrsjson.Add("PermConstruct", usertb.PermConstruct.ToString());
-                        pemrsjson.Add("PermNetwork", usertb.PermNetwork.ToString());
-                        pemrsjson.Add("PermBeauty", usertb.PermBeauty.ToString());
-                        pemrsjson.Add("PermSecurity", usertb.PermSecurity.ToString());
-                        pemrsjson.Add("PermMaterial", usertb.PermMaterial.ToString());
-                        pemrsjson.Add("PermEnergy", usertb.PermEnergy.ToString());
-                        pemrsjson.Add("PermUser", usertb.PermUser.ToString());
-                        pemrsjson.Add("PermVoc", usertb.PermVoc.ToString());
+                        JObject items = new JObject();
+                        
+                        /* 메뉴접근권한 */
+                        items.Add("User_PermBasic", usertb.PermBasic.ToString()); // 기본정보관리메뉴 접근권한
+                        items.Add("User_PermMachine", usertb.PermMachine.ToString()); // 기계메뉴 접근권한
+                        items.Add("User_PermElec", usertb.PermElec.ToString()); // 전기메뉴 접근권한
+                        items.Add("User_PermLift", usertb.PermLift.ToString()); // 승강메뉴 접근권한
+                        items.Add("User_PermFire", usertb.PermFire.ToString()); // 소방메뉴 접근권한
+                        items.Add("User_PermConstruct", usertb.PermConstruct.ToString()); // 건축메뉴 접근권한
+                        items.Add("User_PermNetwork", usertb.PermNetwork.ToString()); // 통신메뉴 접근권한
+                        items.Add("User_PermBeauty", usertb.PermBeauty.ToString()); // 미화메뉴 접근권한
+                        items.Add("User_PermSecurity", usertb.PermSecurity.ToString()); // 보안메뉴 접근권한
+                        items.Add("User_PermMaterial", usertb.PermMaterial.ToString()); // 자재관리메뉴 접근권한
+                        items.Add("User_PermEnergy", usertb.PermEnergy.ToString()); // 에너지관리메뉴 접근권한
+                        items.Add("User_PermUser", usertb.PermUser.ToString()); // 사용자관리메뉴 접근권한
+                        items.Add("User_PermVoc", usertb.PermVoc.ToString()); // 민원관리메뉴 접근권한
+                        items.Add("User_PermAlarmYN", usertb.AlramYn.ToString()); // 알람유무
+                        jsonConvert = JsonConvert.SerializeObject(items);
+                        authClaims.Add(new Claim("UserPerms", jsonConvert));
 
-                        jsonConvert = JsonConvert.SerializeObject(pemrsjson);
-                        authClaims.Add(new Claim("UserPerms", pemrsjson.ToString()));
+                        /* VOC 권한 */
+                        items = new JObject();
+                        items.Add("VocMachine", usertb.VocMachine.ToString()); // 기계민원 처리권한
+                        items.Add("VocElec", usertb.VocElec.ToString()); // 전기민원 처리권한
+                        items.Add("VocLift", usertb.VocLift.ToString()); // 승강민원 처리권한
+                        items.Add("VocFire", usertb.VocFire.ToString()); // 소방민원 처리권한
+                        items.Add("VocConstruct", usertb.VocConstruct.ToString()); // 건축민원 처리권한
+                        items.Add("VocNetwork", usertb.VocNetwork.ToString()); // 통신민원 처리권한
+                        items.Add("VocBeauty", usertb.VocBeauty.ToString()); // 미화민원 처리권한
+                        items.Add("VocSecurity", usertb.VocSecurity.ToString()); // 보안민원 처리권한
+                        items.Add("VocDefault", usertb.VocDefault.ToString()); // 기타 처리권한
+                        
+                        if(usertb.PlaceTbId is not null)
+                            items.Add("VocPlaceId", usertb.PlaceTbId.ToString()); // 할당된 사업장ID
+
+                        jsonConvert = JsonConvert.SerializeObject(items);
+                        authClaims.Add(new Claim("VocPerms", jsonConvert));
 
 
                         if (usertb.AdminYn == 1) // 관리자가 로그인 했을경우
                         {
                             AdminTb? admintb = await AdminUserInfoRepository.GetAdminUserInfo(usertb.Id);
-                            authClaims.Add(new Claim("USERTYPE", "ADMIN"));
-                            authClaims.Add(new Claim("AdminIdx", admintb.Id.ToString()));
 
-                            if (admintb.Type == "시스템관리자")
+                            if (admintb is not null)
                             {
-                                authClaims.Add(new Claim("JOB", "시스템관리자"));
-                                authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
-                            }
-                            if(admintb.Type == "마스터")
-                            {
-                                authClaims.Add(new Claim("JOB", "마스터"));
-                                authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
-                            }
-                            if (admintb.Type == "매니저")
-                            {
-                                authClaims.Add(new Claim("JOB", "매니저"));
-                                authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
-                            }
+                                authClaims.Add(new Claim("USERTYPE", "ADMIN"));
+                                authClaims.Add(new Claim("AdminIdx", admintb.Id.ToString()));
 
-                            // 관리자의 사업장이 있을경우
-                            adminplacetb = await AdminPlaceInfoRepository.GetMyWorksModel(admintb.Id);
-
-                            if (adminplacetb is [_, ..])
-                            {
-                                placetb = await AdminPlaceInfoRepository.GetMyWorksDetails(adminplacetb);
-
-                                if (placetb is [_, ..])
+                                if (admintb.Type == "시스템관리자")
                                 {
-                                    JObject placelist = new JObject();
-                                    
-                                    for (int i = 0; i < placetb.Count(); i++)
-                                    {
-                                        JObject placeperm = new JObject();
-                                        placeperm.Add("PermMachine", placetb[i].PermMachine);
-                                        placeperm.Add("PermLift", placetb[i].PermLift);
-                                        placeperm.Add("PermFire", placetb[i].PermFire);
-                                        placeperm.Add("PermConstruct", placetb[i].PermConstruct);
-                                        placeperm.Add("PermNetwork", placetb[i].PermNetwrok);
-                                        placeperm.Add("PermBeauty", placetb[i].PermBeauty);
-                                        placeperm.Add("PermSecurity", placetb[i].PermSecurity);
-                                        placeperm.Add("PermMaterial", placetb[i].PermMaterial);
-                                        placeperm.Add("PermEnergy", placetb[i].PermEnergy);
-                                        placeperm.Add("PermVoc", placetb[i].PermVoc);
-
-                                        placelist.Add(placetb[i].Name, placeperm);
-                                    }
-
-                                    jsonConvert = JsonConvert.SerializeObject(placelist);
-                                    authClaims.Add(new Claim("Perms", jsonConvert));
+                                    authClaims.Add(new Claim("JOB", "시스템관리자"));
+                                    authClaims.Add(new Claim(ClaimTypes.Role, "SystemManager"));
                                 }
+                                if (admintb.Type == "마스터")
+                                {
+                                    authClaims.Add(new Claim("JOB", "마스터"));
+                                    authClaims.Add(new Claim(ClaimTypes.Role, "Master"));
+                                }
+                                if (admintb.Type == "매니저")
+                                {
+                                    authClaims.Add(new Claim("JOB", "매니저"));
+                                    authClaims.Add(new Claim(ClaimTypes.Role, "Manager"));
+                                }
+
+                                // 관리자의 사업장이 있을경우
+                                adminplacetb = await AdminPlaceInfoRepository.GetMyWorksModel(admintb.Id);
+
+                                if (adminplacetb is [_, ..])
+                                {
+                                    placetb = await AdminPlaceInfoRepository.GetMyWorksDetails(adminplacetb);
+
+                                    if (placetb is [_, ..])
+                                    {
+                                        JObject placelist = new JObject();
+
+                                        for (int i = 0; i < placetb.Count(); i++)
+                                        {
+                                            JObject placeperm = new JObject();
+                                            placeperm.Add("Place_PermMachine", placetb[i].PermMachine);
+                                            placeperm.Add("Place_PermLift", placetb[i].PermLift);
+                                            placeperm.Add("Place_PermFire", placetb[i].PermFire);
+                                            placeperm.Add("Place_PermConstruct", placetb[i].PermConstruct);
+                                            placeperm.Add("Place_PermNetwork", placetb[i].PermNetwrok);
+                                            placeperm.Add("Place_PermBeauty", placetb[i].PermBeauty);
+                                            placeperm.Add("Place_PermSecurity", placetb[i].PermSecurity);
+                                            placeperm.Add("Place_PermMaterial", placetb[i].PermMaterial);
+                                            placeperm.Add("Place_PermEnergy", placetb[i].PermEnergy);
+                                            placeperm.Add("Place_PermVoc", placetb[i].PermVoc);
+
+                                            placelist.Add(placetb[i].Name, placeperm);
+                                        }
+
+                                        jsonConvert = JsonConvert.SerializeObject(placelist);
+                                        authClaims.Add(new Claim("PlacePerms", jsonConvert));
+                                    }
+                                }
+
+                                // JWT 인증 페이로드 사인 비밀키
+                                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:authSigningKey"]!));
+
+                                JwtSecurityToken token = new JwtSecurityToken(
+                                    issuer: Configuration["JWT:Issuer"],
+                                    audience: Configuration["JWT:Audience"],
+                                    expires: DateTime.Now.AddDays(1),
+                                    claims: authClaims,
+                                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
+
+                                string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+                                return new ResponseUnit<string>() { message = "로그인 성공(관리자).", data = accessToken, code = 200 };
                             }
-
-                            // JWT 인증 페이로드 사인 비밀키
-                            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:authSigningKey"]!));
-
-                            JwtSecurityToken token = new JwtSecurityToken(
-                                issuer: Configuration["JWT:Issuer"],
-                                audience: Configuration["JWT:Audience"],
-                                expires: DateTime.Now.AddDays(1),
-                                claims: authClaims,
-                                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
-
-                            string accessToken = new JwtSecurityTokenHandler().WriteToken(token);
-
-                            return new ResponseUnit<string>() { message = "로그인 성공(관리자).", data = accessToken, code = 200 };
+                            else
+                            {
+                                return new ResponseUnit<string>() { message = "로그인 실패(관리자).", data = null, code = 200 };
+                            }
                         }
                         else
                         {

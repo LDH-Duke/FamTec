@@ -38,6 +38,9 @@ namespace FamTec.Shared.Client.DTO
         /// </summary>
         public string? Contents { get; set; }
         
-        
+        /// <summary>
+        /// 빌딩 인덱스
+        /// </summary>
+        public int? buildingidx { get; set; }
     }
 }

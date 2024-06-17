@@ -26,6 +26,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/BuildingList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnVpbGRpbmdMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +40,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/VocSubmission.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVm9jU3VibWlzc2lvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/VocSubmission2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVm9jU3VibWlzc2lvbjIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/MainLayout2.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Shared/SurveyPrompt.razor]

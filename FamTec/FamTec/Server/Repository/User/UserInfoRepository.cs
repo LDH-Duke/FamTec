@@ -180,5 +180,386 @@ namespace FamTec.Server.Repository.User
                 throw new ArgumentNullException();
             }
         }
+
+        /// <summary>
+        /// 해당 사업장의 기계 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetVocMachineList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 기계인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocMachine == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }catch(Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 전기 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetVocElecList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 전기 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocElec == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 승강 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetVocLiftList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 승강인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocLift == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 소방 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<List<UserTb>?> GetVocFireList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 소방인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocFire == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+
+        }
+
+        /// <summary>
+        /// 해당 사업장의 건축 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<List<UserTb>?> GetVocConstructList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 건축인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocConstruct == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 통신 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetVocNetWorkList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 통신인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocNetwork == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 미화 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<List<UserTb>?> GetVocBeautyList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 미화인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocBeauty == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 보안 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<List<UserTb>?> GetVocSecurityList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 보안인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocSecurity == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
+        /// 해당 사업장의 기타 Voc권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetVocDefaultList(int? placeidx)
+        {
+            try
+            {
+                /* 
+                 * 유저 정보의 사업장이 넘어온 사업장과 같고 && 
+                 * 민원관리 권한이 수정-보기 권한이고 &&
+                 * 삭제된 사용자가 아니고
+                 * 알람 받기유무가 Yes 이고
+                 * Voc권한이 기계인 List 반환
+                 */
+                if (placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m =>
+                    m.PlaceTbId == placeidx &&
+                    m.PermVoc == 2 &&
+                    m.AlramYn == 1 &&
+                    m.DelYn != 1 &&
+                    m.VocDefault == 1).ToListAsync();
+
+                    if (model is not null)
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
     }
 }

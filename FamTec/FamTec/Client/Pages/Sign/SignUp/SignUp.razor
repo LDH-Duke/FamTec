@@ -17,25 +17,20 @@
             <span class="title">
                 Login
             </span>
-            <Toggle 
-                Title="관리자모드"
-                EditMode=true 
-                @bind-Value="@LoginMode" />
+            <Toggle Title="관리자모드"
+                    EditMode=true
+                    @bind-Value="@LoginMode" />
         </div>
         <div class="signup-form">
-            <InputField 
-                Label="ID" 
-                EditMode=true
-                Placeholder="ID"
-                @bind-Value = "@user.UserID"
-                />
-            <InputField 
-                Label="PW" 
-                InputType="Password"
-                EditMode=true
-                Placeholder="Password"
-                @bind-Value = "@user.UserPassword"
-                />
+            <InputField Label="ID"
+                        EditMode=true
+                        Placeholder="ID"
+                        @bind-Value="@user.UserID" />
+            <InputField Label="PW"
+                        InputType="Password"
+                        EditMode=true
+                        Placeholder="Password"
+                        @bind-Value="@user.UserPassword" />
         </div>
         <Button Name="Login" OnClick="OnSignUp" />
     </div>
@@ -47,14 +42,17 @@
 
     protected override void OnInitialized()
     {
-        Console.WriteLine("gg");
-
         #region SIGNAL R 메시지 받는곳
         HubObject.hubConnection!.On<string>("ReceiveVoc", (message) =>
         {
             Console.WriteLine(message);
         });
-        #endregion
+
+        HubObject.hubConnection!.Closed += async (exception) =>
+        {
+            await HubObject.hubConnection.StartAsync(); // 다시재연결c
+        };
+    #endregion
     }
 
 
@@ -66,7 +64,7 @@
             if (user.UserPassword != null && user.UserID != null)
             {
                 HttpResponseMessage resLogin = null;
-                if (LoginMode==1)
+                if (LoginMode == 1)
                 {
                     resLogin = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/Login", user);
                 }
@@ -86,7 +84,7 @@
                     var token = await resLogin.Content.ReadAsStringAsync();
                     Console.WriteLine(token);
                     var res = JsonSerializer.Deserialize<ResponseUnit<string>>(token);
-                    if(res.code != 200)
+                    if (res.code != 200)
                     {
                         await IJSRuntime.InvokeVoidAsync("alert", "아이디 또는 패스워드가 일치하지 않습니다.");
                         user = new LoginDTO();
@@ -99,28 +97,19 @@
                     SessionService tokenconvert = new SessionService(HttpClient);
                     JObject json = tokenconvert.GetConvertToken(res.data);
 
-                    // 여기 수정해야함
-                    string? AdminYN = json["AdminIdx"].ToString() ?? "N" ;
+                    /* 토큰에서 Voc조회해서 switch 문으로 해당하는 권한마다 Join */
 
-                    if(AdminYN is "N")
-                    {
-                        // 일반 유저일경우
-
-                    }
-                    else
-                    {
-                        // 관리자 일경우
-                    }
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
+                    
 
 
-                    Console.WriteLine("");
                     //var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
 
 
                     //string temp = await tokenconvert.GetClaimValue(session, "SWORKSSESSION");
 
 
-                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
+                    
                     #endregion
 
                     NavigationManager.NavigateTo("/");
@@ -135,7 +124,7 @@
         }
         catch (Exception ex)
         {
-            Console.WriteLine("[SignUp][OnSignUp] 로그인 요청 에러" +ex);
+            Console.WriteLine("[SignUp][OnSignUp] 로그인 요청 에러" + ex);
         }
         Console.WriteLine(user.UserID);
         Console.WriteLine(user.UserPassword);

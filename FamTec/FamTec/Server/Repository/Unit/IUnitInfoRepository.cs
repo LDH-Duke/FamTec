@@ -32,7 +32,7 @@ namespace FamTec.Server.Repository.Unit
         /// <returns></returns>
         ValueTask<bool?> DeleteUnitInfo(UnitTb? model);
 
-
+        
 
     }
 }

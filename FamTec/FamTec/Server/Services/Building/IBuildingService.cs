@@ -18,7 +18,7 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseList<BuildingsDTO>> GetBuilidngListService(int? placeidx);
+        public ValueTask<ResponseList<BuildinglistDTO>> GetBuilidngListService(int? placeidx);
 
         /// <summary>
         /// 건물 정보 삭제

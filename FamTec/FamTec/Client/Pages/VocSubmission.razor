@@ -1,4 +1,7 @@
-﻿@page "/VocSubmit"
+﻿@layout MainLayout2
+
+@page "/VocSubmit"
+@page "/VocSubmit/{buildingid?}"
 
 @using Microsoft.Net.Http.Headers
 
@@ -68,7 +71,7 @@
             *@
             @*<input type=" @onclick="btnUpload" value="첨부파일 추가"/>*@
         </div>
-        <table style="border-collapse">
+        <table style="border-collapse: collapse">
             <thead>
                 <tr>
                     <th style="width:450px">파일명</th>
@@ -92,6 +95,9 @@
 </div>
 <input type="button" @onclick="async() => await btnSubmit()" value="등록"/>
 @code {
+    [Parameter]
+    public string buildingid{ get; set; }
+
     private VocDTO? dto;
     ElementReference inputReference;
     List<FileInfo>? Files;
@@ -106,6 +112,7 @@
     protected override async Task OnInitializedAsync()
     {
         dto = new VocDTO();
+        dto.buildingidx = Int32.Parse(buildingid); // 해당 빌딩 INDEX -- QR로 넘어옴
     }
 
     protected async Task btnUpload()
@@ -113,7 +120,10 @@
         Files = new List<FileInfo>();
         Streamlist = new List<Stream>();
 
+
         IEnumerable<IFileReference> file = (await fileReader.CreateReference(inputReference).EnumerateFilesAsync());
+
+        //await myFile.OpenReadStream(maxAllowedSize: 1024 * 300).ReadAsync(buffers);
 
         if (file == null)
             return;
@@ -121,6 +131,7 @@
         foreach(var item in file)
         {
             var fileInfo = await item.ReadFileInfoAsync();
+
             Files.Add(new FileInfo()
             {
                 Name = fileInfo.Name,
@@ -139,25 +150,36 @@
         var content = new MultipartFormDataContent();
         content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("form-data");
 
-        for (int i = 0; i < Streamlist.Count(); i++)
+        if (Streamlist is [_, ..])
         {
-            content.Add(new StreamContent(Streamlist[i], (int)Streamlist[i].Length), "image", Files[i].Name);
+            for (int i = 0; i < Streamlist.Count(); i++)
+            {
+                content.Add(new StreamContent(Streamlist[i], (int)Streamlist[i].Length), "image", Files[i].Name);
+            }
         }
-        
+
         using StringContent jsonContent = new(JsonSerializer.Serialize(new VocDTO
          {
-            Type = dto.Type,
-            Name = dto.Name,
-            Title = dto.Title,
-            Contents = dto.Contents,
-            PhoneNumber = dto.PhoneNumber
+            Type = dto.Type, // 미화?
+            Name = dto.Name, // 이름
+            Title = dto.Title, // 제목
+            Contents = dto.Contents, // 내용
+            PhoneNumber = dto.PhoneNumber, // 전화번호
+            buildingidx = dto.buildingidx // 건물인덱스
          }),System.Text.Encoding.UTF8,"application/json");
 
         content.Add(jsonContent);
-        
+
         var response = await httpClient.PostAsync($"http://123.2.156.148:5245/api/Hub/VocHub", content);
 
-        Console.WriteLine("");
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("민원 등록완료");
+        }
+        else
+        {
+            Console.WriteLine("민원 등록실패");
+        }
 
     }
 

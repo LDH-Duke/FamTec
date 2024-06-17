@@ -51,6 +51,7 @@ public partial class WorksContext : DbContext
     public virtual DbSet<VocTb> VocTbs { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySql("server=123.2.156.122,3306;database=Works;user id=root;password=stecdev1234!", Microsoft.EntityFrameworkCore.ServerVersion.Parse("10.11.7-mariadb"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -249,20 +250,74 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.AlramYn).HasDefaultValueSql("'0'");
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermBasic).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermBeauty).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermConstruct).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermEnergy).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermFire).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermNetwork).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermUser).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermVoc).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermBasic)
+                .HasDefaultValueSql("'0'")
+                .HasComment("기본정보관리 권한");
+            entity.Property(e => e.PermBeauty)
+                .HasDefaultValueSql("'0'")
+                .HasComment("미화 권한");
+            entity.Property(e => e.PermConstruct)
+                .HasDefaultValueSql("'0'")
+                .HasComment("건축 권한");
+            entity.Property(e => e.PermElec)
+                .HasDefaultValueSql("'0'")
+                .HasComment("전기 권한");
+            entity.Property(e => e.PermEnergy)
+                .HasDefaultValueSql("'0'")
+                .HasComment("에너지관리 권한");
+            entity.Property(e => e.PermFire)
+                .HasDefaultValueSql("'0'")
+                .HasComment("소방 권한");
+            entity.Property(e => e.PermLift)
+                .HasDefaultValueSql("'0'")
+                .HasComment("승강 권한");
+            entity.Property(e => e.PermMachine)
+                .HasDefaultValueSql("'0'")
+                .HasComment("기계 권한");
+            entity.Property(e => e.PermMaterial)
+                .HasDefaultValueSql("'0'")
+                .HasComment("자재관리 권한");
+            entity.Property(e => e.PermNetwork)
+                .HasDefaultValueSql("'0'")
+                .HasComment("통신 권한");
+            entity.Property(e => e.PermSecurity)
+                .HasDefaultValueSql("'0'")
+                .HasComment("보안 권한");
+            entity.Property(e => e.PermUser)
+                .HasDefaultValueSql("'0'")
+                .HasComment("사용자관리 권한");
+            entity.Property(e => e.PermVoc)
+                .HasDefaultValueSql("'0'")
+                .HasComment("민원관리 권한");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");
             entity.Property(e => e.UpdateDt).HasDefaultValueSql("current_timestamp()");
+            entity.Property(e => e.VocBeauty)
+                .HasDefaultValueSql("'0'")
+                .HasComment("미화민원 처리권한");
+            entity.Property(e => e.VocConstruct)
+                .HasDefaultValueSql("'0'")
+                .HasComment("건축민원 처리권한");
+            entity.Property(e => e.VocDefault)
+                .HasDefaultValueSql("'0'")
+                .HasComment("기타 처리권한");
+            entity.Property(e => e.VocElec)
+                .HasDefaultValueSql("'0'")
+                .HasComment("전기민원 처리권한");
+            entity.Property(e => e.VocFire)
+                .HasDefaultValueSql("'0'")
+                .HasComment("소방민원 처리권한");
+            entity.Property(e => e.VocLift)
+                .HasDefaultValueSql("'0'")
+                .HasComment("승강민원 처리권한");
+            entity.Property(e => e.VocMachine)
+                .HasDefaultValueSql("'0'")
+                .HasComment("기계민원 처리권한");
+            entity.Property(e => e.VocNetwork)
+                .HasDefaultValueSql("'0'")
+                .HasComment("통신민원 처리권한");
+            entity.Property(e => e.VocSecurity)
+                .HasDefaultValueSql("'0'")
+                .HasComment("보안민원 처리권한");
 
             entity.HasOne(d => d.PlaceTb).WithMany(p => p.UserTbs).HasConstraintName("fk_USER_TB_PLACE_TB1");
         });
@@ -273,7 +328,6 @@ public partial class WorksContext : DbContext
 
             entity.Property(e => e.CreateDt).HasDefaultValueSql("current_timestamp()");
             entity.Property(e => e.DelYn).HasDefaultValueSql("'0'");
-            entity.Property(e => e.Reply).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'0'");
             entity.Property(e => e.Type).HasDefaultValueSql("'0'");
 

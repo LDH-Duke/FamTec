@@ -59,9 +59,9 @@ namespace FamTec.Server.Controllers
         [Route("MyBuildings")]
         public async ValueTask<IActionResult> SelectMyBuilding()
         {
-            int placeidx = 4;
+            int placeidx = 31;
             
-            ResponseList<BuildingsDTO>? model = await BuildingService.GetBuilidngListService(placeidx);
+            ResponseList<BuildinglistDTO>? model = await BuildingService.GetBuilidngListService(placeidx);
             
             if(model is not null)
             {

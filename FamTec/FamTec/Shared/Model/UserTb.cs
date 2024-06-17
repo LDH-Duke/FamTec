@@ -34,39 +34,81 @@ public partial class UserTb
     [StringLength(255)]
     public string? Phone { get; set; }
 
+    /// <summary>
+    /// 기본정보관리 권한
+    /// </summary>
     [Column("PERM_BASIC", TypeName = "int(11)")]
     public int? PermBasic { get; set; }
 
+    /// <summary>
+    /// 기계 권한
+    /// </summary>
     [Column("PERM_MACHINE", TypeName = "int(11)")]
     public int? PermMachine { get; set; }
 
+    /// <summary>
+    /// 전기 권한
+    /// </summary>
+    [Column("PERM_ELEC", TypeName = "int(11)")]
+    public int? PermElec { get; set; }
+
+    /// <summary>
+    /// 승강 권한
+    /// </summary>
     [Column("PERM_LIFT", TypeName = "int(11)")]
     public int? PermLift { get; set; }
 
+    /// <summary>
+    /// 소방 권한
+    /// </summary>
     [Column("PERM_FIRE", TypeName = "int(11)")]
     public int? PermFire { get; set; }
 
+    /// <summary>
+    /// 건축 권한
+    /// </summary>
     [Column("PERM_CONSTRUCT", TypeName = "int(11)")]
     public int? PermConstruct { get; set; }
 
+    /// <summary>
+    /// 통신 권한
+    /// </summary>
     [Column("PERM_NETWORK", TypeName = "int(11)")]
     public int? PermNetwork { get; set; }
 
+    /// <summary>
+    /// 미화 권한
+    /// </summary>
     [Column("PERM_BEAUTY", TypeName = "int(11)")]
     public int? PermBeauty { get; set; }
 
+    /// <summary>
+    /// 보안 권한
+    /// </summary>
     [Column("PERM_SECURITY", TypeName = "int(11)")]
     public int? PermSecurity { get; set; }
 
+    /// <summary>
+    /// 자재관리 권한
+    /// </summary>
     [Column("PERM_MATERIAL", TypeName = "int(11)")]
     public int? PermMaterial { get; set; }
 
+    /// <summary>
+    /// 에너지관리 권한
+    /// </summary>
     [Column("PERM_ENERGY", TypeName = "int(11)")]
     public int? PermEnergy { get; set; }
 
+    /// <summary>
+    /// 사용자관리 권한
+    /// </summary>
     [Column("PERM_USER", TypeName = "int(11)")]
     public int? PermUser { get; set; }
 
+    /// <summary>
+    /// 민원관리 권한
+    /// </summary>
     [Column("PERM_VOC", TypeName = "int(11)")]
     public int? PermVoc { get; set; }
 
@@ -103,12 +145,66 @@ public partial class UserTb
     [StringLength(255)]
     public string? DelUser { get; set; }
 
-    [Column("PLACE_TB_ID", TypeName = "int(11)")]
-    public int? PlaceTbId { get; set; }
-
     [Column("JOB")]
     [StringLength(255)]
     public string? Job { get; set; }
+
+    /// <summary>
+    /// 기계민원 처리권한
+    /// </summary>
+    [Column("VOC_MACHINE", TypeName = "int(11)")]
+    public int? VocMachine { get; set; }
+
+    /// <summary>
+    /// 전기민원 처리권한
+    /// </summary>
+    [Column("VOC_ELEC", TypeName = "int(11)")]
+    public int? VocElec { get; set; }
+
+    /// <summary>
+    /// 승강민원 처리권한
+    /// </summary>
+    [Column("VOC_LIFT", TypeName = "int(11)")]
+    public int? VocLift { get; set; }
+
+    /// <summary>
+    /// 소방민원 처리권한
+    /// </summary>
+    [Column("VOC_FIRE", TypeName = "int(11)")]
+    public int? VocFire { get; set; }
+
+    /// <summary>
+    /// 건축민원 처리권한
+    /// </summary>
+    [Column("VOC_CONSTRUCT", TypeName = "int(11)")]
+    public int? VocConstruct { get; set; }
+
+    /// <summary>
+    /// 통신민원 처리권한
+    /// </summary>
+    [Column("VOC_NETWORK", TypeName = "int(11)")]
+    public int? VocNetwork { get; set; }
+
+    /// <summary>
+    /// 미화민원 처리권한
+    /// </summary>
+    [Column("VOC_BEAUTY", TypeName = "int(11)")]
+    public int? VocBeauty { get; set; }
+
+    /// <summary>
+    /// 보안민원 처리권한
+    /// </summary>
+    [Column("VOC_SECURITY", TypeName = "int(11)")]
+    public int? VocSecurity { get; set; }
+
+    /// <summary>
+    /// 기타 처리권한
+    /// </summary>
+    [Column("VOC_DEFAULT", TypeName = "int(11)")]
+    public int? VocDefault { get; set; }
+
+    [Column("PLACE_TB_ID", TypeName = "int(11)")]
+    public int? PlaceTbId { get; set; }
 
     [InverseProperty("UserTb")]
     public virtual ICollection<AdminTb> AdminTbs { get; set; } = new List<AdminTb>();

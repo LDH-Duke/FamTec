@@ -6,13 +6,17 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.SignalR.Client;
 using Tewr.Blazor.FileReader;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 268435456;
+});
 
 builder.Services.AddFileReaderService(options =>
 {
@@ -24,11 +28,11 @@ builder.Services.AddBlazoredSessionStorage();
 
 // 연결
 HubObject.hubConnection = new HubConnectionBuilder()
-    //.WithUrl("http://123.2.156.148:5245/broadcastHub",transports:Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets | Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents | Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling) // 전송방법 3개 
     .WithUrl("http://123.2.156.148:5245/VocHub", transports: Microsoft.AspNetCore.Http.Connections.HttpTransportType.WebSockets | Microsoft.AspNetCore.Http.Connections.HttpTransportType.ServerSentEvents | Microsoft.AspNetCore.Http.Connections.HttpTransportType.LongPolling) // 뒤에 붙는 url은 상관없이 같기만 하면 되는지 check
+    .WithAutomaticReconnect() // 서버와의 연결이 끊어지면 자동으로 재연결
     .ConfigureLogging(logging =>
     {
-        logging.AddConsole();
+        //logging.AddConsole();
         // This will set ALL logging to Debug level
         logging.SetMinimumLevel(LogLevel.Debug);
     })
@@ -36,24 +40,6 @@ HubObject.hubConnection = new HubConnectionBuilder()
 
 HubObject.hubConnection.KeepAliveInterval = System.TimeSpan.FromSeconds(15); //최소 설정가능한 값5초.
 HubObject.hubConnection.ServerTimeout = System.TimeSpan.FromSeconds(30); // 서버로부터 30초 안에 메시지를 수신 못하면 클라이언트가 끊음
-
-// 집에서 추가
-HubObject.hubConnection.Closed += async (exception) =>
-{
-    await Task.Delay(new Random().Next(0, 5) * 1000);
-    await HubObject.hubConnection.StartAsync(); // 다시재연결
-    if (exception == null)
-    {
-        
-        //await Console.WriteLine("Connection closed without error.");
-    }
-    else
-    {
-        //Console.WriteLine($"Connection closed due to an error: {exception}");
-    }
-};
-
-
 
 await HubObject.hubConnection.StartAsync();
 

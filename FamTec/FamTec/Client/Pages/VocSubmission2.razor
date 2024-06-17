@@ -1,0 +1,89 @@
+﻿@layout MainLayout2
+@inject HttpClient httpclient
+@page "/files"
+@using FamTec.Shared.Client.DTO
+@using FamTec.Shared.Server
+
+@using System.Text
+@using System.Text.Json
+
+
+
+<InputFile OnChange="@LoadFiles" multiple />
+
+@if(fileNames.Count > 0)
+{
+    <ul>
+        @foreach(var fileName in fileNames)
+        {
+            <li>
+                Files: @fileName
+                <br/>
+                <span>
+                    Stored File Name : @GetStoredFileName(fileName);
+                </span>
+            </li>
+
+        }
+    </ul>
+}
+
+
+
+@code {
+    private int maxAllowedFiles = int.MaxValue;
+    private long maxFileSize = long.MaxValue;
+    private List<string> fileNames = new();
+    public List<UploadResult> uploadResult = new();
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        using var content = new MultipartFormDataContent();
+
+        foreach(var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+            fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+            fileNames.Add(file.Name);
+
+            content.Add(
+                content: fileContent,
+                name: "\"files\"",
+                fileName: file.Name);
+        }
+
+        using StringContent jsonContent = new(JsonSerializer.Serialize(new VocDTO
+            {
+                Type = 3, // 미화?
+                Name = "ddd", // 이름
+                Title = "제목", // 제목
+                Contents = "dto.Contents", // 내용
+                PhoneNumber = "dto.PhoneNumber", // 전화번호
+                buildingidx = 4, // 건물인덱스
+            }), System.Text.Encoding.UTF8, "application/json");
+        
+            content.Add(jsonContent);
+
+        var response = await httpclient.PostAsync("http://123.2.156.148:5245/api/Hub/Files", content);
+        var newUploadResult = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
+
+        if(newUploadResult is not null)
+        {
+            uploadResult = uploadResult.Concat(newUploadResult).ToList();
+        }
+
+    }
+
+    private string? GetStoredFileName(string fileName)
+    {
+        var result = uploadResult.SingleOrDefault(f => f.FileName == fileName);
+        if (result is not null)
+            return result.StoredFileName;
+
+        return "File Not Found";
+    }
+
+    
+
+}

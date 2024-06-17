@@ -29,11 +29,15 @@ using Microsoft.Extensions.FileProviders;
 using FamTec.Server.Services;
 using FamTec.Server.Tokens;
 using FamTec.Server.Services.Voc;
+using FamTec.Server.Repository.Voc;
+using FamTec.Server.Repository.Alarm;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDistributedMemoryCache();
+
+//builder.Services.AddHttpClient();
 
 builder.Services.AddTransient<IPlaceInfoRepository, PlaceInfoRepository>();
 builder.Services.AddTransient<IBuildingInfoRepository, BuildingInfoRepository>();
@@ -44,6 +48,8 @@ builder.Services.AddTransient<IFloorInfoRepository, FloorInfoRepository>();
 builder.Services.AddTransient<IDepartmentInfoRepository, DepartmentInfoRepository>();
 builder.Services.AddTransient<IRoomInfoRepository, RoomInfoRepository>();
 builder.Services.AddTransient<IUnitInfoRepository, UnitInfoRepository>();
+builder.Services.AddTransient<IVocInfoRpeository, VocInfoRepository>();
+builder.Services.AddTransient<IAlarmInfoRepository, AlarmInfoRepository>();
 
 // Add services to the container.
 builder.Services.AddTransient<IAdminAccountService, AdminAccountService>();
@@ -54,12 +60,12 @@ builder.Services.AddTransient<IDepartmentService, DepartmentService>();
 builder.Services.AddTransient<IFloorService, FloorService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
 builder.Services.AddTransient<IUnitService, UnitService>();
-
+builder.Services.AddTransient<IVocService, VocService>();
 builder.Services.AddTransient<ILogService, LogService>();
 
 builder.Services.AddTransient<ITokenComm, TokenComm>();
 
-builder.Services.AddTransient<IVocService, VocService>();
+
 
 
 builder.Services.AddControllersWithViews();
@@ -96,22 +102,11 @@ builder.Services.AddDbContext<WorksContext>(options =>
 
 
 #region SIGNAL R 등록
-/*
-builder.Services.AddSignalR(opts =>
-{
-    opts.EnableDetailedErrors = true;
-    opts.KeepAliveInterval = TimeSpan.FromSeconds(10);
-
-});
-*/
-
-// 집에서 수정함
 builder.Services.AddSignalR().AddHubOptions<BroadcastHub>(options =>
 {
     options.EnableDetailedErrors = true;
     options.ClientTimeoutInterval = System.TimeSpan.FromSeconds(30);
 });
-
 #endregion
 
 #region SIGNAL R CORS 등록
@@ -129,8 +124,6 @@ builder.Services.AddCors(opts =>
     });
 });
 
-/* 집에서 수정 */
-//builder.Services.AddSignalR();
 builder.Services.AddResponseCompression(opts =>
 {
     opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
@@ -142,9 +135,8 @@ builder.Services.AddResponseCompression(opts =>
 
 
 var app = builder.Build();
-//app.UseSession();
 
-#region SIGNALR CORS 사용
+#region CORS 사용
 app.UseCors();
 #endregion
 
@@ -152,7 +144,6 @@ app.UseCors();
 app.UseResponseCompression();
 
 app.MapHub<BroadcastHub>("/VocHub"); // 서버에서 변경해야하네
-//app.MapHub<BroadcastHub>("/broadcastHub"); 
 #endregion
 
 // Configure the HTTP request pipeline.

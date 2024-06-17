@@ -38,9 +38,5 @@
     <ProjectReference Include="..\Shared\FamTec.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Repository\" />
-  </ItemGroup>
-
 
 </Project>

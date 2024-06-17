@@ -14,6 +14,10 @@ public partial class VocTb
     [Column("ID", TypeName = "int(11)")]
     public int Id { get; set; }
 
+    [Column("NAME")]
+    [StringLength(255)]
+    public string? Name { get; set; }
+
     [Column("TITLE")]
     [StringLength(255)]
     public string? Title { get; set; }
@@ -31,9 +35,6 @@ public partial class VocTb
 
     [Column("TYPE", TypeName = "int(11)")]
     public int? Type { get; set; }
-
-    [Column("REPLY")]
-    public bool? Reply { get; set; }
 
     [Column("CREATE_DT", TypeName = "datetime")]
     public DateTime? CreateDt { get; set; }
@@ -58,6 +59,15 @@ public partial class VocTb
 
     [Column("DEL_YN")]
     public bool? DelYn { get; set; }
+
+    [StringLength(255)]
+    public string? Image1 { get; set; }
+
+    [StringLength(255)]
+    public string? Image2 { get; set; }
+
+    [StringLength(255)]
+    public string? Image3 { get; set; }
 
     [Column(TypeName = "int(11)")]
     public int? BuildingTbId { get; set; }

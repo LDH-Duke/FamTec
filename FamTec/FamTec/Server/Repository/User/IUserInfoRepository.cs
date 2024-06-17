@@ -40,5 +40,68 @@ namespace FamTec.Server.Repository.User
         /// <returns></returns>
         ValueTask<bool?> DeleteUserInfo(UserTb? model);
 
+        /// <summary>
+        /// 해당 사업장의 기계 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocMachineList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 전기 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocElecList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 승강 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocLiftList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 소방 voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocFireList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 건축 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocConstructList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 통신 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocNetWorkList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 미화 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocBeautyList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 보안 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocSecurityList(int? placeidx);
+
+        /// <summary>
+        /// 해당 사업장의 기타 Voc 권한 가진 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetVocDefaultList(int? placeidx);
+
     }
 }

@@ -109,7 +109,7 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseList<BuildingsDTO>> GetBuilidngListService(int? placeidx)
+        public async ValueTask<ResponseList<BuildinglistDTO>> GetBuilidngListService(int? placeidx)
         {
             try
             {
@@ -119,16 +119,16 @@ namespace FamTec.Server.Services.Building
 
                     if (model is [_, ..])
                     {
-                        return new ResponseList<BuildingsDTO>()
+                        return new ResponseList<BuildinglistDTO>()
                         {
                             message = "요청이 정상적으로 처리되었습니다.",
-                            data = model.Select(e => new BuildingsDTO
+                            data = model.Select(e => new BuildinglistDTO
                             {
-                                BuildingID = e.Id,
-                                BuildingCode = e.BuildingCd,
+                                ID = e.Id,
                                 Name = e.Name,
                                 Address = e.Address,
                                 FloorNum = e.FloorNum,
+                                CompletionDT = e.CompletionDt,
                                 CreateDT = e.CreateDt
                             }).ToList(),
                             code = 200
@@ -136,18 +136,18 @@ namespace FamTec.Server.Services.Building
                     }
                     else
                     {
-                        return new ResponseList<BuildingsDTO>() { message = "요청이 정상적으로 처리되었습니다.", data = new List<BuildingsDTO>(), code = 200 };
+                        return new ResponseList<BuildinglistDTO>() { message = "요청이 정상적으로 처리되었습니다.", data = new List<BuildinglistDTO>(), code = 200 };
                     }
                 }
                 else
                 {
-                    return new ResponseList<BuildingsDTO>() { message = "요청이 잘못되었습니다.", data = new List<BuildingsDTO>(), code = 404 };
+                    return new ResponseList<BuildinglistDTO>() { message = "요청이 잘못되었습니다.", data = new List<BuildinglistDTO>(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
                 LogService.LogMessage(ex.ToString());
-                return new ResponseList<BuildingsDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<BuildingsDTO>(), code = 500 };
+                return new ResponseList<BuildinglistDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<BuildinglistDTO>(), code = 500 };
             }
         }
 

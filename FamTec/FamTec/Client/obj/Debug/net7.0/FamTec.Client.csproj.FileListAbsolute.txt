@@ -1094,3 +1094,15 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_fra
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Tewr.Blazor.FileReader.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\c2kjaqt850.gz
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\x4p0ooxu8o.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Logging.Console.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Logging.Configuration.dll.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Logging.Console.dll.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Microsoft.Extensions.Logging.Configuration.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Microsoft.Extensions.Logging.Console.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\bin\Debug\net7.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\4xv3bt5kb1.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\shmrry1noj.gz
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\compressed\4hqrv90xzg.gz
