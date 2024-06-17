@@ -34,6 +34,9 @@ namespace FamTec.Server.Controllers.Hubs
         [Route("Files")]
         public async Task<IActionResult> UploadFile([FromForm]string obj, [FromForm]List<IFormFile> files)
         {
+            // 이 아래부분만 수정하면 될듯.!!!!
+            ResponseUnit<string>? model = await VocService.AddVocService2(obj, files);
+
             List<UploadResult> uploadResults = new List<UploadResult>();
 
             foreach(var file in files)

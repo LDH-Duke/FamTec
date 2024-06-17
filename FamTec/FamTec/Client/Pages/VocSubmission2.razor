@@ -47,6 +47,7 @@
 
             fileNames.Add(file.Name);
 
+            
             content.Add(
                 content: fileContent,
                 name: "\"files\"",
@@ -62,8 +63,8 @@
                 PhoneNumber = "dto.PhoneNumber", // 전화번호
                 buildingidx = 4, // 건물인덱스
             }), System.Text.Encoding.UTF8, "application/json");
-        
-            content.Add(jsonContent);
+
+        content.Add(jsonContent);
 
         var response = await httpclient.PostAsync("http://123.2.156.148:5245/api/Hub/Files", content);
         var newUploadResult = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
@@ -72,6 +73,7 @@
         {
             uploadResult = uploadResult.Concat(newUploadResult).ToList();
         }
+
 
     }
 
