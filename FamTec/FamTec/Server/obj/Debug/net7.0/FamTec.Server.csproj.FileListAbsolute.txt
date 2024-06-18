@@ -73,6 +73,7 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\System.Runti
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\System.Security.Permissions.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\System.Windows.Extensions.dll
+C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Tewr.Blazor.FileReader.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
@@ -112,19 +113,3 @@ C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refint\FamTe
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.genruntimeconfig.cache
 C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\ref\FamTec.Server.dll
-<<<<<<< HEAD
-C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\bin\Debug\net7.0\Tewr.Blazor.FileReader.dll
-=======
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.csproj.AssemblyReference.cache
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.AssemblyInfoInputs.cache
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.AssemblyInfo.cs
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.csproj.CoreCompileInputs.cache
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.RazorAssemblyInfo.cache
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.RazorAssemblyInfo.cs
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.sourcelink.json
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.dll
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\refint\FamTec.Server.dll
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Server\obj\Debug\net7.0\FamTec.Server.pdb
->>>>>>> origin/Front
