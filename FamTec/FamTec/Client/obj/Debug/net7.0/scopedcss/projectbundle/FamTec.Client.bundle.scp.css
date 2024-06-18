@@ -2448,7 +2448,7 @@
 /* /Pages/Normal/Voc/VocMain/Components/DateSlider.razor.rz.scp.css */
 .dateslider-container[b-4z1wntt3bs]{
     display : flex;
-    justify-content:center;
+    /*justify-content:center;*/
     gap : var(--default-pd);
 
     border-radius : var(--default-rd);
@@ -2511,6 +2511,28 @@
     /*border-right: 5px solid #000;*/ /* 선 두께 */
     /*transform: rotate(45deg);*/ /* 각도 */
 /*}*/
+/* /Pages/Normal/Voc/VocMain/Components/StatusCard.razor.rz.scp.css */
+.status[b-qzhgbghlm0] {
+    display: inline-block;
+    padding: var(--one-q-pd) var(--half-pd);
+    /*padding : .2em .6em .3em;*/
+    font-size: var(--normal-size);
+    font-weight: 500;
+    color: var(--default-color);
+    border-radius: .25em;
+}
+
+.status-0[b-qzhgbghlm0] {
+    background-color: var(--status-0);
+}
+
+.status-1[b-qzhgbghlm0] {
+    background-color: var(--status-1);
+}
+
+.status-2[b-qzhgbghlm0] {
+    background-color: var(--status-2);
+}
 /* /Pages/Normal/Voc/VocMain/Components/VocHistory.razor.rz.scp.css */
 
 .vochistory-container[b-i7u2all02v] {
@@ -2556,7 +2578,7 @@
 .table[b-on0bmwg9js] {
     border-collapse: separate;
     width: 100%;
-    table-layout: fixed;
+    /*table-layout: fixed;*/
     height: 100%;
 }
 
@@ -2604,38 +2626,34 @@
     overflow:auto;
 }
 
-.table-container .tbody-tr[b-on0bmwg9js] {
-    border-bottom: var(--layout-bd);
-}
-
-.table .tbody-tr:hover .td[b-on0bmwg9js]{
-    background-color : var(--main-light);
-    transition : all .1s ease-in;
-}
-
-.table .td[b-on0bmwg9js] {
-    border-top : var(--three-q-pd) solid var(--default-color);
-
-    background-color: #f5f5f5;
-    padding: var(--half-pd);
+.table .tbody-tr[b-on0bmwg9js]{
+    border-bottom : var(--layout-bd);
 }
 
 
-
-.table .maintitle[b-on0bmwg9js]{
-    font-size : 1rem;
-    color : var(--main-color);
-
-}
-
-.table .subtitle[b-on0bmwg9js]{
-    font-size : 14px;
-    color : var(--main-color);
+.table .tbody-tr:hover td[b-on0bmwg9js]{
+    background-color:var(--main-light);
     
 }
-.italic[b-on0bmwg9js] {
-    font-style: italic;
-    color : #333;
+
+.table .td[b-on0bmwg9js]{
+    text-overflow: ellipsis;
+    /*overflow:hidden;*/
+    white-space: nowrap;
+    word-break:break-all;
+
+    padding:0.8rem;
+
+    
+    text-align: center;
+    font-size:0.8rem;
+    font-weight:var(--bold-wt);
+    color : var(--main-color);
+    border-bottom : var(--layout-bd);
+}
+
+.table[b-on0bmwg9js]  .table-td-link {
+    color : var(--main-color);
 }
 /* /Pages/Sign/CommonComponents/Button.razor.rz.scp.css */
 

@@ -15,9 +15,13 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b1a8982e048ef7d6ac550d8cae1e2cd64980958")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd9a7dbc15ed4c81f29ecf533926e2f5181f6c79")]
+>>>>>>> origin/Front
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cadcabeca1ea37e95d370e981482186091e832b")]
 >>>>>>> origin/Front
 [assembly: System.Reflection.AssemblyProductAttribute("FamTec.Client")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FamTec.Client")]
