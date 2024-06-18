@@ -1,0 +1,57 @@
+﻿@typeparam T
+
+<table class="table">
+    <thead class="thead">
+        <tr class="thead-tr">
+            <th class="th">
+                <span>
+                    위치
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    구분
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    작성자
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    제목
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    상태
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    발생 일시
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    처리 일시
+                </span>
+            </th>
+
+            <th class="th">
+                <span>
+                    소요 시간
+                </span>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+
+@code {
+    [Parameter] public List<T> ListData { get; set; }
+}

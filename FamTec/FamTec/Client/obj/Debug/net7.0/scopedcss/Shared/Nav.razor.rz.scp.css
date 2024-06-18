@@ -28,12 +28,14 @@
     cursor: pointer;
 }
 
-.nav-container[b-wg5fiaa4ah]  .active {
+/*.nav-container ::deep .active {
     display: flex;
     align-items: center;
-}
+}*/
 
 .nav-container .nav-logo img[b-wg5fiaa4ah] {
+    display: flex;
+    align-items: center;
     width: 150px;
 }
 
@@ -62,9 +64,7 @@
     background-color: white;
     font-size: 1rem;
     font-weight: bold;
-    &:hover{
-            background-color: #d3d3d3;
-            }
+
 
 }
 

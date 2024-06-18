@@ -9,14 +9,11 @@
             @foreach (var property in typeof(T).GetProperties())
             {
                 var displayAttribute = property.GetCustomAttribute<DisplayAttribute>();
-                if (displayAttribute?.Name == null)
-                {
-                    
-                }
-                else
+                if (displayAttribute?.Name != null)
                 {
                     <th class="table-th">@displayAttribute?.Name</th>
                 }
+
                 
             }
         </tr>

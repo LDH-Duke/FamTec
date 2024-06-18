@@ -21,6 +21,8 @@ main[b-7s48qd2tqg] {
     width: 100%;
     padding: 1rem;
     background-color: var(--content-back-color);
+
+    overflow:auto;
 }
 
 /*.sidebar {

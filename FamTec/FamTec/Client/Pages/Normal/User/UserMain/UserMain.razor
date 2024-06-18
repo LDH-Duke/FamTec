@@ -1,0 +1,168 @@
+﻿@page "/users"
+@using FamTec.Client.Pages.Admin.CommonComponents
+@using FamTec.Shared.Client.DTO.Normal.Users
+@using FamTec.Client.Pages.Normal.User.UserMain.Components
+@inject NavigationManager Navigation
+
+<div class="user-container">
+    <div class="user-wrap">
+        <div class="user-title">
+            <span class="title">
+                사용자 목록
+            </span>
+            <div class="user-options">
+                <Input Placeholder="search" Type="text"/>
+                <Button Name="추가" Width=true OnClick=AddUser />
+                <Button Name="삭제" Width=true Type=true/>
+            </div>
+        </div>
+        <div class="user-content">
+            <UserTable Data=@usersData/>
+        </div>
+    </div>
+</div>
+
+@code {
+    List<ListUser> usersData = new List<ListUser>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadTsetData();
+    }
+
+
+    /*
+    * 사용자 추가화면 이동
+    */
+    private void AddUser()
+    {
+        Navigation.NavigateTo("/users/add");
+    }
+
+
+    private Task LoadTsetData()
+    {
+        return Task.Run(() =>
+        {
+            usersData = new List<ListUser>
+            {
+                new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 1,
+                },
+                new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },
+                new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 0
+                },
+                new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 1,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 1,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 0,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },new ListUser
+                {
+                    Id = 1,
+                    UserId = "test",
+                    Name = "임준오",
+                    Email = "test@naver.com",
+                    Phone = "01012345678",
+                    Type = "소장",
+                    Created = "2023/11/05",
+                    Status = 2,
+                },
+            };
+        });
+        
+    }
+
+}

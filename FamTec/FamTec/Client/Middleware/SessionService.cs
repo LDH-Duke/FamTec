@@ -20,7 +20,7 @@ namespace FamTec.Client.Middleware
 
         public async Task<string> GetClaimValue(string token, string claimType)
         {
-            Console.WriteLine("토큰" + token);
+        
 
             if(token == null)
             {
@@ -28,7 +28,7 @@ namespace FamTec.Client.Middleware
             }
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             var encryptToken = handler.ReadJwtToken(token);
-            Console.WriteLine(encryptToken);
+
             var claim = encryptToken.Claims.FirstOrDefault(c => c.Type == claimType);
             return claim?.Value;
         }

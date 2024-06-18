@@ -1,0 +1,84 @@
+﻿.table {
+    border-collapse: separate;
+    width: 100%;
+    table-layout: fixed;
+    height: 100%;
+}
+
+.table .thead{
+    background-color : var(--main-color);
+    position:sticky;
+    top:0;
+    box-shadow: 0 8px 12px -2px #a1a1a1;
+}
+
+.table .thead-tr{
+    background-color:var(--main-color);
+    border-radius: var(--default-rd);
+}
+
+/*
+    테이블 헤더 둥글게
+*/
+.table .th:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.table .th:last-child {
+    border-radius: 0 4px 4px 0;
+}
+/* 둥글게 끝*/
+
+.table .th{
+    padding:var(--three-q-pd);
+    font-size:var(--normal-size);
+    font-weight:var(--bold-wt);
+   
+}
+
+.table .text-center{
+    text-align : center;
+}
+
+.table th>span{
+    color:var(--default-color);
+     white-space : nowrap;
+}
+
+.table .tbody{
+    overflow:auto;
+}
+
+.table-container .tbody-tr {
+    border-bottom: var(--layout-bd);
+}
+
+.table .tbody-tr:hover .td{
+    background-color : var(--main-light);
+    transition : all .1s ease-in;
+}
+
+.table .td {
+    border-top : var(--three-q-pd) solid var(--default-color);
+
+    background-color: #f5f5f5;
+    padding: var(--half-pd);
+}
+
+
+
+.table .maintitle{
+    font-size : 1rem;
+    color : var(--main-color);
+
+}
+
+.table .subtitle{
+    font-size : 14px;
+    color : var(--main-color);
+    
+}
+.italic {
+    font-style: italic;
+    color : #333;
+}

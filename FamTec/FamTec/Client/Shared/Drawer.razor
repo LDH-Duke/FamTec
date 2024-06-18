@@ -3,42 +3,33 @@
 
 <div class="drawer-container">
     <ul class="drawer-wrap">
-        @if (IsUser != 1)
+        @foreach (var category in CategoryList)
         {
-            Console.WriteLine("일반");
-            <li>일반 모드</li>
-        }
-        else
-        {
-            Console.WriteLine("관리자");
-            @foreach (var category in CategoryList)
-            {
-                <li class="drawer-item">
-                    <NavLink class="drawer-link"
-                             href="@(category.Url != null ? category.Url : null)"
-                             @onclick="() => ToggleDropdown(category)">
-                        <span class="category-title">@category.Name</span>
-                        @if (category.SubCategory != null)
-                        {
-                            <span class="arrow">∨</span>
-                        }
-                    </NavLink>
-
+            <li class="drawer-item">
+                <NavLink class="drawer-link"
+                            href="@(category.SubCategory == null ? category.Url : null)"
+                            @onclick="() => ToggleDropdown(category)">
+                    <span class="category-title">@category.Name</span>
                     @if (category.SubCategory != null)
                     {
-                        <ul class="drawer-sub-wrap @(category.IsDropDown ? "active" : null)">
-                            @foreach (var subcategory in category.SubCategory)
-                            {
-                                <li class="drawer-sub-item">
-                                    <NavLink class="drawer-link">
-                                        @subcategory.Name
-                                    </NavLink>
-                                </li>
-                            }
-                        </ul>
+                        <span class="arrow">∨</span>
                     }
-                </li>
-            }
+                </NavLink>
+
+                @if (category.SubCategory != null)
+                {
+                    <ul class="drawer-sub-wrap @(category.IsDropDown ? "active ": null)">
+                        @foreach (var subcategory in category.SubCategory)
+                        {
+                            <li class="drawer-sub-item">
+                                <NavLink class="drawer-link" href="@(category.Url + subcategory.Url)">
+                                    <span class="category-title">@subcategory.Name</span>
+                                </NavLink>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
         }
     </ul>
 </div>
@@ -46,7 +37,7 @@
 
 @code {
     [Parameter] public int IsUser { get; set; }
-    List<Category> CategoryList;
+    List<Category>? CategoryList;
     public class Category
     {
         public string? Name { get; set; }
@@ -58,23 +49,66 @@
 
     protected async override Task OnInitializedAsync()
     {
-        await Task.Run(() =>
+        await LoadCategory();
+    }
+
+    private Task LoadCategory()
+    {
+        return Task.Run(() =>
         {
-            CategoryList = new List<Category>
-                        {
-                        new Category
-                        {
-                            Name="사업장 관리",
-                            Url = "/admin/place",
-                        },
-                        new Category
-                        {
-                            Name="매니저 관리",
-                            Url = "/admin/manager",
-                        },
-                        };
+            CategoryList = IsUser == 1 ? GetAdminCategories() : GetUserCategories();
         });
-        StateHasChanged();
+    }
+
+    /*
+     * 관리자 모드 카테고리
+     */
+    private List<Category> GetAdminCategories()
+    {
+        return new List<Category>
+        {
+            new Category
+            {
+                Name = "사업장 관리",
+                Url = "/admin/place"
+            },
+            new Category
+            {
+                Name = "매니저 관리",
+                Url = "/admin/manager"
+            }
+        };
+    }
+
+    /*
+     * 일반 모드 카테고리
+     */
+    private List<Category> GetUserCategories()
+    {
+        return new List<Category>
+        {
+            new Category
+            {
+                Name = "기본 정보 관리",
+                Url = "/basic",
+                SubCategory = new List<Category>
+                {
+                    new Category { Name = "건물 정보", Url = "/basic/buildings" },
+                    new Category { Name = "위치 관리", Url = "/basic/locations" },
+                    new Category { Name = "단위 관리", Url = "/basic/units" }
+                }
+            },
+            new Category
+            {
+                Name = "사용자 관리",
+                Url = "/users"
+            },
+            new Category
+            {
+                Name = "민원 관리",
+                Url = "/voc"
+            }
+        };
     }
 
 
