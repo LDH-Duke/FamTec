@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "iP1+suF12QnuugGMHp3kqsXcWwwMLEHG8DZxIE/zvvQ=",
-=======
-  "Hash": "9nvciUoyb/1QKHWy90sahNaAsE7X2y+cDq3AETEkapA=",
->>>>>>> origin/Front
+  "Hash": "p1Es6s+027mbmi3EPWlxHsi4phaB2rPF0v9EqKNSjGs=",
   "Source": "FamTec.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -40,11 +36,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.20\\staticwebassets\\AuthenticationService.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js",
+      "Identity": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js",
       "SourceId": "Tewr.Blazor.FileReader",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\",
       "BasePath": "_content/Tewr.Blazor.FileReader",
       "RelativePath": "FileReaderComponent.js",
       "AssetKind": "All",
@@ -57,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js"
     },
     {
-      "Identity": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js.map",
+      "Identity": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js.map",
       "SourceId": "Tewr.Blazor.FileReader",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\",
       "BasePath": "_content/Tewr.Blazor.FileReader",
       "RelativePath": "FileReaderComponent.js.map",
       "AssetKind": "All",
@@ -76,13 +71,10 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js.map"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\staticwebassets\\FileReaderComponent.js.map"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Azure.Core.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Azure.Core.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -538,11 +530,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Connections.Abstractions.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll",
       "AssetKind": "Build",
@@ -555,13 +546,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Abstractions.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Abstractions.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Connections.Client.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Connections.Client.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -599,11 +587,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.Http.Connections.Common.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Http.dll",
       "AssetKind": "Build",
@@ -616,13 +603,13 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.Http.Features.dll",
       "AssetKind": "Build",
@@ -635,13 +622,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Features.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.Http.Features.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -736,11 +720,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\7.0.18\\lib\\net7.0\\Microsoft.AspNetCore.SignalR.Protocols.Json.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll",
       "AssetKind": "Build",
@@ -753,13 +736,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.WebUtilities.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\lib\\netstandard2.0\\Microsoft.AspNetCore.WebUtilities.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -775,11 +755,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-<<<<<<< HEAD
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\lib\\netstandard2.1\\Microsoft.Bcl.AsyncInterfaces.dll"
-=======
-      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\lib\\netstandard2.1\\Microsoft.Bcl.AsyncInterfaces.dll"
->>>>>>> origin/Front
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\lib\\netstandard2.1\\Microsoft.Bcl.AsyncInterfaces.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.CSharp.dll",
@@ -1200,11 +1176,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\lib\\net7.0\\Microsoft.Extensions.Logging.Abstractions.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Logging.Configuration.dll",
       "AssetKind": "Build",
@@ -1217,13 +1192,13 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging.configuration\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.Configuration.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.logging.configuration\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.Configuration.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Logging.Console.dll",
       "AssetKind": "Build",
@@ -1236,13 +1211,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.logging.console\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.Console.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.logging.console\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.Console.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -1261,11 +1233,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.logging\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Logging.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.ObjectPool.dll",
       "AssetKind": "Build",
@@ -1278,13 +1249,13 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\lib\\netstandard2.0\\Microsoft.Extensions.ObjectPool.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.objectpool\\2.2.0\\lib\\netstandard2.0\\Microsoft.Extensions.ObjectPool.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
       "AssetKind": "Build",
@@ -1297,13 +1268,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Options.ConfigurationExtensions.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Options.ConfigurationExtensions.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -1531,11 +1499,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.18\\lib\\net7.0\\Microsoft.JSInterop.WebAssembly.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll",
       "AssetKind": "Build",
@@ -1548,13 +1515,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\lib\\netstandard2.0\\Microsoft.Net.Http.Headers.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\lib\\netstandard2.0\\Microsoft.Net.Http.Headers.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.SqlServer.Server.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.SqlServer.Server.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -5012,11 +4976,10 @@
       "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.16\\runtimes\\browser-wasm\\lib\\net7.0\\System.Xml.XPath.XDocument.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "_framework/Tewr.Blazor.FileReader.dll",
       "AssetKind": "Build",
@@ -5029,13 +4992,10 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\lib\\net6.0\\Tewr.Blazor.FileReader.dll"
+      "OriginalItemSpec": "C:\\Users\\stec\\.nuget\\packages\\tewr.blazor.filereader\\3.3.2.23201\\lib\\net6.0\\Tewr.Blazor.FileReader.dll"
     },
     {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\WindowsBase.dll",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\WindowsBase.dll",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -5358,7 +5318,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Diagnostics.Tools.dll"
     },
     {
-      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\2dvoiad4s7.gz",
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\2h9wmqraxg.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -5510,6 +5470,25 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ValueTuple.dll"
     },
     {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\49bdbkqjft.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll"
+    },
+    {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\4jj2nsjcxq.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -5586,30 +5565,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IO.Compression.Brotli.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\4hqrv90xzg.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\4mdcu3gymd.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\513xoom00z.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -5685,30 +5641,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Transactions.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\4xv3bt5kb1.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.Logging.Configuration.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\4znjohyidw.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\5evwhmadrk.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -5955,6 +5888,25 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.Serialization.Xml.dll"
     },
     {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\681lafysi5.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Logging.Console.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll"
+    },
+    {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\6mfcudetg7.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -6162,6 +6114,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ComponentModel.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\7z1u9v4luw.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\82snwvjygz.gz",
@@ -6392,6 +6363,25 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IO.UnmanagedMemoryStream.dll"
     },
     {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\99qwlvu0vs.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Tewr.Blazor.FileReader.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll"
+    },
+    {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\9bq7cqaqq6.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -6601,30 +6591,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Text.Encoding.CodePages.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\b5p0if20c0.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Net.Http.Headers.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Net.Http.Headers.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\b7w43gb9ab.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\alq6jy8fao.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -6700,30 +6667,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Diagnostics.DiagnosticSource.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\c2kjaqt850.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Bcl.AsyncInterfaces.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Bcl.AsyncInterfaces.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ccslj27ude.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\b0drwdgk57.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -6911,6 +6855,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Primitives.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\cayg2xxz19.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Logging.Configuration.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Configuration.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\cuahgjw974.gz",
@@ -7445,30 +7408,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.FileSystemGlobbing.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\hdox8spm7x.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\hhutwei08m.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\gs8lgh2m1n.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -7485,6 +7425,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Linq.Queryable.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\gvi4fybk7k.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\h1e30oy57o.gz",
@@ -7561,6 +7520,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Resources.Reader.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\hdyae40xl9.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Abstractions.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\he7l6npkp0.gz",
@@ -8304,9 +8282,6 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.Handles.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\od39x1f027.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\mizrr9tjql.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -8327,7 +8302,6 @@
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\mxvcz2xn1f.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -8593,49 +8567,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qhxwelzvcl.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Http.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qobazfsnz4.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.Features.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\qp146xb9vc.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\p9njqi0khp.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -8920,30 +8852,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Caching.Abstractions.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\shmrry1noj.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.Logging.Console.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Logging.Console.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\sl4d152w7g.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ruzyqw58kp.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -9323,6 +9232,25 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.EntityFrameworkCore.Design.dll"
     },
     {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\um2y6lorh7.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll"
+    },
+    {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ux64iz535c.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -9627,49 +9555,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Reflection.Primitives.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\x4p0ooxu8o.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Tewr.Blazor.FileReader.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Tewr.Blazor.FileReader.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\xb0pkh98sp.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.WebUtilities.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\xbcr31qke1.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\wtxra62wni.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -9745,30 +9631,7 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.ComponentModel.EventBasedAsync.dll"
     },
     {
-<<<<<<< HEAD
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\ya5oxzxb2c.gz",
-      "SourceId": "FamTec.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.ObjectPool.dll"
-    },
-    {
-      "Identity": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\yanes93lcd.gz",
-=======
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\xtvjlv8hlw.gz",
->>>>>>> origin/Front
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
@@ -9977,6 +9840,25 @@
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.NetworkInformation.dll"
     },
     {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\zlrgt83g6i.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Http.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Http.dll"
+    },
+    {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\zqedhlmyoi.gz",
       "SourceId": "FamTec.Client",
       "SourceType": "Computed",
@@ -9994,6 +9876,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.EntityFrameworkCore.SqlServer.dll"
+    },
+    {
+      "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\zwxiaf98yb.gz",
+      "SourceId": "FamTec.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll"
     },
     {
       "Identity": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\obj\\Debug\\net7.0\\compressed\\zyjhi8ao2x.gz",

@@ -1,4 +1,5 @@
-﻿@typeparam T
+﻿@using FamTec.Client.Pages.Normal.Voc.Components
+@typeparam T
 @inject NavigationManager NavigationManager
 
 <table class="table">
@@ -26,11 +27,6 @@
             </th>
             <th class="th">
                 <span>
-                    상태
-                </span>
-            </th>
-            <th class="th">
-                <span>
                     발생 일시
                 </span>
             </th>
@@ -43,6 +39,11 @@
             <th class="th">
                 <span>
                     소요 시간
+                </span>
+            </th>
+            <th class="th">
+                <span>
+                    상태
                 </span>
             </th>
         </tr>
@@ -74,9 +75,6 @@
                         @typeof(T).GetProperty("Title")?.GetValue(row)?.ToString()
                     </td>
                     <td class="td">
-                        <StatusCard Status=@typeof(T).GetProperty("Status")?.GetValue(row)?.ToString()/>
-                    </td>
-                    <td class="td">
                         @typeof(T).GetProperty("Occur_DT")?.GetValue(row)?.ToString()
                     </td>
                     <td class="td">
@@ -85,7 +83,9 @@
                     <td class="td">
                         @typeof(T).GetProperty("Total_DT")?.GetValue(row)?.ToString()
                     </td>
-
+                    <td class="td">
+                        <StatusCard Status=@typeof(T).GetProperty("Status")?.GetValue(row)?.ToString() />
+                    </td>
                 </tr>
             }
         }

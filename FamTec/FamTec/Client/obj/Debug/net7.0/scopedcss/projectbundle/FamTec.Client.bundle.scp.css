@@ -2445,6 +2445,214 @@
     max-height : 100%;
     overflow: auto;
 }
+/* /Pages/Normal/Voc/Components/StatusCard.razor.rz.scp.css */
+.status[b-4ev7zgnq6u] {
+    display: inline-block;
+    padding: var(--one-q-pd) var(--half-pd);
+    /*padding : .2em .6em .3em;*/
+    font-size: var(--normal-size);
+    font-weight: 500;
+    color: var(--default-color);
+    border-radius: .25em;
+}
+
+.status-0[b-4ev7zgnq6u] {
+    background-color: var(--status-0);
+}
+
+.status-1[b-4ev7zgnq6u] {
+    background-color: var(--status-1);
+}
+
+.status-2[b-4ev7zgnq6u] {
+    background-color: var(--status-2);
+}
+/* /Pages/Normal/Voc/VocDetail/Components/ProcessCard.razor.rz.scp.css */
+.processcard[b-e9o93o5ovf] {
+    width : 100%;
+    display : flex;
+    gap : var(--default-pd);
+    padding : var(--default-pd);
+
+    border : var(--default-bd);
+    border-radius : var(--default-rd);
+
+    box-shadow : 0 0 7px 2px #b5b5b5;
+    
+}
+
+.processcard .status[b-e9o93o5ovf]{
+    display : flex;
+    align-items : center;
+    padding-right : var(--default-pd);
+    border-right : var(--default-bd);
+
+    white-space :nowrap;
+
+    
+}
+.processcard .content[b-e9o93o5ovf] {
+
+    display : flex;
+    flex-direction : column;
+    gap : var(--half-pd);
+    width:100%;
+    background-color : #ffffff;
+}
+/* /Pages/Normal/Voc/VocDetail/Components/TextField.razor.rz.scp.css */
+.textfield[b-e5d0ioy9t2]{
+    display : flex;
+    gap : var(--half-pd);
+    flex-direction : column;
+    background-color : var(--default-color);
+}
+
+.label[b-e5d0ioy9t2]{
+    font-size : var(--normal-size);
+    font-weight : var(--bold-wt);
+    color : var(--main-color);
+
+    white-space : nowrap;
+}
+
+.content[b-e5d0ioy9t2]{
+    border : var(--comp-bd);
+    border-radius : var(--default-rd);
+
+    background-color : var(--content-back-color);
+    padding : var(--half-pd);
+}
+
+.text[b-e5d0ioy9t2]{
+    font-size : var(--normal-size);
+    font-weight : var(--normal-wt);
+    color : #333;
+
+}
+/* /Pages/Normal/Voc/VocDetail/Components/VocComment.razor.rz.scp.css */
+.voccomment-container[b-u7thnazr4p] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: var(--comp-bd);
+    border-radius: var(--default-rd);
+    background-color: var(--back-default-color);
+    padding: var(--default-pd);
+}
+
+
+.voccomment-container .voccomment-title[b-u7thnazr4p] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--title-size);
+    font-weight: var(--bold-wt);
+    padding: var(--default-pd);
+    border-bottom: var(--default-bd);
+}
+
+.voccomment-container .title[b-u7thnazr4p]{
+    display:flex;
+    align-items:center;
+    height:35px;
+    color:var(--main-color);
+}
+
+.voccomment-container .voccomment-content[b-u7thnazr4p]{
+   overflow : hidden;
+}
+
+.voccomment-overflow[b-u7thnazr4p]{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-evenly;*/
+    gap: var(--default-pd);
+    height: 100%;
+    padding: var(--default-pd);
+
+    overflow :auto;
+}
+/* /Pages/Normal/Voc/VocDetail/Components/VocInfo.razor.rz.scp.css */
+.vocinfo-container[b-exbaw6icmy] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: var(--comp-bd);
+    border-radius: var(--default-rd);
+    background-color: var(--back-default-color);
+    padding: var(--default-pd);
+}
+
+.vocinfo-container .vocinfo-title[b-exbaw6icmy]{
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+
+    font-size : var(--title-size);
+    font-weight : var(--bold-wt);
+
+    padding:var(--default-pd);
+
+    border-bottom : var(--default-bd);
+}
+
+.vocinfo-container .title[b-exbaw6icmy]{
+    display:flex;
+    align-items:center;
+    height:35px;
+    color:var(--main-color);
+}
+
+.vocinfo-container .vocinfo-content[b-exbaw6icmy]{
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-evenly;*/
+    gap: var(--default-pd);
+    height: 100%;
+    padding: var(--default-pd);
+}
+/* /Pages/Normal/Voc/VocDetail/VocDetail.razor.rz.scp.css */
+.vocdetail-container[b-yy3bwhdjh0] {
+    display : flex;
+    flex-direction : column;
+    width : 100%;
+    height : 100%;
+
+    gap : var(--default-pd);
+}
+
+.vocdetail-container .vocdetail-wrap[b-yy3bwhdjh0]{
+    display: flex;
+    gap: var(--wide-pd);
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    padding : var(--default-pd);
+}
+
+.vocdetail-container .vocdetail-info[b-yy3bwhdjh0] {
+    flex: 1;
+    width: 100%;
+    box-shadow: var(--default-bs);
+}
+
+.vocdetail-container .vocdetail-comment[b-yy3bwhdjh0]{
+    flex:2;
+    width:100%;
+
+     box-shadow : var(--default-bs);
+}
+
+
+/*
+    버튼 영역
+*/
+/*.managerdetail-container .managerdetail-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--half-pd);
+    padding: var(--default-pd);
+}*/
 /* /Pages/Normal/Voc/VocMain/Components/DateSlider.razor.rz.scp.css */
 .dateslider-container[b-4z1wntt3bs]{
     display : flex;
@@ -2511,28 +2719,6 @@
     /*border-right: 5px solid #000;*/ /* 선 두께 */
     /*transform: rotate(45deg);*/ /* 각도 */
 /*}*/
-/* /Pages/Normal/Voc/VocMain/Components/StatusCard.razor.rz.scp.css */
-.status[b-qzhgbghlm0] {
-    display: inline-block;
-    padding: var(--one-q-pd) var(--half-pd);
-    /*padding : .2em .6em .3em;*/
-    font-size: var(--normal-size);
-    font-weight: 500;
-    color: var(--default-color);
-    border-radius: .25em;
-}
-
-.status-0[b-qzhgbghlm0] {
-    background-color: var(--status-0);
-}
-
-.status-1[b-qzhgbghlm0] {
-    background-color: var(--status-1);
-}
-
-.status-2[b-qzhgbghlm0] {
-    background-color: var(--status-2);
-}
 /* /Pages/Normal/Voc/VocMain/Components/VocHistory.razor.rz.scp.css */
 
 .vochistory-container[b-i7u2all02v] {
