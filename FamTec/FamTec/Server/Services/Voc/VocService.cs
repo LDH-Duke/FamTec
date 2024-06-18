@@ -5,6 +5,7 @@ using FamTec.Server.Repository.Voc;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace FamTec.Server.Services.Voc
 {
@@ -30,8 +31,7 @@ namespace FamTec.Server.Services.Voc
             this.LogService = _logservice;
         }
 
-
-        public async ValueTask<ResponseUnit<string>?> AddVocService(string obj, IFormFile[] image)
+        public async ValueTask<ResponseUnit<string>?> AddVocService(string obj, List<IFormFile> image)
         {
             JObject? jobj = JObject.Parse(obj);
             int Voctype = Int32.Parse(jobj["Type"]!.ToString()); // 종류
@@ -52,7 +52,7 @@ namespace FamTec.Server.Services.Voc
                 Content = VocContents, // 내용
                 BuildingTbId = Vocbuildingidx
             };
-            
+
             if (image is [_, ..])
             {
                 // 확장자 검사
@@ -61,30 +61,29 @@ namespace FamTec.Server.Services.Voc
                     string tempName = image[i].FileName;
                     string tempextenstion = Path.GetExtension(tempName);
 
-                    string[] allowedExtensions = { ".jpg", ".png", ".bmp",".jpeg" };
+                    string[] allowedExtensions = { ".jpg", ".png", ".bmp", ".jpeg" };
 
                     if (!allowedExtensions.Contains(tempextenstion))
                         return new ResponseUnit<string>() { message = "파일 형식이 잘못되었습니다.", data = null, code = 200 };
                 }
             }
-
-            // 민원 테이블 발생
-            if (buildingck is not null)
+            
+            if(buildingck is not null)
             {
                 for (int i = 0; i < image.Count(); i++)
                 {
-                    string newFileName = $"{Guid.NewGuid()}{Path.GetExtension(image[i].FileName)}"; // 이름은 바꾸고 확장자는 그대로
+                    string newFileName = $"{Guid.NewGuid()}{Path.GetExtension(image[i].FileName)}";
                     string filePath = Path.Combine(CommPath.VocFileImages, newFileName);
 
                     using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
                     {
                         await image[i].CopyToAsync(fileStream);
-                        
-                        if(i == 0)
+
+                        if (i == 0)
                             model.Image1 = newFileName;
-                        if(i == 1)
+                        if (i == 1)
                             model.Image2 = newFileName;
-                        if(i == 2)
+                        if (i == 2)
                             model.Image3 = newFileName;
                     }
                 }
@@ -129,12 +128,12 @@ namespace FamTec.Server.Services.Voc
                     }
 
                 }
-                // UserTable Select 한번해야함.. --> 권한 검사. Alarm 테이블에 넣어줄거. 
-                // result --> index 뽑아서 Alarm 테이블에 추가하고 Switch 문해서 쏘면 될듯.
             }
-
             return new ResponseUnit<string>() { message = "요청이 정상 처리되었습니다.", data = VocTitle, code = 200 };
-             
         }
+
+     
+
+     
     }
 }

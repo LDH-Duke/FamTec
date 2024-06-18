@@ -60,6 +60,35 @@
         _userName = await SessionService.GetClaimValue(session, "Name");
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            #region SIGNAL R 메시지 받는곳
+            HubObject.hubConnection!.On<string>("ReceiveVoc", (message) =>
+            {
+                Console.WriteLine(message);
+            });
+            #endregion
+            
+            // 다시재연결 필요하면 이거 쓰면될듯
+            /*
+            HubObject.hubConnection!.Closed += async (exception) =>
+            {
+                await HubObject.hubConnection.StartAsync(); // 다시재연결
+            };
+            */
+            #region SignalR 그룹 조인
+            Console.WriteLine("가입?");
+            await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
+
+            #endregion
+           
+
+        }
+    }
+    
+
     private async Task OnLogOut()
     {
         Console.WriteLine("로그아웃 동작");

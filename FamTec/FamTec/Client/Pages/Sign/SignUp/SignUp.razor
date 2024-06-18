@@ -42,17 +42,7 @@
 
     protected override void OnInitialized()
     {
-        #region SIGNAL R 메시지 받는곳
-        HubObject.hubConnection!.On<string>("ReceiveVoc", (message) =>
-        {
-            Console.WriteLine(message);
-        });
-
-        HubObject.hubConnection!.Closed += async (exception) =>
-        {
-            await HubObject.hubConnection.StartAsync(); // 다시재연결c
-        };
-    #endregion
+        
     }
 
 
@@ -93,13 +83,7 @@
                     await sessionStorage.SetItemAsStringAsync("SWORKSSESSION", res.data);
                     await sessionStorage.SetItemAsync("LoginMode", Convert.ToInt32(LoginMode));
 
-                    #region SignalR 그룹 조인
-                    SessionService tokenconvert = new SessionService(HttpClient);
-                    JObject json = tokenconvert.GetConvertToken(res.data);
-
-                    /* 토큰에서 Voc조회해서 switch 문으로 해당하는 권한마다 Join */
-
-                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
+                    
                     
 
 
@@ -110,7 +94,7 @@
 
 
                     
-                    #endregion
+               
 
                     NavigationManager.NavigateTo("/");
 

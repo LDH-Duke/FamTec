@@ -1,8 +1,6 @@
 ﻿@layout MainLayout2
 
-@page "/VocSubmit"
-@page "/VocSubmit/{buildingid?}"
-
+@page "/VocSubmit/{buildingid?}" 
 @using Microsoft.Net.Http.Headers
 
 @using System.Text
@@ -108,13 +106,12 @@
     private long maxFileSize = long.MaxValue;
     string[] allowedExtensions = { ".jpg", ".png", ".bmp", ".jpeg" };
 
-    MultipartFormDataContent? content;
+    MultipartFormDataContent? content = new MultipartFormDataContent();
 
     protected override async Task OnInitializedAsync()
     {
         dto = new VocDTO();
-        //dto.buildingidx = Int32.Parse(buildingid); // 해당 빌딩 INDEX -- QR로 넘어옴
-        dto.buildingidx = 4;
+        dto.buildingidx = Int32.Parse(buildingid); // 해당 빌딩 INDEX -- QR로 넘어옴
     }
 
     protected async Task LoadFiles(InputFileChangeEventArgs e)
@@ -148,24 +145,29 @@
 
     protected async Task btnSubmit()
     {
-        if (content is not null)
+        using StringContent jsonContent = new(JsonSerializer.Serialize(new VocDTO
+            {
+                Type = dto.Type, // 미화?
+                Name = dto.Name, // 이름
+                Title = dto.Title, // 제목
+                Contents = dto.Contents, // 내용
+                PhoneNumber = dto.PhoneNumber, // 전화번호
+                buildingidx = dto.buildingidx, // 건물인덱스
+            }), System.Text.Encoding.UTF8, "application/json");
+
+        content.Add(jsonContent);
+
+        var response = await httpClient.PostAsync("http://123.2.156.148:5245/api/Hub/Files", content);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.OK)
         {
-            using StringContent jsonContent = new(JsonSerializer.Serialize(new VocDTO
-                {
-                    Type = dto.Type, // 미화?
-                    Name = dto.Name, // 이름
-                    Title = dto.Title, // 제목
-                    Contents = dto.Contents, // 내용
-                    PhoneNumber = dto.PhoneNumber, // 전화번호
-                    buildingidx = dto.buildingidx, // 건물인덱스
-                }), System.Text.Encoding.UTF8, "application/json");
-
-            content.Add(jsonContent);
-
-            var response = await httpClient.PostAsync("http://123.2.156.148:5245/api/Hub/Files", content);
-
-            content.Dispose();
+            await JS.InvokeVoidAsync("alert", "민원이 등록되었습니다.");
         }
+
+        FileInfos.Clear();
+        
+        content.Dispose();
+        content = new MultipartFormDataContent();
     }
 
     class FileInfo

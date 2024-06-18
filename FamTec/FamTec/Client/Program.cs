@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.SignalR.Client;
 using Tewr.Blazor.FileReader;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
