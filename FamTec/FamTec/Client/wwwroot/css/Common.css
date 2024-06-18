@@ -23,6 +23,9 @@
     --main-light: #c6d1fd;
     --del-hover: #d31a1a;
     --default-color: #FFFFFF;
+    --status-0: gray;
+    --status-1: #21d138;
+    --status-2: #1b40d5;
     /*
         background-color
     */

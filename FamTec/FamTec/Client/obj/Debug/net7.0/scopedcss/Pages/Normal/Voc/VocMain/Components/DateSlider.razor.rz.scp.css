@@ -1,6 +1,6 @@
 .dateslider-container[b-4z1wntt3bs]{
     display : flex;
-    justify-content:center;
+    /*justify-content:center;*/
     gap : var(--default-pd);
 
     border-radius : var(--default-rd);
