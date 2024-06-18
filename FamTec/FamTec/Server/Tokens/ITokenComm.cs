@@ -4,6 +4,8 @@ namespace FamTec.Server.Tokens
 {
     public interface ITokenComm
     {
-        public AdminSettingModel? TokenConvert(HttpRequest? token);
+        public JObject? TokenConvert(HttpRequest? token);
+
+        public List<PlaceTokenModel> AdminTokenModel(JObject jobj);
     }
 }

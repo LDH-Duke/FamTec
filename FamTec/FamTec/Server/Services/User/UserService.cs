@@ -1,8 +1,11 @@
-﻿using FamTec.Server.Repository.Admin.AdminPlaces;
+﻿using FamTec.Client.Pages.Admin.Place.PlaceMain;
+using FamTec.Server.Repository.Admin.AdminPlaces;
 using FamTec.Server.Repository.Admin.AdminUser;
 using FamTec.Server.Repository.Admin.Departmnet;
 using FamTec.Server.Repository.Place;
 using FamTec.Server.Repository.User;
+using FamTec.Server.Tokens;
+using FamTec.Shared.Client.DTO.Normal.Users;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Login;
@@ -26,7 +29,7 @@ namespace FamTec.Server.Services.User
 
         private readonly IConfiguration Configuration;
         private ILogService LogService;
-
+        private ITokenComm TokenComm;
 
         public UserService(IUserInfoRepository _userinforepository,
             IAdminUserInfoRepository _adminuserinforepository,
@@ -34,6 +37,7 @@ namespace FamTec.Server.Services.User
             IAdminPlacesInfoRepository _adminplaceinforepository,
             IPlaceInfoRepository _placeinforpeository,
             IConfiguration _configuration,
+            ITokenComm _tokencomm,
             ILogService _logservice)
         {
             this.UserInfoRepository = _userinforepository;
@@ -43,6 +47,7 @@ namespace FamTec.Server.Services.User
             this.PlaceInfoRepository = _placeinforpeository;
 
             this.Configuration = _configuration;
+            this.TokenComm = _tokencomm;
             this.LogService = _logservice;
         }
 
@@ -201,22 +206,22 @@ namespace FamTec.Server.Services.User
                             if(userplace is not null)
                             {
                                 JObject placeperm = new JObject();
-                                placeperm.Add("PermMachine", userplace.PermMachine);
-                                placeperm.Add("PermLift", userplace.PermLift);
-                                placeperm.Add("PermFire", userplace.PermFire);
-                                placeperm.Add("PermConstruct", userplace.PermConstruct);
-                                placeperm.Add("PermNetwork", userplace.PermNetwrok);
-                                placeperm.Add("PermBeauty", userplace.PermBeauty);
-                                placeperm.Add("PermSecurity", userplace.PermSecurity);
-                                placeperm.Add("PermMaterial", userplace.PermMaterial);
-                                placeperm.Add("PermEnergy", userplace.PermEnergy);
-                                placeperm.Add("PermVoc", userplace.PermVoc);
+                                placeperm.Add("Place_PermMachine", userplace.PermMachine);
+                                placeperm.Add("Place_PermLift", userplace.PermLift);
+                                placeperm.Add("Place_PermFire", userplace.PermFire);
+                                placeperm.Add("Place_PermConstruct", userplace.PermConstruct);
+                                placeperm.Add("Place_PermNetwork", userplace.PermNetwrok);
+                                placeperm.Add("Place_PermBeauty", userplace.PermBeauty);
+                                placeperm.Add("Place_PermSecurity", userplace.PermSecurity);
+                                placeperm.Add("Place_PermMaterial", userplace.PermMaterial);
+                                placeperm.Add("Place_PermEnergy", userplace.PermEnergy);
+                                placeperm.Add("Place_PermVoc", userplace.PermVoc);
 
                                 placelist.Add(userplace.Name, placeperm);
                             }
 
                             jsonConvert = JsonConvert.SerializeObject(placelist);
-                            authClaims.Add(new Claim("Perms", jsonConvert));
+                            authClaims.Add(new Claim("PlacePerms", jsonConvert));
 
                             // JWT 인증 페이로드 사인 비밀키
                             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:authSigningKey"]!));
@@ -284,6 +289,205 @@ namespace FamTec.Server.Services.User
                 LogService.LogMessage(ex.ToString());
                 return new ResponseUnit<UsersDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new UsersDTO(), code = 500 };
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<ResponseList<ListUser>> GetPlaceUserList(JObject? jobj, int placeid)
+        {
+            try
+            {
+                string? UserType = jobj["USERTYPE"].ToString();
+
+                if (UserType is null)
+                {
+                    return new ResponseList<ListUser>()
+                    {
+                        message = "잘못된 요청입니다.",
+                        data = new List<ListUser>(),
+                        code = 401
+                    };
+                }
+
+                if (UserType.Equals("ADMIN")) // 이사람은 관리자임 - 할당된게 여러개일수도 있음
+                {
+                    int? AdminIdx = Int32.Parse(jobj["AdminIdx"].ToString());
+
+                    if (AdminIdx is null)
+                    {
+                        return new ResponseList<ListUser>()
+                        {
+                            message = "잘못된 요청입니다.",
+                            data = new List<ListUser>(),
+                            code = 401
+                        };
+                    }
+
+
+                    List<AdminPlaceTb>? placelist = await AdminPlaceInfoRepository.GetMyWorksModel(AdminIdx);
+
+                    if (placelist is [_, ..])
+                    {
+                        // AdminPlaceTB랑 조회해서 --> 넘어온 PlaceIDX가 자기꺼에 있는지 확인하고 있으면 그 PlaceIdx에 해당하는 UserList 반환
+                        AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == placeid);
+                        if (adminplace is not null)
+                        {
+                            PlaceTb? placetb = await PlaceInfoRepository.GetByPlaceInfo(adminplace.PlaceId);
+
+                            if(placetb is not null) 
+                            {
+                                // 사업장이 있다 --> 실제 로직
+                                List<UserTb>? usertb = await UserInfoRepository.GetPlaceUserList(placetb.Id);
+                                
+                                if(usertb is [_, ..])
+                                {
+                                    return new ResponseList<ListUser>()
+                                    {
+                                        message = "요청이 정상 처리되었습니다.",
+                                        data = usertb.Select(e => new ListUser
+                                        {
+                                            Id = e.Id,
+                                            UserId = e.UserId,
+                                            Name = e.Name,
+                                            Email = e.Email,
+                                            Phone = e.Phone,
+                                            Type = e.Job,
+                                            Status = e.Status,
+                                            Created = e.CreateDt.ToString()!
+                                        }).ToList(),
+                                        code = 200
+                                    };
+                                }
+                                else
+                                {
+                                    return new ResponseList<ListUser>()
+                                    {
+                                        message = "요청이 정상 처리되었습니다.",
+                                        data = new List<ListUser>(),
+                                        code = 200
+                                    };
+                                }
+                            }
+                            else
+                            {
+                                return new ResponseList<ListUser>()
+                                {
+                                    message = "잘못된 요청입니다.",
+                                    data = new List<ListUser>(),
+                                    code = 401
+                                };
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseList<ListUser>()
+                            {
+                                message = "잘못된 요청입니다.",
+                                data = new List<ListUser>(),
+                                code = 401
+                            };
+                        }
+                    }
+                    else
+                    {
+                        return new ResponseList<ListUser>()
+                        {
+                            message = "잘못된 요청입니다.",
+                            data = new List<ListUser>(),
+                            code = 401
+                        };
+                    }
+                }
+                else // 일반사용자
+                {
+                    int? UserIdx = Int32.Parse(jobj["UserIdx"].ToString());
+                    
+                    if (UserIdx is null)
+                    {
+                        return new ResponseList<ListUser>()
+                        {
+                            message = "잘못된 요청입니다.",
+                            data = new List<ListUser>(),
+                            code = 401
+                        };
+                    }
+
+                    UserTb? usermodel = await UserInfoRepository.GetUserIndexInfo(UserIdx);
+
+                    if(usermodel is not null)
+                    {
+                        // user테이블 조회해서 이사람의 placeid가 매개변수 placeid랑 같은지 보고
+                        if (usermodel.PlaceTbId == placeid)
+                        {
+                            // 사업장을 검사한다.
+                            PlaceTb? placetb = await PlaceInfoRepository.GetByPlaceInfo(usermodel.PlaceTbId);
+
+                            // 사업장이 있다 --> 실제 로직
+                            List<UserTb>? usertb = await UserInfoRepository.GetPlaceUserList(placetb.Id);
+                            
+                            if (usertb is [_, ..])
+                            {
+                                return new ResponseList<ListUser>()
+                                {
+                                    message = "요청이 정상 처리되었습니다.",
+                                    data = usertb.Select(e => new ListUser
+                                    {
+                                        Id = e.Id,
+                                        UserId = e.UserId,
+                                        Name = e.Name,
+                                        Email = e.Email,
+                                        Phone = e.Phone,
+                                        Type = e.Job,
+                                        Status = e.Status,
+                                        Created = e.CreateDt.ToString()!
+                                    }).ToList(),
+                                    code = 200
+                                };
+                            }
+                            else
+                            {
+                                return new ResponseList<ListUser>()
+                                {
+                                    message = "요청이 정상 처리되었습니다.",
+                                    data = new List<ListUser>(),
+                                    code = 200
+                                };
+                            }
+                        }
+                        else
+                        {
+                            return new ResponseList<ListUser>()
+                            {
+                                message = "잘못된 요청입니다.",
+                                data = new List<ListUser>(),
+                                code = 401
+                            };
+                        }
+                    }
+                    else
+                    {
+                        return new ResponseList<ListUser>()
+                        {
+                            message = "잘못된 요청입니다.",
+                            data = new List<ListUser>(),
+                            code = 401
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ResponseList<ListUser>()
+                {
+                    message = "서버에서 요청을 처리하지 못하였습니다.",
+                    data = new List<ListUser>(),
+                    code = 500
+                };
+            }
+
         }
 
    

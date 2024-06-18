@@ -6,6 +6,7 @@ using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System.Security.Cryptography;
 
 namespace FamTec.Server.Controllers.Login
@@ -65,7 +66,7 @@ namespace FamTec.Server.Controllers.Login
         [Route("sign/SystemManager")]
         public async ValueTask<IActionResult> SystemManager()
         {
-            AdminSettingModel? model = TokenComm.TokenConvert(HttpContext.Request);
+            JObject? model = TokenComm.TokenConvert(HttpContext.Request);
             return Ok(model);
         }
 

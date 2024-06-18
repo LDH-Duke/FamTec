@@ -78,12 +78,7 @@
                 await HubObject.hubConnection.StartAsync(); // 다시재연결
             };
             */
-            #region SignalR 그룹 조인
-            Console.WriteLine("가입?");
-            await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom");
-
-            #endregion
-           
+        
 
         }
     }

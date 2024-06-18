@@ -41,6 +41,13 @@ namespace FamTec.Server.Repository.User
         ValueTask<bool?> DeleteUserInfo(UserTb? model);
 
         /// <summary>
+        /// 해당 사업장의 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        ValueTask<List<UserTb>?> GetPlaceUserList(int? placeidx);
+
+        /// <summary>
         /// 해당 사업장의 기계 Voc 권한 가진 사용자 리스트 반환
         /// </summary>
         /// <param name="placeidx"></param>

@@ -222,6 +222,39 @@ namespace FamTec.Server.Repository.User
         }
 
         /// <summary>
+        /// 해당사업장에 관리자가 아닌 사용자 리스트 반환
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        public async ValueTask<List<UserTb>?> GetPlaceUserList(int? placeidx)
+        {
+            try
+            {
+                if(placeidx is not null)
+                {
+                    List<UserTb>? model = await context.UserTbs.Where(m => 
+                    m.PlaceTbId == placeidx &&
+                    m.AdminYn != 1 &&
+                    m.DelYn != 1).ToListAsync();
+
+                    if (model is [_, ..])
+                        return model;
+                    else
+                        return null;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch(Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
         /// 해당 사업장의 전기 Voc 권한 가진 사용자 리스트 반환
         /// </summary>
         /// <param name="placeidx"></param>
@@ -561,5 +594,7 @@ namespace FamTec.Server.Repository.User
                 throw new ArgumentNullException();
             }
         }
+
+
     }
 }

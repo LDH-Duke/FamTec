@@ -83,8 +83,24 @@
                     await sessionStorage.SetItemAsStringAsync("SWORKSSESSION", res.data);
                     await sessionStorage.SetItemAsync("LoginMode", Convert.ToInt32(LoginMode));
 
-                    
-                    
+
+                    #region SignalR 그룹 조인
+                   
+                    /*
+                     * IF 문에 걸어서 해당하는 권한 모두 JOIN 해줘야함.
+                     */
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "MachineRoom"); // 기계 Voc 권한
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "ElectricityRoom"); // 전기 Voc 권한
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "LiftRoom"); // 승강 Voc 권한
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "VocFireRoom"); // 소방 Voc 권한
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "ConstructRoom"); // 건축
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "NetworkRoom"); // 통신
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SanitationRoom"); // 미화
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "SecurityRoom"); // 보안
+                    await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "DefaultRoom"); // 기타
+
+                    #endregion
+
 
 
                     //var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");

@@ -57,8 +57,8 @@ public partial class VocTb
     [StringLength(15)]
     public string? DelUser { get; set; }
 
-    [Column("DEL_YN")]
-    public bool? DelYn { get; set; }
+    [Column("DEL_YN", TypeName = "tinyint(4)")]
+    public sbyte? DelYn { get; set; }
 
     [StringLength(255)]
     public string? Image1 { get; set; }
@@ -71,6 +71,12 @@ public partial class VocTb
 
     [Column(TypeName = "int(11)")]
     public int? BuildingTbId { get; set; }
+
+    [Column("COMPLETE_TIME", TypeName = "datetime")]
+    public DateTime? CompleteTime { get; set; }
+
+    [Column("TOTAL_TIME", TypeName = "datetime")]
+    public DateTime? TotalTime { get; set; }
 
     [InverseProperty("VocTb")]
     public virtual ICollection<AlarmTb> AlarmTbs { get; set; } = new List<AlarmTb>();

@@ -15,6 +15,7 @@ using FamTec.Shared.Server.DTO.Login;
 using FamTec.Shared.Server.DTO.Place;
 using FamTec.Shared.Server.DTO.User;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using System.Runtime.CompilerServices;
 
 namespace FamTec.Server.Controllers.Admin
@@ -76,11 +77,43 @@ namespace FamTec.Server.Controllers.Admin
         [Route("AddManager")]
         public async ValueTask<IActionResult> AddManager([FromBody] AddManagerDTO dto)
         {
-            AdminSettingModel? token = TokenComm.TokenConvert(HttpContext.Request);
+            JObject? jobj = TokenComm.TokenConvert(HttpContext.Request);
 
-            if (token is not null)
+            // 아래부분 나중에 빼도록.
+            AdminSettingModel convert = new AdminSettingModel();
+            if (jobj["UserIdx"] is not null)
+                convert.UserIdx = Convert.ToInt32(jobj["UserIdx"]!.ToString());
+
+            if (jobj["Name"] is not null)
+                convert.UserName = jobj["Name"]!.ToString();
+
+            if (jobj["AdminIdx"] is not null)
+                convert.AdminIdx = Convert.ToInt32(jobj["AdminIdx"]!.ToString());
+
+            if (jobj["DepartIdx"] is not null)
+                convert.DepartmentIdx = Convert.ToInt32(jobj["DepartIdx"]!.ToString());
+
+            if (jobj["jti"] is not null)
+                convert.Jti = jobj["jti"]!.ToString();
+
+            if (jobj["DepartmentName"] is not null)
+                convert.DepartmentName = jobj["DepartmentName"].ToString();
+
+            if (jobj["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] is not null)
+                convert.Role = jobj["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]!.ToString();
+
+            if (jobj["exp"] is not null)
+                convert.Exp = jobj["exp"]!.ToString();
+
+            if (jobj["iss"] is not null)
+                convert.iss = jobj["iss"]!.ToString();
+
+            if (jobj["aud"] is not null)
+                convert.aud = jobj["aud"]!.ToString();
+
+            if (convert is not null)
             {
-                ResponseUnit<AdminTb>? model = await AdminService.AdminRegisterService(dto, token);
+                ResponseUnit<AdminTb>? model = await AdminService.AdminRegisterService(dto, convert);
 
                 if (model is not null)
                 {

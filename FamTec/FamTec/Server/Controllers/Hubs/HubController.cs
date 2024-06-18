@@ -47,19 +47,45 @@ namespace FamTec.Server.Controllers.Hubs
 
                     switch (Voctype)
                     {
+                        // 기계
                         case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 7:
-                            await HubContext.Clients.Group("SanitationRoom").SendAsync("ReceiveVoc", "알람방생?");
+                            await HubContext.Clients.Group("MachineRoom").SendAsync("ReceiveVoc", model.code);
                             return Ok(model);
+                        // 전기
+                        case 2:
+                            await HubContext.Clients.Group("ElectricityRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 승강
+                        case 3:
+                            await HubContext.Clients.Group("LiftRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 소방
+                        case 4:
+                            await HubContext.Clients.Group("VocFireRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 건축
+                        case 5:
+                            await HubContext.Clients.Group("ConstructRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 통신
+                        case 6:
+                            await HubContext.Clients.Group("NetworkRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 미화
+                        case 7:
+                            await HubContext.Clients.Group("SanitationRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 보안
+                        case 8:
+                            await HubContext.Clients.Group("SecurityRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        // 기타
+                        case 9:
+                            await HubContext.Clients.Group("DefaultRoom").SendAsync("ReceiveVoc", model.code);
+                            return Ok(model);
+                        default:
+                            return BadRequest();
                     }
-
-
-                    return Ok(model);
                 }
                 else
                 {
