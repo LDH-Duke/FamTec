@@ -103,7 +103,7 @@ namespace FamTec.Server.Services.Admin.Place
                     }
                     else
                     {
-                        return new ResponseList<AdminPlaceDTO>() { message = "데이터가 존재하지 않습니다.", data = new List<AdminPlaceDTO>(), code = 200 };
+                        return new ResponseList<AdminPlaceDTO>() { message = "데이터가 존재하지 않습니다.", data = new List<AdminPlaceDTO>(), code = 204 };
                     }
                 }
                 else

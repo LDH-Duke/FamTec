@@ -7,6 +7,7 @@ using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Building;
 using FamTec.Shared.Server.DTO.Floor;
 using FamTec.Shared.Server.DTO.Room;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR.Client;
 
@@ -35,33 +36,16 @@ namespace FamTec.Server.Controllers
             this.session = new SessionInfo();
         }
 
-        [HttpGet]
-        [Route("Temp")]
-        public async ValueTask<IActionResult> Temp()
-        {
-            HubConnection? hub = new HubConnectionBuilder()
-                .WithUrl(new Uri("/broadcastHub"))
-                .Build();
-
-            await hub.StartAsync();
-
-            await hub.InvokeAsync("SendMessageAsync", "123123", "SanitationRoom");
-            
-
-            return Ok("OK");
-        }
-
         /// <summary>
-        /// 사업장에 해당하는 건물리스트 출력 -- 확인해야함
+        /// 사업장에 해당하는 건물리스트 출력 [수정완료]
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        [Route("MyBuildings")]
+        [Route("sign/MyBuildings")]
         public async ValueTask<IActionResult> SelectMyBuilding()
         {
-            int placeidx = 31;
-            
-            ResponseList<BuildinglistDTO>? model = await BuildingService.GetBuilidngListService(placeidx);
+            ResponseList<BuildinglistDTO>? model = await BuildingService.GetBuilidngListService(HttpContext);
             
             if(model is not null)
             {
@@ -82,18 +66,15 @@ namespace FamTec.Server.Controllers
 
 
         /// <summary>
-        /// 사업장에 건물 추가
+        /// 사업장에 건물 추가 [수정완료]
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        [Route("Addbuilding")]
+        [Route("sign/AddBuilding")]
         public async ValueTask<IActionResult> InsertBuilding([FromBody]BuildingsDTO dto)
         {
-            // 토큰내용
-            int placeidx = 4;
-            
-            ResponseUnit<bool> model = await BuildingService.AddBuildingService(dto, placeidx);
+            ResponseUnit<bool> model = await BuildingService.AddBuildingService(HttpContext, dto);
 
             if(model is not null)
             {
@@ -112,7 +93,6 @@ namespace FamTec.Server.Controllers
             }
         }
 
-  
         /*
         [HttpPost]
         [Route("DeleteBuilding")]

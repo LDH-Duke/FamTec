@@ -97,6 +97,9 @@
 <input type="button" @onclick="async() => await btnSubmit()" value="등록"/>
 @code {
     [Parameter]
+    public string PlaceId{ get; set; }
+
+    [Parameter]
     public string buildingid{ get; set; }
 
     private VocDTO? dto;
@@ -112,6 +115,7 @@
     {
         dto = new VocDTO();
         dto.buildingidx = Int32.Parse(buildingid); // 해당 빌딩 INDEX -- QR로 넘어옴
+        dto.PlaceIdx = Int32.Parse(PlaceId); // 해당 빌딩이 속해있는 PlaceID
     }
 
     protected async Task LoadFiles(InputFileChangeEventArgs e)

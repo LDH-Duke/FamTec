@@ -31,6 +31,7 @@ using FamTec.Server.Tokens;
 using FamTec.Server.Services.Voc;
 using FamTec.Server.Repository.Voc;
 using FamTec.Server.Repository.Alarm;
+using System.Reflection.PortableExecutable;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -177,6 +178,20 @@ app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Login/sign"
 {
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
+
+
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Voc/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
+
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Building/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
+
+// Middle Ware 추가 해야함.
+
 
 #endregion
 

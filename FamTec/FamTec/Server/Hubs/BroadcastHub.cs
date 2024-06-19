@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 
 namespace FamTec.Server.Hubs
 {
@@ -10,6 +11,7 @@ namespace FamTec.Server.Hubs
         /// <param name="userid"></param>
         /// <param name="roomName"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task JoinRoomAsync(string roomName)
         {
             /*
@@ -28,6 +30,7 @@ namespace FamTec.Server.Hubs
         /// <param name="userid"></param>
         /// <param name="roomName"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task RemoveRoomAsync(string roomName)
         {
             Console.WriteLine(Context.ConnectionId);
@@ -35,26 +38,12 @@ namespace FamTec.Server.Hubs
             await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} {roomName} Remove Success");
         }
 
-        /// <summary>
-        /// GROUP MESSAGE
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="roomName"></param>
-        /// <returns></returns>
         public async Task SendMessageAsync(string message, string roomName)
-        {
-            await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{message}");
-        }
-
-        public async Task SendMessageAsync2(string message, string roomName)
         {
             await Clients.Group(roomName).SendAsync("ReceiveVoc", $"{message}");
         }
 
-        public async Task SendMessage(string message)
-        {
-            await Clients.All.SendAsync("AlarmSelect", message);
-        }
+      
 
 
     }

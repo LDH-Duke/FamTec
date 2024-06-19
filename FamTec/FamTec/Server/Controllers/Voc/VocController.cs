@@ -2,6 +2,7 @@
 using FamTec.Server.Tokens;
 using FamTec.Shared.Client.DTO.Normal.Voc;
 using FamTec.Shared.Server.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -13,26 +14,44 @@ namespace FamTec.Server.Controllers.Voc
     public class VocController : ControllerBase
     {
         private IVocService VocService;
-        private ITokenComm TokenComm;
 
-        public VocController(IVocService _vocservice, ITokenComm _tokencomm)
+        public VocController(IVocService _vocservice)
         {
             this.VocService = _vocservice;
-            this.TokenComm = _tokencomm;
         }
 
+        // placeidx
+        // date = 2024
+        [AllowAnonymous]
         [HttpGet]
-        [Route("GetVocList")]
-        public async ValueTask<IActionResult> GetVocList([FromQuery]int placeidx, [FromQuery]string date)
+        [Route("sign/GetVocList")]
+        public async ValueTask<IActionResult> GetVocList([FromQuery]string date)
         {
-            JObject? jobj = TokenComm.TokenConvert(HttpContext.Request);
+            try
+            {
+                ResponseList<ListVoc>? model = await VocService.GetVocList(HttpContext, date);
 
-            ResponseList<ListVoc>? model = await VocService.GetVocList(jobj, placeidx, date);
-
-            // placeidx
-            // date = 2024
-
-            return Ok(model);
+                if (model is not null)
+                {
+                    if (model.code == 200)
+                    {
+                        return Ok(model);
+                    }
+                    else
+                    {
+                        return BadRequest();
+                    }
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(StatusCodes.Status500InternalServerError);
+            }
         }
+
     }
 }

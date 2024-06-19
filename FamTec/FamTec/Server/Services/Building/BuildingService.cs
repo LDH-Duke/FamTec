@@ -3,6 +3,7 @@ using FamTec.Shared;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Building;
+using Newtonsoft.Json.Linq;
 
 namespace FamTec.Server.Services.Building
 {
@@ -24,11 +25,19 @@ namespace FamTec.Server.Services.Building
         /// <param name="dto"></param>
         /// <param name="placeidx"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<bool>> AddBuildingService(BuildingsDTO? dto, int? placeidx )
+        public async ValueTask<ResponseUnit<bool>> AddBuildingService(HttpContext? context, BuildingsDTO? dto)
         {
             try
             {
-                if(dto is not null && placeidx is not null)
+                if(context is null)
+                    return new ResponseUnit<bool>() { message = "잘못된 요청입니다.", data = false, code = 404 };
+                if (dto is null)
+                    return new ResponseUnit<bool>() { message = "잘못된 요청입니다.", data = false, code = 404 };
+
+                JObject? parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()!));
+                int? placeidx = Int32.Parse(parse["PlaceIdx"]!.ToString());
+
+                if (dto is not null && placeidx is not null)
                 {
                     BuildingTb? model = new BuildingTb
                     {
@@ -75,9 +84,6 @@ namespace FamTec.Server.Services.Building
                         WomenToiletNum = dto.WomenToiletNum,
                         FireRating = dto.FireRating,
                         SepticTankCapacity = dto.SepticTankCapacity,
-                        
-
-                        // 토큰부분
                         PlaceTbId = placeidx
                     };
 
@@ -89,7 +95,7 @@ namespace FamTec.Server.Services.Building
                     }
                     else
                     {
-                        return new ResponseUnit<bool>() { message = "요청이 처리되지 않았습니다.", data = false, code = 404 };
+                        return new ResponseUnit<bool>() { message = "요청이 처리되지 않았습니다.", data = false, code = 203 };
                     }
                 }
                 else
@@ -109,12 +115,16 @@ namespace FamTec.Server.Services.Building
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseList<BuildinglistDTO>> GetBuilidngListService(int? placeidx)
+        public async ValueTask<ResponseList<BuildinglistDTO>> GetBuilidngListService(HttpContext? context)
         {
             try
             {
-                if (placeidx is not null)
+                if (context is not null)
                 {
+                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
+
+                    int placeidx = Int32.Parse(parse["PlaceIdx"]!.ToString());
+
                     List<BuildingTb>? model = await BuildingRepository.GetAllBuildingList(placeidx);
 
                     if (model is [_, ..])
@@ -125,6 +135,7 @@ namespace FamTec.Server.Services.Building
                             data = model.Select(e => new BuildinglistDTO
                             {
                                 ID = e.Id,
+                                PlaceID = e.PlaceTbId,
                                 Name = e.Name,
                                 Address = e.Address,
                                 FloorNum = e.FloorNum,

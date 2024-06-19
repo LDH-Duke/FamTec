@@ -14,6 +14,11 @@ namespace FamTec.Shared.Server.DTO.Building
         // 인덱스
         public int? ID { get; set; }
 
+        /// <summary>
+        /// 사업장 인덱스
+        /// </summary>
+        public int? PlaceID { get; set; }
+
         // 건물이름
         public string? Name { get; set; }
 
@@ -28,5 +33,7 @@ namespace FamTec.Shared.Server.DTO.Building
 
         // 등록일자
         public DateTime? CreateDT { get; set; }
+
+        
     }
 }

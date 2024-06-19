@@ -62,14 +62,16 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ResponseList<BuildinglistDTO>? response = await httpClient.GetFromJsonAsync<ResponseList<BuildinglistDTO>>("http://123.2.156.148:5245/api/Building/MyBuildings");
+        ResponseList<BuildinglistDTO>? response = await httpClient.GetFromJsonAsync<ResponseList<BuildinglistDTO>>("http://123.2.156.148:5245/api/Building/sign/MyBuildings");
         buildinglist = response?.data;
     }
 
     private async Task QRDownload(BuildinglistDTO dto)
     {
-        // qr생성데이터, 건물이름
-        await JS.InvokeVoidAsync("qrcreate", $"http://123.2.156.148:5245/VocSubmit/{dto.ID}", dto.Name);
+        // qr생성데이터
+        // 사업장인덱스, 건물인덱스
+        // 파일명 : 건물이름
+        await JS.InvokeVoidAsync("qrcreate", $"http://123.2.156.148:5245/VocSubmit/{dto.PlaceID}/{dto.ID}", dto.Name);
 
     }
 }

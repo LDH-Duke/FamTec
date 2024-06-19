@@ -79,7 +79,6 @@ namespace FamTec.Server.Services.Admin.Account
                                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString() ?? ""),
                                     };
 
-
                                     /* 토큰에 같이 넣고싶은 데이터 */
                                     authClaims.Add(new Claim("DepartmentName",  departmenttb.Name ?? ""));
 

@@ -20,6 +20,9 @@ namespace FamTec.Server.Services.User
         /// <returns></returns>
         public ValueTask<ResponseUnit<string>?> UserLoginService(LoginDTO? dto);
 
+
+        public ValueTask<ResponseUnit<string>?> LoginSelectPlaceService(HttpContext context, int? placeid);
+
         /// <summary>
         /// 해당사업장의 USERLIST 출력
         /// </summary>

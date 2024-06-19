@@ -87,8 +87,9 @@
                     #region SignalR 그룹 조인
                    
                     /*
-                     * IF 문에 걸어서 해당하는 권한 모두 JOIN 해줘야함.
+                     * IF 문에 걸어서 해당하는 권한 모두 JOIN 해줘야함. --> RoomName은 사업장 + 권한으로 이름 명명해서
                      */
+
                     await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "MachineRoom"); // 기계 Voc 권한
                     await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "ElectricityRoom"); // 전기 Voc 권한
                     await HubObject.hubConnection!.InvokeAsync("JoinRoomAsync", "LiftRoom"); // 승강 Voc 권한

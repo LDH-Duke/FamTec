@@ -42,5 +42,10 @@ namespace FamTec.Shared.Client.DTO
         /// 빌딩 인덱스
         /// </summary>
         public int? buildingidx { get; set; }
+
+        /// <summary>
+        /// 사업장 인덱스
+        /// </summary>
+        public int? PlaceIdx { get; set; }
     }
 }

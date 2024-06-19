@@ -9,6 +9,7 @@ using FamTec.Shared.Client.DTO.Normal.Users;
 using FamTec.Shared.Client.DTO.Normal.Voc;
 using FamTec.Shared.Model;
 using FamTec.Shared.Server.DTO;
+using Microsoft.AspNetCore.Http.Features;
 using Newtonsoft.Json.Linq;
 
 namespace FamTec.Server.Services.Voc
@@ -41,16 +42,14 @@ namespace FamTec.Server.Services.Voc
             this.LogService = _logservice;
         }
 
-        public async ValueTask<ResponseList<ListVoc>?> GetVocList(JObject? jobj, int? placeidx, string? date)
+        public async ValueTask<ResponseList<ListVoc>?> GetVocList(HttpContext? context, string? date)
         {
-            if (jobj is null)
-                return null;
-            if (placeidx is null)
+            if (context is null)
                 return null;
             if (date is null)
                 return null;
 
-            string? UserType = jobj["USERTYPE"].ToString();
+            string? UserType = context.Items["UserType"].ToString();
 
             if (UserType is null)
             {
@@ -65,7 +64,7 @@ namespace FamTec.Server.Services.Voc
             // 관리자 일때
             if(UserType.Equals("ADMIN"))
             {
-                int? AdminIdx = Int32.Parse(jobj["AdminIdx"].ToString());
+                int? AdminIdx = Int32.Parse(context.Items["AdminIdx"].ToString());
 
                 if(AdminIdx is null)
                 {
@@ -81,7 +80,9 @@ namespace FamTec.Server.Services.Voc
 
                 if(placelist is [_, ..])
                 {
-                    AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == placeidx);
+                    // JObject parse
+                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
+                    AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == Int32.Parse(parse["PlaceIdx"].ToString()));
 
                     if(adminplace is not null)
                     {
@@ -159,9 +160,9 @@ namespace FamTec.Server.Services.Voc
             }
             else // 일반 유저일때
             {
-                int? UserIdx = Int32.Parse(jobj["UserIdx"].ToString());
+                int? UserIdx = Int32.Parse(context.Items["UserIdx"].ToString());
 
-                JObject obj = new JObject(JObject.Parse(jobj["UserPerms"].ToString()));
+                JObject obj = new JObject(JObject.Parse(context.Items["UserPerms"].ToString()));
                 int? VocPerm = Int32.Parse(obj["User_PermVoc"].ToString());
                 
 

@@ -22,6 +22,6 @@ namespace FamTec.Server.Services.Voc
         /// <param name="placeidx"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public ValueTask<ResponseList<ListVoc>?> GetVocList(JObject? obj, int? placeidx, string? date);
+        public ValueTask<ResponseList<ListVoc>?> GetVocList(HttpContext context, string? date);
     }
 }
