@@ -18,12 +18,5 @@ namespace FamTec.Shared.Server.Unit
         /// 단위명
         /// </summary>
         public string? Unit { get; set; }
-
-        /// <summary>
-        /// 사업장코드
-        /// </summary>
-        public int? PlaceCode { get; set; }
-
-
     }
 }

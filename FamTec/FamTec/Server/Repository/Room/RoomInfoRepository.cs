@@ -52,43 +52,18 @@ namespace FamTec.Server.Repository.Room
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async ValueTask<List<RoomTb>?> GetRoomList(List<FloorTb?> model)
+        public async ValueTask<List<RoomTb>?> GetRoomList(int? flooridx)
         {
             try
             {
-                if(model is [_, ..])
+                if (flooridx is not null)
                 {
-                    List<RoomTb>? room = await context.RoomTbs.Where(m => m.DelYn != 1).ToListAsync();
+                    List<RoomTb>? model = await context.RoomTbs.Where(m => m.DelYn != 1 && m.FloorTbId == flooridx).ToListAsync();
 
-                    if(room is [_, ..])
-                    {
-                        List<RoomTb>? result = (from floortb in model
-                                                join roomtb in room
-                                                on floortb.Id equals roomtb.FloorTbId
-                                                where floortb.DelYn != 1 && roomtb.DelYn != 1
-                                                select new RoomTb
-                                                {
-                                                    Id = roomtb.Id,
-                                                    Name = roomtb.Name,
-                                                    CreateDt = roomtb.CreateDt,
-                                                    CreateUser = roomtb.CreateUser,
-                                                    UpdateDt = roomtb.UpdateDt,
-                                                    UpdateUser = roomtb.UpdateUser,
-                                                    DelYn = roomtb.DelYn,
-                                                    DelDt = roomtb.DelDt,
-                                                    DelUser = roomtb.DelUser,
-                                                    FloorTbId = roomtb.FloorTbId
-                                                }).ToList();
-                        if (result is [_, ..])
-                            return result;
-                        else
-                            return null;
-                    }
+                    if (model is [_, ..])
+                        return model;
                     else
-                    {
                         return null;
-                    }
-
                 }
                 else
                 {
@@ -133,6 +108,7 @@ namespace FamTec.Server.Repository.Room
                 throw new ArgumentNullException();
             }
         }
+
 
     }
 }

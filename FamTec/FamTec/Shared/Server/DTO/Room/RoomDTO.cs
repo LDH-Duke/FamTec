@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace FamTec.Shared.Server.DTO.Room
 {
+    /// <summary>
+    /// 공간 추가용 DTO
+    /// </summary>
     public class RoomDTO
     {
         /// <summary>
-        /// 공간 테이블 INDEX
-        /// </summary>
-        public int RoomID { get; set; }
-
-        /// <summary>
-        /// 공간 명칭
+        /// 공간이름
         /// </summary>
         public string? Name { get; set; }
 
         /// <summary>
-        /// 층테이블 인덱스
+        /// 층 인덱스
         /// </summary>
-        public int? FloorTBID { get; set; }
+        public int? FloorID { get; set; }
     }
 }

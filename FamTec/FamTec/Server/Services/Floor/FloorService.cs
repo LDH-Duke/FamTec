@@ -3,6 +3,7 @@ using FamTec.Server.Repository.Place;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Floor;
 using System.Collections.Generic;
 
@@ -12,9 +13,6 @@ namespace FamTec.Server.Services.Floor
     {
         private readonly IFloorInfoRepository FloorInfoRepository;
 
-        ResponseOBJ<FloorDTO> Response;
-        Func<string, FloorDTO, int, ResponseModel<FloorDTO>> FuncResponseOBJ;
-        Func<string, List<FloorDTO>, int, ResponseModel<FloorDTO>> FuncResponseList;
 
         ResponseOBJ<string> strResponse;
         Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
@@ -23,71 +21,17 @@ namespace FamTec.Server.Services.Floor
         {
             this.FloorInfoRepository = _floorinforepository;
 
-            Response = new ResponseOBJ<FloorDTO>();
-            FuncResponseOBJ = Response.RESPMessage;
-            FuncResponseList = Response.RESPMessageList;
-
             strResponse = new ResponseOBJ<string>();
             FuncResponseSTR = strResponse.RESPMessage;
 
         }
 
         /// <summary>
-        /// 층정보 추가
-        /// </summary>
-        /// <param name="dto"></param>
-        /// <param name="session"></param>
-        /// <returns></returns>
-        public async ValueTask<ResponseModel<FloorDTO>?> AddFloorService(FloorDTO? dto, SessionInfo? session)
-        {
-            try
-            {
-                if (dto is not null)
-                {
-                    FloorTb tb = new FloorTb
-                    {
-                        Name = dto.Name,
-                        CreateDt = DateTime.Now,
-                        CreateUser = session.Name,
-                        UpdateDt = DateTime.Now,
-                        UpdateUser = session.Name,
-                        BuildingTbId = dto.BuildingTBID
-                    };
-
-                    FloorTb? result = await FloorInfoRepository.AddAsync(tb);
-
-                    if(result is not null)
-                    {
-                        return FuncResponseOBJ("층 정보 추가 완료", new FloorDTO
-                        {
-                            Name = result.Name,
-                            BuildingTBID = result.BuildingTbId
-                        }, 200);
-                    }
-                    else
-                    {
-                        return FuncResponseOBJ("층 정보 추가 실패", null, 200);
-                    }
-                }
-                else
-                {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
-                }
-            }
-            catch(Exception ex)
-            {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
-            }
-        }
-
-
-
-        /// <summary>
         /// 건물에 속해있는 층 리스트 반환
         /// </summary>
         /// <param name="buildingtbid"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<FloorDTO>?> GetFloorListService(int? buildingtbid)
+        public async ValueTask<ResponseList<FloorDTO>?> GetFloorListService(int? buildingtbid)
         {
             try
             {
@@ -97,26 +41,31 @@ namespace FamTec.Server.Services.Floor
 
                     if(model is [_, ..])
                     {
-                        return FuncResponseList("전체데이터 조회 성공", model.Select(e => new FloorDTO
+                        return new ResponseList<FloorDTO>()
                         {
-                            FloorID = e.Id,
-                            Name = e.Name,
-                            BuildingTBID = e.BuildingTbId
-                        }).ToList(), 200);
+                            message = "요청이 정상 처리되었습니다.",
+                            data = model.Select(e => new FloorDTO
+                            {
+                                FloorID = e.Id,
+                                Name = e.Name,
+                                BuildingTBID = e.BuildingTbId
+                            }).ToList(),
+                            code = 200
+                        };
                     }
                     else
                     {
-                        return FuncResponseOBJ("데이터 조회 실패", null, 200);
+                        return new ResponseList<FloorDTO>() { message = "데이터가 존재하지 않습니다.", data = new List<FloorDTO>(), code = 200 };
                     }
                 }
                 else
                 {
-                    return FuncResponseOBJ("잘못된 요청 입니다.", null, 404);
+                    return new ResponseList<FloorDTO>() { message = "잘못된 요청입니다.", data = new List<FloorDTO>(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseList<FloorDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<FloorDTO>(), code = 500 };
             }
         }
 

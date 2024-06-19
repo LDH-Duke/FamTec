@@ -168,29 +168,35 @@ app.UseRouting();
 
 #region MiddleWare
 
-/*
-app.UseWhen(context => context.Request.Path.Equals("/api/Login/SystemManager"), appBuilder =>
-{
-    appBuilder.UseMiddleware<JwtMiddleware>();
-});
-*/
+// Login 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Login/sign"), appBuilder =>
 {
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
 
-
+// Voc 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Voc/sign"), appBuilder =>
 {
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
 
+// Building 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Building/sign"), appBuilder =>
 {
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
 
-// Middle Ware 추가 해야함.
+// Unit 컨트롤러 미들웨어 추가
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Unit/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
+
+// Room 컨트롤러 미들웨어 추가
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Room/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
 
 
 #endregion

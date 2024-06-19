@@ -2,7 +2,9 @@
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Model;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.Unit;
+using Newtonsoft.Json.Linq;
 
 namespace FamTec.Server.Services.Unit
 {
@@ -35,46 +37,56 @@ namespace FamTec.Server.Services.Unit
         /// <param name="dto"></param>
         /// <param name="sessioninfo"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UnitsDTO>> AddUnitService(UnitsDTO? dto, SessionInfo? sessioninfo)
+        public async ValueTask<ResponseUnit<UnitsDTO>> AddUnitService(HttpContext? context,UnitsDTO? dto)
         {
             try
             {
-                if (dto is not null && sessioninfo is not null)
+                if(context is null)
+                    return new ResponseUnit<UnitsDTO>() { message = "잘못된 요청입니다.", data = new UnitsDTO(), code = 404 };
+                if (dto is null)
+                    return new ResponseUnit<UnitsDTO>() { message = "잘못된 요청입니다.", data = new UnitsDTO(), code = 404 };
+                
+                if (context is not null && dto is not null)
                 {
+                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
+
                     UnitTb? model = new UnitTb
                     {
                         Unit = dto.Unit,
                         CreateDt = DateTime.Now,
-                        CreateUser = sessioninfo.Name,
+                        CreateUser = context.Items["Name"].ToString(),
                         UpdateDt = DateTime.Now,
-                        UpdateUser = sessioninfo.Name,
-                        PlaceTbId = sessioninfo.selectPlace
+                        UpdateUser = context.Items["Name"].ToString(),
+                        PlaceTbId = Int32.Parse(parse["PlaceIdx"].ToString())
                     };
 
                     UnitTb? result = await UnitInfoRepository.AddAsync(model);
 
                     if(result is not null)
                     {
-                        return FuncResponseOBJ("단위정보 등록 완료", new UnitsDTO
-                        {
-                            Id = result.Id,
-                            Unit = result.Unit,
-                            PlaceCode = sessioninfo.selectPlace
-                        }, 200);
+                        return new ResponseUnit<UnitsDTO>() {
+                            message = "데이터가 정상 처리되었습니다.",
+                            data = new UnitsDTO() 
+                            { 
+                                Id = result.Id, 
+                                Unit = result.Unit,
+                            },
+                            code = 200
+                        };
                     }
                     else
                     {
-                        return FuncResponseOBJ("단위정보 등록 실패", null, 200);
+                        return new ResponseUnit<UnitsDTO>() { message = "잘못된 요청입니다.", data = new UnitsDTO(), code = 404 };
                     }
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 404);
+                    return new ResponseUnit<UnitsDTO>() { message = "잘못된 요청입니다.", data = new UnitsDTO(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 500);
+                return new ResponseUnit<UnitsDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new UnitsDTO(), code = 500 };
             }
         }
 
@@ -85,36 +97,38 @@ namespace FamTec.Server.Services.Unit
         /// </summary>
         /// <param name="sessioninfo"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseModel<UnitsDTO>?> GetUnitList(SessionInfo? sessioninfo)
+        public async ValueTask<ResponseList<UnitsDTO>?> GetUnitList(HttpContext? context)
         {
             try
             {
-                if (sessioninfo is not null)
-                {
-                    List<UnitTb>? model = await UnitInfoRepository.GetUnitList(sessioninfo.selectPlace);
+                if (context is null)
+                    return new ResponseList<UnitsDTO>() { message = "잘못된 요청입니다.", data = new List<UnitsDTO>(), code = 404 };
 
-                    if(model is [_, ..])
+                JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
+
+                List<UnitTb>? model = await UnitInfoRepository.GetUnitList(Int32.Parse(parse["PlaceIdx"].ToString()));
+
+                if(model is [_, ..])
+                {
+                    return new ResponseList<UnitsDTO>()
                     {
-                        return FuncResponseList("전체데이터 조회 성공", model.Select(e => new UnitsDTO
+                        message = "요청이 정상 처리되었습니다.",
+                        data = model.Select(e => new UnitsDTO
                         {
                             Id = e.Id,
-                            Unit = e.Unit,
-                            PlaceCode = e.PlaceTbId
-                        }).ToList(), 200);
-                    }
-                    else
-                    {
-                        return FuncResponseOBJ("데이터가 존재하지 않습니다.", null, 200);
-                    }
+                            Unit = e.Unit
+                        }).ToList(),
+                        code = 200
+                    };
                 }
                 else
                 {
-                    return FuncResponseOBJ("요청이 잘못되었습니다.", null, 200);
+                    return new ResponseList<UnitsDTO>() { message = "데이터가 존재하지 않습니다.", data = new List<UnitsDTO>(), code = 200 };
                 }
             }
             catch(Exception ex)
             {
-                return FuncResponseOBJ("서버에서 요청을 처리하지 못하였습니다.", null, 200);
+                return new ResponseList<UnitsDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<UnitsDTO>(), code = 500 };
             }
         }
 

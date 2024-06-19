@@ -18,7 +18,7 @@ namespace FamTec.Server.Repository.Room
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        ValueTask<List<RoomTb>?> GetRoomList(List<FloorTb?> model);
+        ValueTask<List<RoomTb>?> GetRoomList(int? flooridx);
 
  
 

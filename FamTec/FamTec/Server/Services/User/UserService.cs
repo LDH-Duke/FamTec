@@ -100,7 +100,6 @@ namespace FamTec.Server.Services.User
                             }
 
 
-                            // 세무내용 뽑는게 있어야함.
                             JObject parse = new JObject(JObject.Parse(context.Items["UserPerms"].ToString()));
                             JObject items = new JObject();
 

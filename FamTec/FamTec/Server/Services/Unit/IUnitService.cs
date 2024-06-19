@@ -1,5 +1,6 @@
 ﻿using FamTec.Shared;
 using FamTec.Shared.DTO;
+using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.Unit;
 
 namespace FamTec.Server.Services.Unit
@@ -11,7 +12,7 @@ namespace FamTec.Server.Services.Unit
         /// </summary>
         /// <param name="sessioninfo"></param>
         /// <returns></returns>
-        ValueTask<ResponseModel<UnitsDTO>?> GetUnitList(SessionInfo? sessioninfo);
+        ValueTask<ResponseList<UnitsDTO>?> GetUnitList(HttpContext? context);
 
         /// <summary>
         /// 단위정보 추가
@@ -19,7 +20,7 @@ namespace FamTec.Server.Services.Unit
         /// <param name="dto"></param>
         /// <param name="sessioninfo"></param>
         /// <returns></returns>
-        public ValueTask<ResponseModel<UnitsDTO>> AddUnitService(UnitsDTO? dto, SessionInfo? sessioninfo);
+        public ValueTask<ResponseUnit<UnitsDTO>> AddUnitService(HttpContext? context, UnitsDTO? dto);
 
         /// <summary>
         /// 단위정보 삭제

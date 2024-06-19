@@ -1,6 +1,5 @@
 ﻿using FamTec.Server.Services.Building;
 using FamTec.Server.Services.Floor;
-using FamTec.Server.Services.Room;
 using FamTec.Shared;
 using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
@@ -19,19 +18,16 @@ namespace FamTec.Server.Controllers
     {
         private IBuildingService BuildingService;
         private IFloorService FloorService;
-        private IRoomService RoomService;
 
 
         private SessionInfo session;
 
         public BuildingController(IBuildingService _buildingservice,
-            IFloorService _floorservice,
-            IRoomService _roomservice)
+            IFloorService _floorservice)
         {
             this.BuildingService = _buildingservice;
             this.FloorService = _floorservice;
 
-            this.RoomService = _roomservice;
 
             this.session = new SessionInfo();
         }
@@ -93,30 +89,27 @@ namespace FamTec.Server.Controllers
             }
         }
 
-        /*
-        [HttpPost]
-        [Route("DeleteBuilding")]
-        public async ValueTask<IActionResult> DeleteMyBuilding([FromBody] List<int> idx)
-        {
-            ResponseModel<string>? model = await BuildingService.DeleteBuildingService(idx, session);
-            return Ok(model);
-        }
-        */
-
-        [HttpPost]
-        [Route("AddFloor")]
-        public async ValueTask<IActionResult> AddFloor([FromBody]FloorDTO dto)
-        {
-            ResponseModel<FloorDTO>? model = await FloorService.AddFloorService(dto, session);
-            return Ok(model);
-        }
-
+        [AllowAnonymous]
         [HttpGet]
-        [Route("GetFloorList/{buildingid?}")]
-        public async ValueTask<IActionResult> GetFloorList(int buildingid)
+        [Route("sign/GetFloorList")]
+        public async ValueTask<IActionResult> GetFloorList([FromQuery]int buildingid)
         {
-            ResponseModel<FloorDTO>? model = await FloorService.GetFloorListService(buildingid);
-            return Ok(model);
+            ResponseList<FloorDTO>? model = await FloorService.GetFloorListService(buildingid);
+            if(model is not null)
+            {
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
         [HttpPost]
@@ -127,13 +120,7 @@ namespace FamTec.Server.Controllers
             return Ok(model);
         }
 
-        [HttpPost]
-        [Route("AddRoom")]
-        public async ValueTask<IActionResult> AddRoom([FromBody]RoomDTO dto)
-        {
-            ResponseModel<RoomDTO>? model = await RoomService.AddRoomService(dto, session);
-            return Ok(model);
-        }
+    
 
     }
 }
