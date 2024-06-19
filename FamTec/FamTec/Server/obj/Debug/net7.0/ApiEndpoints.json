@@ -280,22 +280,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FamTec.Server.Controllers.Admin.AdminUserController",
-    "Method": "UserSearch",
-    "RelativePath": "api/AdminUser/UserSearch",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.User.UsersDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "FamTec.Server.Controllers.BuildingController",
     "Method": "DeleteFloor",
     "RelativePath": "api/Building/DeleteFloor",
@@ -561,17 +545,11 @@
   {
     "ContainingType": "FamTec.Server.Controllers.User.UserController",
     "Method": "GetUserList",
-    "RelativePath": "api/User/GetPlaceUsers",
+    "RelativePath": "api/User/sign/GetPlaceUsers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "placeid",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

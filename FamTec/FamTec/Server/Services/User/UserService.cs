@@ -75,7 +75,7 @@ namespace FamTec.Server.Services.User
                             // 토큰반환 - 다시만들어야함.
                             authClaims.Add(new Claim("UserIdx", context.Items["UserIdx"].ToString())); // USER 인덱스
                             authClaims.Add(new Claim("Name", context.Items["Name"].ToString())); // 이름
-                            authClaims.Add(new Claim("Jti", context.Items["Jti"].ToString()));
+                            authClaims.Add(new Claim("jti", context.Items["jti"].ToString()));
                             authClaims.Add(new Claim("AlarmYN", context.Items["AlarmYN"].ToString())); // 알람 받을지 여부
                             authClaims.Add(new Claim("AdminYN", context.Items["AdminYN"].ToString())); // 관리자 여부
                             authClaims.Add(new Claim("UserType", context.Items["UserType"].ToString()));
@@ -100,39 +100,39 @@ namespace FamTec.Server.Services.User
                             }
 
 
-                            JObject parse = new JObject(JObject.Parse(context.Items["UserPerms"].ToString()));
+                            
                             JObject items = new JObject();
 
                             /* 메뉴 접근권한 */
-                            items.Add("UserPerm_Basic", parse["UserPerm_Basic"].ToString());
-                            items.Add("UserPerm_Machine", parse["UserPerm_Machine"].ToString());
-                            items.Add("UserPerm_Elec", parse["UserPerm_Elec"].ToString());
-                            items.Add("UserPerm_Lift", parse["UserPerm_Lift"].ToString());
-                            items.Add("UserPerm_Fire", parse["UserPerm_Fire"].ToString());
-                            items.Add("UserPerm_Construct", parse["UserPerm_Construct"].ToString());
-                            items.Add("UserPerm_Network", parse["UserPerm_Network"].ToString());
-                            items.Add("UserPerm_Beauty", parse["UserPerm_Beauty"].ToString());
-                            items.Add("UserPerm_Security", parse["UserPerm_Security"].ToString());
-                            items.Add("UserPerm_Material", parse["UserPerm_Material"].ToString());
-                            items.Add("UserPerm_Energy", parse["UserPerm_Energy"].ToString());
-                            items.Add("UserPerm_User", parse["UserPerm_User"].ToString());
-                            items.Add("UserPerm_Voc", parse["UserPerm_Voc"].ToString());
+                            items.Add("UserPerm_Basic", context.Items["UserPerm_Basic"].ToString());
+                            items.Add("UserPerm_Machine", context.Items["UserPerm_Machine"].ToString());
+                            items.Add("UserPerm_Elec", context.Items["UserPerm_Elec"].ToString());
+                            items.Add("UserPerm_Lift", context.Items["UserPerm_Lift"].ToString());
+                            items.Add("UserPerm_Fire", context.Items["UserPerm_Fire"].ToString());
+                            items.Add("UserPerm_Construct", context.Items["UserPerm_Construct"].ToString());
+                            items.Add("UserPerm_Network", context.Items["UserPerm_Network"].ToString());
+                            items.Add("UserPerm_Beauty", context.Items["UserPerm_Beauty"].ToString());
+                            items.Add("UserPerm_Security", context.Items["UserPerm_Security"].ToString());
+                            items.Add("UserPerm_Material", context.Items["UserPerm_Material"].ToString());
+                            items.Add("UserPerm_Energy", context.Items["UserPerm_Energy"].ToString());
+                            items.Add("UserPerm_User", context.Items["UserPerm_User"].ToString());
+                            items.Add("UserPerm_Voc", context.Items["UserPerm_Voc"].ToString());
                             jsonConvert = JsonConvert.SerializeObject(items);
                             authClaims.Add(new Claim("UserPerms", jsonConvert));
 
                             /* VOC 권한 */
-                            parse = new JObject(JObject.Parse(context.Items["VocPerms"].ToString()));
+                            
                             items = new JObject();
                             
-                            items.Add("VocMachine", parse["VocMachine"].ToString()); // 기계민원 처리권한
-                            items.Add("VocElec", parse["VocElec"].ToString()); // 전기민원 처리권한
-                            items.Add("VocLift", parse["VocLift"]); // 승강민원 처리권한
-                            items.Add("VocFire", parse["VocFire"].ToString()); // 소방민원 처리권한
-                            items.Add("VocConstruct", parse["VocConstruct"].ToString()); // 건축민원 처리권한
-                            items.Add("VocNetwork", parse["VocNetwork"].ToString()); // 통신민원 처리권한
-                            items.Add("VocBeauty", parse["VocBeauty"].ToString()); // 미화민원 처리권한
-                            items.Add("VocSecurity", parse["VocSecurity"].ToString()); // 보안민원 처리권한
-                            items.Add("VocDefault", parse["VocDefault"].ToString()); // 기타 처리권한
+                            items.Add("VocMachine", context.Items["VocMachine"].ToString()); // 기계민원 처리권한
+                            items.Add("VocElec", context.Items["VocElec"].ToString()); // 전기민원 처리권한
+                            items.Add("VocLift", context.Items["VocLift"].ToString()); // 승강민원 처리권한
+                            items.Add("VocFire", context.Items["VocFire"].ToString()); // 소방민원 처리권한
+                            items.Add("VocConstruct", context.Items["VocConstruct"].ToString()); // 건축민원 처리권한
+                            items.Add("VocNetwork", context.Items["VocNetwork"].ToString()); // 통신민원 처리권한
+                            items.Add("VocBeauty", context.Items["VocBeauty"].ToString()); // 미화민원 처리권한
+                            items.Add("VocSecurity", context.Items["VocSecurity"].ToString()); // 보안민원 처리권한
+                            items.Add("VocDefault", context.Items["VocDefault"].ToString()); // 기타 처리권한
                             jsonConvert = JsonConvert.SerializeObject(items);
                             authClaims.Add(new Claim("VocPerms", jsonConvert));
                             
@@ -400,236 +400,58 @@ namespace FamTec.Server.Services.User
         
 
         /// <summary>
-        /// 아이디 중복검사
+        /// 로그인한 사업장의 사용자 LIST 반환
         /// </summary>
-        /// <param name="userid"></param>
+        /// <param name="placeidx"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<UsersDTO>?> UserIdCheck(string? userid)
+        public async ValueTask<ResponseList<ListUser>> GetPlaceUserList(HttpContext? context)
         {
             try
             {
-                if(!String.IsNullOrWhiteSpace(userid))
+                if (context is null)
+                    return new ResponseList<ListUser>() { message = "잘못된 요청입니다.", data = new List<ListUser>(), code = 404 };
+
+                
+                int? placeidx = Int32.Parse(context.Items["PlaceIdx"].ToString());
+
+                if (placeidx is not null)
                 {
-                    UserTb? model = await UserInfoRepository.UserIdCheck(userid);
-                    
-                    if(model is not null)
+                    List<UserTb>? model = await UserInfoRepository.GetPlaceUserList(placeidx);
+
+                    if (model is [_, ..])
                     {
-                        return new ResponseUnit<UsersDTO>() { message = "해당아이디가 존재합니다.", data = new UsersDTO() { ID = model.Id, USERID = model.UserId, NAME = model.Name }, code = 200 };
+                        return new ResponseList<ListUser>()
+                        {
+                            message = "요청이 정상 처리되었습니다",
+                            data = model.Select(e => new ListUser()
+                            {
+                                Id = e.Id,
+                                UserId = e.UserId,
+                                Name = e.Name,
+                                Type = e.Job,
+                                Email = e.Email,
+                                Phone = e.Phone,
+                                Created = e.CreateDt.ToString(),
+                                Status = e.Status
+                            }).ToList(),
+                            code = 200
+                        };
                     }
                     else
                     {
-                        return new ResponseUnit<UsersDTO>() { message = "해당아이디가 존재하지 않습니다.", data = new UsersDTO(), code = 200 };
+                        return new ResponseList<ListUser>() { message = "데이터가 존재하지 않습니다.", data = new List<ListUser>(), code = 200 };
                     }
                 }
                 else
                 {
-                    return new ResponseUnit<UsersDTO>() { message = "요청이 잘못되었습니다.", data = new UsersDTO(), code = 404 };
+                    return new ResponseList<ListUser>() { message = "잘못된 요청입니다.", data = new List<ListUser>(), code = 404 };
                 }
             }
             catch(Exception ex)
             {
                 LogService.LogMessage(ex.ToString());
-                return new ResponseUnit<UsersDTO>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new UsersDTO(), code = 500 };
+                return new ResponseList<ListUser>() { message = "서버에서 요청을 처리하지 못하였습니다.", data = new List<ListUser>(), code = 500 };
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="placeidx"></param>
-        /// <returns></returns>
-        public async ValueTask<ResponseList<ListUser>> GetPlaceUserList(JObject? jobj, int placeid)
-        {
-            try
-            {
-                string? UserType = jobj["USERTYPE"].ToString();
-
-                if (UserType is null)
-                {
-                    return new ResponseList<ListUser>()
-                    {
-                        message = "잘못된 요청입니다.",
-                        data = new List<ListUser>(),
-                        code = 401
-                    };
-                }
-
-                if (UserType.Equals("ADMIN")) // 이사람은 관리자임 - 할당된게 여러개일수도 있음
-                {
-                    int? AdminIdx = Int32.Parse(jobj["AdminIdx"].ToString());
-
-                    if (AdminIdx is null)
-                    {
-                        return new ResponseList<ListUser>()
-                        {
-                            message = "잘못된 요청입니다.",
-                            data = new List<ListUser>(),
-                            code = 401
-                        };
-                    }
-
-
-                    List<AdminPlaceTb>? placelist = await AdminPlaceInfoRepository.GetMyWorksModel(AdminIdx);
-
-                    if (placelist is [_, ..])
-                    {
-                        // AdminPlaceTB랑 조회해서 --> 넘어온 PlaceIDX가 자기꺼에 있는지 확인하고 있으면 그 PlaceIdx에 해당하는 UserList 반환
-                        AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == placeid);
-                        if (adminplace is not null)
-                        {
-                            PlaceTb? placetb = await PlaceInfoRepository.GetByPlaceInfo(adminplace.PlaceId);
-
-                            if(placetb is not null) 
-                            {
-                                // 사업장이 있다 --> 실제 로직
-                                List<UserTb>? usertb = await UserInfoRepository.GetPlaceUserList(placetb.Id);
-                                
-                                if(usertb is [_, ..])
-                                {
-                                    return new ResponseList<ListUser>()
-                                    {
-                                        message = "요청이 정상 처리되었습니다.",
-                                        data = usertb.Select(e => new ListUser
-                                        {
-                                            Id = e.Id,
-                                            UserId = e.UserId,
-                                            Name = e.Name,
-                                            Email = e.Email,
-                                            Phone = e.Phone,
-                                            Type = e.Job,
-                                            Status = e.Status,
-                                            Created = e.CreateDt.ToString()!
-                                        }).ToList(),
-                                        code = 200
-                                    };
-                                }
-                                else
-                                {
-                                    return new ResponseList<ListUser>()
-                                    {
-                                        message = "요청이 정상 처리되었습니다.",
-                                        data = new List<ListUser>(),
-                                        code = 200
-                                    };
-                                }
-                            }
-                            else
-                            {
-                                return new ResponseList<ListUser>()
-                                {
-                                    message = "잘못된 요청입니다.",
-                                    data = new List<ListUser>(),
-                                    code = 401
-                                };
-                            }
-                        }
-                        else
-                        {
-                            return new ResponseList<ListUser>()
-                            {
-                                message = "잘못된 요청입니다.",
-                                data = new List<ListUser>(),
-                                code = 401
-                            };
-                        }
-                    }
-                    else
-                    {
-                        return new ResponseList<ListUser>()
-                        {
-                            message = "잘못된 요청입니다.",
-                            data = new List<ListUser>(),
-                            code = 401
-                        };
-                    }
-                }
-                else // 일반사용자
-                {
-                    int? UserIdx = Int32.Parse(jobj["UserIdx"].ToString());
-                    
-                    if (UserIdx is null)
-                    {
-                        return new ResponseList<ListUser>()
-                        {
-                            message = "잘못된 요청입니다.",
-                            data = new List<ListUser>(),
-                            code = 401
-                        };
-                    }
-
-                    UserTb? usermodel = await UserInfoRepository.GetUserIndexInfo(UserIdx);
-
-                    if(usermodel is not null)
-                    {
-                        // user테이블 조회해서 이사람의 placeid가 매개변수 placeid랑 같은지 보고
-                        if (usermodel.PlaceTbId == placeid)
-                        {
-                            // 사업장을 검사한다.
-                            PlaceTb? placetb = await PlaceInfoRepository.GetByPlaceInfo(usermodel.PlaceTbId);
-
-                            // 사업장이 있다 --> 실제 로직
-                            List<UserTb>? usertb = await UserInfoRepository.GetPlaceUserList(placetb.Id);
-                            
-                            if (usertb is [_, ..])
-                            {
-                                return new ResponseList<ListUser>()
-                                {
-                                    message = "요청이 정상 처리되었습니다.",
-                                    data = usertb.Select(e => new ListUser
-                                    {
-                                        Id = e.Id,
-                                        UserId = e.UserId,
-                                        Name = e.Name,
-                                        Email = e.Email,
-                                        Phone = e.Phone,
-                                        Type = e.Job,
-                                        Status = e.Status,
-                                        Created = e.CreateDt.ToString()!
-                                    }).ToList(),
-                                    code = 200
-                                };
-                            }
-                            else
-                            {
-                                return new ResponseList<ListUser>()
-                                {
-                                    message = "요청이 정상 처리되었습니다.",
-                                    data = new List<ListUser>(),
-                                    code = 200
-                                };
-                            }
-                        }
-                        else
-                        {
-                            return new ResponseList<ListUser>()
-                            {
-                                message = "잘못된 요청입니다.",
-                                data = new List<ListUser>(),
-                                code = 401
-                            };
-                        }
-                    }
-                    else
-                    {
-                        return new ResponseList<ListUser>()
-                        {
-                            message = "잘못된 요청입니다.",
-                            data = new List<ListUser>(),
-                            code = 401
-                        };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                return new ResponseList<ListUser>()
-                {
-                    message = "서버에서 요청을 처리하지 못하였습니다.",
-                    data = new List<ListUser>(),
-                    code = 500
-                };
-            }
-
         }
 
    

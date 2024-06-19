@@ -10,8 +10,7 @@ namespace FamTec.Server.Services.User
 {
     public interface IUserService
     {
-        // 아이디 중복검사 서비스
-        public ValueTask<ResponseUnit<UsersDTO>?> UserIdCheck(string? userid);
+      
 
         /// <summary>
         /// 일반페이지 로그인 서비스
@@ -28,7 +27,7 @@ namespace FamTec.Server.Services.User
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public ValueTask<ResponseList<ListUser>> GetPlaceUserList(JObject? obj, int placeid);
+        public ValueTask<ResponseList<ListUser>> GetPlaceUserList(HttpContext? context);
 
     }
 }

@@ -156,6 +156,11 @@ namespace FamTec.Server.Controllers.Login
             }
         }
 
+        /// <summary>
+        /// 관리자들만 접근가능
+        /// </summary>
+        /// <param name="placeid"></param>
+        /// <returns></returns>
         [Authorize(Roles = "SystemManager,Master,Manager")]
         [HttpGet]
         [Route("sign/SelectPlace")]

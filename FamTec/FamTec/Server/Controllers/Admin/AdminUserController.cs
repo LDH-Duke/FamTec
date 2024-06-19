@@ -222,28 +222,7 @@ namespace FamTec.Server.Controllers.Admin
         }
 
 
-        /* 사용자 검색 */
-        [HttpPost]
-        [Route("UserSearch")]
-        public async ValueTask<IActionResult> UserSearch([FromBody] UsersDTO dto)
-        {
-            ResponseUnit<UsersDTO>? model = await UserService.UserIdCheck(dto.USERID);
-            if (model is not null)
-            {
-                if (model.code == 200)
-                {
-                    return Ok(model);
-                }
-                else
-                {
-                    return BadRequest(model);
-                }
-            }
-            else
-            {
-                return BadRequest(model);
-            }
-        }
+      
 
     }
 }

@@ -43,10 +43,7 @@ namespace FamTec.Server.Services.Building
                 if (dto.GroundFloorNum + dto.BasementFloorNum != dto.FloorNum)
                     return new ResponseUnit<bool>() { message = "잘못된 요청입니다.", data = false, code = 404 };
                     
-                
-
-                JObject? parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()!));
-                int? placeidx = Int32.Parse(parse["PlaceIdx"]!.ToString());
+                int? placeidx = Int32.Parse(context.Items["PlaceIdx"]!.ToString());
 
                 if (dto is not null && placeidx is not null)
                 {
@@ -169,9 +166,7 @@ namespace FamTec.Server.Services.Building
             {
                 if (context is not null)
                 {
-                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
-
-                    int placeidx = Int32.Parse(parse["PlaceIdx"]!.ToString());
+                    int placeidx = Int32.Parse(context.Items["PlaceIdx"]!.ToString());
 
                     List<BuildingTb>? model = await BuildingRepository.GetAllBuildingList(placeidx);
 

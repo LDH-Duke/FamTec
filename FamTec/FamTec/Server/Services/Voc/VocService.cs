@@ -80,9 +80,8 @@ namespace FamTec.Server.Services.Voc
 
                 if(placelist is [_, ..])
                 {
-                    // JObject parse
-                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
-                    AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == Int32.Parse(parse["PlaceIdx"].ToString()));
+                    
+                    AdminPlaceTb? adminplace = placelist.FirstOrDefault(m => m.PlaceId == Int32.Parse(context.Items["PlaceIdx"].ToString()));
 
                     if(adminplace is not null)
                     {
@@ -162,8 +161,8 @@ namespace FamTec.Server.Services.Voc
             {
                 int? UserIdx = Int32.Parse(context.Items["UserIdx"].ToString());
 
-                JObject obj = new JObject(JObject.Parse(context.Items["UserPerms"].ToString()));
-                int? VocPerm = Int32.Parse(obj["User_PermVoc"].ToString());
+                
+                int? VocPerm = Int32.Parse(context.Items["User_PermVoc"].ToString());
                 
 
                 if (UserIdx is null)

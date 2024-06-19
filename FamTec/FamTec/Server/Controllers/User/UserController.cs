@@ -10,6 +10,7 @@ using FamTec.Server.Tokens;
 using Newtonsoft.Json.Linq;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Client.DTO.Normal.Users;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FamTec.Server.Controllers.User
 {
@@ -27,25 +28,33 @@ namespace FamTec.Server.Controllers.User
             TokenComm = _tokencomm;
         }
 
+        /// <summary>
+        /// 로그인한 사업장의 모든 사용자 반환
+        /// </summary>
+        /// <returns></returns>
+        [AllowAnonymous]
         [HttpGet]
-        [Route("GetPlaceUsers")]
-        public async ValueTask<IActionResult> GetUserList([FromQuery] int placeid)
+        [Route("sign/GetPlaceUsers")]
+        public async ValueTask<IActionResult> GetUserList()
         {
-            JObject? jobj = TokenComm.TokenConvert(HttpContext.Request);
-            ResponseList<ListUser> model = await UserService.GetPlaceUserList(jobj, placeid);
+            ResponseList<ListUser>? model = await UserService.GetPlaceUserList(HttpContext);
 
-            if (model.code == 200)
+            if (model is not null)
             {
-                return Ok(model);
+                if (model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
             }
             else
             {
                 return BadRequest();
             }
         }
-
-
-
 
 
     }

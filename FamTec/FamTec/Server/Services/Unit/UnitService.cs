@@ -48,8 +48,6 @@ namespace FamTec.Server.Services.Unit
                 
                 if (context is not null && dto is not null)
                 {
-                    JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
-
                     UnitTb? model = new UnitTb
                     {
                         Unit = dto.Unit,
@@ -57,7 +55,7 @@ namespace FamTec.Server.Services.Unit
                         CreateUser = context.Items["Name"].ToString(),
                         UpdateDt = DateTime.Now,
                         UpdateUser = context.Items["Name"].ToString(),
-                        PlaceTbId = Int32.Parse(parse["PlaceIdx"].ToString())
+                        PlaceTbId = Int32.Parse(context.Items["PlaceIdx"].ToString())
                     };
 
                     UnitTb? result = await UnitInfoRepository.AddAsync(model);
@@ -104,9 +102,9 @@ namespace FamTec.Server.Services.Unit
                 if (context is null)
                     return new ResponseList<UnitsDTO>() { message = "잘못된 요청입니다.", data = new List<UnitsDTO>(), code = 404 };
 
-                JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
+                
 
-                List<UnitTb>? model = await UnitInfoRepository.GetUnitList(Int32.Parse(parse["PlaceIdx"].ToString()));
+                List<UnitTb>? model = await UnitInfoRepository.GetUnitList(Int32.Parse(context.Items["PlaceIdx"].ToString()));
 
                 if(model is [_, ..])
                 {

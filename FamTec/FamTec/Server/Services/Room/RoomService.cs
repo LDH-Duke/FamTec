@@ -79,8 +79,7 @@ namespace FamTec.Server.Services.Room
             if (context is null)
                 return new ResponseList<RoomListDTO>() { message = "요청이 잘못되었습니다.", data = new List<RoomListDTO>(), code = 404 };
             
-            JObject parse = new JObject(JObject.Parse(context.Items["PlacePerms"].ToString()));
-            int? placeidx = Int32.Parse(parse["PlaceIdx"].ToString()); // 로그인한 사업장 인덱스
+            int? placeidx = Int32.Parse(context.Items["PlaceIdx"].ToString()); // 로그인한 사업장 인덱스
 
             List<BuildingTb>? buildinglist = await BuildingInfoRepository.GetAllBuildingList(placeidx);
 

@@ -198,6 +198,11 @@ app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Room/sign")
     appBuilder.UseMiddleware<JwtMiddleware>();
 });
 
+// User 컨트롤러 미들웨어 추가
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/User/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<JwtMiddleware>();
+});
 
 #endregion
 

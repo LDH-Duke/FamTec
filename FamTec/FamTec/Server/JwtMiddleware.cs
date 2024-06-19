@@ -71,61 +71,57 @@ namespace FamTec.Server
                 context.Items.Add("AdminYN", jobj["AdminYN"].ToString()); // 관리자 유무
                 context.Items.Add("UserType", jobj["UserType"].ToString()); // 사용자 타입(유저 or 관리자)
                 context.Items.Add("AdminIdx", jobj["AdminIdx"].ToString());
-                context.Items.Add("Jti", jobj["Jti"].ToString());
+                context.Items.Add("jti", jobj["jti"].ToString());
                 context.Items.Add("Role", jobj["Role"].ToString());
             
-                JObject item = new JObject();
                 
                 JObject parse = new JObject(JObject.Parse(jobj["UserPerms"].ToString()));
-                item.Add("UserPerm_Basic", parse["UserPerm_Basic"].ToString());
-                item.Add("UserPerm_Machine", parse["UserPerm_Machine"].ToString());
-                item.Add("UserPerm_Elec", parse["UserPerm_Elec"].ToString());
-                item.Add("UserPerm_Lift", parse["UserPerm_Lift"].ToString());
-                item.Add("UserPerm_Fire", parse["UserPerm_Fire"].ToString());
-                item.Add("UserPerm_Construct", parse["UserPerm_Construct"].ToString());
-                item.Add("UserPerm_Network", parse["UserPerm_Network"].ToString());
-                item.Add("UserPerm_Beauty", parse["UserPerm_Beauty"].ToString());
-                item.Add("UserPerm_Security", parse["UserPerm_Security"].ToString());
-                item.Add("UserPerm_Material", parse["UserPerm_Material"].ToString());
-                item.Add("UserPerm_Energy", parse["UserPerm_Energy"].ToString());
-                item.Add("UserPerm_User", parse["UserPerm_User"].ToString());
-                item.Add("UserPerm_Voc", parse["UserPerm_Voc"].ToString());
-                context.Items.Add("UserPerms", item.ToString());
+                
+                /* 사용자 권한 */
+                context.Items.Add("UserPerm_Basic", parse["UserPerm_Basic"].ToString());
+                context.Items.Add("UserPerm_Machine", parse["UserPerm_Machine"].ToString());
+                context.Items.Add("UserPerm_Elec", parse["UserPerm_Elec"].ToString());
+                context.Items.Add("UserPerm_Lift", parse["UserPerm_Lift"].ToString());
+                context.Items.Add("UserPerm_Fire", parse["UserPerm_Fire"].ToString());
+                context.Items.Add("UserPerm_Construct", parse["UserPerm_Construct"].ToString());
+                context.Items.Add("UserPerm_Network", parse["UserPerm_Network"].ToString());
+                context.Items.Add("UserPerm_Beauty", parse["UserPerm_Beauty"].ToString());
+                context.Items.Add("UserPerm_Security", parse["UserPerm_Security"].ToString());
+                context.Items.Add("UserPerm_Material", parse["UserPerm_Material"].ToString());
+                context.Items.Add("UserPerm_Energy", parse["UserPerm_Energy"].ToString());
+                context.Items.Add("UserPerm_User", parse["UserPerm_User"].ToString());
+                context.Items.Add("UserPerm_Voc", parse["UserPerm_Voc"].ToString());
 
-                item = new JObject();
+                /* VOC 권한 */
                 parse = new JObject(JObject.Parse(jobj["VocPerms"].ToString()));
-                item.Add("VocMachine", parse["VocMachine"].ToString());
-                item.Add("VocElec", parse["VocElec"].ToString());
-                item.Add("VocLift", parse["VocLift"].ToString());
-                item.Add("VocFire", parse["VocFire"].ToString());
-                item.Add("VocConstruct", parse["VocConstruct"].ToString());
-                item.Add("VocNetwork", parse["VocNetwork"].ToString());
-                item.Add("VocBeauty", parse["VocBeauty"].ToString());
-                item.Add("VocSecurity", parse["VocSecurity"].ToString());
-                item.Add("VocDefault", parse["VocDefault"].ToString());
-                context.Items.Add("VocPerms", item.ToString());
+                context.Items.Add("VocMachine", parse["VocMachine"].ToString());
+                context.Items.Add("VocElec", parse["VocElec"].ToString());
+                context.Items.Add("VocLift", parse["VocLift"].ToString());
+                context.Items.Add("VocFire", parse["VocFire"].ToString());
+                context.Items.Add("VocConstruct", parse["VocConstruct"].ToString());
+                context.Items.Add("VocNetwork", parse["VocNetwork"].ToString());
+                context.Items.Add("VocBeauty", parse["VocBeauty"].ToString());
+                context.Items.Add("VocSecurity", parse["VocSecurity"].ToString());
+                context.Items.Add("VocDefault", parse["VocDefault"].ToString());
 
                 string? PlaceIdx = Convert.ToString(jobj["PlacePerms"]);
                 if(!String.IsNullOrWhiteSpace(PlaceIdx))
                 {
                     // 사업장 까지 선택한 상태
-                    item = new JObject();
                     parse = new JObject(JObject.Parse(jobj["PlacePerms"].ToString()));
-                    item.Add("PlaceIdx", parse["PlaceIdx"].ToString());
-                    item.Add("PlaceName", parse["PlaceName"].ToString());
-                    item.Add("PlacePerm_Machine", parse["PlacePerm_Machine"].ToString());
-                    item.Add("PlacePerm_Lift", parse["PlacePerm_Lift"].ToString());
-                    item.Add("PlacePerm_Fire", parse["PlacePerm_Fire"].ToString());
-                    item.Add("PlacePerm_Construct", parse["PlacePerm_Construct"].ToString());
-                    item.Add("PlacePerm_Network", parse["PlacePerm_Network"].ToString());
-                    item.Add("PlacePerm_Beauty", parse["PlacePerm_Beauty"].ToString());
-                    item.Add("PlacePerm_Security", parse["PlacePerm_Security"].ToString());
-                    item.Add("PlacePerm_Material", parse["PlacePerm_Material"].ToString());
-                    item.Add("PlacePerm_Energy", parse["PlacePerm_Energy"].ToString());
-                    item.Add("PlacePerm_Voc", parse["PlacePerm_Voc"].ToString());
 
-                    context.Items.Add("PlacePerms", item.ToString());
-
+                    context.Items.Add("PlaceIdx", parse["PlaceIdx"].ToString());
+                    context.Items.Add("PlaceName", parse["PlaceName"].ToString());
+                    context.Items.Add("PlacePerm_Machine", parse["PlacePerm_Machine"].ToString());
+                    context.Items.Add("PlacePerm_Lift", parse["PlacePerm_Lift"].ToString());
+                    context.Items.Add("PlacePerm_Fire", parse["PlacePerm_Fire"].ToString());
+                    context.Items.Add("PlacePerm_Construct", parse["PlacePerm_Construct"].ToString());
+                    context.Items.Add("PlacePerm_Network", parse["PlacePerm_Network"].ToString());
+                    context.Items.Add("PlacePerm_Beauty", parse["PlacePerm_Beauty"].ToString());
+                    context.Items.Add("PlacePerm_Security", parse["PlacePerm_Security"].ToString());
+                    context.Items.Add("PlacePerm_Material", parse["PlacePerm_Material"].ToString());
+                    context.Items.Add("PlacePerm_Energy", parse["PlacePerm_Energy"].ToString());
+                    context.Items.Add("PlacePerm_Voc", parse["PlacePerm_Voc"].ToString());
                 }
             }
             else // 아님 - 일반유저
@@ -135,56 +131,56 @@ namespace FamTec.Server
                 context.Items.Add("AlarmYN", jobj["AlarmYN"].ToString());
                 context.Items.Add("AdminYN", jobj["AdminYN"].ToString());
                 context.Items.Add("UserType", jobj["UserType"].ToString());
-                context.Items.Add("Jti", jobj["Jti"].ToString());
+                context.Items.Add("jti", jobj["jti"].ToString());
                 context.Items.Add("Role", jobj["Role"].ToString());
                 
-                JObject item = new JObject();
 
                 JObject parse = new JObject(JObject.Parse(jobj["UserPerms"].ToString()));
-                item.Add("UserPerm_Basic", parse["UserPerm_Basic"].ToString());
-                item.Add("UserPerm_Machine", parse["UserPerm_Machine"].ToString());
-                item.Add("UserPerm_Elec", parse["UserPerm_Elec"].ToString());
-                item.Add("UserPerm_Lift", parse["UserPerm_Lift"].ToString());
-                item.Add("UserPerm_Fire", parse["UserPerm_Fire"].ToString());
-                item.Add("UserPerm_Construct", parse["UserPerm_Construct"].ToString());
-                item.Add("UserPerm_Network", parse["UserPerm_Network"].ToString());
-                item.Add("UserPerm_Beauty", parse["UserPerm_Beauty"].ToString());
-                item.Add("UserPerm_Security", parse["UserPerm_Security"].ToString());
-                item.Add("UserPerm_Material", parse["UserPerm_Material"].ToString());
-                item.Add("UserPerm_Energy", parse["UserPerm_Energy"].ToString());
-                item.Add("UserPerm_User", parse["UserPerm_User"].ToString());
-                item.Add("UserPerm_Voc", parse["UserPerm_Voc"].ToString());
-                context.Items.Add("UserPerms", item.ToString());
+                
+                /* 사용자 권한 */
+                context.Items.Add("UserPerm_Basic", parse["UserPerm_Basic"].ToString());
+                context.Items.Add("UserPerm_Machine", parse["UserPerm_Machine"].ToString());
+                context.Items.Add("UserPerm_Elec", parse["UserPerm_Elec"].ToString());
+                context.Items.Add("UserPerm_Lift", parse["UserPerm_Lift"].ToString());
+                context.Items.Add("UserPerm_Fire", parse["UserPerm_Fire"].ToString());
+                context.Items.Add("UserPerm_Construct", parse["UserPerm_Construct"].ToString());
+                context.Items.Add("UserPerm_Network", parse["UserPerm_Network"].ToString());
+                context.Items.Add("UserPerm_Beauty", parse["UserPerm_Beauty"].ToString());
+                context.Items.Add("UserPerm_Security", parse["UserPerm_Security"].ToString());
+                context.Items.Add("UserPerm_Material", parse["UserPerm_Material"].ToString());
+                context.Items.Add("UserPerm_Energy", parse["UserPerm_Energy"].ToString());
+                context.Items.Add("UserPerm_User", parse["UserPerm_User"].ToString());
+                context.Items.Add("UserPerm_Voc", parse["UserPerm_Voc"].ToString());
 
-                item = new JObject();
+   
+
                 parse = new JObject(JObject.Parse(jobj["VocPerms"].ToString()));
-                item.Add("VocMachine", parse["VocMachine"].ToString());
-                item.Add("VocElec", parse["VocElec"].ToString());
-                item.Add("VocLift", parse["VocLift"].ToString());
-                item.Add("VocFire", parse["VocFire"].ToString());
-                item.Add("VocConstruct", parse["VocConstruct"].ToString());
-                item.Add("VocNetwork", parse["VocNetwork"].ToString());
-                item.Add("VocBeauty", parse["VocBeauty"].ToString());
-                item.Add("VocSecurity", parse["VocSecurity"].ToString());
-                item.Add("VocDefault", parse["VocDefault"].ToString());
-                context.Items.Add("VocPerms", item.ToString());
+                /* VOC 권한 */
+                context.Items.Add("VocMachine", parse["VocMachine"].ToString());
+                context.Items.Add("VocElec", parse["VocElec"].ToString());
+                context.Items.Add("VocLift", parse["VocLift"].ToString());
+                context.Items.Add("VocFire", parse["VocFire"].ToString());
+                context.Items.Add("VocConstruct", parse["VocConstruct"].ToString());
+                context.Items.Add("VocNetwork", parse["VocNetwork"].ToString());
+                context.Items.Add("VocBeauty", parse["VocBeauty"].ToString());
+                context.Items.Add("VocSecurity", parse["VocSecurity"].ToString());
+                context.Items.Add("VocDefault", parse["VocDefault"].ToString());
 
                 /* 사업장 권한 */
-                item = new JObject();
+                
                 parse = new JObject(JObject.Parse(jobj["PlacePerms"].ToString()));
-                item.Add("PlaceIdx", parse["PlaceIdx"].ToString());
-                item.Add("PlaceName", parse["PlaceName"].ToString());
-                item.Add("PlacePerm_Machine", parse["PlacePerm_Machine"].ToString());
-                item.Add("PlacePerm_Lift", parse["PlacePerm_Lift"].ToString());
-                item.Add("PlacePerm_Fire", parse["PlacePerm_Fire"].ToString());
-                item.Add("PlacePerm_Construct", parse["PlacePerm_Construct"].ToString());
-                item.Add("PlacePerm_Network", parse["PlacePerm_Network"].ToString());
-                item.Add("PlacePerm_Beauty", parse["PlacePerm_Beauty"].ToString());
-                item.Add("PlacePerm_Security", parse["PlacePerm_Security"].ToString());
-                item.Add("PlacePerm_Material", parse["PlacePerm_Material"].ToString());
-                item.Add("PlacePerm_Energy", parse["PlacePerm_Energy"].ToString());
-                item.Add("PlacePerm_Voc", parse["PlacePerm_Voc"].ToString());
-                context.Items.Add("PlacePerms", item.ToString());
+                context.Items.Add("PlaceIdx", parse["PlaceIdx"].ToString());
+                context.Items.Add("PlaceName", parse["PlaceName"].ToString());
+                context.Items.Add("PlacePerm_Machine", parse["PlacePerm_Machine"].ToString());
+                context.Items.Add("PlacePerm_Lift", parse["PlacePerm_Lift"].ToString());
+                context.Items.Add("PlacePerm_Fire", parse["PlacePerm_Fire"].ToString());
+                context.Items.Add("PlacePerm_Construct", parse["PlacePerm_Construct"].ToString());
+                context.Items.Add("PlacePerm_Network", parse["PlacePerm_Network"].ToString());
+                context.Items.Add("PlacePerm_Beauty", parse["PlacePerm_Beauty"].ToString());
+                context.Items.Add("PlacePerm_Security", parse["PlacePerm_Security"].ToString());
+                context.Items.Add("PlacePerm_Material", parse["PlacePerm_Material"].ToString());
+                context.Items.Add("PlacePerm_Energy", parse["PlacePerm_Energy"].ToString());
+                context.Items.Add("PlacePerm_Voc", parse["PlacePerm_Voc"].ToString());
             }
 
             await Next(context);

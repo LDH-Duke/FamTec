@@ -9,39 +9,41 @@ namespace FamTec.Shared.Server.DTO.User
     public class UsersDTO
     {
         /// <summary>
-        /// 사용자 PK 인덱스
+        /// 사용자 인덱스
         /// </summary>
         public int? ID { get; set; }
 
         /// <summary>
+        /// 사용자이름
+        /// </summary>
+        public string? NAME { get; set; }
+
+        /// <summary>
+        /// 직책
+        /// </summary>
+        public string? JOB { get; set; }
+
+        /// <summary>
+        /// 전화번호
+        /// </summary>
+        public string? PHONE { get; set; }
+
+
+        /// <summary>
+        /// 이메일
+        /// </summary>
+        public string? EMAIL { get; set; }
+
+        /// <summary>
         /// 사용자 아이디
         /// </summary>
-        
+
         public string? USERID { get; set; }
 
         /// <summary>
         /// 비밀번호
         /// </summary>
-        [MaxLength(30)]
         public string? PASSWORD { get; set; }
-
-        /// <summary>
-        /// 사용자이름
-        /// </summary>
-        [MaxLength(15)]
-        public string? NAME { get; set; }
-
-        /// <summary>
-        /// 이메일
-        /// </summary>
-        [MaxLength(30)]
-        public string? EMAIL { get; set; }
-
-        /// <summary>
-        /// 전화번호
-        /// </summary>
-        [MaxLength(20)]
-        public string? PHONE { get; set; }
 
         /// <summary>
         /// 기본정보등록 권한
@@ -52,6 +54,11 @@ namespace FamTec.Shared.Server.DTO.User
         /// 설비 권한
         /// </summary>
         public int? PERM_MACHINE { get; set; }
+
+        /// <summary>
+        /// 전기 권한
+        /// </summary>
+        public int? PERM_ELEC { get; set; }
 
         /// <summary>
         /// 승강 권한
@@ -117,15 +124,50 @@ namespace FamTec.Shared.Server.DTO.User
         /// 재직여부
         /// </summary>
         public sbyte? STATUS { get; set; }
-        
-        /// <summary>
-        /// 직책
-        /// </summary>
-        public string? JOB { get; set; }
 
         /// <summary>
-        /// 선택된 사업장정보
+        /// 기계민원 처리권한
         /// </summary>
-        public int? PLACEID { get; set; }
+        public int? VOC_MACHINE { get; set; }
+
+        /// <summary>
+        /// 전기민원 처리권한
+        /// </summary>
+        public int? VOC_ELEC { get; set; }
+
+        /// <summary>
+        /// 승강민원 처리권한
+        /// </summary>
+        public int? VOC_LIFT { get; set; }
+
+        /// <summary>
+        /// 소방민원 처리권한
+        /// </summary>
+        public int? VOC_FIRE { get; set; }
+        
+        /// <summary>
+        /// 건축민원 처리권한
+        /// </summary>
+        public int? VOC_CONSTRUCT { get; set; }
+
+        /// <summary>
+        /// 통신민원 처리권한
+        /// </summary>
+        public int? VOC_NETWORK { get; set; }
+
+        /// <summary>
+        /// 미화민원 처리권한
+        /// </summary>
+        public int? VOC_BEAUTY { get; set; }
+
+        /// <summary>
+        /// 보안민원 처리권한
+        /// </summary>
+        public int? VOC_SECURITY { get; set; }
+
+        /// <summary>
+        /// 기타 처리권한
+        /// </summary>
+        public int? VOC_DEFAULT { get; set; }
     }
 }
