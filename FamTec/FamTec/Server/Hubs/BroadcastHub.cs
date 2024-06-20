@@ -38,6 +38,7 @@ namespace FamTec.Server.Hubs
             await Clients.Group(roomName).SendAsync("ReceiveMessage", $"{Context.ConnectionId} {roomName} Remove Success");
         }
 
+        // 이건 안쓸듯.
         public async Task SendMessageAsync(string message, string roomName)
         {
             await Clients.Group(roomName).SendAsync("ReceiveVoc", $"{message}");

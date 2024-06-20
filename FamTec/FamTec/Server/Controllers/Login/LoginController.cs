@@ -1,16 +1,11 @@
-﻿using FamTec.Client.Pages.Normal.Voc.VocDetail;
-using FamTec.Server.Services.Admin.Account;
+﻿using FamTec.Server.Services.Admin.Account;
 using FamTec.Server.Services.Admin.Place;
 using FamTec.Server.Services.User;
-using FamTec.Server.Tokens;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
 using FamTec.Shared.Server.DTO.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
-using System.Security.Cryptography;
 
 namespace FamTec.Server.Controllers.Login
 {
@@ -32,36 +27,28 @@ namespace FamTec.Server.Controllers.Login
             this.UserService = _userservice;
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        [Route("AdminSettingLogin")]
-        public async ValueTask<IActionResult> AdminSettingLogin([FromBody] LoginDTO? dto)
+        [Route("SettingLogin")]
+        public async ValueTask<IActionResult> SettingLogin([FromBody] LoginDTO? dto)
         {
-            if (dto is not null)
+            ResponseUnit<string>? model = await AdminAccountService.AdminLoginService(dto);
+            if (model is not null)
             {
-                ResponseUnit<string>? model = await AdminAccountService.AdminLoginService(dto);
-
-                if (model is not null)
+                if (model.code == 200)
                 {
-                    if(model.code is 200)
-                    {
-                        return Ok(model);
-                    }
-                    else
-                    {
-                        return BadRequest(model);
-                    }
+                    return Ok(model);
                 }
                 else
                 {
-                    return BadRequest(model);
+                    return Ok(model);
                 }
             }
             else
             {
-                return StatusCode(404);
+                return BadRequest(model);
             }
         }
+
 
         /// <summary>
         /// 로그인 API - 모든사람 접근가능
@@ -90,7 +77,7 @@ namespace FamTec.Server.Controllers.Login
                         }
                         else
                         {
-                            return BadRequest();
+                            return Ok(model); // 유저
                         }
                     }
                     else
@@ -116,34 +103,14 @@ namespace FamTec.Server.Controllers.Login
         [Authorize(Roles = "SystemManager,Master,Manager")]
         [HttpGet]
         [Route("sign/AdminPlaceList")]
-        public async ValueTask<IActionResult> AdminPlaceList()
+        public async ValueTask<IActionResult> SelectPlaceList()
         {
-            int? adminidx = Int32.Parse(HttpContext.Items["AdminIdx"]!.ToString()!);
-            
-            if (adminidx is not null)
+            ResponseList<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksList(HttpContext);
+            if(model is not null)
             {
-                if(adminidx is not null)
+                if(model.code == 200)
                 {
-                    ResponseList<AdminPlaceDTO> model = await AdminPlaceService.GetMyWorksService(adminidx);
-                    if(model is not null)
-                    {
-                        if(model.code == 200)
-                        {
-                            return Ok(model);
-                        }
-                        else if(model.code == 204)
-                        {
-                            return Ok(model);
-                        }
-                        else
-                        {
-                            return BadRequest();
-                        }
-                    }
-                    else
-                    {
-                        return BadRequest();
-                    }
+                    return Ok(model);
                 }
                 else
                 {
@@ -154,6 +121,7 @@ namespace FamTec.Server.Controllers.Login
             {
                 return BadRequest();
             }
+           
         }
 
         /// <summary>

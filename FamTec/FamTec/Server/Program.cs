@@ -1,8 +1,6 @@
 using FamTec.Server.Hubs;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.ObjectPool;
-using Microsoft.AspNetCore.Hosting;
 using FamTec.Server;
 using FamTec.Server.Databases;
 using FamTec.Server.Repository.Admin.AdminPlaces;
@@ -25,13 +23,12 @@ using FamTec.Server.Services.User;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Extensions.FileProviders;
 using FamTec.Server.Services;
 using FamTec.Server.Tokens;
 using FamTec.Server.Services.Voc;
 using FamTec.Server.Repository.Voc;
 using FamTec.Server.Repository.Alarm;
-using System.Reflection.PortableExecutable;
+using FamTec.Server.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -167,41 +164,51 @@ app.UseStaticFiles();
 app.UseRouting();
 
 #region MiddleWare
+// [설정] AdminUser 컨트롤러 미들웨어 추가
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/AdminUser/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<AdminMiddleware>();
+});
+
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/AdminPlace/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<AdminMiddleware>();
+});
 
 // Login 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Login/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 // Voc 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Voc/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 // Building 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Building/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 // Unit 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Unit/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 // Room 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Room/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 // User 컨트롤러 미들웨어 추가
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/User/sign"), appBuilder =>
 {
-    appBuilder.UseMiddleware<JwtMiddleware>();
+    appBuilder.UseMiddleware<UserMiddleware>();
 });
 
 #endregion

@@ -52,8 +52,8 @@ public partial class PlaceTb
     [Column("PERM_CONSTRUCT", TypeName = "tinyint(4)")]
     public sbyte? PermConstruct { get; set; }
 
-    [Column("PERM_NETWROK", TypeName = "tinyint(4)")]
-    public sbyte? PermNetwrok { get; set; }
+    [Column("PERM_NETWORK", TypeName = "tinyint(4)")]
+    public sbyte? PermNetwork { get; set; }
 
     [Column("PERM_BEAUTY", TypeName = "tinyint(4)")]
     public sbyte? PermBeauty { get; set; }

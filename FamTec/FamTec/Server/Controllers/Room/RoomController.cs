@@ -1,13 +1,7 @@
-﻿using FamTec.Server.Services.Floor;
-using FamTec.Server.Services.Room;
-using FamTec.Shared;
-using FamTec.Shared.DTO;
+﻿using FamTec.Server.Services.Room;
 using FamTec.Shared.Server.DTO;
-using FamTec.Shared.Server.DTO.Building;
-using FamTec.Shared.Server.DTO.Floor;
 using FamTec.Shared.Server.DTO.Room;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FamTec.Server.Controllers.Room

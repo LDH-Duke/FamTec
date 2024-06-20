@@ -195,7 +195,7 @@ public partial class WorksContext : DbContext
             entity.Property(e => e.PermLift).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermMachine).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermMaterial).HasDefaultValueSql("'0'");
-            entity.Property(e => e.PermNetwrok).HasDefaultValueSql("'0'");
+            entity.Property(e => e.PermNetwork).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermSecurity).HasDefaultValueSql("'0'");
             entity.Property(e => e.PermVoc).HasDefaultValueSql("'0'");
             entity.Property(e => e.Status).HasDefaultValueSql("'1'");

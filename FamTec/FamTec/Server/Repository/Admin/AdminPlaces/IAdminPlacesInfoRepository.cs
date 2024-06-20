@@ -26,7 +26,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// </summary>
         /// <param name="adminid"></param>
         /// <returns></returns>
-        ValueTask<List<AdminPlaceTb>?> GetMyWorksModel(int? adminid);
+        ValueTask<List<AdminPlaceTb>?> GetMyWorksList(int? adminid);
 
 
         /// <summary>
@@ -43,12 +43,7 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <returns></returns>
         ValueTask<List<PlaceTb>?> GetMyWorksDetails(List<AdminPlaceTb>? model);
 
-        /// <summary>
-        /// 관리자 로그인 후 해당관리자의 사업장리스트 반환
-        /// </summary>
-        /// <param name="adminid"></param>
-        /// <returns></returns>
-        ValueTask<List<PlacesDTO>?> GetLoginWorks(int? adminid);
+      
 
         /// <summary>
         /// 사업장 정보 조회
@@ -70,6 +65,8 @@ namespace FamTec.Server.Repository.Admin.AdminPlaces
         /// <param name="placetb"></param>
         /// <returns></returns>
         ValueTask<AdminPlaceTb?> GetWorksModelInfo(int? placeid);
+
+
         
     }
 }

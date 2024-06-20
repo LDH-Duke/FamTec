@@ -76,7 +76,7 @@ namespace FamTec.Server.Services.Voc
                     };
                 }
 
-                List<AdminPlaceTb>? placelist = await AdminPlaceInfoRepository.GetMyWorksModel(AdminIdx);
+                List<AdminPlaceTb>? placelist = await AdminPlaceInfoRepository.GetMyWorksList(AdminIdx);
 
                 if(placelist is [_, ..])
                 {

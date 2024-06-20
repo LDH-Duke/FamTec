@@ -17,10 +17,17 @@ namespace FamTec.Server.Services.Admin.Place
         public ValueTask<ResponseList<AdminPlaceDTO>> GetMyWorksService(int? adminid);
 
         /// <summary>
-        /// 전체 사업장 조회
+        /// 관리자가 일반 로그인시 선택할 수 있는 PlaceList 반환
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        ValueTask<ResponseList<AdminPlaceDTO>> GetMyWorksList(HttpContext? context);
+
+        /// <summary>
+        /// 전체 사업장 조회 - 매니저는 자기것가 할당된것만 조회됨
         /// </summary>
         /// <returns></returns>
-        public ValueTask<ResponseList<AllPlaceDTO>?> GetAllWorksService();
+        public ValueTask<ResponseList<AllPlaceDTO>?> GetAllWorksService(HttpContext? context);
 
         /// <summary>
         /// 전체 관리자리스트 반환
@@ -33,7 +40,7 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<int?>> AddPlaceService(AddPlaceDTO? dto);
+        public ValueTask<ResponseUnit<int?>> AddPlaceService(HttpContext? context, AddPlaceDTO? dto);
 
 
         /// <summary>
@@ -48,14 +55,14 @@ namespace FamTec.Server.Services.Admin.Place
         /// </summary>
         /// <param name="placemanager"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<bool>> AddPlaceManagerService(AddPlaceManagerDTO<ManagerListDTO> placemanager);
+        public ValueTask<ResponseUnit<bool>> AddPlaceManagerService(HttpContext? context, AddPlaceManagerDTO<ManagerListDTO> placemanager);
 
         /// <summary>
         /// 관리자생성후 사업장 추가 서비스
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<bool>> AddManagerPlaceSerivce(AddManagerPlaceDTO? dto);
+        public ValueTask<ResponseUnit<bool>> AddManagerPlaceSerivce(HttpContext? context, AddManagerPlaceDTO? dto);
 
         /// <summary>
         /// 사업장 완전 삭제
@@ -63,5 +70,15 @@ namespace FamTec.Server.Services.Admin.Place
         /// <param name="placeidx"></param>
         /// <returns></returns>
         public ValueTask<ResponseUnit<bool>> DeleteManagerPlaceService(List<int> placeidx);
+
+
+        /// <summary>
+        /// 사업장 삭제 --- 여기맞나..
+        /// </summary>
+        /// <param name="adminid"></param>
+        /// <returns></returns>
+        public ValueTask<ResponseUnit<bool>> DeletePlaceService(HttpContext context, List<int> placeidx);
+
+
     }
 }

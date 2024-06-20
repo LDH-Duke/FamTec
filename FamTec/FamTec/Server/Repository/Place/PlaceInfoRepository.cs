@@ -167,6 +167,99 @@ namespace FamTec.Server.Repository.Place
         }
 
         /// <summary>
+        /// 삭제 테스트 해야함.
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<bool?> DeletePlaceList(string? Name, List<int>? placeidx)
+        {
+            try
+            {
+                if (placeidx is [_, ..])
+                {
+                    List<AdminPlaceTb>? adminplace = (from adminplacetb in context.AdminPlaceTbs.ToList()
+                                                      join placetb in placeidx
+                                                      on adminplacetb.PlaceId equals placetb
+                                                      where adminplacetb.DelYn != 1
+                                                      select new AdminPlaceTb()
+                                                      {
+                                                          Id = adminplacetb.Id,
+                                                          CreateDt = adminplacetb.CreateDt,
+                                                          CreateUser = adminplacetb.CreateUser,
+                                                          UpdateDt = adminplacetb.UpdateDt,
+                                                          UpdateUser = adminplacetb.UpdateUser,
+                                                          DelYn = adminplacetb.DelYn,
+                                                          DelDt = adminplacetb.DelDt,
+                                                          DelUser = adminplacetb.DelUser,
+                                                          AdminTbId = adminplacetb.AdminTbId,
+                                                          PlaceId = adminplacetb.PlaceId
+                                                      }).ToList();
+                    if (adminplace.Count() == 0)
+                    {
+                        List<PlaceTb>? PlaceTb = (from placetb in context.PlaceTbs.ToList()
+                                                  join list in placeidx
+                                                  on placetb.Id equals list
+                                                  where placetb.DelYn != 1
+                                                  select new PlaceTb()
+                                                  {
+                                                      Id = placetb.Id,
+                                                      PlaceCd = placetb.PlaceCd,
+                                                      ContractNum = placetb.ContractNum,
+                                                      Name = placetb.Name,
+                                                      Tel = placetb.Tel,
+                                                      Note = placetb.Note,
+                                                      Address = placetb.Address,
+                                                      ContractDt = placetb.ContractDt,
+                                                      PermMachine = placetb.PermMachine,
+                                                      PermLift = placetb.PermLift,
+                                                      PermFire = placetb.PermFire,
+                                                      PermConstruct = placetb.PermConstruct,
+                                                      PermNetwork = placetb.PermNetwork,
+                                                      PermBeauty = placetb.PermBeauty,
+                                                      PermSecurity = placetb.PermSecurity,
+                                                      PermMaterial = placetb.PermMaterial,
+                                                      PermEnergy = placetb.PermEnergy,
+                                                      PermVoc = placetb.PermVoc,
+                                                      CancelDt = placetb.CancelDt,
+                                                      Status = placetb.Status,
+                                                      CreateDt = placetb.CreateDt,
+                                                      CreateUser = placetb.CreateUser,
+                                                      UpdateDt = placetb.UpdateDt,
+                                                      UpdateUser = placetb.UpdateUser,
+                                                      DelDt = placetb.DelDt,
+                                                      DelUser = placetb.DelUser,
+                                                      DelYn = placetb.DelYn
+                                                  }).ToList();
+
+                        for (int i = 0; i < PlaceTb.Count(); i++)
+                        {
+                            PlaceTb[i].DelDt = DateTime.Now;
+                            PlaceTb[i].DelUser = Name;
+                            PlaceTb[i].DelYn = 1;
+
+                            context.PlaceTbs.Update(PlaceTb[i]);
+                        }
+
+                        return await context.SaveChangesAsync() > 0 ? true : false;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }catch(Exception ex)
+            {
+                LogService.LogMessage(ex.ToString());
+                throw new ArgumentNullException();
+            }
+        }
+
+        /// <summary>
         /// 수정
         /// </summary>
         /// <param name="model"></param>
@@ -193,6 +286,6 @@ namespace FamTec.Server.Repository.Place
             }
         }
 
-     
+   
     }
 }

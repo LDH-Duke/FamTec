@@ -85,32 +85,16 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
-    "Method": "AddPlaceManager",
-    "RelativePath": "api/AdminPlace/AddPlaceManager",
+    "Method": "DeletePlace",
+    "RelativePath": "api/AdminPlace/DeletePlaceList",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "placemanager",
-        "Type": "FamTec.Shared.Server.DTO.Place.AddPlaceManagerDTO\u00601[[FamTec.Shared.Server.DTO.Admin.Place.ManagerListDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
-    "Method": "AddWorks",
-    "RelativePath": "api/AdminPlace/AddWorks",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Admin.Place.AddPlaceDTO",
-        "IsRequired": true
+        "Name": "placeidx",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -133,8 +117,40 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
+    "Method": "AddPlaceManager",
+    "RelativePath": "api/AdminPlace/sign/AddPlaceManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "placemanager",
+        "Type": "FamTec.Shared.Server.DTO.Place.AddPlaceManagerDTO\u00601[[FamTec.Shared.Server.DTO.Admin.Place.ManagerListDTO, FamTec.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
+    "Method": "AddWorks",
+    "RelativePath": "api/AdminPlace/sign/AddWorks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Admin.Place.AddPlaceDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "DetailWorks",
-    "RelativePath": "api/AdminPlace/DetailWorks",
+    "RelativePath": "api/AdminPlace/sign/DetailWorks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -150,7 +166,7 @@
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "GetAllManagerList",
-    "RelativePath": "api/AdminPlace/GetAllManagerList",
+    "RelativePath": "api/AdminPlace/sign/GetAllManagerList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -159,8 +175,8 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
-    "Method": "GetAllPlaceList",
-    "RelativePath": "api/AdminPlace/GetAllWorksList",
+    "Method": "GetAllWorksList",
+    "RelativePath": "api/AdminPlace/sign/GetAllWorksList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -170,7 +186,7 @@
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
     "Method": "GetMyWorks",
-    "RelativePath": "api/AdminPlace/MyWorks",
+    "RelativePath": "api/AdminPlace/sign/MyWorks",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -179,38 +195,6 @@
         "Name": "adminid",
         "Type": "System.Int32",
         "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.Admin.AdminPlaces.AdminPlaceController",
-    "Method": "Post",
-    "RelativePath": "api/AdminPlace/Upload",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "file",
-        "Type": "Microsoft.AspNetCore.Http.IFormFile",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.Admin.AdminUserController",
-    "Method": "AddManager",
-    "RelativePath": "api/AdminUser/AddManager",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Admin.AddManagerDTO",
-        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -265,15 +249,15 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Admin.AdminUserController",
-    "Method": "Login",
-    "RelativePath": "api/AdminUser/Login",
+    "Method": "AddManager",
+    "RelativePath": "api/AdminUser/sign/AddManager",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
+        "Type": "FamTec.Shared.Server.DTO.Admin.AddManagerDTO",
         "IsRequired": true
       }
     ],
@@ -418,22 +402,6 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
-    "Method": "AdminSettingLogin",
-    "RelativePath": "api/Login/AdminSettingLogin",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dto",
-        "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
     "Method": "Login",
     "RelativePath": "api/Login/Login",
     "HttpMethod": "POST",
@@ -450,7 +418,23 @@
   },
   {
     "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
-    "Method": "AdminPlaceList",
+    "Method": "SettingLogin",
+    "RelativePath": "api/Login/SettingLogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.Login.LoginDTO",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.Login.LoginController",
+    "Method": "SelectPlaceList",
     "RelativePath": "api/Login/sign/AdminPlaceList",
     "HttpMethod": "GET",
     "IsController": true,
@@ -540,6 +524,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FamTec.Server.Controllers.User.UserController",
+    "Method": "AddUser",
+    "RelativePath": "api/User/sign/AddUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FamTec.Shared.Server.DTO.User.UsersDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

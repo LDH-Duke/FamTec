@@ -49,6 +49,7 @@ namespace FamTec.Server.Controllers.Hubs
                     {
                         // 기계
                         case 1:
+                            // obj에서 사업장+Room Name으로 Group항목에 넣어야함.
                             await HubContext.Clients.Group("MachineRoom").SendAsync("ReceiveVoc", model.code);
                             return Ok(model);
                         // 전기

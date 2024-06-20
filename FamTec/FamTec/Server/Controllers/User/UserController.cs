@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Client.DTO.Normal.Users;
 using Microsoft.AspNetCore.Authorization;
+using FamTec.Server.Repository.User;
 
 namespace FamTec.Server.Controllers.User
 {
@@ -56,6 +57,30 @@ namespace FamTec.Server.Controllers.User
             }
         }
 
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("sign/AddUser")]
+        public async ValueTask<IActionResult> AddUser([FromBody]UsersDTO dto)
+        {
+            ResponseUnit<UsersDTO>? model = await UserService.AddUserService(HttpContext, dto);
+
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
 
     }
 }

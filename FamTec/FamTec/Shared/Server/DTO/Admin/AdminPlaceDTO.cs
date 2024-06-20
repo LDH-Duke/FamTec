@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,48 +10,39 @@ namespace FamTec.Shared.Server.DTO.Admin
     public class AdminPlaceDTO
     {
         /// <summary>
-        /// ADMIN PLACE 테이블의 ID
+        /// PlaceID
         /// </summary>
-        public int AdminPlaceTBID { get; set; }
-
+        public int Id { get; set; }
+        
         /// <summary>
-        /// ADMIN PLACE 테이블의 ADMIN USER ID
+        /// PlaceCode
         /// </summary>
-        public int? AdminPlaceUserTBID { get; set; }
-
-        /// <summary>
-        /// ADMIN PLACE 테이블의 PLACE ID
-        /// </summary>
-        public int? PlaceTBID { get; set; }
-
-        /// <summary>
-        /// 사업장CODE
-        /// </summary>
-        public string? PlaceCD { get; set; }
-
+        public string? PlaceCd { get; set; }
+        
         /// <summary>
         /// 사업장명
         /// </summary>
-        public string? Name { get; set; }
-
+        public string? Name { get; set; } = null;
+        
+        /// <summary>
+        /// 비고
+        /// </summary>
+        public string? Note { get; set; } = null;
+        
         /// <summary>
         /// 계약번호
         /// </summary>
-        public string? ContractNum { get; set; }
-
+        public string? ContractNum { get; set; } = null;
+        
         /// <summary>
         /// 계약일자
         /// </summary>
-        public DateTime? ContractDT { get; set; }
-
+        public DateTime? ContractDt { get; set; }
+        
         /// <summary>
-        /// 해약일자
+        /// 계약상태
         /// </summary>
-        public DateTime? CancelDT { get; set; }
+        public sbyte? Status { get; set; }
 
-        /// <summary>
-        /// 상태
-        /// </summary>
-        public sbyte? status { get; set; }
     }
 }

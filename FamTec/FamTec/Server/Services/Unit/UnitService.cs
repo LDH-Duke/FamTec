@@ -12,20 +12,12 @@ namespace FamTec.Server.Services.Unit
     {
         private readonly IUnitInfoRepository UnitInfoRepository;
 
-        ResponseOBJ<UnitsDTO> Response;
-        Func<string, UnitsDTO, int, ResponseModel<UnitsDTO>> FuncResponseOBJ;
-        Func<string, List<UnitsDTO>, int, ResponseModel<UnitsDTO>> FuncResponseList;
-
         ResponseOBJ<string> strResponse;
         Func<string, string, int, ResponseModel<string>> FuncResponseSTR;
 
         public UnitService(IUnitInfoRepository _unitinforepository)
         {
             this.UnitInfoRepository = _unitinforepository;
-
-            Response = new ResponseOBJ<UnitsDTO>();
-            FuncResponseOBJ = Response.RESPMessage;
-            FuncResponseList = Response.RESPMessageList;
 
             strResponse = new ResponseOBJ<string>();
             FuncResponseSTR = strResponse.RESPMessage;
@@ -103,7 +95,6 @@ namespace FamTec.Server.Services.Unit
                     return new ResponseList<UnitsDTO>() { message = "잘못된 요청입니다.", data = new List<UnitsDTO>(), code = 404 };
 
                 
-
                 List<UnitTb>? model = await UnitInfoRepository.GetUnitList(Int32.Parse(context.Items["PlaceIdx"].ToString()));
 
                 if(model is [_, ..])
