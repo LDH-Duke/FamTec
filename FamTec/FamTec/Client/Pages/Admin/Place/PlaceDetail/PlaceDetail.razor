@@ -57,7 +57,8 @@
 
     private async Task LoadPlaceDetailInfo()
     {
-        ResponseUnit<PlaceDetailDTO> res = await HttpClient.GetFromJsonAsync<ResponseUnit<PlaceDetailDTO>>($"http://123.2.156.148:5245/api/AdminPlace/DetailWorks/?placeid={Id}");
+        // ResponseUnit<PlaceDetailDTO> res = await HttpClient.GetFromJsonAsync<ResponseUnit<PlaceDetailDTO>>($"http://123.2.156.148:5245/api/AdminPlace/DetailWorks/?placeid={Id}");
+        ResponseUnit<PlaceDetailDTO> res = await apiManager.GetUnitAsync<PlaceDetailDTO>($"AdminPlace/sign/DetailWorks?placeid={Id}");
 
 
         ManagerList = res.data.ManagerList;

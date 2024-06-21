@@ -38,9 +38,9 @@
 @code {
     [Parameter] public string? UserType{ get; set; }
 
-    List<DepartmentDTO> departmentList;
+    List<DepartmentDTO>? departmentList = new List<DepartmentDTO>();
     private bool is_openModal = false;
-    
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -53,8 +53,15 @@
     {
         try
         {
-            ResponseList<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseList<DepartmentDTO>>("http://123.2.156.148:5245/api/Department/GetDepartmentList");
+            ResponseList<DepartmentDTO> resDepartment = await apiManager.GetListAsync<DepartmentDTO>("Department/sign/GetDepartmentList");
+            if (resDepartment.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "부서 조회 실패"); 
+                return;
+            }
+
             departmentList = resDepartment.data;
+            
         }catch(Exception ex)
         {
             Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러");

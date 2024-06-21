@@ -167,49 +167,33 @@
         * 3. POST
         * 4. 모달 닫기
         */
-
-        //var resPlace = await HttpClient.PostAsJsonAsync("http://127.0.0.1:5245/api/place/addplace",placeInfo);
-        var resPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddWorks", placeInfo);
-
-        if (resPlace.IsSuccessStatusCode)
+        ResponseUnit<int?> resPlace = await apiManager.PostAsync<int?>("AdminPlace/sign/AddWorks", placeInfo);
+        if(resPlace.code != 200 || resPlace.data == null)
         {
-            ResponseUnit<int> resPlaceData = await resPlace.Content.ReadFromJsonAsync<ResponseUnit<int>>();
-            // 응답 데이터를 사용합니다.
-            if (resPlaceData.code == 200)
-            {
-                // 여기서 responseData.Data를 사용하여 사업장 ID를 처리합니다.
-                int placeId = resPlaceData.data;
-                placeManager.PlaceId = placeId;
-
-                if (placeManager == null)
-                {
-                    await ModalClose();
-                }
-                else
-                {
-                    var resManager = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/AddPlaceManager", placeManager);
-
-                    if (resManager.IsSuccessStatusCode)
-                    {
-
-                        Console.WriteLine("사업장 매니저 추가 완료");
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("사업장 매니저 추가 실패");
-                    }
-                    await LoadPlace.InvokeAsync();/////////////
-                    await ModalClose();
-                    
-                }
-               
-            }
+            await JS.InvokeVoidAsync("alert", "사업장 등록 실패");
+            /*
+             * 롤백 요청 코드 추가 예정
+             */
+            await ModalClose();
+            return;
         }
-        else
+        if(resPlace.data == null)
         {
-            // Handle error or display appropriate message
+            await ModalClose();
+            return;
         }
+        placeManager.PlaceId = resPlace.data;
+
+        ResponseUnit<bool> resManager = await apiManager.PostAsync<bool>("AdminPlace/sign/AddPlaceManager", placeManager);
+        if(resManager.code != 200)
+        {
+            await JS.InvokeVoidAsync("alert", "매니저 등록실패");
+            return;
+        }
+        await JS.InvokeVoidAsync("alert", "매니저 등록 성공");
+        await LoadPlace.InvokeAsync();
+        await ModalClose();
+        return;
     }
 
     /*

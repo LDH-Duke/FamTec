@@ -37,24 +37,37 @@
 
     protected async override Task OnInitializedAsync()
     {
-        ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>($"http://123.2.156.148:5245/api/AdminPlace/MyWorks/?adminid={Id}");
-
-        PlaceList = res.data;
-        PlaceList.RemoveAll(place => place.Status == 0);
-        FilterPlaceList = PlaceList;
+        await OnLoadManagerPlace();
     }
-
-     /*
-     * 사업장 조회
-    */
-    private async Task LoadPlaces()
-    {
-        
-    }
-
 
     /*
-    * 부서 선택
+     * 매니저 사업장 조회
+     */
+    private async Task OnLoadManagerPlace()
+    {
+        try
+        {
+            ResponseList<PlaceTableDTO> resManagerPlace = await apiManager.GetListAsync<PlaceTableDTO>($"AdminPlace/sign/MyWorks/?adminid={Id}");
+            if (resManagerPlace.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert","매니저 사업장 조회 실패");
+                //이전페이지로 되돌릴지 말지 선택
+                return;
+            }
+            PlaceList = resManagerPlace.data;
+            PlaceList.RemoveAll(place => place.Status == 0);
+            FilterPlaceList = PlaceList;
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("alert", "매니저 사업장 조회 실패");
+            Console.WriteLine("[Admin][Manager] 매니저 사업장 조회 실패 \n" + ex);
+            return;
+        }
+    }
+
+    /*
+    * 사업장 선택
     */
     public void OnSelected((bool isCheck, int id) selection)
     {

@@ -41,27 +41,8 @@
     protected async override Task OnInitializedAsync()
     {
         await LoadSession();
-        await LoadDepartments();
+        await OnLoadDepartments();
         newManager = new();
-    }
-
-    /*
-    * 부서 조회
-    */
-    private async Task LoadDepartments()
-    {
-        try
-        {
-            ResponseList<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseList<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
-            departmetnList = resDepartment.data;
-
-
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러" + ex);
-        }
-
     }
 
     private async Task LoadSession()
@@ -71,40 +52,86 @@
         HttpClient.DefaultRequestHeaders.Add("Authorization", session);
     }
 
+    /*
+    * 부서 조회
+    */
+    private async Task OnLoadDepartments()
+    {
+        try
+        {
+            ResponseList<DepartmentDTO> resDepartment = await apiManager.GetListAsync<DepartmentDTO>("Department/sign/GetDepartmentList");
+            if(resDepartment.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "부서 조회 실패");
+                return;
+            }
+            // ResponseList<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseList<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
+            departmetnList = resDepartment.data;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Admin][ManagerSignUp] 부서 조회 에러" + ex);
+        }
+
+    }
+
+    /*
+    * (POST)매니저 등록
+    */
     private async Task Submit()
     {
         try
         {
-            var resManger = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManager", newManager);
-            if (resManger.IsSuccessStatusCode)
+            ResponseUnit<int> resManager = await apiManager.PostAsync<int>("AdminUser/sign/AddManager", newManager);
+            if(resManager.code != 200)
             {
-                Console.WriteLine("매니저 추가 성공");
-                var resManagerData = await resManger.Content.ReadFromJsonAsync<ResponseUnit<int>>();
-                int adminId = resManagerData.data;
-                managerPlace.AdminId = adminId;
+                await JS.InvokeVoidAsync("alert", "관리자 정보 등록 실패");
+                //롤백 코드 추가 예정
+                return;
+            }
+            int adminId = resManager.data;
+            managerPlace.AdminId = adminId;
+            ResponseUnit<bool> resManagerPlace = await apiManager.PostAsync<bool>("AdminUser/sign/AddManagerWorks", managerPlace);
+            if (resManagerPlace.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "관리자 사업장 등록 실패");
+                //롤백 코드 추가 예정
+                return;
+            }
+            Navigation.NavigateTo("/admin/manager");
 
-                var resManagerPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManagerWorks", managerPlace);
-                if (resManagerPlace.IsSuccessStatusCode)
-                {
-                    var resManagerPlaceData = await resManagerPlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
-                    Console.WriteLine("매니저 사업장 추가 성공");
-                    Navigation.NavigateTo("/admin/manager");
-                }
-                else
-                {
-                    Console.WriteLine("매니저 사업장 추가 실패");
-                    Navigation.NavigateTo("/admin/manager");
-                }
-            }
-            else
-            {
-                Console.WriteLine("매니저 등록 실패");
-                Navigation.NavigateTo("/admin/manager");
-            }
+
+            // var resManger = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManager", newManager);
+            // if (resManger.IsSuccessStatusCode)
+            // {
+            //     Console.WriteLine("매니저 추가 성공");
+            //     var resManagerData = await resManger.Content.ReadFromJsonAsync<ResponseUnit<int>>();
+            //     int adminId = resManagerData.data;
+            //     managerPlace.AdminId = adminId;
+
+            //     var resManagerPlace = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/AdminUser/AddManagerWorks", managerPlace);
+            //     if (resManagerPlace.IsSuccessStatusCode)
+            //     {
+            //         var resManagerPlaceData = await resManagerPlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
+            //         Console.WriteLine("매니저 사업장 추가 성공");
+            //         Navigation.NavigateTo("/admin/manager");
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("매니저 사업장 추가 실패");
+            //         Navigation.NavigateTo("/admin/manager");
+            //     }
+            // }
+            // else
+            // {
+            //     Console.WriteLine("매니저 등록 실패");
+            //     Navigation.NavigateTo("/admin/manager");
+            // }
         }
         catch(Exception ex)
         {
-            Console.WriteLine($"[Admin][Department] 클라이언트 매니저 등록 에러" + ex);
+            Console.WriteLine($"[Admin][Manager] 매니저 등록 에러" + ex);
+            await JS.InvokeVoidAsync("alert", "[Admin][Manager] 매니저 등록 에러");
         }
 
        

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SignalR.Client;
 using Tewr.Blazor.FileReader;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -25,7 +26,16 @@ builder.Services.AddFileReaderService(options =>
 });
 
 builder.Services.AddScoped<SessionService>();
+
+
+builder.Services.AddScoped<ApiManager>();
 builder.Services.AddBlazoredSessionStorage();
+builder.Services.AddAuthorizationCore();
+
+builder.Services.AddScoped<CustomAuthenticationStateProvider>();
+
+
+
 
 // ¿¬°á
 //HubObject.hubConnection = new HubConnectionBuilder()

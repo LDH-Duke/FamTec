@@ -8,7 +8,7 @@ namespace FamTec.Shared.Client.DTO.Place
 {
     public class AddPlaceManagerDTO<T>
     {
-        public int PlaceId { get; set;}
+        public int? PlaceId { get; set;}
         public List<ManagerDTO> PlaceManager { get; set;} = new List<ManagerDTO>();
     }
 }

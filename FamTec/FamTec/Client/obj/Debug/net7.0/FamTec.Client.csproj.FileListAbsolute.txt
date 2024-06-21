@@ -850,7 +850,6 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\SortTable.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Table.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\CommonComponents\Toggle.razor.rz.scp.css
-C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SignUp\SignUp.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\Drawer.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Shared\Nav.razor.rz.scp.css
@@ -1128,3 +1127,8 @@ C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scop
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Normal\Voc\Components\StatusCard.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Normal\Voc\VocDetail\Components\VocComment.razor.rz.scp.css
 C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Normal\Voc\VocDetail\Components\ProcessCard.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SignIn\SignIn.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SelectPlace\SelectPlace.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SelectPlace\PlaceList.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SelectPlace\CircleButton.razor.rz.scp.css
+C:\Users\stec\Desktop\duke\Dev\FamTec\FamTec\FamTec\Client\obj\Debug\net7.0\scopedcss\Pages\Sign\SelectPlace\MacButton.razor.rz.scp.css

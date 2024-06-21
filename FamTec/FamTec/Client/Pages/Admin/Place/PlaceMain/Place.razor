@@ -81,7 +81,7 @@
     private async Task LoadSession()
     {
         var session = await sessionStorage.GetItemAsStringAsync("SWORKSSESSION");
-        _userType = await SessionService.GetClaimValue(session, "UserType");
+        _userType = await SessionService.GetClaimValue(session, "Role");
         LoginMode = await sessionStorage.GetItemAsync<int>("LoginMode");
     }
 
@@ -93,22 +93,22 @@
     {
         try
         {
-            Console.WriteLine("[매니저 조회 시작]");
-            if (_userType == "시스템관리자" || _userType == "마스터")
+            Console.WriteLine("[관리자 모드][사업장 조회]");
+            // ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
+            ResponseList<PlaceTableDTO> res = await apiManager.GetListAsync<PlaceTableDTO>("AdminPlace/sign/GetAllWorksList");
+            if(res.code != 200)
             {
-                ResponseList<PlaceTableDTO> res = await HttpClient.GetFromJsonAsync<ResponseList<PlaceTableDTO>>("http://123.2.156.148:5245/api/AdminPlace/GetAllWorksList");
-                PlaceList = res.data;
-                FilterPlaceList = PlaceList;
+                await JS.InvokeVoidAsync("alert", "사업장 조회 실패");
+                return;
             }
-            else
-            {
-                
-            }
-
-            
+            PlaceList = res.data;
+            FilterPlaceList = PlaceList;
         }
         catch(Exception ex)
         {
+            await JS.InvokeVoidAsync("alert", "[관리자 모드][사업장 조회] 실패\n"+ex);
+            Console.WriteLine("[관리자 모드][사업장 조회] 실패");
+            throw ex;
 
         }
     }
@@ -164,21 +164,22 @@
             }
             else
             {
-                var resDeletePlace = await HttpClient.PutAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/DeleteWorks", DeletePlace);
-                ResponseUnit<bool> resDeletePlaceData = await resDeletePlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
-                if (resDeletePlaceData.code == 200)
-                {
+                ResponseUnit<bool> a = await apiManager.DeletePlaceAsync<bool>("AdminPlace/sign/DeletePlaceList", DeletePlace);
+                // var resDeletePlace = await HttpClient.PutAsJsonAsync("http://123.2.156.148:5245/api/AdminPlace/DeleteWorks", DeletePlace);
+                // ResponseUnit<bool> resDeletePlaceData = await resDeletePlace.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
+                // if (resDeletePlaceData.code == 200)
+                // {
                     
-                    Console.WriteLine(resDeletePlaceData.message);
-                    DeletePlace.Clear();
-                    await LoadPlace();
-                }
-                else
-                {
-                    Console.WriteLine(resDeletePlaceData.message);
-                    DeletePlace.Clear();
-                    await LoadPlace();
-                }
+                //     Console.WriteLine(resDeletePlaceData.message);
+                //     DeletePlace.Clear();
+                //     await LoadPlace();
+                // }
+                // else
+                // {
+                //     Console.WriteLine(resDeletePlaceData.message);
+                //     DeletePlace.Clear();
+                //     await LoadPlace();
+                // }
                 
             }
         }
