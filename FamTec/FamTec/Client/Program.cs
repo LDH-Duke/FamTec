@@ -27,14 +27,11 @@ builder.Services.AddFileReaderService(options =>
 
 builder.Services.AddScoped<SessionService>();
 
-
 builder.Services.AddScoped<ApiManager>();
 builder.Services.AddBlazoredSessionStorage();
 builder.Services.AddAuthorizationCore();
 
 builder.Services.AddScoped<CustomAuthenticationStateProvider>();
-
-
 
 
 // ¿¬°á

@@ -1,9 +1,0 @@
-[2024-06-19 오후 3:30:44]	System.InvalidOperationException: Can't call this method when MySqlDataReader is closed.
-   at MySqlConnector.MySqlDataReader.VerifyNotDisposed() in /_/src/MySqlConnector/MySqlDataReader.cs:line 675
-   at MySqlConnector.MySqlDataReader.ReadAsync(CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlDataReader.cs:line 35
-   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
-   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
-   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
-   at FamTec.Server.Repository.Admin.AdminPlaces.AdminPlaceInfoRepository.GetMyWorksModel(Nullable`1 adminid)
-[2024-06-19 오후 4:03:12]	System.NullReferenceException: Object reference not set to an instance of an object.
-   at FamTec.Server.Services.Building.BuildingService.GetBuilidngListService(HttpContext context) in C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\Services\Building\BuildingService.cs:line 121

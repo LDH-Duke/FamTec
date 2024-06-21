@@ -1,2 +1,0 @@
-[2024-06-20 오전 8:21:39]	System.NullReferenceException: Object reference not set to an instance of an object.
-   at FamTec.Server.Services.User.UserService.GetPlaceUserList(HttpContext context) in C:\Users\kyw\Documents\FamTec\FamTec\FamTec\Server\Services\User\UserService.cs:line 415
