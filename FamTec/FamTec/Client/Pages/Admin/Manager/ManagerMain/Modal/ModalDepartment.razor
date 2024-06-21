@@ -44,7 +44,7 @@
 @code {
     [Parameter] public EventCallback<bool> OnClose { get; set; }
     [Parameter] public EventCallback OnListSync{ get; set; }
-    
+
 
 
     // HttpClient httpClient = new HttpClient();
@@ -66,15 +66,25 @@
     {
         try
         {
-            ResponseList<DepartmentDTO> resDepartment = await HttpClient.GetFromJsonAsync<ResponseList<DepartmentDTO>>("http://123.2.156.148:5245/api/DePartment/GetDepartmentList");
+            ResponseList<DepartmentDTO> resDepartment = await apiManager.GetListAsync<DepartmentDTO>("Department/sign/GetDepartmentList");
+            if (resDepartment.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "부서 조회 실패");
+                return;
+            }
 
             departmentList = resDepartment.data;
+
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error loading departments: {ex.Message}");
+            Console.WriteLine($"[Admin][Department] 클라이언트 부서 조회 에러");
         }
+
     }
+
+
+
 
     /*
     * (DELETE) 부서 삭제
@@ -91,7 +101,7 @@
                 ResponseUnit<bool> res = await resDelete.Content.ReadFromJsonAsync<ResponseUnit<bool>>();
                 bool adminId = res.data;
                 /*
-                 * res.code 별 예외 처리예정ㅊ
+                * res.code 별 예외 처리예정ㅊ
                  */
 
                 await LoadDepartments();
@@ -103,14 +113,47 @@
             {
                 Console.WriteLine("부서 추가 에러");
             }
-            
+
             Console.WriteLine(resDelete);
         }
         catch(Exception ex)
         {
-            Console.WriteLine($"[Client][ModalDepartment] 부서 삭제 에러 : {ex.Message}");
-            
+            Console.WriteLine($"[Admin][ModalDepartment] 부서 삭제 에러 : {ex.Message}");
+
         }
+    }
+
+    /*
+    * (POST)부서 추가
+    */
+    private async Task AddDepartment()
+    {
+        try
+        {
+            Console.WriteLine(newDepartment.Name == null);
+            if (string.IsNullOrEmpty(newDepartment.Name))
+            {
+                await JS.InvokeVoidAsync("alert", "부서명을 입력해 주세요.");
+                Console.WriteLine("입력된 값이 없습니다.");
+                return;
+            }
+            ResponseUnit<AddDepartmentDTO> resDepartment = await apiManager.PostAsync<AddDepartmentDTO>("Department/sign/AddDepartment", newDepartment);
+            // var resAdd = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/Department/AddDepartment", newDepartment);
+            if (resDepartment.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "부서 추가 실패.");
+                return;
+            }
+
+            await LoadDepartments();
+            await OnListSync.InvokeAsync();
+            newDepartment = new AddDepartmentDTO();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"[Admin][ModalDepartment] 부서 추가 에러 : {ex.Message}");
+        }
+        
     }
 
     /*
@@ -119,40 +162,6 @@
     private Task ModalClose()
     {
         return OnClose.InvokeAsync(false);
-    }
-
-    /*
-    * (POST)부서 추가
-    */
-    private async Task AddDepartment()
-    {
-        Console.WriteLine(newDepartment.Name == null);
-        if (newDepartment.Name == null)
-        {
-            Console.WriteLine("입력된 값이 없습니다.");
-        }
-        else
-        {
-            var resAdd = await HttpClient.PostAsJsonAsync("http://123.2.156.148:5245/api/Department/AddDepartment", newDepartment);
-
-            if (resAdd.IsSuccessStatusCode)
-            {
-                ResponseUnit<AddDepartmentDTO> res = await resAdd.Content.ReadFromJsonAsync<ResponseUnit<AddDepartmentDTO>>();
-                
-                /*
-                 * res.code 별 예외 처리예정ㅊ
-                 */
-
-                await LoadDepartments();
-                await OnListSync.InvokeAsync();
-                newDepartment = new AddDepartmentDTO();
-            }
-            else
-            {
-                Console.WriteLine("부서 추가 에러");
-            }
-        }
-
     }
 
     /*

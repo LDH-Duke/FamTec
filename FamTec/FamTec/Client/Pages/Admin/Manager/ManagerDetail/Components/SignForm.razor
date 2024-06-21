@@ -77,15 +77,15 @@
 </div>
 
 @code {
-    [Parameter] public int Id { get; set; }
-    [Parameter] public DManagerDTO Manager { get; set; }
-    [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
-    [Parameter] public bool EditMode { get; set; }
+        [Parameter] public int Id { get; set; }
+        [Parameter] public List<DepartmentDTO> DepartmentList { get; set; }
+        [Parameter] public bool EditMode { get; set; }
 
+        DManagerDTO Manager = new DManagerDTO();
 
     protected async override Task OnInitializedAsync()
     {
-        await LoadDetailManager();
+        await OnLoadDetailManager();
     }
 
     // private void HandleSelectedValueChange(int value)
@@ -93,23 +93,26 @@
     //     Manager.DepartmentId = value;
 
     // }
-    private async Task LoadDetailManager()
+
+    /*
+     * 매니저 상세 정보 조회
+     */
+    private async Task OnLoadDetailManager()
     {
-        ResponseUnit<DManagerDTO> resDetailManager = await HttpClient.GetFromJsonAsync<ResponseUnit<DManagerDTO>>($"http://123.2.156.148:5245/api/AdminUser/GetManagerInfo/?adminId={Id}");
         try
         {
-            Manager.Name = resDetailManager.data.Name;
-            Manager.UserId = resDetailManager.data.UserId;
-            Manager.Password = resDetailManager.data.Password;
-            Manager.Email = resDetailManager.data.Email;
-            Manager.Phone = resDetailManager.data.Phone;
-            Manager.Type = resDetailManager.data.Type;
-            Manager.Department= resDetailManager.data.Department;
-
+            ResponseUnit<DManagerDTO> resDetailManager = await apiManager.GetUnitAsync<DManagerDTO>($"AdminUser/sign/GetManagerInfo?adminId={Id}");
+            if (object.ReferenceEquals(null, resDetailManager) || resDetailManager.code != 200)
+            {
+                await JS.InvokeVoidAsync("alert", "매니저 상세 정보 조회 실패");
+                return;
+            }
+            Manager = resDetailManager.data;
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine("[Amdin][ManagerDetail] 매니저 상세 정보 조회 실패\n" + ex);
+            await JS.InvokeVoidAsync("alert", "[Amdin][ManagerDetail] 매니저 상세 정보 조회 실패");
         }
     }
     

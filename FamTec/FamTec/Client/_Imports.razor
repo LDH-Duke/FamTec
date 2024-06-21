@@ -9,9 +9,14 @@
 @using Microsoft.JSInterop
 @using FamTec.Client
 @using FamTec.Client.Shared
-
+@using Microsoft.AspNetCore.Components.Authorization
+@using Blazored.SessionStorage
 @using Microsoft.AspNetCore.Authorization
 
 @inject IJSRuntime JS
+@inject HttpClient HttpClient
 @inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject NavigationManager Navigation
 @inject SessionService SessionService
+@inject ApiManager apiManager;
+@inject CustomAuthenticationStateProvider customStateProvider;

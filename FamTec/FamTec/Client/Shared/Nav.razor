@@ -89,7 +89,7 @@
         Console.WriteLine("로그아웃 동작");
         await sessionStorage.RemoveItemAsync("SWORKSSESSION");
         await sessionStorage.RemoveItemAsync("LoginMode");
-        await sessionStorage.RemoveItemAsync("Login");
+        await sessionStorage.RemoveItemAsync("IsLogin");
         StateHasChanged();
 
         NavigationManager.NavigateTo("/");

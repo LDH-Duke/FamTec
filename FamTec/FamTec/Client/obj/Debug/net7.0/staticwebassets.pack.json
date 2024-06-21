@@ -133,7 +133,15 @@
       "PackagePath": "staticwebassets\\js\\ex.js"
     },
     {
+<<<<<<< HEAD
       "Id": "C:\\Users\\kyw\\Documents\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\main.js",
+=======
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\mac.js",
+      "PackagePath": "staticwebassets\\js\\mac.js"
+    },
+    {
+      "Id": "C:\\Users\\stec\\Desktop\\duke\\Dev\\FamTec\\FamTec\\FamTec\\Client\\wwwroot\\js\\main.js",
+>>>>>>> origin/Front
       "PackagePath": "staticwebassets\\js\\main.js"
     },
     {

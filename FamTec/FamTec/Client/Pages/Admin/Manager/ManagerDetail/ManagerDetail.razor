@@ -7,7 +7,7 @@
 <div class="managerdetail-container yappear">
     <div class="managerdetail-wrap">
         <div class="managerdetail-info">
-            <SignForm Manager="manager" Id="Id"/>
+            <SignForm Id="Id"/>
         </div>
         <div class="managerdetail-place">
             <PlaceTable Id=Id/>
@@ -21,10 +21,8 @@
 
 @code {
     [Parameter] public int Id { get; set; }
-    DManagerDTO manager;
 
     protected override async Task OnInitializedAsync()
     {
-        manager = new();
     }
 }
