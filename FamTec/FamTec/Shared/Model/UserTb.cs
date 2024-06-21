@@ -10,26 +10,44 @@ namespace FamTec.Shared.Model;
 [Index("PlaceTbId", Name = "fk_USER_TB_PLACE_TB1_idx")]
 public partial class UserTb
 {
+    /// <summary>
+    /// 사용자 인덱스
+    /// </summary>
     [Key]
     [Column("ID", TypeName = "int(11)")]
     public int Id { get; set; }
 
+    /// <summary>
+    /// 사용자 아이디
+    /// </summary>
     [Column("USER_ID")]
     [StringLength(255)]
     public string? UserId { get; set; }
 
+    /// <summary>
+    /// 비밀번호
+    /// </summary>
     [Column("PASSWORD")]
     [StringLength(255)]
     public string? Password { get; set; }
 
+    /// <summary>
+    /// 이름
+    /// </summary>
     [Column("NAME")]
     [StringLength(255)]
     public string? Name { get; set; }
 
+    /// <summary>
+    /// 이메일
+    /// </summary>
     [Column("EMAIL")]
     [StringLength(255)]
     public string? Email { get; set; }
 
+    /// <summary>
+    /// 전화번호
+    /// </summary>
     [Column("PHONE")]
     [StringLength(255)]
     public string? Phone { get; set; }
@@ -112,43 +130,6 @@ public partial class UserTb
     [Column("PERM_VOC", TypeName = "int(11)")]
     public int? PermVoc { get; set; }
 
-    [Column("ADMIN_YN", TypeName = "tinyint(4)")]
-    public sbyte? AdminYn { get; set; }
-
-    [Column("ALRAM_YN", TypeName = "tinyint(4)")]
-    public sbyte? AlramYn { get; set; }
-
-    [Column("STATUS", TypeName = "tinyint(4)")]
-    public sbyte? Status { get; set; }
-
-    [Column("CREATE_DT", TypeName = "datetime")]
-    public DateTime? CreateDt { get; set; }
-
-    [Column("CREATE_USER")]
-    [StringLength(255)]
-    public string? CreateUser { get; set; }
-
-    [Column("UPDATE_DT", TypeName = "datetime")]
-    public DateTime? UpdateDt { get; set; }
-
-    [Column("UPDATE_USER")]
-    [StringLength(255)]
-    public string? UpdateUser { get; set; }
-
-    [Column("DEL_YN", TypeName = "tinyint(4)")]
-    public sbyte? DelYn { get; set; }
-
-    [Column("DEL_DT", TypeName = "datetime")]
-    public DateTime? DelDt { get; set; }
-
-    [Column("DEL_USER")]
-    [StringLength(255)]
-    public string? DelUser { get; set; }
-
-    [Column("JOB")]
-    [StringLength(255)]
-    public string? Job { get; set; }
-
     /// <summary>
     /// 기계민원 처리권한
     /// </summary>
@@ -203,6 +184,79 @@ public partial class UserTb
     [Column("VOC_DEFAULT", TypeName = "int(11)")]
     public int? VocDefault { get; set; }
 
+    /// <summary>
+    /// 관리자 유무
+    /// </summary>
+    [Column("ADMIN_YN", TypeName = "tinyint(4)")]
+    public sbyte? AdminYn { get; set; }
+
+    /// <summary>
+    /// 알람 유무
+    /// </summary>
+    [Column("ALRAM_YN", TypeName = "tinyint(4)")]
+    public sbyte? AlramYn { get; set; }
+
+    /// <summary>
+    /// 재직여부
+    /// </summary>
+    [Column("STATUS", TypeName = "tinyint(4)")]
+    public sbyte? Status { get; set; }
+
+    /// <summary>
+    /// 생성일
+    /// </summary>
+    [Column("CREATE_DT", TypeName = "datetime")]
+    public DateTime? CreateDt { get; set; }
+
+    /// <summary>
+    /// 생성자
+    /// </summary>
+    [Column("CREATE_USER")]
+    [StringLength(255)]
+    public string? CreateUser { get; set; }
+
+    /// <summary>
+    /// 수정일
+    /// </summary>
+    [Column("UPDATE_DT", TypeName = "datetime")]
+    public DateTime? UpdateDt { get; set; }
+
+    /// <summary>
+    /// 수정자
+    /// </summary>
+    [Column("UPDATE_USER")]
+    [StringLength(255)]
+    public string? UpdateUser { get; set; }
+
+    /// <summary>
+    /// 삭제여부
+    /// </summary>
+    [Column("DEL_YN", TypeName = "tinyint(4)")]
+    public sbyte? DelYn { get; set; }
+
+    /// <summary>
+    /// 삭제일
+    /// </summary>
+    [Column("DEL_DT", TypeName = "datetime")]
+    public DateTime? DelDt { get; set; }
+
+    /// <summary>
+    /// 삭제자
+    /// </summary>
+    [Column("DEL_USER")]
+    [StringLength(255)]
+    public string? DelUser { get; set; }
+
+    /// <summary>
+    /// 직급
+    /// </summary>
+    [Column("JOB")]
+    [StringLength(255)]
+    public string? Job { get; set; }
+
+    /// <summary>
+    /// (외래키) 사업장 인덱스
+    /// </summary>
     [Column("PLACE_TB_ID", TypeName = "int(11)")]
     public int? PlaceTbId { get; set; }
 
