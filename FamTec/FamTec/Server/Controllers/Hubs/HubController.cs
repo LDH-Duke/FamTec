@@ -30,6 +30,21 @@ namespace FamTec.Server.Controllers.Hubs
 
         }
 
+        [HttpGet]
+        [Route("Temp")]
+        public async ValueTask<IActionResult> FileDownload()
+        {
+            
+            string filepath = "C:\\Users\\kyw\\Pictures\\Screenshots\\"; //파일경로
+            string filename = "스크린샷 2024-02-26 091117.png";
+            string path = filepath + filename;
+            // 파일을 바이트로 읽음
+            byte[] bytes = System.IO.File.ReadAllBytes(path);
+
+            return Ok(bytes);
+          
+        }
+
         [HttpPost]
         [Route("Files")]
         public async Task<IActionResult> UploadFile([FromForm]string obj, [FromForm]List<IFormFile> files)

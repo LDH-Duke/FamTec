@@ -20,14 +20,12 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         private ILogService LogService;
 
 
-        private IPlaceInfoRepository PlaceInfoRepository;
 
         public AdminPlaceController(IAdminPlaceService _adminplaceservice,
             IPlaceInfoRepository _placeinforepository,
             ILogService _logservice)
         {
             this.AdminPlaceService = _adminplaceservice;
-            this.PlaceInfoRepository = _placeinforepository;
             this.LogService = _logservice;
         }
 
@@ -45,7 +43,6 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
             try
             {
                 ResponseList<AllPlaceDTO>? model = await AdminPlaceService.GetAllWorksService(HttpContext);
-
                 if (model is not null)
                 {
                     if (model.code == 200)
@@ -54,7 +51,7 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
                     }
                     else
                     {
-                        return BadRequest(model);
+                        return Ok(model);
                     }
                 }
                 else
@@ -155,22 +152,22 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         {
             try
             {
-                ResponseUnit<PlaceDetailDTO>? res = await AdminPlaceService.GetPlaceService(placeid);
+                ResponseUnit<PlaceDetailDTO>? model = await AdminPlaceService.GetPlaceService(placeid);
 
-                if (res is not null)
+                if (model is not null)
                 {
-                    if (res.code == 200)
+                    if (model.code == 200)
                     {
-                        return Ok(res);
+                        return Ok(model);
                     }
                     else
                     {
-                        return BadRequest(res);
+                        return BadRequest(model);
                     }
                 }
                 else
                 {
-                    return BadRequest(res);
+                    return BadRequest(model);
                 }
             }
             catch(Exception ex)
@@ -237,6 +234,10 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
                     {
                         return Ok(model);
                     }
+                    else if(model.code == 401)
+                    {
+                        return Ok(model);
+                    }
                     else
                     {
                         return BadRequest(model);
@@ -258,21 +259,18 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
         /// </summary>
         /// <param name="DeletePlace"></param>
         /// <returns></returns>
+        [Authorize(Roles ="SystemManager, Master, Manager")]
         [HttpPut]
-        [Route("DeleteWorks")]
+        [Route("sing/DeleteWorks")]
         public async ValueTask<IActionResult> DeleteWorks([FromBody]List<int> DeletePlace)
         {
             try
             {
-                ResponseUnit<bool> model = await AdminPlaceService.DeleteManagerPlaceService(DeletePlace);
+                ResponseUnit<bool>? model = await AdminPlaceService.DeleteManagerPlaceService(HttpContext, DeletePlace);
 
                 if (model is not null)
                 {
                     if (model.code == 200)
-                    {
-                        return Ok(model);
-                    }
-                    else if (model.code == 401)
                     {
                         return Ok(model);
                     }
@@ -292,10 +290,15 @@ namespace FamTec.Server.Controllers.Admin.AdminPlaces
             }
         }
 
+        /// <summary>
+        /// 사업장 삭제 테스트
+        /// </summary>
+        /// <param name="placeidx"></param>
+        /// <returns></returns>
         [Authorize(Roles ="SystemManager, Master, Manager")]
-        [HttpPost]
-        [Route("DeletePlaceList")]
-        public async ValueTask<IActionResult> DeletePlace([FromBody] List<int>? placeidx)
+        [HttpPut]
+        [Route("sign/DeletePlaceList")]
+        public async ValueTask<IActionResult> DeletePlace([FromBody] List<int> placeidx)
         {
             ResponseUnit<bool>? model = await AdminPlaceService.DeletePlaceService(HttpContext, placeidx);
             if(model is not null)

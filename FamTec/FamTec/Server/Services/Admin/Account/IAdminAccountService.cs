@@ -24,7 +24,7 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(HttpContext? context, AddManagerDTO? dto);
+        public ValueTask<ResponseUnit<int?>> AdminRegisterService(HttpContext? context, AddManagerDTO? dto);
 
         /// <summary>
         /// 매니저 삭제

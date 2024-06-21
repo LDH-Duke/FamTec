@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbmFsUkV4YW1wbGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/Test.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kyw/Documents/FamTec/FamTec/FamTec/Client/Pages/VocSubmission.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVm9jU3VibWlzc2lvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

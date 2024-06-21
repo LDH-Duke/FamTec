@@ -33,7 +33,8 @@ namespace FamTec.Server.Repository.Admin.AdminUser
         /// <param name="model"></param>
         /// <returns></returns>
         ValueTask<bool?> DeleteAdminInfo(AdminTb? model);
-     
+
+        
 
     }
 }

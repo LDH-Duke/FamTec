@@ -1,9 +1,7 @@
 ﻿using FamTec.Server.Services.Admin.Department;
-using FamTec.Shared;
-using FamTec.Shared.DTO;
 using FamTec.Shared.Server.DTO;
 using FamTec.Shared.Server.DTO.Admin;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FamTec.Server.Controllers.Admin.Department
@@ -19,15 +17,16 @@ namespace FamTec.Server.Controllers.Admin.Department
         }
 
         /// <summary>
-        /// 부서추가 [수정완료]
+        /// 부서추가
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
+        [Authorize(Roles ="SystemManager, Master, Manager")]
         [HttpPost]
-        [Route("AddDepartment")]
+        [Route("sign/AddDepartment")]
         public async ValueTask<IActionResult> AddDepartment([FromBody] AddDepartmentDTO dto)
         {
-            ResponseUnit<AddDepartmentDTO>? model = await DepartmentService.AddDepartmentService(dto);
+            ResponseUnit<AddDepartmentDTO>? model = await DepartmentService.AddDepartmentService(HttpContext, dto);
 
             if(model is not null)
             {
@@ -50,8 +49,9 @@ namespace FamTec.Server.Controllers.Admin.Department
         /// 부서 전체조회 [수정완료]
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles ="SystemManager, Master, Manager")]
         [HttpGet]
-        [Route("GetDepartmentList")]
+        [Route("sign/GetDepartmentList")]
         public async ValueTask<IActionResult> GetAllDepartment()
         {
             ResponseList<DepartmentDTO>? model = await DepartmentService.GetAllDepartmentService();
@@ -97,16 +97,32 @@ namespace FamTec.Server.Controllers.Admin.Department
         }
 
         /// <summary>
-        /// 부서수정 * 확인함
+        /// 부서수정
         /// </summary>
         /// <param name="dto"></param>
         /// <returns></returns>
+        [Authorize(Roles = "SystemManager, Master, Manager")]
         [HttpPost]
-        [Route("UpdateDepartment")]
-        public async ValueTask<IActionResult> UpdateDepartment([FromBody]DepartmentDTO dto)
+        [Route("sign/UpdateDepartment")]
+        public async ValueTask<IActionResult> UpdateDepartment([FromBody] DepartmentDTO dto)
         {
-            ResponseUnit<DepartmentDTO>? model = await DepartmentService.UpdateDepartmentService(dto);
-            return Ok(model);
+            ResponseUnit<DepartmentDTO>? model = await DepartmentService.UpdateDepartmentService(HttpContext, dto);
+
+            if(model is not null)
+            {
+                if(model.code == 200)
+                {
+                    return Ok(model);
+                }
+                else
+                {
+                    return BadRequest();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
 
 

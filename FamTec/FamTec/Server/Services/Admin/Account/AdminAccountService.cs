@@ -153,26 +153,26 @@ namespace FamTec.Server.Services.Admin.Account
         /// <param name="dto"></param>
         /// <param name="session"></param>
         /// <returns></returns>
-        public async ValueTask<ResponseUnit<AdminTb>> AdminRegisterService(HttpContext? context, AddManagerDTO? dto)
+        public async ValueTask<ResponseUnit<int?>> AdminRegisterService(HttpContext? context, AddManagerDTO? dto)
         {
             try
             {
                 if (context is null)
-                    return new ResponseUnit<AdminTb>() { message = "잘못된 요청입니다.", data = null, code = 404 };
+                    return new ResponseUnit<int?>() { message = "잘못된 요청입니다.", data = null, code = 404 };
                 if(dto is null)
-                    return new ResponseUnit<AdminTb>() { message = "잘못된 요청입니다.", data = null, code = 404 };
+                    return new ResponseUnit<int?>() { message = "잘못된 요청입니다.", data = null, code = 404 };
 
                 string? useridx = Convert.ToString(context.Items["UserIdx"]);
                 if(String.IsNullOrWhiteSpace(useridx))
-                    return new ResponseUnit<AdminTb>() { message = "잘못된 요청입니다.", data = null, code = 404 };
+                    return new ResponseUnit<int?>() { message = "잘못된 요청입니다.", data = null, code = 404 };
 
                 string? creater = Convert.ToString(context.Items["Name"]);
                 if(String.IsNullOrWhiteSpace(creater))
-                    return new ResponseUnit<AdminTb>() { message = "잘못된 요청입니다.", data = null, code = 404 };
+                    return new ResponseUnit<int?>() { message = "잘못된 요청입니다.", data = null, code = 404 };
 
                 string? UserType = Convert.ToString(context.Items["UserType"]);
                 if (String.IsNullOrWhiteSpace(UserType))
-                    return new ResponseUnit<AdminTb>() { message = "잘못된 요청입니다.", data = null, code = 404 };
+                    return new ResponseUnit<int?>() { message = "잘못된 요청입니다.", data = null, code = 404 };
 
                 UserTb? usermodel = new UserTb
                 {
@@ -225,23 +225,23 @@ namespace FamTec.Server.Services.Admin.Account
                         
                     if (adminresult is not null)
                     {
-                        return new ResponseUnit<AdminTb> { message = "요청이 정상 처리되었습니다.", data = adminresult, code = 200 };
+                        return new ResponseUnit<int?> { message = "요청이 정상 처리되었습니다.", data = adminresult.Id, code = 200 };
                     }
                     else
                     {
-                        return new ResponseUnit<AdminTb> { message = "요청이 처리되지 않았습니다.", data = adminresult, code = 404 };
+                        return new ResponseUnit<int?> { message = "요청이 처리되지 않았습니다.", data = null, code = 404 };
                     }
                 }
                 else
                 {
-                    return new ResponseUnit<AdminTb> { message = "요청이 처리되지 않았습니다.", data = new AdminTb(), code = 404 };
+                    return new ResponseUnit<int?> { message = "요청이 처리되지 않았습니다.", data = null, code = 404 };
                 }
               
             }
             catch(Exception ex)
             {
                 LogService.LogMessage(ex.ToString());
-                return new ResponseUnit<AdminTb> { message = "서버에서 요청을 처리하지 못하였습니다.", data = new AdminTb(), code = 500 };
+                return new ResponseUnit<int?> { message = "서버에서 요청을 처리하지 못하였습니다.", data = null, code = 500 };
             }
         }
 

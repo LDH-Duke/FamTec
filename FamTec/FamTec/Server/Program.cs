@@ -170,6 +170,12 @@ app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/AdminUser/s
     appBuilder.UseMiddleware<AdminMiddleware>();
 });
 
+// [설정] Department 컨트롤러 미들웨어 추가
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/Department/sign"), appBuilder =>
+{
+    appBuilder.UseMiddleware<AdminMiddleware>();
+});
+
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/AdminPlace/sign"), appBuilder =>
 {
     appBuilder.UseMiddleware<AdminMiddleware>();
@@ -210,6 +216,8 @@ app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/User/sign")
 {
     appBuilder.UseMiddleware<UserMiddleware>();
 });
+
+
 
 #endregion
 

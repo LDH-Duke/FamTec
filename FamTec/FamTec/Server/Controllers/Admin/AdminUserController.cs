@@ -34,22 +34,22 @@ namespace FamTec.Server.Controllers.Admin
         [Route("sign/AddManager")]
         public async ValueTask<IActionResult> AddManager([FromBody] AddManagerDTO dto)
         {
-            ResponseUnit<AdminTb>? model = await AdminAccountService.AdminRegisterService(HttpContext, dto);
+            ResponseUnit<int?> model = await AdminAccountService.AdminRegisterService(HttpContext, dto);
 
             if (model is not null)
             {
                 if (model.code == 200)
                 {
-                    return Ok(new ResponseUnit<int?> { message = "데이터가 정상 처리되었습니다.", data = model.data!.Id, code = 200 });
+                    return Ok(model);
                 }
                 else
                 {
-                    return BadRequest(new ResponseUnit<int?> { message = "데이터가 처리되지 않았습니다.", data = null, code = 404 });
+                    return BadRequest();
                 }
             }
             else
             {
-                return BadRequest(new ResponseUnit<int?> { message = "데이터가 처리되지 않았습니다.", data = null, code = 404 });
+                return BadRequest();
             }
            
         }

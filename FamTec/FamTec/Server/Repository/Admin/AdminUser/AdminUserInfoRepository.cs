@@ -71,6 +71,8 @@ namespace FamTec.Server.Repository.Admin.AdminUser
             }
         }
 
+        
+
         /// <summary>
         /// 매개변수의 관리자ID에 해당하는 관리자모델 모델 조회
         /// </summary>
@@ -104,6 +106,8 @@ namespace FamTec.Server.Repository.Admin.AdminUser
                 throw new ArgumentNullException();
             }
         }
+
+
 
         /// <summary>
         /// 관리자 DTO 반환

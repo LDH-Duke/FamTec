@@ -20,6 +20,9 @@ namespace FamTec.Server.Controllers.Voc
             this.VocService = _vocservice;
         }
 
+     
+
+
         // placeidx
         // date = 2024
         [AllowAnonymous]
