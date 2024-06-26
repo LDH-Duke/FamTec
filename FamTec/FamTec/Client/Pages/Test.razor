@@ -4,15 +4,20 @@
 
 <h3>Test</h3>
 
-<image src="@image"></image>
+<image src="@image"/>
 
+@*
+<image src=$"data: image/png;base64," + {@image}></image>
+*@
 @code {
 
     string image { get; set; }
     protected async override Task OnInitializedAsync()
     {
         var response = await httpClient.GetStringAsync("http://123.2.156.148:5245/api/Hub/Temp");
-        image = "data:image/png;base64,"+response;
+        //image = response;
+        image = $"data:image/png;base64,{response}";
         StateHasChanged();
+
     }
 }
